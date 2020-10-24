@@ -21,7 +21,6 @@ def create_driver(request):
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
-
     def kill_driver():
         driver.quit()
 
