@@ -1,7 +1,7 @@
 from datetime import datetime
 
-import pytest
 import allure
+import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -9,10 +9,10 @@ from globals import driver_global as dg
 from utils.config_parser import ConfigParserIni
 
 
-# @pytest.fixture
-# def prep_properties():
-#     config_reader = ConfigParserIni("props.ini")
-#     return config_reader
+@pytest.fixture
+def prep_properties():
+    config_reader = ConfigParserIni("props.ini")
+    return config_reader
 
 
 @pytest.fixture(scope="class", autouse=True)
@@ -21,7 +21,6 @@ def create_driver(request):
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
-    driver.get("https://www.google.com")
 
     def kill_driver():
         driver.quit()
@@ -29,11 +28,11 @@ def create_driver(request):
     request.addfinalizer(kill_driver)
 
 
-# @pytest.fixture(autouse=True)
-# def navigate_to_base_url(prep_properties):
-#     config_reader = prep_properties
-#     base_url = config_reader.config_section_dict("Base Url")["base_url"]
-#     dg.DRIVER.get(base_url)
+@pytest.fixture(autouse=True)
+def navigate_to_base_url(prep_properties):
+    config_reader = prep_properties
+    base_url = config_reader.config_section_dict("Base Url")["base_url"]
+    dg.DRIVER.get(base_url)
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
