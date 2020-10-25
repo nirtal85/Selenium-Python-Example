@@ -13,8 +13,8 @@ class AboutPage(BasePage):
 
     @allure.step("Click Login link")
     def click_login_link(self):
-        self._click(self.login_link)
+        self.click(self.login_link)
 
     @allure.step("Click Register link")
     def click_register_link(self):
-        self._click(self.register_link)
+        self.click(self.register_link)

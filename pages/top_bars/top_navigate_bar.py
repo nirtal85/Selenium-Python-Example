@@ -18,27 +18,27 @@ class TopNavigateBar(BasePage):
 
     @allure.step("Click Projects tab")
     def click_projects(self):
-        self._click(self.projects_btn)
+        self.click(self.projects_btn)
 
     @allure.step("Click Templates tab")
     def click_templates(self):
-        self._click(self.templates_btn)
+        self.click(self.templates_btn)
 
     @allure.step("Click Analytics tab")
     def click_analytics(self):
-        self._click(self.analytics_btn)
+        self.click(self.analytics_btn)
 
     @allure.step("Click Integrations tab")
     def click_integrations(self):
-        self._click(self.integrations_btn)
+        self.click(self.integrations_btn)
 
     @allure.step("Click Affiliate Program tab")
     def click_affiliate_program(self):
-        self._click(self.affiliate_program_btn)
+        self.click(self.affiliate_program_btn)
 
     @allure.step("Logout from system")
     def logout(self):
         # Click account drop down menu
-        self._click(self.account_drop_down_menu)
+        self.click(self.account_drop_down_menu)
         # Click logout button
-        self._click(self.logout_btn)
+        self.click(self.logout_btn)

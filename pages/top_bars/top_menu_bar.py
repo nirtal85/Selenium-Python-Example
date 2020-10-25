@@ -13,8 +13,8 @@ class TopMenuBar(BasePage):
 
     @allure.step("Click Login button")
     def click_login(self):
-        self._click(self.login_link)
+        self.click(self.login_link)
 
     @allure.step("Click Register button")
     def click_register(self):
-        self._click(self.register_link)
+        self.click(self.register_link)
