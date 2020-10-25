@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  stages {
+    // stage('SCM') {
+    //   steps {
+    //     git 'https://github.com/nirtal85/selenium-python.git'
+    //   }
+    // }
+    stage('Run tests') {
+      steps {
+        bat """
+   cd C:\\Users\\User\\PycharmProjects\\selenium-python
+   call ./env/Scripts/activate.bat
+    pipenv run pytest --alluredir=allure_results tests/test_google.py
+        """
+      }
+    }
+  }
+   post {
+  always {
+   allure includeProperties: false, jdk: '', results: [
+    [path: 'allure_results']
+   ]
+  }
+}
+}
