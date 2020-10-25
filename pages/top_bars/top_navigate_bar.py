@@ -1,5 +1,6 @@
-from pages.basepage import BasePage
 import allure
+
+from pages.base_page import BasePage
 
 
 class TopNavigateBar(BasePage):

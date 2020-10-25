@@ -1,6 +1,6 @@
 import allure
 
-from pages.basepage import BasePage
+from pages.base_page import BasePage
 
 
 class AboutPage(BasePage):
