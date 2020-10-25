@@ -6,7 +6,7 @@ from pages.projects_page import ProjectsPage
 from pages.top_bars.top_menu_bar import TopMenuBar
 
 
-@allure.severity(severity_level="BLOCKER")
+@allure.severity(allure.severity_level.BLOCKER)
 @allure.epic("Login Feature's Functionality")
 class TestLogin:
 
