@@ -1,9 +1,9 @@
 import allure
 
-from pages.base_page import BasePage
+from pages.top_bars.top_menu_bar import TopMenuBar
 
 
-class LoginPage(BasePage):
+class LoginPage(TopMenuBar):
     """ Login Page """
 
     def __init__(self):

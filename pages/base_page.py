@@ -39,6 +39,7 @@ class BasePage:
 
     def get_text(self, el):
         self._wait.until(EC.visibility_of(el))
+        self._highlight_element(el, "green")
         return el.text
 
     def move_to_element(self, el):
@@ -60,6 +61,6 @@ class BasePage:
         self._driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
             + new_style + "');},0);", el)
-        dg.DRIVER.execute_script(
+        self._driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
             + original_style + "');},400);", el)

@@ -8,7 +8,7 @@ class TopMenuBar(BasePage):
 
     def __init__(self):
         super().__init__()
-        self.login_link = "[href='https://app.involve.me/login/']"
+        self.login_link = "[href='https://app.involve.me/login']"
         self.register_link = "#frontend-navbar-collapse [href='https://app.involve.me/register']"
 
     @allure.step("Click Login button")
