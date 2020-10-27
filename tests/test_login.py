@@ -16,12 +16,15 @@ class TestLogin:
     @pytest.mark.parametrize("email,password", [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")])
     @pytest.mark.run(order=3)
     def test_invalid_login(self, email, password):
+        ap = AboutPage()
+        ap.click_login_link()
         lp = LoginPage()
         lp.login(email, password)
         assert_that(lp.get_error_message()).is_equal_to(self._error_msg)
 
     @allure.description("Test valid login")
     @pytest.mark.run(order=1)
+    @pytest.mark.incremental
     def test_valid_login(self, prep_properties):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
@@ -35,7 +38,10 @@ class TestLogin:
 
     @allure.description("Log out from app")
     @pytest.mark.run(order=2)
+    @pytest.mark.incremental
     def test_logout(self):
+        ap = AboutPage()
+        ap.click_login_link()
         pp = ProjectsPage()
         pp.logout()
         lp = LoginPage()

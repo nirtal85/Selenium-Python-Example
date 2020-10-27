@@ -21,11 +21,8 @@ def create_driver(request):
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
-
-    def kill_driver():
-        driver.quit()
-
-    request.addfinalizer(kill_driver)
+    yield
+    driver.quit()
 
 
 @pytest.fixture(autouse=True)
@@ -36,7 +33,13 @@ def navigate_to_base_url(prep_properties):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item):
+def pytest_runtest_makereport(item, call):
+    # this part is added for tests that depend on other tests
+    if "incremental" in item.keywords:
+        if call.excinfo is not None:
+            parent = item.parent
+            parent._previousfailed = item
+    # this part is for taking a screen shot on failure
     outcome = yield
     rep = outcome.get_result()
     if rep.when == "setup" or rep.when == "call":
@@ -44,3 +47,11 @@ def pytest_runtest_makereport(item):
             screenshot_name = 'screenshot-%s.png' % datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
                           attachment_type=allure.attachment_type.PNG)
+
+
+# this is added for tests that depend on other tests - makes the others expected to fail if the main test failed
+def pytest_runtest_setup(item):
+    if "incremental" in item.keywords:
+        previousfailed = getattr(item.parent, "_previousfailed", None)
+        if previousfailed is not None:
+            pytest.xfail("previous test failed (%s)" % previousfailed.name)
