@@ -16,6 +16,6 @@ py -m venv env
 6. pip install pipenv
 7. pipenv install
 8. run tests:
-pipenv run pytest --alluredir=allure_results tests/test_google.py
+pipenv run pytest --alluredir=allure_results tests
 9. view allure results: 
 allure serve allure_results

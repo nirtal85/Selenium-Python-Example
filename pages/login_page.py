@@ -14,7 +14,7 @@ class LoginPage(TopMenuBar):
         self._login_error_message = "div.alert-danger"
         self._page_title = ".e-form-heading"
 
-    @allure.step("Log in with username {0} and password {1}")
+    @allure.step("Log in with username: {username} and password: {password}")
     def login(self, username, password):
         self.fill_text(self._username_field, username)
         self.fill_text(self._password_field, password)
