@@ -1,13 +1,15 @@
 import allure
 import pytest
+from assertpy import assert_that
+
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from pages.projects_page import ProjectsPage
-from assertpy import assert_that
 
 
 @allure.severity(allure.severity_level.BLOCKER)
-@allure.epic("Login Feature's Functionality")
+@allure.epic("Security")
+@allure.story("Login Feature's Functionality")
 class TestLogin:
     _error_msg = "These credentials do not match our records."
     _page_title = "My Workspace"
@@ -37,6 +39,7 @@ class TestLogin:
         assert_that(pp.get_title()).is_equal_to(self._page_title)
 
     @allure.description("Log out from app")
+    @allure.title("This test has a custom title")
     @pytest.mark.run(order=2)
     @pytest.mark.incremental
     def test_logout(self):
@@ -46,3 +49,8 @@ class TestLogin:
         pp.logout()
         lp = LoginPage()
         assert_that(lp.get_page_title()).is_true()
+
+    @allure.description("Skip Test example")
+    @pytest.mark.skip(reason="no way of currently testing this")
+    def test_skip(self):
+        pp = ProjectsPage()
