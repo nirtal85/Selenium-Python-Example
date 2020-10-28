@@ -13,6 +13,7 @@ class LoginPage(TopMenuBar):
         self._login_btn = "button[type='submit']"
         self._login_error_message = "div.alert-danger"
         self._page_title = ".e-form-heading"
+        self._forgot_password_link = '[href="https://app.involve.me/password/reset"]'
 
     @allure.step("Log in with username: {username} and password: {password}")
     def login(self, username, password):
@@ -29,3 +30,7 @@ class LoginPage(TopMenuBar):
     def get_page_title(self):
         el = self._driver.find_element_by_css_selector(self._page_title)
         return self.get_text(el)
+
+    @allure.step("Click Forgot Password link")
+    def click_forgot_password(self):
+        self.click(self._forgot_password_link)

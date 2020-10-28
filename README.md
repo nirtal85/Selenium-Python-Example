@@ -19,3 +19,6 @@ py -m venv env
 pipenv run pytest --alluredir=allure_results tests
 9. view allure results: 
 allure serve allure_results
+
+<u>Run according to tags:</u> <br>
+1. pipenv run pytest -k "<tag_name>"

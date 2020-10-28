@@ -10,6 +10,7 @@ from pages.projects_page import ProjectsPage
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.epic("Security")
 @allure.story("Login Feature's Functionality")
+@pytest.mark.security
 class TestLogin:
     _error_msg = "These credentials do not match our records."
     _page_title = "My Workspace"
