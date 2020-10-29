@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Starting Selenoid Server (aerokube/selenoid) within actions
+      uses: ajinx/selenoid@2.0
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
