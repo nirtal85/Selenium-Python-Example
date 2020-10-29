@@ -33,7 +33,6 @@ def prep_properties():
 def create_driver(prep_properties, request):
     browser = request.config.option.browser
     config_reader = prep_properties
-    # browser = config_reader.config_section_dict("Browsers")["browser"]
     base_url = config_reader.config_section_dict("Base Url")["base_url"]
     if browser == "chrome":
         driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -63,6 +62,7 @@ def create_driver(prep_properties, request):
     driver.quit()
 
 
+# need to pass driver
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport():
     outcome = yield
