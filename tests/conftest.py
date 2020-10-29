@@ -44,7 +44,7 @@ def pytest_runtest_makereport(item, call):
     rep = outcome.get_result()
     if rep.when == "setup" or rep.when == "call":
         if rep.failed:
-            screenshot_name = 'screenshot-%s.png' % datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            screenshot_name = 'screenshot-%s.png' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
             allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
                           attachment_type=allure.attachment_type.PNG)
 
