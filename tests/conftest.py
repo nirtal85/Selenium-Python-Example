@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import json
 import allure
 import pytest
 from selenium import webdriver
@@ -7,6 +7,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from globals import driver_global as dg
 from utils.config_parser import ConfigParserIni
+
+
+@pytest.fixture
+def read_from_json():
+    with open("config.json") as json_file:
+        json_config = json.load(json_file)
+        return json_config
 
 
 @pytest.fixture
