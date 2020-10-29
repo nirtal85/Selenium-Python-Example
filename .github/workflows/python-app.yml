@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
       - name: Test with pytest
         run: |
-          pytest
+          pytest --alluredir=allure-results
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
