@@ -33,6 +33,22 @@ def create_driver(prep_properties):
         driver = webdriver.Chrome(ChromeDriverManager().install())
     elif browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+    elif browser == "remote":
+        capabilities = {
+            "browserName": "chrome",
+            "browserVersion": "86.0",
+            "selenoid:options": {
+                "enableVNC": True,
+                "enableVideo": False
+            }
+        }
+        driver = webdriver.Remote(command_executor="http://localhost:4444/wd/hub", desired_capabilities=capabilities)
+    elif browser == "chrome headless":
+        opts = webdriver.ChromeOptions()
+        opts.add_argument("--headless")
+        opts.add_argument("--disable-dev-shm-usage")
+        opts.add_argument("--no-sandbox")
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
@@ -40,15 +56,12 @@ def create_driver(prep_properties):
     yield driver
     driver.quit()
 
-
-#
 # @pytest.fixture(autouse=True)
 # def navigate_to_base_url(prep_properties):
 #     config_reader = prep_properties
 #     base_url = config_reader.config_section_dict("Base Url")["base_url"]
 #     dg.DRIVER.get(base_url)
 
-# hello world
 # @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 # def pytest_runtest_makereport():
 #     outcome = yield
