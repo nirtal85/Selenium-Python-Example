@@ -62,7 +62,7 @@ def create_driver(prep_properties, request):
     driver.quit()
 
 
-# need to pass driver
+# need to pass driver pronto
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport():
     outcome = yield
