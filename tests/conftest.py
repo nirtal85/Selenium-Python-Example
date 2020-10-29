@@ -21,7 +21,7 @@ def create_driver(request):
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
-    yield
+    yield driver
     driver.quit()
 
 
@@ -45,7 +45,7 @@ def pytest_runtest_makereport(item, call):
     if rep.when == "setup" or rep.when == "call":
         if rep.failed:
             screenshot_name = 'screenshot-%s.png' % datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
+            allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
                           attachment_type=allure.attachment_type.PNG)
 
 
