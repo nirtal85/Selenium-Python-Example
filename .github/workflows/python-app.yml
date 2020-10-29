@@ -27,3 +27,10 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+      - name: Allure results
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
