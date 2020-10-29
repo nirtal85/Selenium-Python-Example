@@ -18,7 +18,7 @@ class TestLogin:
     @allure.description("test invalid login")
     @pytest.mark.parametrize("email,password", [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")])
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email, password):
+    def test_invalid_login(self, create_driver, email, password):
         ap = AboutPage()
         ap.click_login_link()
         lp = LoginPage()
@@ -27,8 +27,7 @@ class TestLogin:
 
     @allure.description("Test valid login")
     @pytest.mark.run(order=1)
-    @pytest.mark.incremental
-    def test_valid_login(self, prep_properties):
+    def test_valid_login(self, create_driver, prep_properties):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
@@ -42,16 +41,19 @@ class TestLogin:
     @allure.description("Log out from app")
     @allure.title("This test has a custom title")
     @pytest.mark.run(order=2)
-    @pytest.mark.incremental
-    def test_logout(self):
+    def test_logout(self, create_driver, prep_properties):
+        config_reader = prep_properties
+        username = config_reader.config_section_dict("Base Url")["username"]
+        password = config_reader.config_section_dict("Base Url")["password"]
         ap = AboutPage()
         ap.click_login_link()
-        pp = ProjectsPage()
-        pp.logout()
         lp = LoginPage()
+        pp = ProjectsPage()
+        lp.login(username, password)
+        pp.logout()
         assert_that(lp.get_page_title()).is_true()
 
     @allure.description("Skip Test example")
     @pytest.mark.skip(reason="no way of currently testing this")
     def test_skip(self):
-        pp = ProjectsPage()
+        pass
