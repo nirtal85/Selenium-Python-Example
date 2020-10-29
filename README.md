@@ -22,3 +22,6 @@ allure serve allure-results
 
 <u>Run according to tags:</u> <br>
 1. pipenv run pytest -k "<tag_name>" --browser <firefox/chrome/remote/chrome_headless>
+
+<u>GitHub Pages allure results:</u> <br>
+https://nirtal85.github.io/selenium-python/<build_number>/
