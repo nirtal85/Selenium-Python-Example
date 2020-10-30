@@ -4,12 +4,15 @@ from pages.base_page import BasePage
 
 
 class ForgotPasswordPage(BasePage):
+    """ Forgot Password Page"""
+
+    _email_field = "[name='email']"
+    _send_password_reset_link_btn = "[type='submit']"
+    _error_msg = ".alert-danger"
+    _success_msg = ".alert-success"
+
     def __init__(self):
         super().__init__()
-        self._email_field = "[name='email']"
-        self._send_password_reset_link_btn = "[type='submit']"
-        self._error_msg = ".alert-danger"
-        self._success_msg = ".alert-success"
 
     @allure.step("Send password reset link to email address: {1}")
     def send_password_reset_link(self, email):

@@ -6,14 +6,15 @@ from pages.top_bars.top_menu_bar import TopMenuBar
 class LoginPage(TopMenuBar):
     """ Login Page """
 
+    _username_field = "input[name='email']"
+    _password_field = "input[name='password']"
+    _login_btn = "button[type='submit']"
+    _login_error_message = "div.alert-danger"
+    _page_title = ".e-form-heading"
+    _forgot_password_link = '[href="https://app.involve.me/password/reset"]'
+
     def __init__(self):
         super().__init__()
-        self._username_field = "input[name='email']"
-        self._password_field = "input[name='password']"
-        self._login_btn = "button[type='submit']"
-        self._login_error_message = "div.alert-danger"
-        self._page_title = ".e-form-heading"
-        self._forgot_password_link = '[href="https://app.involve.me/password/reset"]'
 
     @allure.step("Log in with username: {username} and password: {password}")
     def login(self, username, password):

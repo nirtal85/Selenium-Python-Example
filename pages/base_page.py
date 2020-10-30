@@ -13,7 +13,7 @@ class BasePage:
 
     def __init__(self):
         self._driver = dg.DRIVER
-        self._wait = WebDriverWait(self._driver, 10)
+        self._wait = WebDriverWait(self._driver, 5)
 
     def click(self, locator):
         el = self._wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, locator)))

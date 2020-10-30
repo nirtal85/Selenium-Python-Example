@@ -16,9 +16,9 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def read_from_json():
+def read_from_json(json_path):
     # read from file
-    with open("config.json") as json_file:
+    with open(json_path) as json_file:
         json_reader = json.load(json_file)
     return json_reader
 
@@ -63,12 +63,12 @@ def create_driver(prep_properties, request):
 
 
 # need to pass driver pronto
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport():
-    outcome = yield
-    rep = outcome.get_result()
-    if rep.when == "setup" or rep.when == "call":
-        if rep.failed:
-            screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
-            allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
-                          attachment_type=allure.attachment_type.PNG)
+# @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+# def pytest_runtest_makereport():
+#     outcome = yield
+#     rep = outcome.get_result()
+#     if rep.when == "setup" or rep.when == "call":
+#         if rep.failed:
+#             screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+#             allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
+#                           attachment_type=allure.attachment_type.PNG)
