@@ -1,11 +1,10 @@
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import ActionChains
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.expected_conditions import StaleElementReferenceException
+from selenium.webdriver.support.wait import WebDriverWait
 
 from globals import driver_global as dg
-from selenium.webdriver.support.wait import WebDriverWait
-import selenium.webdriver.support.expected_conditions as EC
-from selenium.webdriver.support.expected_conditions import StaleElementReferenceException
-from selenium.webdriver.common.by import By
-from selenium.webdriver import ActionChains as AC
 
 
 class BasePage:
@@ -15,52 +14,52 @@ class BasePage:
         self._driver = dg.DRIVER
         self._wait = WebDriverWait(self._driver, 10)
 
-    def click(self, locator):
-        el = self._wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, locator)))
+    def click(self, webelement):
+        el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
         self._highlight_element(el, "green")
         el.click()
 
-    def fill_text(self, locator, txt):
-        el = self._wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, locator)))
+    def fill_text(self, webelement, txt):
+        el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
         el.clear()
         self._highlight_element(el, "green")
         el.send_keys(txt)
 
-    def clear_text(self, locator):
-        el = self._wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, locator)))
+    def clear_text(self, webelement):
+        el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
         el.clear()
 
     def scroll_to_bottom(self):
         self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def submit(self, el):
-        self._highlight_element(el, "green")
-        el.submit()
+    def submit(self, webelement):
+        self._highlight_element(webelement, "green")
+        webelement.submit()
 
-    def get_text(self, el):
-        self._wait.until(EC.visibility_of(el))
+    def get_text(self, webelement):
+        el = self._wait.until(expected_conditions.visibility_of(webelement))
         self._highlight_element(el, "green")
         return el.text
 
-    def move_to_element(self, el):
-        action = AC(self._driver)
-        self._wait.until(EC.visibility_of(el))
-        action.move_to_element(el).perform()
+    def move_to_element(self, webelement):
+        action = ActionChains(self._driver)
+        self._wait.until(expected_conditions.visibility_of(webelement))
+        action.move_to_element(webelement).perform()
 
-    def is_elem_displayed(self, el):
+    def is_elem_displayed(self, webelement):
         try:
-            return el.is_displayed()
+            return webelement.is_displayed()
         except StaleElementReferenceException:
             return False
         except NoSuchElementException:
             return False
 
-    def _highlight_element(self, el, color):
-        original_style = el.get_attribute("style")
+    def _highlight_element(self, webelement, color):
+        original_style = webelement.get_attribute("style")
         new_style = "background-color:yellow;border: 1px solid " + color + original_style
         self._driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
-            + new_style + "');},0);", el)
+            + new_style + "');},0);", webelement)
         self._driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
-            + original_style + "');},400);", el)
+            + original_style + "');},400);", webelement)

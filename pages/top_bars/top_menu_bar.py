@@ -1,20 +1,21 @@
 import allure
+from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 
 
 class TopMenuBar(BasePage):
     """Top menu bar - The bar that appears on the top of the page prior to login """
+    LOGIN_LINK = (By.CSS_SELECTOR, '.login')
+    REGISTER_LINK = (By.CSS_SELECTOR, '.register')
 
     def __init__(self):
         super().__init__()
-        self.login_link = "[href='https://app.involve.me/login']"
-        self.register_link = "#frontend-navbar-collapse [href='https://app.involve.me/register']"
 
     @allure.step("Click Login button")
     def click_login(self):
-        self.click(self.login_link)
+        self.click(self.LOGIN_LINK)
 
     @allure.step("Click Register button")
     def click_register(self):
-        self.click(self.register_link)
+        self.click(self.REGISTER_LINK)

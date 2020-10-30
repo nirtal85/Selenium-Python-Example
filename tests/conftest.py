@@ -1,5 +1,6 @@
-from datetime import datetime
 import json
+from datetime import datetime
+
 import allure
 import pytest
 from selenium import webdriver
@@ -34,9 +35,7 @@ def create_driver(prep_properties, request):
     browser = request.config.option.browser
     config_reader = prep_properties
     base_url = config_reader.config_section_dict("Base Url")["base_url"]
-    if browser == "chrome":
-        driver = webdriver.Chrome(ChromeDriverManager().install())
-    elif browser == "firefox":
+    if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
         capabilities = {
@@ -54,6 +53,8 @@ def create_driver(prep_properties, request):
         opts.add_argument("--disable-dev-shm-usage")
         opts.add_argument("--no-sandbox")
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
+    else:
+        driver = webdriver.Chrome(ChromeDriverManager().install())
     dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
@@ -67,8 +68,7 @@ def create_driver(prep_properties, request):
 def pytest_runtest_makereport():
     outcome = yield
     rep = outcome.get_result()
-    if rep.when == "setup" or rep.when == "call":
-        if rep.failed:
-            screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
-            allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
-                          attachment_type=allure.attachment_type.PNG)
+    if rep.when == "setup" or rep.when == "call" and rep.failed:
+        screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+        allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
+                      attachment_type=allure.attachment_type.PNG)

@@ -1,36 +1,35 @@
 import allure
+from selenium.webdriver.common.by import By
 
 from pages.top_bars.top_menu_bar import TopMenuBar
 
 
 class LoginPage(TopMenuBar):
     """ Login Page """
+    USERNAME_FIELD = (By.CSS_SELECTOR, "input[name='email']")
+    PASSWORD_FIELD = (By.CSS_SELECTOR, "input[name='password']")
+    LOGIN_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
+    LOGIN_ERROR_MESSAGE = (By.CSS_SELECTOR, "div.alert-danger")
+    PAGE_TITLE = (By.CSS_SELECTOR, ".e-form-heading")
+    FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, "[href='https://app.involve.me/password/reset']")
 
     def __init__(self):
         super().__init__()
-        self._username_field = "input[name='email']"
-        self._password_field = "input[name='password']"
-        self._login_btn = "button[type='submit']"
-        self._login_error_message = "div.alert-danger"
-        self._page_title = ".e-form-heading"
-        self._forgot_password_link = '[href="https://app.involve.me/password/reset"]'
 
     @allure.step("Log in with username: {username} and password: {password}")
     def login(self, username, password):
-        self.fill_text(self._username_field, username)
-        self.fill_text(self._password_field, password)
-        self.click(self._login_btn)
+        self.fill_text(self.USERNAME_FIELD, username)
+        self.fill_text(self.PASSWORD_FIELD, password)
+        self.click(self.LOGIN_BUTTON)
 
     @allure.step("Get error message")
     def get_error_message(self):
-        el = self._driver.find_element_by_css_selector(self._login_error_message)
-        return self.get_text(el)
+        return self.get_text(self._driver.find_element(*self.LOGIN_ERROR_MESSAGE))
 
     @allure.step("Get page title")
     def get_page_title(self):
-        el = self._driver.find_element_by_css_selector(self._page_title)
-        return self.get_text(el)
+        return self.get_text(self._driver.find_element(*self.PAGE_TITLE))
 
     @allure.step("Click Forgot Password link")
     def click_forgot_password(self):
-        self.click(self._forgot_password_link)
+        self.click(self.FORGOT_PASSWORD_LINK)
