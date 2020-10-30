@@ -16,7 +16,8 @@ py -m venv env
 6. pip install pipenv
 7. pipenv install
 8. run tests:
-pipenv run pytest --alluredir=allure-results --browser <firefox/chrome/remote/chrome_headless> 
+pipenv run pytest --alluredir=allure-results --browser <firefox/remote/chrome_headless>
+if no browser was selected then chrome will be used. 
 9. view allure results: 
 allure serve allure-results
 
