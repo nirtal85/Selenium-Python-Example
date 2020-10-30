@@ -1,5 +1,95 @@
 {
   "uid" : "b1a8273437954620fa374b796ffaacdd",
-  "children" : [ ],
+  "children" : [ {
+    "name" : "Security",
+    "children" : [ {
+      "name" : "Login Feature's Functionality",
+      "children" : [ {
+        "name" : "test_valid_login",
+        "uid" : "1789d39697f5f1d7",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098382608,
+          "stop" : 1604098385657,
+          "duration" : 3049
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "This test has a custom title",
+        "uid" : "fc4c82c3abc844c8",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098388808,
+          "stop" : 1604098393069,
+          "duration" : 4261
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_invalid_login[nirt236@gmail.com-123456]",
+        "uid" : "d5b67e544ba42ad5",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098395877,
+          "stop" : 1604098397962,
+          "duration" : 2085
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'nirt236@gmail.com'", "'123456'" ]
+      }, {
+        "name" : "test_invalid_login[elias@gmail.com-12345Tr]",
+        "uid" : "68c8bdf58e748a82",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098400995,
+          "stop" : 1604098402967,
+          "duration" : 1972
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'elias@gmail.com'", "'12345Tr'" ]
+      } ],
+      "uid" : "3bd3c95e49d726dcac511fa6f70751b2"
+    }, {
+      "name" : "Forgot Password Feature's Functionality",
+      "children" : [ {
+        "name" : "test_valid_email",
+        "uid" : "bbc0f5d6c62a656",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098406137,
+          "stop" : 1604098409091,
+          "duration" : 2954
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_invalid_email",
+        "uid" : "866fa717ec6b3164",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604098412107,
+          "stop" : 1604098414220,
+          "duration" : 2113
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "783795c916a34ff068bbd39b11f31110"
+    } ],
+    "uid" : "526d0329f324aba33fe765945cd65d47"
+  } ],
   "name" : "behaviors"
 }
