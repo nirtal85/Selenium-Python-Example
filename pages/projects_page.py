@@ -23,9 +23,11 @@ class ProjectsPage(TopNavigateBar):
     _CONFIRM_DELETE_PROJECT_BUTTON = (By.CSS_SELECTOR, "#confirm-delete-button")
     _CANCEL_PROJECT_DELETION_BUTTON = (By.CSS_SELECTOR, "form [type='button'")
     _PROJECT_PAGE_TITLE = (By.CSS_SELECTOR, "#app h1.leading-tight.truncate")
+    _NO_PROJECT_FOUND_MSG = (By.CSS_SELECTOR, "#app h1.block")
 
     _WORKSPACE_LIST = (By.CSS_SELECTOR, ".mt-6 a")
-    _PROJECT_BLOCK = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
+    _PROJECTS_BLOCK = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
+    _PROJECTS_TITLES = (By.CSS_SELECTOR, "h1 a")
 
     def __init__(self):
         super().__init__()
@@ -80,6 +82,34 @@ class ProjectsPage(TopNavigateBar):
                 self.click(self._CONFIRMATION_BUTTON)
                 break
 
+    @allure.step("Start a new project")
+    def create_new_project(self):
+        if self.is_elem_displayed(self._driver.find_element(*self._START_BUTTON)):
+            self.click(self._START_BUTTON)
+        elif self.is_elem_displayed(self._driver.find_element(*self._CREATE_PROJECT_BUTTON)):
+            self.click(self._CREATE_NEW_WORKSPACE_BUTTON)
+
+    @allure.step("Search for project {project_name}")
+    def search_project(self, project_name):
+        self.click(self._SEARCH_BUTTON)
+        self.fill_text(self._SEARCH_FIELD, project_name)
+
+    @allure.step("Delete or cancel deletion of project {project_name}")
+    def delete_project(self, project_name, status="confirm"):
+        projects = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
+        deleted_project = None
+        for project in projects:
+            if project_name in project.text:
+                deleted_project = project
+                self.click_drop_down_menu(project)
+                project.find_element(By.XPATH, "//button[text()='Delete Project']").click()
+                break
+        if status == "cancel":
+            self.click(self._CANCEL_PROJECT_DELETION_BUTTON)
+        elif status == "confirm":
+            self.click(self._CONFIRM_DELETE_PROJECT_BUTTON)
+            self._wait.until(expected_conditions.invisibility_of_element(deleted_project))
+
     @allure.step("Get workspaces number")
     def get_workspaces_number(self):
         self._wait.until(
@@ -91,7 +121,7 @@ class ProjectsPage(TopNavigateBar):
     @allure.step("Get number of projects display on page")
     def get_projects_number_in_page(self):
         projects = self._wait.until(
-            expected_conditions.visibility_of_all_elements_located(self._PROJECT_BLOCK))
+            expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
         return len(projects)
 
     @allure.step("Get number of projects displayed next to main workspace (My Workspace) name")
@@ -114,3 +144,20 @@ class ProjectsPage(TopNavigateBar):
     @allure.step("Get projects' page title")
     def get_title(self):
         return self.get_text(self._PROJECT_PAGE_TITLE)
+
+    def get_no_project_found_msg(self):
+        return self.get_text(self._NO_PROJECT_FOUND_MSG)
+
+    @allure.step("Check if {project_name} is present")
+    def is_project_found(self, project_name):
+        projects_titles = self._wait.until(
+            expected_conditions.visibility_of_all_elements_located(self._PROJECTS_TITLES))
+        for project_title in projects_titles:
+            if project_name != project_title.text.lower():
+                return False
+        return True
+
+    # clicks on a specific project's drop down arrow
+    def click_drop_down_menu(self, project):
+        dropdown_menu_button = project.find_element(By.CSS_SELECTOR, ".justify-right button svg")
+        dropdown_menu_button.click()

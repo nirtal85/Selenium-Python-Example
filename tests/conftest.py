@@ -68,7 +68,7 @@ def create_driver(prep_properties, request):
 def pytest_runtest_makereport():
     outcome = yield
     rep = outcome.get_result()
-    if rep.when == "setup" or rep.when == "call" and rep.failed:
+    if (rep.when == "setup" or rep.when == "call") and rep.failed:
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
         allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
