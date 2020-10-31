@@ -19,7 +19,7 @@ def pytest_addoption(parser):
 @pytest.fixture
 def read_from_json():
     # read from file
-    with open("config.json",'r') as json_file:
+    with open("config.json", 'r') as json_file:
         json_reader = json.load(json_file)
     return json_reader
 

@@ -25,7 +25,7 @@ class TestWorkspaces:
         lp.login(username, password)
 
     @allure.description("Create new Workspace test")
-    @pytest.mark.run(order="1")
+    @pytest.mark.run(order=1)
     def test_create_new_workspace(self, create_driver, prep_properties):
         self.login(prep_properties)
         pp = ProjectsPage()
@@ -35,7 +35,7 @@ class TestWorkspaces:
         assert_that(after).is_greater_than(before)
 
     @allure.description("Rename an existing workspace test")
-    @pytest.mark.run(order="2")
+    @pytest.mark.run(order=2)
     def test_rename_workspace(self, create_driver, prep_properties):
         self.login(prep_properties)
         pp = ProjectsPage()
@@ -43,7 +43,7 @@ class TestWorkspaces:
         assert_that(pp.is_workspace_found(self._new_workspace)).is_true()
 
     @allure.description("Delete an existing workspace test")
-    @pytest.mark.run(order="3")
+    @pytest.mark.run(order=3)
     def test_delete_workspace(self, create_driver, prep_properties):
         self.login(prep_properties)
         pp = ProjectsPage()
@@ -54,7 +54,7 @@ class TestWorkspaces:
 
     @allure.description(
         "Compare between the actual number of projects seen on page and the number shown in workspaces block")
-    @pytest.mark.run(order="4")
+    @pytest.mark.run(order=4)
     def test_number_of_existing_projects(self, create_driver, prep_properties):
         self.login(prep_properties)
         pp = ProjectsPage()
