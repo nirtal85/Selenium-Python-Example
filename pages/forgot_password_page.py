@@ -20,8 +20,8 @@ class ForgotPasswordPage(BasePage):
 
     @allure.step("Get invalid email message")
     def get_invalid_email_msg(self):
-        return self.get_text(self._driver.find_element(*self.ERROR_MSG))
+        return self.get_text(self.ERROR_MSG)
 
     @allure.step("Get success message")
     def get_success_msg(self):
-        return self.get_text(self._driver.find_element(*self.SUCCESS_MSG))
+        return self.get_text(self.SUCCESS_MSG)

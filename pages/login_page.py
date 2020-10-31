@@ -24,11 +24,11 @@ class LoginPage(TopMenuBar):
 
     @allure.step("Get error message")
     def get_error_message(self):
-        return self.get_text(self._driver.find_element(*self.LOGIN_ERROR_MESSAGE))
+        return self.get_text(self.LOGIN_ERROR_MESSAGE)
 
     @allure.step("Get page title")
     def get_page_title(self):
-        return self.get_text(self._driver.find_element(*self.PAGE_TITLE))
+        return self.get_text(self.PAGE_TITLE)
 
     @allure.step("Click Forgot Password link")
     def click_forgot_password(self):
