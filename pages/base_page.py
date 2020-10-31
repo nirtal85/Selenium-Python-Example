@@ -37,7 +37,7 @@ class BasePage:
         webelement.submit()
 
     def get_text(self, webelement):
-        el = self._wait.until(expected_conditions.visibility_of(webelement))
+        el = self._wait.until(expected_conditions.visibility_of_element_located(webelement))
         self._highlight_element(el, "green")
         return el.text
 
