@@ -1,10 +1,10 @@
 import allure
 import pytest
+from assertpy import assert_that
 
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
-from assertpy import assert_that
 
 
 @allure.epic("Security")
@@ -19,20 +19,20 @@ class TestForgotPassword:
     def test_valid_email(self, create_driver, prep_properties):
         config_reader = prep_properties
         email = config_reader.config_section_dict("Base Url")["username"]
-        ap = AboutPage()
-        lp = LoginPage()
-        fp = ForgotPasswordPage()
-        ap.click_login_link()
-        lp.click_forgot_password()
-        fp.send_password_reset_link(email)
-        assert_that(fp.get_success_msg()).is_equal_to(self._success_msg)
+        about_page = AboutPage()
+        login_page = LoginPage()
+        forgot_password_page = ForgotPasswordPage()
+        about_page.click_login_link()
+        login_page.click_forgot_password()
+        forgot_password_page.send_password_reset_link(email)
+        assert_that(self._success_msg).is_equal_to(forgot_password_page.get_success_msg())
 
     @allure.description("Forgot Password feature test with invalid email address")
     def test_invalid_email(self, create_driver):
-        ap = AboutPage()
-        lp = LoginPage()
-        fp = ForgotPasswordPage()
-        ap.click_login_link()
-        lp.click_forgot_password()
-        fp.send_password_reset_link("something@gmail.com")
-        assert_that(fp.get_invalid_email_msg()).is_equal_to(self._error_msg)
+        about_page = AboutPage()
+        login_page = LoginPage()
+        forgot_password_page = ForgotPasswordPage()
+        about_page.click_login_link()
+        login_page.click_forgot_password()
+        forgot_password_page.send_password_reset_link("something@gmail.com")
+        assert_that(self._error_msg).is_equal_to(forgot_password_page.get_invalid_email_msg())

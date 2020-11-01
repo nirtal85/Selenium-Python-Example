@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 
 import allure
@@ -14,14 +13,6 @@ from utils.config_parser import ConfigParserIni
 # reads parameters from pytest command line
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
-
-
-@pytest.fixture
-def read_from_json():
-    # read from file
-    with open("config.json", 'r') as json_file:
-        json_reader = json.load(json_file)
-    return json_reader
 
 
 @pytest.fixture(scope="session")
@@ -68,7 +59,7 @@ def create_driver(prep_properties, request):
 def pytest_runtest_makereport():
     outcome = yield
     rep = outcome.get_result()
-    if rep.when == "setup" or rep.when == "call" and rep.failed:
+    if (rep.when == "setup" or rep.when == "call") and rep.failed:
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
         allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
