@@ -2,7 +2,7 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-from enums.status_enum import StatusEnum
+from helper_enums.status_enum import StatusEnum
 from pages.top_bars.top_navigate_bar import TopNavigateBar
 
 
