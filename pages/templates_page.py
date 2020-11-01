@@ -15,7 +15,7 @@ class TemplatesPage(TopNavigateBar):
 
     def choose_template(self, template_name):
         self._wait.until(
-            expected_conditions.visibility_of_all_elements_located((By.CSS_SELECTOR, self._TEMPLATES_BLOCK)))
+            expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
         templates = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
         for template in templates:
             if template_name in template.text:
