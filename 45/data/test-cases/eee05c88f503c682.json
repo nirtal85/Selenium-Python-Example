@@ -1,0 +1,276 @@
+{
+  "uid" : "eee05c88f503c682",
+  "name" : "test_add_project_to_workspace",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_add_project_to_workspace",
+  "historyId" : "7ab24faf7085af05bc6b25523cc84337",
+  "time" : {
+    "start" : 1604263613844,
+    "stop" : 1604263626785,
+    "duration" : 12941
+  },
+  "description" : "Selecting and adding a project to workspace",
+  "descriptionHtml" : "<p>Selecting and adding a project to workspace</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1604263539601,
+      "stop" : 1604263539675,
+      "duration" : 74
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604263539675,
+      "stop" : 1604263539676,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604263611119,
+      "stop" : 1604263613843,
+      "duration" : 2724
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Selecting and adding a project to workspace",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604263613844,
+        "stop" : 1604263614394,
+        "duration" : 550
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604263614394,
+        "stop" : 1604263616803,
+        "duration" : 2409
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get number of projects display on page",
+      "time" : {
+        "start" : 1604263616803,
+        "stop" : 1604263616846,
+        "duration" : 43
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Start a new project",
+      "time" : {
+        "start" : 1604263616846,
+        "stop" : 1604263617919,
+        "duration" : 1073
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Select project 'quiz' from projects menu",
+      "time" : {
+        "start" : 1604263617919,
+        "stop" : 1604263619115,
+        "duration" : 1196
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'quiz'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Open new project for editing - project name: 'test project', project type: 'Thank you page'",
+      "time" : {
+        "start" : 1604263621939,
+        "stop" : 1604263625175,
+        "duration" : 3236
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'test project'"
+      }, {
+        "name" : "project_type",
+        "value" : "'Thank you page'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click SAVE & EXIT button",
+      "time" : {
+        "start" : 1604263625176,
+        "stop" : 1604263625414,
+        "duration" : 238
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Get number of projects display on page",
+      "time" : {
+        "start" : 1604263625414,
+        "stop" : 1604263626785,
+        "duration" : 1371
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 8,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604263626785,
+      "stop" : 1604263626838,
+      "duration" : 53
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=5)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az92-856"
+  }, {
+    "name" : "thread",
+    "value" : "4775-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "run(order=5)" ]
+  },
+  "source" : "eee05c88f503c682.json",
+  "parameterValues" : [ ]
+}
