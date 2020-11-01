@@ -23,7 +23,7 @@ class TestLogin:
         about_page.click_login_link()
         login_page = LoginPage()
         login_page.login(email, password)
-        assert_that(login_page.get_error_message()).is_equal_to(self._error_msg)
+        assert_that(self._error_msg).is_equal_to(login_page.get_error_message())
 
     @allure.description("Test valid login")
     @pytest.mark.run(order=1)
@@ -36,7 +36,7 @@ class TestLogin:
         projects_page = ProjectsPage()
         about_page.click_login_link()
         login_page.login(username, password)
-        assert_that(projects_page.get_title()).is_equal_to(self._page_title)
+        assert_that(self._page_title).is_equal_to(projects_page.get_title())
 
     @allure.description("Log out from app")
     @allure.title("This test has a custom title")
@@ -51,7 +51,7 @@ class TestLogin:
         projects_page = ProjectsPage()
         login_page.login(username, password)
         projects_page.logout()
-        assert_that(login_page.get_page_title()).is_true()
+        assert_that('Log in').is_equal_to(login_page.get_page_title())
 
     @allure.description("Skip Test example")
     @pytest.mark.skip(reason="no way of currently testing this")
