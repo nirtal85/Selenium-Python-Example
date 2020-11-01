@@ -24,6 +24,9 @@ class ProjectsPage(TopNavigateBar):
     _CANCEL_PROJECT_DELETION_BUTTON = (By.CSS_SELECTOR, "form [type='button'")
     _PROJECT_PAGE_TITLE = (By.CSS_SELECTOR, "#app h1.leading-tight.truncate")
     _NO_PROJECT_FOUND_MSG = (By.CSS_SELECTOR, "#app h1.block")
+    _NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK = (By.CSS_SELECTOR, "span:nth-child(2)")
+    _DROP_DOWN_BUTTON = (By.CSS_SELECTOR, ".justify-right button svg")
+    _DELETE_PROJECT_BUTTON = (By.XPATH, "//button[text()='Delete Project']")
 
     _WORKSPACE_LIST = (By.CSS_SELECTOR, ".mt-6 a")
     _PROJECTS_BLOCK = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
@@ -102,7 +105,7 @@ class ProjectsPage(TopNavigateBar):
             if project_name in project.text:
                 deleted_project = project
                 self.click_drop_down_menu(project)
-                project.find_element(By.XPATH, "//button[text()='Delete Project']").click()
+                project.find_element(*self._DELETE_PROJECT_BUTTON).click()
                 break
         if status == "cancel":
             self.click(self._CANCEL_PROJECT_DELETION_BUTTON)
@@ -128,7 +131,7 @@ class ProjectsPage(TopNavigateBar):
     def get_projects_number_from_workspace(self):
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
-        number = workspaces[0].find_element_by_css_selector("span:nth-child(2)")
+        number = workspaces[0].find_element(*self._NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK)
         return int(number.text)
 
     @allure.step("Verify if workspace {workspace_name} exists")
@@ -159,5 +162,5 @@ class ProjectsPage(TopNavigateBar):
 
     # clicks on a specific project's drop down arrow
     def click_drop_down_menu(self, project):
-        dropdown_menu_button = project.find_element(By.CSS_SELECTOR, ".justify-right button svg")
+        dropdown_menu_button = project.find_element(*self._DROP_DOWN_BUTTON)
         dropdown_menu_button.click()

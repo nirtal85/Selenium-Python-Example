@@ -19,11 +19,11 @@ class TestLogin:
     @pytest.mark.parametrize("email,password", [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")])
     @pytest.mark.run(order=3)
     def test_invalid_login(self, create_driver, email, password):
-        ap = AboutPage()
-        ap.click_login_link()
-        lp = LoginPage()
-        lp.login(email, password)
-        assert_that(lp.get_error_message()).is_equal_to(self._error_msg)
+        about_page = AboutPage()
+        about_page.click_login_link()
+        login_page = LoginPage()
+        login_page.login(email, password)
+        assert_that(login_page.get_error_message()).is_equal_to(self._error_msg)
 
     @allure.description("Test valid login")
     @pytest.mark.run(order=1)
@@ -31,12 +31,12 @@ class TestLogin:
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
-        ap = AboutPage()
-        lp = LoginPage()
-        pp = ProjectsPage()
-        ap.click_login_link()
-        lp.login(username, password)
-        assert_that(pp.get_title()).is_equal_to(self._page_title)
+        about_page = AboutPage()
+        login_page = LoginPage()
+        projects_page = ProjectsPage()
+        about_page.click_login_link()
+        login_page.login(username, password)
+        assert_that(projects_page.get_title()).is_equal_to(self._page_title)
 
     @allure.description("Log out from app")
     @allure.title("This test has a custom title")
@@ -45,13 +45,13 @@ class TestLogin:
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
-        ap = AboutPage()
-        ap.click_login_link()
-        lp = LoginPage()
-        pp = ProjectsPage()
-        lp.login(username, password)
-        pp.logout()
-        assert_that(lp.get_page_title()).is_true()
+        about_page = AboutPage()
+        about_page.click_login_link()
+        login_page = LoginPage()
+        projects_page = ProjectsPage()
+        login_page.login(username, password)
+        projects_page.logout()
+        assert_that(login_page.get_page_title()).is_true()
 
     @allure.description("Skip Test example")
     @pytest.mark.skip(reason="no way of currently testing this")

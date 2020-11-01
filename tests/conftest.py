@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 
 import allure
@@ -14,14 +13,6 @@ from utils.config_parser import ConfigParserIni
 # reads parameters from pytest command line
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
-
-
-@pytest.fixture
-def read_from_json():
-    # read from file
-    with open("config.json", 'r') as json_file:
-        json_reader = json.load(json_file)
-    return json_reader
 
 
 @pytest.fixture(scope="session")
