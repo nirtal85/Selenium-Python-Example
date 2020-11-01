@@ -2,7 +2,7 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from Enums.status_enum import StatusEnum
+from enums.status_enum import StatusEnum
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from pages.project_edit_page import ProjectEditPage
