@@ -2,13 +2,13 @@ import allure
 import pytest
 from assertpy import assert_that
 
+from Enums.status_enum import StatusEnum
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from Enums.status_enum import StatusEnum
 from utils.json_parser import JsonParser
 
 
@@ -86,7 +86,7 @@ class TestWorkspaces:
                                             json_reader.read_from_json()["final_slide"])
         project_edit_page.click_save_and_exit()
         after = projects_page.get_projects_number_in_page()
-        assert_that(after).is_equal_to(before + 1)
+        assert_that(before + 1).is_equal_to(after)
 
     @allure.description("Search for an existing project")
     @pytest.mark.run(order=6)
@@ -104,8 +104,8 @@ class TestWorkspaces:
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         projects_page.search_project("Non Existing")
-        assert_that(projects_page.get_no_project_found_msg()).is_equal_to(
-            json_reader.read_from_json()["no_project_found_msg"])
+        assert_that(json_reader.read_from_json()["no_project_found_msg"]).is_equal_to(
+            projects_page.get_no_project_found_msg())
 
     @allure.description("Cancel project deletion")
     @pytest.mark.run(order=8)
@@ -116,7 +116,7 @@ class TestWorkspaces:
         before = projects_page.get_projects_number_in_page()
         projects_page.delete_project(json_reader.read_from_json()["project_name"], StatusEnum.CANCEL.value)
         after = projects_page.get_projects_number_in_page()
-        assert_that(after).is_equal_to(before)
+        assert_that(before).is_equal_to(after)
 
     @allure.description("Deleting an existing project from workspace")
     @pytest.mark.run(order=9)
@@ -127,4 +127,4 @@ class TestWorkspaces:
         before = projects_page.get_projects_number_in_page()
         projects_page.delete_project(json_reader.read_from_json()["project_name"])
         after = projects_page.get_projects_number_in_page()
-        assert_that(after).is_equal_to(before - 1)
+        assert_that(before).is_equal_to(after + 1)
