@@ -1,0 +1,233 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "Security",
+    "children" : [ {
+      "name" : "Login Feature's Functionality",
+      "children" : [ {
+        "name" : "test_valid_login",
+        "uid" : "879b49f2c6a22b66",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264538676,
+          "stop" : 1604264542421,
+          "duration" : 3745
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "This test has a custom title",
+        "uid" : "93a20a3abe191cf4",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264563894,
+          "stop" : 1604264568088,
+          "duration" : 4194
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_invalid_login[nirt236@gmail.com-123456]",
+        "uid" : "9216da3a83650728",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264580154,
+          "stop" : 1604264582451,
+          "duration" : 2297
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'nirt236@gmail.com'", "'123456'" ]
+      }, {
+        "name" : "test_invalid_login[elias@gmail.com-12345Tr]",
+        "uid" : "ee89e222da5eb01",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264585540,
+          "stop" : 1604264587762,
+          "duration" : 2222
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'elias@gmail.com'", "'12345Tr'" ]
+      }, {
+        "name" : "test_skip",
+        "uid" : "4f26693ed8e5feee",
+        "parentUid" : "3bd3c95e49d726dcac511fa6f70751b2",
+        "status" : "skipped",
+        "time" : {
+          "start" : 1604264674486,
+          "stop" : 1604264674486,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "3bd3c95e49d726dcac511fa6f70751b2"
+    }, {
+      "name" : "Forgot Password Feature's Functionality",
+      "children" : [ {
+        "name" : "test_valid_email",
+        "uid" : "394d36141d48b3a6",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264665462,
+          "stop" : 1604264668765,
+          "duration" : 3303
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_invalid_email",
+        "uid" : "afd95c254e604e63",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264671904,
+          "stop" : 1604264674426,
+          "duration" : 2522
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "783795c916a34ff068bbd39b11f31110"
+    } ],
+    "uid" : "526d0329f324aba33fe765945cd65d47"
+  }, {
+    "name" : "Workspaces",
+    "children" : [ {
+      "name" : "WorkSpaces Creation and Editing Functionality",
+      "children" : [ {
+        "name" : "test_create_new_workspace",
+        "uid" : "81bdc2f33b34c245",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264545710,
+          "stop" : 1604264560731,
+          "duration" : 15021
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_rename_workspace",
+        "uid" : "4dbd64007c65b77f",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1604264571233,
+          "stop" : 1604264576324,
+          "duration" : 5091
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_delete_workspace",
+        "uid" : "e12ccc31f4f2e121",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264590775,
+          "stop" : 1604264606023,
+          "duration" : 15248
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_number_of_existing_projects",
+        "uid" : "bdaf2b8f7f372ddd",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264609256,
+          "stop" : 1604264612498,
+          "duration" : 3242
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_add_project_to_workspace",
+        "uid" : "348a4f695f488780",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264615490,
+          "stop" : 1604264629327,
+          "duration" : 13837
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_search_project",
+        "uid" : "282fe129460b2749",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264632771,
+          "stop" : 1604264636734,
+          "duration" : 3963
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_search_for_non_existing_project",
+        "uid" : "54325721ba62ddf9",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264639745,
+          "stop" : 1604264644081,
+          "duration" : 4336
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_cancel_project_deletion",
+        "uid" : "7edda8bfb785b880",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264647234,
+          "stop" : 1604264651052,
+          "duration" : 3818
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_delete_project",
+        "uid" : "fc5a5153d061cf8f",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "passed",
+        "time" : {
+          "start" : 1604264654220,
+          "stop" : 1604264662406,
+          "duration" : 8186
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "19d9d8da6f73801bcbe91bb4833c2801"
+    } ],
+    "uid" : "d170b500587d1218631bae4955f7baf8"
+  } ],
+  "name" : "behaviors"
+}

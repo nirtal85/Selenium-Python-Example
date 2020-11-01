@@ -1,0 +1,212 @@
+{
+  "uid" : "4dbd64007c65b77f",
+  "name" : "test_rename_workspace",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_rename_workspace",
+  "historyId" : "525efb9c00e35c910eb0cf0b7189aa93",
+  "time" : {
+    "start" : 1604264571233,
+    "stop" : 1604264576324,
+    "duration" : 5091
+  },
+  "description" : "Rename an existing workspace test",
+  "descriptionHtml" : "<p>Rename an existing workspace test</p>\n",
+  "status" : "broken",
+  "statusMessage" : "AttributeError: 'TestWorkspaces' object has no attribute '_new_workspace'",
+  "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f5e8a790af0>\ncreate_driver = <selenium.webdriver.remote.webdriver.WebDriver (session=\"ec4b38e8fb191f02582d168cf12fb17e\")>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7f5e8a7b3910>\n\n    @allure.description(\"Rename an existing workspace test\")\n    @pytest.mark.run(order=2)\n    def test_rename_workspace(self, create_driver, prep_properties):\n        login(prep_properties)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        projects_page = ProjectsPage()\n        projects_page.rename_workspace(json_reader.read_from_json()[\"workspace_name\"],\n                                       json_reader.read_from_json()[\"new_workspace_name\"])\n>       assert_that(projects_page.is_workspace_found(self._new_workspace)).is_true()\nE       AttributeError: 'TestWorkspaces' object has no attribute '_new_workspace'\n\ntests/test_workspaces.py:51: AttributeError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604264534628,
+      "stop" : 1604264534628,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604264568144,
+      "stop" : 1604264571232,
+      "duration" : 3088
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1604264534543,
+      "stop" : 1604264534628,
+      "duration" : 85
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Rename an existing workspace test",
+    "status" : "broken",
+    "statusMessage" : "AttributeError: 'TestWorkspaces' object has no attribute '_new_workspace'",
+    "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f5e8a790af0>\ncreate_driver = <selenium.webdriver.remote.webdriver.WebDriver (session=\"ec4b38e8fb191f02582d168cf12fb17e\")>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7f5e8a7b3910>\n\n    @allure.description(\"Rename an existing workspace test\")\n    @pytest.mark.run(order=2)\n    def test_rename_workspace(self, create_driver, prep_properties):\n        login(prep_properties)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        projects_page = ProjectsPage()\n        projects_page.rename_workspace(json_reader.read_from_json()[\"workspace_name\"],\n                                       json_reader.read_from_json()[\"new_workspace_name\"])\n>       assert_that(projects_page.is_workspace_found(self._new_workspace)).is_true()\nE       AttributeError: 'TestWorkspaces' object has no attribute '_new_workspace'\n\ntests/test_workspaces.py:51: AttributeError",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604264571233,
+        "stop" : 1604264571709,
+        "duration" : 476
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604264571709,
+        "stop" : 1604264574302,
+        "duration" : 2593
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Rename workspace 'test' to 'another test'",
+      "time" : {
+        "start" : 1604264574302,
+        "stop" : 1604264576324,
+        "duration" : 2022
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "old_name",
+        "value" : "'test'"
+      }, {
+        "name" : "new_name",
+        "value" : "'another test'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "13c283cf40f6798e",
+      "name" : "screenshot on failure: 01/11/2020, 21:02:56",
+      "source" : "13c283cf40f6798e.png",
+      "type" : "image/png",
+      "size" : 77213
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604264577004,
+      "stop" : 1604264577057,
+      "duration" : 53
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=2)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az40-181"
+  }, {
+    "name" : "thread",
+    "value" : "4600-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=2)" ]
+  },
+  "source" : "4dbd64007c65b77f.json",
+  "parameterValues" : [ ]
+}
