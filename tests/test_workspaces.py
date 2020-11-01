@@ -48,7 +48,7 @@ class TestWorkspaces:
         projects_page = ProjectsPage()
         projects_page.rename_workspace(json_reader.read_from_json()["workspace_name"],
                                        json_reader.read_from_json()["new_workspace_name"])
-        assert_that(projects_page.is_workspace_found(self._new_workspace)).is_true()
+        assert_that(projects_page.is_workspace_found(json_reader.read_from_json()["new_workspace_name"])).is_true()
 
     @allure.description("Delete an existing workspace test")
     @pytest.mark.run(order=3)
