@@ -22,7 +22,7 @@ class ProjectsPage(TopNavigateBar):
     _SEARCH_BUTTON = (By.CSS_SELECTOR, "[data-icon='search']")
     _SEARCH_FIELD = (By.CSS_SELECTOR, "[type='text']")
     _CONFIRM_DELETE_PROJECT_BUTTON = (By.CSS_SELECTOR, "#confirm-delete-button")
-    _CANCEL_PROJECT_DELETION_BUTTON = (By.CSS_SELECTOR, "form [type='button'")
+    _CANCEL_PROJECT_DELETION_BUTTON = (By.CSS_SELECTOR, "form [type='button']")
     _PROJECT_PAGE_TITLE = (By.CSS_SELECTOR, "#app h1.leading-tight.truncate")
     _NO_PROJECT_FOUND_MSG = (By.CSS_SELECTOR, "#app h1.block")
     _NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK = (By.CSS_SELECTOR, "span:nth-child(2)")
