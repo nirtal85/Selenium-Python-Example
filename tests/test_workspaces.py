@@ -12,26 +12,27 @@ from pages.templates_page import TemplatesPage
 from utils.json_parser import JsonParser
 
 
+# performs login operation
+def login(prep_properties):
+    config = prep_properties
+    username = config.config_section_dict("Base Url")["username"]
+    password = config.config_section_dict("Base Url")["password"]
+    about_page = AboutPage()
+    login_page = LoginPage()
+    about_page.click_login_link()
+    login_page.login(username, password)
+
+
 @allure.epic("Workspaces")
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces:
-    _DATA_FILE_NAME = "workspaces_test_data"
-
-    # performs login operation
-    def login(self, prep_properties):
-        config = prep_properties
-        username = config.config_section_dict("Base Url")["username"]
-        password = config.config_section_dict("Base Url")["password"]
-        about_page = AboutPage()
-        login_page = LoginPage()
-        about_page.click_login_link()
-        login_page.login(username, password)
+    _DATA_FILE_NAME = "workspaces_test_data.json"
 
     @allure.description("Create new Workspace test")
     @pytest.mark.run(order=1)
     def test_create_new_workspace(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_workspaces_number()
@@ -42,7 +43,7 @@ class TestWorkspaces:
     @allure.description("Rename an existing workspace test")
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         projects_page.rename_workspace(json_reader.read_from_json()["workspace_name"],
@@ -52,7 +53,7 @@ class TestWorkspaces:
     @allure.description("Delete an existing workspace test")
     @pytest.mark.run(order=3)
     def test_delete_workspace(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         projects_page = ProjectsPage()
         before = projects_page.get_workspaces_number()
         projects_page.delete_workspace()
@@ -63,7 +64,7 @@ class TestWorkspaces:
         "Compare between the actual number of projects seen on page and the number shown in workspaces block")
     @pytest.mark.run(order=4)
     def test_number_of_existing_projects(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         projects_page = ProjectsPage()
         number_of_displayed_projects = projects_page.get_projects_number_in_page()
         number_of_projects_in_workspace = projects_page.get_projects_number_from_workspace()
@@ -72,7 +73,7 @@ class TestWorkspaces:
     @allure.description("Selecting and adding a project to workspace")
     @pytest.mark.run(order=5)
     def test_add_project_to_workspace(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         project_type_page = ProjectTypePage()
@@ -91,7 +92,7 @@ class TestWorkspaces:
     @allure.description("Search for an existing project")
     @pytest.mark.run(order=6)
     def test_search_project(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         projects_page = ProjectsPage()
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page.search_project(json_reader.read_from_json()["project_name"])
@@ -100,7 +101,7 @@ class TestWorkspaces:
     @allure.description("Search for a non existing project")
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         projects_page.search_project("Non Existing")
@@ -110,7 +111,7 @@ class TestWorkspaces:
     @allure.description("Cancel project deletion")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_projects_number_in_page()
@@ -121,7 +122,7 @@ class TestWorkspaces:
     @allure.description("Deleting an existing project from workspace")
     @pytest.mark.run(order=9)
     def test_delete_project(self, create_driver, prep_properties):
-        self.login(prep_properties)
+        login(prep_properties)
         json_reader = JsonParser(self._DATA_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_projects_number_in_page()
