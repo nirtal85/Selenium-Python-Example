@@ -26,3 +26,6 @@ allure serve allure-results
 
 <u>GitHub Pages allure results:</u> <br>
 https://github.com/nirtal85/Selenium-Python-Example/deployments/activity_log?environment=github-pages
+
+<u>for help and see custom CLI options:</u> <br>
+pytest --help

@@ -12,7 +12,7 @@ from utils.config_parser import ConfigParserIni
 
 # reads parameters from pytest command line
 def pytest_addoption(parser):
-    parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--browser", action="store", default="chrome",  help="browser that the automation will run in")
 
 
 @pytest.fixture(scope="session")
