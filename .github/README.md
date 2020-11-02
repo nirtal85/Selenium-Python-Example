@@ -1,3 +1,5 @@
+![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
+
 <u>Before all</u> <br>
 1. Install scoop from www.scoop.sh
 2. Install allure commandline by running the following command:
