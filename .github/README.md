@@ -25,4 +25,4 @@ allure serve allure-results
 1. pipenv run pytest -k "<tag_name>" --browser <firefox/chrome/remote/chrome_headless>
 
 <u>GitHub Pages allure results:</u> <br>
-https://nirtal85.github.io/selenium-python/<build_number>/
+https://github.com/nirtal85/Selenium-Python-Example/deployments/activity_log?environment=github-pages
