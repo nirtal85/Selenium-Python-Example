@@ -1,4 +1,4 @@
-![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
+![Build Status](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
 
 <u>Before all</u> <br>
 1. Install scoop from www.scoop.sh
