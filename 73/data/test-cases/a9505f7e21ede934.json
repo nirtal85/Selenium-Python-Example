@@ -1,0 +1,259 @@
+{
+  "uid" : "a9505f7e21ede934",
+  "name" : "Cancel a project deletion test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_cancel_project_deletion",
+  "historyId" : "c106d6e58d8aebc970792dc5f0640d00",
+  "time" : {
+    "start" : 1604701434157,
+    "stop" : 1604701449569,
+    "duration" : 15412
+  },
+  "description" : "Cancel project deletion",
+  "descriptionHtml" : "<p>Cancel project deletion</p>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f12159bc040>\ncreate_driver = <selenium.webdriver.remote.webdriver.WebDriver (session=\"661c63a91abca726e89d0262a3a026e1\")>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7f1218864340>\nprojects_page = <pages.projects_page.ProjectsPage object at 0x7f12159be190>\nabout_page = <pages.about_page.AboutPage object at 0x7f12159d16d0>\nlogin_page = <pages.login_page.LoginPage object at 0x7f12159d1e80>\n\n    @allure.description(\"Cancel project deletion\")\n    @allure.title(\"Cancel a project deletion test\")\n    @pytest.mark.run(order=8)\n    def test_cancel_project_deletion(self, create_driver, prep_properties, projects_page, about_page, login_page):\n        login(prep_properties, about_page, login_page)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        before = projects_page.get_projects_number_in_page()\n>       projects_page.delete_project(json_reader.read_from_json()[\"project_name\"], StatusEnum.CANCEL.value)\n\ntests/test_workspaces.py:107: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:112: in delete_project\n    self.click(self._CANCEL_PROJECT_DELETION_BUTTON)\npages/base_page.py:18: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"661c63a91abca726e89d0262a3a026e1\")>\nmethod = <selenium.webdriver.support.expected_conditions.element_to_be_clickable object at 0x7f12159d1700>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "login_page",
+    "time" : {
+      "start" : 1604701434156,
+      "stop" : 1604701434156,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "about_page",
+    "time" : {
+      "start" : 1604701434156,
+      "stop" : 1604701434156,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "projects_page",
+    "time" : {
+      "start" : 1604701434156,
+      "stop" : 1604701434156,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604701289533,
+      "stop" : 1604701289534,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604701430901,
+      "stop" : 1604701434155,
+      "duration" : 3254
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Cancel project deletion",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f12159bc040>\ncreate_driver = <selenium.webdriver.remote.webdriver.WebDriver (session=\"661c63a91abca726e89d0262a3a026e1\")>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7f1218864340>\nprojects_page = <pages.projects_page.ProjectsPage object at 0x7f12159be190>\nabout_page = <pages.about_page.AboutPage object at 0x7f12159d16d0>\nlogin_page = <pages.login_page.LoginPage object at 0x7f12159d1e80>\n\n    @allure.description(\"Cancel project deletion\")\n    @allure.title(\"Cancel a project deletion test\")\n    @pytest.mark.run(order=8)\n    def test_cancel_project_deletion(self, create_driver, prep_properties, projects_page, about_page, login_page):\n        login(prep_properties, about_page, login_page)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        before = projects_page.get_projects_number_in_page()\n>       projects_page.delete_project(json_reader.read_from_json()[\"project_name\"], StatusEnum.CANCEL.value)\n\ntests/test_workspaces.py:107: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:112: in delete_project\n    self.click(self._CANCEL_PROJECT_DELETION_BUTTON)\npages/base_page.py:18: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"661c63a91abca726e89d0262a3a026e1\")>\nmethod = <selenium.webdriver.support.expected_conditions.element_to_be_clickable object at 0x7f12159d1700>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604701434157,
+        "stop" : 1604701434656,
+        "duration" : 499
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604701434656,
+        "stop" : 1604701437591,
+        "duration" : 2935
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get number of projects display on page",
+      "time" : {
+        "start" : 1604701437591,
+        "stop" : 1604701437957,
+        "duration" : 366
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Delete or cancel deletion of project 'test project'",
+      "time" : {
+        "start" : 1604701437957,
+        "stop" : 1604701449569,
+        "duration" : 11612
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 157, in impl\n    return func(*a, **kw)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/projects_page.py\", line 112, in delete_project\n    self.click(self._CANCEL_PROJECT_DELETION_BUTTON)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/base_page.py\", line 18, in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py\", line 80, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'test project'"
+      }, {
+        "name" : "status",
+        "value" : "'cancel'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "94a347e6050d48cc",
+      "name" : "screenshot on failure: 06/11/2020, 22:24:09",
+      "source" : "94a347e6050d48cc.png",
+      "type" : "image/png",
+      "size" : 107802
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 4,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604701450002,
+      "stop" : 1604701450060,
+      "duration" : 58
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=8)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az68-713"
+  }, {
+    "name" : "thread",
+    "value" : "4697-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=8)" ]
+  },
+  "source" : "a9505f7e21ede934.json",
+  "parameterValues" : [ ]
+}

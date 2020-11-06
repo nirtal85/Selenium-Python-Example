@@ -1,0 +1,216 @@
+{
+  "uid" : "ae9f6bff70a8269c",
+  "name" : "Login with invalid credentials test",
+  "fullName" : "tests.test_login.TestLogin#test_invalid_login",
+  "historyId" : "759a8709b421dba7c516b861c451e0c7",
+  "time" : {
+    "start" : 1604701342933,
+    "stop" : 1604701345548,
+    "duration" : 2615
+  },
+  "description" : "test invalid login",
+  "descriptionHtml" : "<p>test invalid login</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "login_page",
+    "time" : {
+      "start" : 1604701342932,
+      "stop" : 1604701342932,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604701339543,
+      "stop" : 1604701342932,
+      "duration" : 3389
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "about_page",
+    "time" : {
+      "start" : 1604701342932,
+      "stop" : 1604701342932,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604701289533,
+      "stop" : 1604701289534,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "test invalid login",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604701342933,
+        "stop" : 1604701343523,
+        "duration" : 590
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'nirt236@gmail.com' and password: '123456'",
+      "time" : {
+        "start" : 1604701343523,
+        "stop" : 1604701345351,
+        "duration" : 1828
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'nirt236@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'123456'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get error message",
+      "time" : {
+        "start" : 1604701345351,
+        "stop" : 1604701345547,
+        "duration" : 196
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604701345549,
+      "stop" : 1604701345603,
+      "duration" : 54
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "story",
+    "value" : "Login Feature's Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=3)"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_login"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "fv-az68-713"
+  }, {
+    "name" : "thread",
+    "value" : "4697-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_login"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "email",
+    "value" : "'nirt236@gmail.com'"
+  }, {
+    "name" : "password",
+    "value" : "'123456'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "run(order=3)", "security" ]
+  },
+  "source" : "ae9f6bff70a8269c.json",
+  "parameterValues" : [ "'nirt236@gmail.com'", "'123456'" ]
+}

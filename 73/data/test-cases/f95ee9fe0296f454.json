@@ -1,0 +1,255 @@
+{
+  "uid" : "f95ee9fe0296f454",
+  "name" : "Create new workspace test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_create_new_workspace",
+  "historyId" : "b49e7d8c9352a73c9d9beee67bfe78c1",
+  "time" : {
+    "start" : 1604701301421,
+    "stop" : 1604701316823,
+    "duration" : 15402
+  },
+  "description" : "Create new Workspace test",
+  "descriptionHtml" : "<p>Create new Workspace test</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "projects_page",
+    "time" : {
+      "start" : 1604701301420,
+      "stop" : 1604701301420,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "about_page",
+    "time" : {
+      "start" : 1604701301420,
+      "stop" : 1604701301420,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "login_page",
+    "time" : {
+      "start" : 1604701301420,
+      "stop" : 1604701301420,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604701298253,
+      "stop" : 1604701301420,
+      "duration" : 3167
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604701289533,
+      "stop" : 1604701289534,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Create new Workspace test",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604701301421,
+        "stop" : 1604701301999,
+        "duration" : 578
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604701301999,
+        "stop" : 1604701304897,
+        "duration" : 2898
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get workspaces number",
+      "time" : {
+        "start" : 1604701304898,
+        "stop" : 1604701309999,
+        "duration" : 5101
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Create new workspace 'test'",
+      "time" : {
+        "start" : 1604701309999,
+        "stop" : 1604701311017,
+        "duration" : 1018
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "workspace_name",
+        "value" : "'test'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get workspaces number",
+      "time" : {
+        "start" : 1604701311017,
+        "stop" : 1604701316822,
+        "duration" : 5805
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604701316824,
+      "stop" : 1604701316883,
+      "duration" : 59
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=1)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az68-713"
+  }, {
+    "name" : "thread",
+    "value" : "4697-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "run(order=1)" ]
+  },
+  "source" : "f95ee9fe0296f454.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,252 @@
+{
+  "uid" : "d647f760e39dee4b",
+  "name" : "Delete existing workspace test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_delete_workspace",
+  "historyId" : "b0007037b155b4d681f41d6c5b042e50",
+  "time" : {
+    "start" : 1604701354947,
+    "stop" : 1604701370284,
+    "duration" : 15337
+  },
+  "description" : "Delete an existing workspace test",
+  "descriptionHtml" : "<p>Delete an existing workspace test</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604701351668,
+      "stop" : 1604701354946,
+      "duration" : 3278
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "projects_page",
+    "time" : {
+      "start" : 1604701354947,
+      "stop" : 1604701354947,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "login_page",
+    "time" : {
+      "start" : 1604701354947,
+      "stop" : 1604701354947,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604701289533,
+      "stop" : 1604701289534,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "about_page",
+    "time" : {
+      "start" : 1604701354947,
+      "stop" : 1604701354947,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Delete an existing workspace test",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604701354948,
+        "stop" : 1604701355450,
+        "duration" : 502
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604701355450,
+        "stop" : 1604701358227,
+        "duration" : 2777
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get workspaces number",
+      "time" : {
+        "start" : 1604701358227,
+        "stop" : 1604701363301,
+        "duration" : 5074
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Delete a workspace",
+      "time" : {
+        "start" : 1604701363301,
+        "stop" : 1604701365236,
+        "duration" : 1935
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Get workspaces number",
+      "time" : {
+        "start" : 1604701365236,
+        "stop" : 1604701370284,
+        "duration" : 5048
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604701370285,
+      "stop" : 1604701370339,
+      "duration" : 54
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=3)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az68-713"
+  }, {
+    "name" : "thread",
+    "value" : "4697-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "run(order=3)" ]
+  },
+  "source" : "d647f760e39dee4b.json",
+  "parameterValues" : [ ]
+}
