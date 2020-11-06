@@ -8,6 +8,21 @@ from pages.login_page import LoginPage
 from utils.excel_parser import ExcelParser
 
 
+@pytest.fixture
+def about_page():
+    return AboutPage()
+
+
+@pytest.fixture
+def forgot_password_page():
+    return ForgotPasswordPage()
+
+
+@pytest.fixture
+def login_page():
+    return LoginPage()
+
+
 @allure.epic("Security")
 @allure.story("Forgot Password Feature's Functionality")
 @allure.severity(allure.severity_level.CRITICAL)
@@ -19,12 +34,9 @@ class TestForgotPassword:
 
     @allure.description("Forgot password feature test with a valid email address")
     @allure.title("Forgot Password with valid email test")
-    def test_valid_email(self, create_driver, prep_properties):
+    def test_valid_email(self, create_driver, prep_properties, about_page, forgot_password_page, login_page):
         config_reader = prep_properties
         email = config_reader.config_section_dict("Base Url")["username"]
-        about_page = AboutPage()
-        login_page = LoginPage()
-        forgot_password_page = ForgotPasswordPage()
         about_page.click_login_link()
         login_page.click_forgot_password()
         forgot_password_page.send_password_reset_link(email)
@@ -32,10 +44,7 @@ class TestForgotPassword:
 
     @allure.description("Forgot Password feature test with invalid email address")
     @allure.title("Forgot Password with invalid email test")
-    def test_invalid_email(self, create_driver):
-        about_page = AboutPage()
-        login_page = LoginPage()
-        forgot_password_page = ForgotPasswordPage()
+    def test_invalid_email(self, create_driver, about_page, forgot_password_page, login_page):
         excel_reader = ExcelParser(self._DATA_FILE_NAME)
         emails = excel_reader.read_from_excel("Emails")
         about_page.click_login_link()
