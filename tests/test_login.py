@@ -12,6 +12,7 @@ users = [
 @allure.epic("Security")
 @allure.story("Login Feature's Functionality")
 @pytest.mark.security
+@pytest.mark.usefixtures("create_driver")
 class TestLogin:
     _error_msg = "These credentials do not match our records."
     _page_title = "My Workspace"
@@ -20,7 +21,7 @@ class TestLogin:
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, create_driver, email, password, about_page, login_page):
+    def test_invalid_login(self, email, password, about_page, login_page):
         about_page.click_login_link()
         login_page.login(email, password)
         assert_that(self._error_msg).is_equal_to(login_page.get_error_message())
@@ -28,7 +29,7 @@ class TestLogin:
     @allure.description("Test valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, create_driver, prep_properties, about_page, login_page, projects_page):
+    def test_valid_login(self, prep_properties, about_page, login_page, projects_page):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
@@ -39,7 +40,7 @@ class TestLogin:
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @pytest.mark.run(order=2)
-    def test_logout(self, create_driver, prep_properties, about_page, login_page, projects_page):
+    def test_logout(self, prep_properties, about_page, login_page, projects_page):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
