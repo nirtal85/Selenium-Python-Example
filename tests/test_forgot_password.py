@@ -2,25 +2,7 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from pages.about_page import AboutPage
-from pages.forgot_password_page import ForgotPasswordPage
-from pages.login_page import LoginPage
 from utils.excel_parser import ExcelParser
-
-
-@pytest.fixture
-def about_page():
-    return AboutPage()
-
-
-@pytest.fixture
-def forgot_password_page():
-    return ForgotPasswordPage()
-
-
-@pytest.fixture
-def login_page():
-    return LoginPage()
 
 
 @allure.epic("Security")

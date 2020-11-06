@@ -7,18 +7,60 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from globals import driver_global as dg
+from pages.about_page import AboutPage
+from pages.forgot_password_page import ForgotPasswordPage
+from pages.login_page import LoginPage
+from pages.project_edit_page import ProjectEditPage
+from pages.project_type_page import ProjectTypePage
+from pages.projects_page import ProjectsPage
+from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
 
 
 # reads parameters from pytest command line
 def pytest_addoption(parser):
-    parser.addoption("--browser", action="store", default="chrome",  help="browser that the automation will run in")
+    parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
 @pytest.fixture(scope="session")
 def prep_properties():
     config_reader = ConfigParserIni("props.ini")
     return config_reader
+
+
+@pytest.fixture
+def about_page():
+    return AboutPage()
+
+
+@pytest.fixture
+def projects_page():
+    return ProjectsPage()
+
+
+@pytest.fixture
+def forgot_password_page():
+    return ForgotPasswordPage()
+
+
+@pytest.fixture
+def login_page():
+    return LoginPage()
+
+
+@pytest.fixture
+def project_type_page():
+    return ProjectTypePage()
+
+
+@pytest.fixture
+def templates_page():
+    return TemplatesPage()
+
+
+@pytest.fixture
+def project_edit_page():
+    return ProjectEditPage()
 
 
 @pytest.fixture
