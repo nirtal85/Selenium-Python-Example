@@ -6,6 +6,11 @@ from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from pages.projects_page import ProjectsPage
 
+users = [
+    ("nirt236@gmail.com", "123456"),
+    ("elias@gmail.com", "12345Tr")
+]
+
 
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.epic("Security")
@@ -16,7 +21,7 @@ class TestLogin:
     _page_title = "My Workspace"
 
     @allure.description("test invalid login")
-    @pytest.mark.parametrize("email,password", [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")])
+    @pytest.mark.parametrize("email,password", users)
     @pytest.mark.run(order=3)
     def test_invalid_login(self, create_driver, email, password):
         about_page = AboutPage()
