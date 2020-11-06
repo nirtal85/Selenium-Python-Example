@@ -63,7 +63,7 @@ def project_edit_page():
     return ProjectEditPage()
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def create_driver(prep_properties, request):
     browser = request.config.option.browser
     config_reader = prep_properties
