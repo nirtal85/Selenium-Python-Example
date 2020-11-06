@@ -30,6 +30,7 @@ class TestWorkspaces:
     _DATA_FILE_NAME = "workspaces_test_data.json"
 
     @allure.description("Create new Workspace test")
+    @allure.title("Create new workspace test")
     @pytest.mark.run(order=1)
     def test_create_new_workspace(self, create_driver, prep_properties):
         login(prep_properties)
@@ -41,6 +42,7 @@ class TestWorkspaces:
         assert_that(after).is_greater_than(before)
 
     @allure.description("Rename an existing workspace test")
+    @allure.title("Rename an existing workspace test")
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, create_driver, prep_properties):
         login(prep_properties)
@@ -51,6 +53,7 @@ class TestWorkspaces:
         assert_that(projects_page.is_workspace_found(json_reader.read_from_json()["new_workspace_name"])).is_true()
 
     @allure.description("Delete an existing workspace test")
+    @allure.title("Delete existing workspace test")
     @pytest.mark.run(order=3)
     def test_delete_workspace(self, create_driver, prep_properties):
         login(prep_properties)
@@ -62,6 +65,7 @@ class TestWorkspaces:
 
     @allure.description(
         "Compare between the actual number of projects seen on page and the number shown in workspaces block")
+    @allure.title("Number of projects displayed in page test")
     @pytest.mark.run(order=4)
     def test_number_of_existing_projects(self, create_driver, prep_properties):
         login(prep_properties)
@@ -71,6 +75,7 @@ class TestWorkspaces:
         assert_that(number_of_displayed_projects).is_equal_to(number_of_projects_in_workspace)
 
     @allure.description("Selecting and adding a project to workspace")
+    @allure.title("Add project to workspace test")
     @pytest.mark.run(order=5)
     def test_add_project_to_workspace(self, create_driver, prep_properties):
         login(prep_properties)
@@ -90,6 +95,7 @@ class TestWorkspaces:
         assert_that(before + 1).is_equal_to(after)
 
     @allure.description("Search for an existing project")
+    @allure.title("Search for existing project test")
     @pytest.mark.run(order=6)
     def test_search_project(self, create_driver, prep_properties):
         login(prep_properties)
@@ -99,6 +105,7 @@ class TestWorkspaces:
         assert_that(projects_page.is_project_found(json_reader.read_from_json()["project_name"])).is_true()
 
     @allure.description("Search for a non existing project")
+    @allure.title("Search for non existing project test")
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, create_driver, prep_properties):
         login(prep_properties)
@@ -109,6 +116,7 @@ class TestWorkspaces:
             projects_page.get_no_project_found_msg())
 
     @allure.description("Cancel project deletion")
+    @allure.title("Cancel a project deletion test")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, create_driver, prep_properties):
         login(prep_properties)
@@ -120,6 +128,7 @@ class TestWorkspaces:
         assert_that(before).is_equal_to(after)
 
     @allure.description("Deleting an existing project from workspace")
+    @allure.title("Delete existing project test")
     @pytest.mark.run(order=9)
     def test_delete_project(self, create_driver, prep_properties):
         login(prep_properties)

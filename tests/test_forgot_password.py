@@ -18,6 +18,7 @@ class TestForgotPassword:
     _DATA_FILE_NAME = "data.xlsx"
 
     @allure.description("Forgot password feature test with a valid email address")
+    @allure.title("Forgot Password with valid email test")
     def test_valid_email(self, create_driver, prep_properties):
         config_reader = prep_properties
         email = config_reader.config_section_dict("Base Url")["username"]
@@ -30,6 +31,7 @@ class TestForgotPassword:
         assert_that(self._SUCCESS_MSG).is_equal_to(forgot_password_page.get_success_msg())
 
     @allure.description("Forgot Password feature test with invalid email address")
+    @allure.title("Forgot Password with invalid email test")
     def test_invalid_email(self, create_driver):
         about_page = AboutPage()
         login_page = LoginPage()
