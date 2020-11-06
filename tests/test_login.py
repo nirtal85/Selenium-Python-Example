@@ -21,7 +21,8 @@ class TestLogin:
     _page_title = "My Workspace"
 
     @allure.description("test invalid login")
-    @pytest.mark.parametrize("email,password", users)
+    @allure.title("Login with invalid credentials test")
+    @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
     def test_invalid_login(self, create_driver, email, password):
         about_page = AboutPage()
@@ -31,6 +32,7 @@ class TestLogin:
         assert_that(self._error_msg).is_equal_to(login_page.get_error_message())
 
     @allure.description("Test valid login")
+    @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
     def test_valid_login(self, create_driver, prep_properties):
         config_reader = prep_properties
@@ -44,7 +46,7 @@ class TestLogin:
         assert_that(self._page_title).is_equal_to(projects_page.get_title())
 
     @allure.description("Log out from app")
-    @allure.title("This test has a custom title")
+    @allure.title("Logout of system test")
     @pytest.mark.run(order=2)
     def test_logout(self, create_driver, prep_properties):
         config_reader = prep_properties
@@ -59,6 +61,7 @@ class TestLogin:
         assert_that('Log in').is_equal_to(login_page.get_page_title())
 
     @allure.description("Skip Test example")
+    @allure.title("Skipped test example")
     @pytest.mark.skip(reason="no way of currently testing this")
     def test_skip(self):
         pass
