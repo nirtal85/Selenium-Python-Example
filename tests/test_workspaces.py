@@ -27,7 +27,7 @@ def login(prep_properties):
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces:
-    _JSON_FILE_NAME = "workspaces_test_data.json"
+    _JSON_FILE_NAME = "tests_data.json"
 
     @allure.description("Create new Workspace test")
     @allure.title("Create new workspace test")
