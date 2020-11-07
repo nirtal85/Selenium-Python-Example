@@ -30,7 +30,7 @@ def prep_properties():
 
 # https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
-def pages(request):
+def pages():
     about_page = AboutPage()
     projects_page = ProjectsPage()
     forgot_password_page = ForgotPasswordPage()
