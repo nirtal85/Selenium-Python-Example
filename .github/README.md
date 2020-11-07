@@ -50,7 +50,7 @@ pipenv run pytest -k "<tag_name>" --browser <firefox/chrome/remote/chrome_headle
 allure serve allure-results
 ```
 
-<ins>GitHub Pages allure results:</ins>
+<ins>GitHub Pages allure results:</ins><br/>
 https://github.com/nirtal85/Selenium-Python-Example/deployments/activity_log?environment=github-pages
 
 ## View Help And Custom CLI Options
