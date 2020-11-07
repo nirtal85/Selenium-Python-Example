@@ -28,39 +28,17 @@ def prep_properties():
     return config_reader
 
 
+# https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
-def about_page():
-    return AboutPage()
-
-
-@pytest.fixture
-def projects_page():
-    return ProjectsPage()
-
-
-@pytest.fixture
-def forgot_password_page():
-    return ForgotPasswordPage()
-
-
-@pytest.fixture
-def login_page():
-    return LoginPage()
-
-
-@pytest.fixture
-def project_type_page():
-    return ProjectTypePage()
-
-
-@pytest.fixture
-def templates_page():
-    return TemplatesPage()
-
-
-@pytest.fixture
-def project_edit_page():
-    return ProjectEditPage()
+def pages(request):
+    about_page = AboutPage()
+    projects_page = ProjectsPage()
+    forgot_password_page = ForgotPasswordPage()
+    login_page = LoginPage()
+    project_type_page = ProjectTypePage()
+    templates_page = TemplatesPage()
+    project_edit_page = ProjectEditPage()
+    return locals()
 
 
 @pytest.fixture
