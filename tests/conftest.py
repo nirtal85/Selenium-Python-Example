@@ -12,7 +12,7 @@ from utils.config_parser import ConfigParserIni
 
 # reads parameters from pytest command line
 def pytest_addoption(parser):
-    parser.addoption("--browser", action="store", default="chrome",  help="browser that the automation will run in")
+    parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
 @pytest.fixture(scope="session")
@@ -58,8 +58,10 @@ def create_driver(prep_properties, request):
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport():
     outcome = yield
+    driver = dg.DRIVER
+    assert driver is not None, "Expected instance of a Web Driver but got None instead"
     rep = outcome.get_result()
     if (rep.when == "setup" or rep.when == "call") and rep.failed:
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
-        allure.attach(dg.DRIVER.get_screenshot_as_png(), name=screenshot_name,
+        allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)

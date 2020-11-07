@@ -27,17 +27,17 @@ def login(prep_properties):
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces:
-    _DATA_FILE_NAME = "workspaces_test_data.json"
+    _JSON_FILE_NAME = "workspaces_test_data.json"
 
     @allure.description("Create new Workspace test")
     @allure.title("Create new workspace test")
     @pytest.mark.run(order=1)
     def test_create_new_workspace(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_workspaces_number()
-        projects_page.create_workspace(json_reader.read_from_json()["workspace_name"])
+        projects_page.create_workspace(json_reader.read_from_json()["workspace_test"]["workspace_name"])
         after = projects_page.get_workspaces_number()
         assert_that(after).is_greater_than(before)
 
@@ -46,11 +46,13 @@ class TestWorkspaces:
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
-        projects_page.rename_workspace(json_reader.read_from_json()["workspace_name"],
-                                       json_reader.read_from_json()["new_workspace_name"])
-        assert_that(projects_page.is_workspace_found(json_reader.read_from_json()["new_workspace_name"])).is_true()
+        projects_page.rename_workspace(json_reader.read_from_json()["workspace_test"]["workspace_name"],
+                                       json_reader.read_from_json()["workspace_test"]["new_workspace_name"])
+        expected_status = projects_page.is_workspace_found(
+            json_reader.read_from_json()["workspace_test"]["new_workspace_name"])
+        assert_that(expected_status).is_true()
 
     @allure.description("Delete an existing workspace test")
     @allure.title("Delete existing workspace test")
@@ -79,17 +81,17 @@ class TestWorkspaces:
     @pytest.mark.run(order=5)
     def test_add_project_to_workspace(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
         project_type_page = ProjectTypePage()
         templates_page = TemplatesPage()
         project_edit_page = ProjectEditPage()
         before = projects_page.get_projects_number_in_page()
         projects_page.create_new_project()
-        project_type_page.select_project(json_reader.read_from_json()["project_type"])
-        templates_page.choose_template(json_reader.read_from_json()["template_type"])
-        project_edit_page.edit_project_prep(json_reader.read_from_json()["project_name"],
-                                            json_reader.read_from_json()["final_slide"])
+        project_type_page.select_project(json_reader.read_from_json()["workspace_test"]["project_type"])
+        templates_page.choose_template(json_reader.read_from_json()["workspace_test"]["template_type"])
+        project_edit_page.edit_project_prep(json_reader.read_from_json()["workspace_test"]["project_name"],
+                                            json_reader.read_from_json()["workspace_test"]["final_slide"])
         project_edit_page.click_save_and_exit()
         after = projects_page.get_projects_number_in_page()
         assert_that(before + 1).is_equal_to(after)
@@ -100,30 +102,32 @@ class TestWorkspaces:
     def test_search_project(self, create_driver, prep_properties):
         login(prep_properties)
         projects_page = ProjectsPage()
-        json_reader = JsonParser(self._DATA_FILE_NAME)
-        projects_page.search_project(json_reader.read_from_json()["project_name"])
-        assert_that(projects_page.is_project_found(json_reader.read_from_json()["project_name"])).is_true()
+        json_reader = JsonParser(self._JSON_FILE_NAME)
+        projects_page.search_project(json_reader.read_from_json()["workspace_test"]["project_name"])
+        expected_status = projects_page.is_project_found(json_reader.read_from_json()["workspace_test"]["project_name"])
+        assert_that(expected_status).is_true()
 
     @allure.description("Search for a non existing project")
     @allure.title("Search for non existing project test")
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
-        projects_page.search_project("Non Existing")
-        assert_that(json_reader.read_from_json()["no_project_found_msg"]).is_equal_to(
-            projects_page.get_no_project_found_msg())
+        projects_page.search_project(json_reader.read_from_json()["workspace_test"]["non_existing_project"])
+        expected_not_found_msg = json_reader.read_from_json()["workspace_test"]["no_project_found_msg"]
+        assert_that(expected_not_found_msg).is_equal_to(projects_page.get_no_project_found_msg())
 
     @allure.description("Cancel project deletion")
     @allure.title("Cancel a project deletion test")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_projects_number_in_page()
-        projects_page.delete_project(json_reader.read_from_json()["project_name"], StatusEnum.CANCEL.value)
+        projects_page.delete_project(json_reader.read_from_json()["workspace_test"]["project_name"],
+                                     StatusEnum.CANCEL.value)
         after = projects_page.get_projects_number_in_page()
         assert_that(before).is_equal_to(after)
 
@@ -132,9 +136,9 @@ class TestWorkspaces:
     @pytest.mark.run(order=9)
     def test_delete_project(self, create_driver, prep_properties):
         login(prep_properties)
-        json_reader = JsonParser(self._DATA_FILE_NAME)
+        json_reader = JsonParser(self._JSON_FILE_NAME)
         projects_page = ProjectsPage()
         before = projects_page.get_projects_number_in_page()
-        projects_page.delete_project(json_reader.read_from_json()["project_name"])
+        projects_page.delete_project(json_reader.read_from_json()["workspace_test"]["project_name"])
         after = projects_page.get_projects_number_in_page()
         assert_that(before).is_equal_to(after + 1)
