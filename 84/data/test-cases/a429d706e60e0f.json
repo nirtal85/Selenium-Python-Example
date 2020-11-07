@@ -1,0 +1,277 @@
+{
+  "uid" : "a429d706e60e0f",
+  "name" : "Add project to workspace test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_add_project_to_workspace",
+  "historyId" : "7ab24faf7085af05bc6b25523cc84337",
+  "time" : {
+    "start" : 1604775301456,
+    "stop" : 1604775322672,
+    "duration" : 21216
+  },
+  "description" : "Selecting and adding a project to workspace",
+  "descriptionHtml" : "<p>Selecting and adding a project to workspace</p>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7fa77e3f5d60>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7fa77e385af0>\n\n    @allure.description(\"Selecting and adding a project to workspace\")\n    @allure.title(\"Add project to workspace test\")\n    @pytest.mark.run(order=5)\n    def test_add_project_to_workspace(self, prep_properties):\n        login(prep_properties, self.pages)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        before = self.pages['projects_page'].get_projects_number_in_page()\n        self.pages['projects_page'].create_new_project()\n        self.pages['project_type_page'].select_project(json_reader.read_from_json()[\"project_type\"])\n        self.pages['templates_page'].choose_template(json_reader.read_from_json()[\"template_type\"])\n>       self.pages['project_edit_page'].edit_project_prep(json_reader.read_from_json()[\"project_name\"],\n                                                          json_reader.read_from_json()[\"final_slide\"])\n\ntests/test_workspaces.py:77: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/project_edit_page.py:32: in edit_project_prep\n    self.click(self._START_EDITING_BUTTON)\npages/base_page.py:18: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"927439c2a82003eb56b150e45ce419c6\")>\nmethod = <selenium.webdriver.support.expected_conditions.element_to_be_clickable object at 0x7fa77b57c9a0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "pages",
+    "time" : {
+      "start" : 1604775301456,
+      "stop" : 1604775301456,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604775298423,
+      "stop" : 1604775301455,
+      "duration" : 3032
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604775215696,
+      "stop" : 1604775215696,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "injector",
+    "time" : {
+      "start" : 1604775301456,
+      "stop" : 1604775301456,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "description" : "Selecting and adding a project to workspace",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7fa77e3f5d60>\nprep_properties = <utils.config_parser.ConfigParserIni object at 0x7fa77e385af0>\n\n    @allure.description(\"Selecting and adding a project to workspace\")\n    @allure.title(\"Add project to workspace test\")\n    @pytest.mark.run(order=5)\n    def test_add_project_to_workspace(self, prep_properties):\n        login(prep_properties, self.pages)\n        json_reader = JsonParser(self._DATA_FILE_NAME)\n        before = self.pages['projects_page'].get_projects_number_in_page()\n        self.pages['projects_page'].create_new_project()\n        self.pages['project_type_page'].select_project(json_reader.read_from_json()[\"project_type\"])\n        self.pages['templates_page'].choose_template(json_reader.read_from_json()[\"template_type\"])\n>       self.pages['project_edit_page'].edit_project_prep(json_reader.read_from_json()[\"project_name\"],\n                                                          json_reader.read_from_json()[\"final_slide\"])\n\ntests/test_workspaces.py:77: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/project_edit_page.py:32: in edit_project_prep\n    self.click(self._START_EDITING_BUTTON)\npages/base_page.py:18: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"927439c2a82003eb56b150e45ce419c6\")>\nmethod = <selenium.webdriver.support.expected_conditions.element_to_be_clickable object at 0x7fa77b57c9a0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604775301457,
+        "stop" : 1604775302125,
+        "duration" : 668
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Log in with username: 'eshorrosh@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1604775302125,
+        "stop" : 1604775304876,
+        "duration" : 2751
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'eshorrosh@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "shouldDisplayMessage" : false,
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Get number of projects display on page",
+      "time" : {
+        "start" : 1604775304877,
+        "stop" : 1604775305252,
+        "duration" : 375
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Start a new project",
+      "time" : {
+        "start" : 1604775305252,
+        "stop" : 1604775306147,
+        "duration" : 895
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Select project 'quiz' from projects menu",
+      "time" : {
+        "start" : 1604775306148,
+        "stop" : 1604775308061,
+        "duration" : 1913
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'quiz'"
+      } ],
+      "shouldDisplayMessage" : false,
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Open new project for editing - project name: 'test project', project type: 'Thank you page'",
+      "time" : {
+        "start" : 1604775310094,
+        "stop" : 1604775322671,
+        "duration" : 12577
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 157, in impl\n    return func(*a, **kw)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/project_edit_page.py\", line 32, in edit_project_prep\n    self.click(self._START_EDITING_BUTTON)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/base_page.py\", line 18, in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py\", line 80, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'test project'"
+      }, {
+        "name" : "project_type",
+        "value" : "'Thank you page'"
+      } ],
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "18f1711cd50f6d25",
+      "name" : "screenshot on failure: 07/11/2020, 18:55:22",
+      "source" : "18f1711cd50f6d25.png",
+      "type" : "image/png",
+      "size" : 186101
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 6,
+    "attachmentsCount" : 1
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604775323109,
+      "stop" : 1604775323167,
+      "duration" : 58
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=5)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az40-174"
+  }, {
+    "name" : "thread",
+    "value" : "4809-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=5)" ]
+  },
+  "source" : "a429d706e60e0f.json",
+  "parameterValues" : [ ]
+}
