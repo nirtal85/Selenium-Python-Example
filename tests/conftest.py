@@ -7,6 +7,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from globals import driver_global as dg
+from pages.about_page import AboutPage
+from pages.forgot_password_page import ForgotPasswordPage
+from pages.login_page import LoginPage
+from pages.project_edit_page import ProjectEditPage
+from pages.project_type_page import ProjectTypePage
+from pages.projects_page import ProjectsPage
+from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
 
 
@@ -21,7 +28,20 @@ def prep_properties():
     return config_reader
 
 
+# https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
+def pages():
+    about_page = AboutPage()
+    projects_page = ProjectsPage()
+    forgot_password_page = ForgotPasswordPage()
+    login_page = LoginPage()
+    project_type_page = ProjectTypePage()
+    templates_page = TemplatesPage()
+    project_edit_page = ProjectEditPage()
+    return locals()
+
+
+@pytest.fixture(autouse=True)
 def create_driver(prep_properties, request):
     browser = request.config.option.browser
     config_reader = prep_properties
