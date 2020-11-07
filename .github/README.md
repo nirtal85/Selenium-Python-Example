@@ -3,8 +3,9 @@
 <u>Before all</u> <br>
 1. Install scoop from www.scoop.sh
 2. Install allure commandline by running the following command:
+```
 scoop install allure
-
+```
 <u>from scratch:</u> <br>
 
 1. git clone
