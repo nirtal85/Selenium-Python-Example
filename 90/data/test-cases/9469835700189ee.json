@@ -1,0 +1,234 @@
+{
+  "uid" : "9469835700189ee",
+  "name" : "Forgot Password with valid email test",
+  "fullName" : "tests.test_forgot_password.TestForgotPassword#test_valid_email",
+  "historyId" : "ad76d87e5a831f6b00837c8ab7fbb24e",
+  "time" : {
+    "start" : 1604778475604,
+    "stop" : 1604778479004,
+    "duration" : 3400
+  },
+  "description" : "Forgot password feature test with a valid email address",
+  "descriptionHtml" : "<p>Forgot password feature test with a valid email address</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604778472470,
+      "stop" : 1604778475603,
+      "duration" : 3133
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "injector",
+    "time" : {
+      "start" : 1604778475603,
+      "stop" : 1604778475603,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1604778285276,
+      "stop" : 1604778285369,
+      "duration" : 93
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604778285369,
+      "stop" : 1604778285369,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "pages",
+    "time" : {
+      "start" : 1604778475603,
+      "stop" : 1604778475603,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Forgot password feature test with a valid email address",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1604778475604,
+        "stop" : 1604778476154,
+        "duration" : 550
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Click Forgot Password link",
+      "time" : {
+        "start" : 1604778476154,
+        "stop" : 1604778477014,
+        "duration" : 860
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Send password reset link to email address: 'eshorrosh@gmail.com'",
+      "time" : {
+        "start" : 1604778477015,
+        "stop" : 1604778478791,
+        "duration" : 1776
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "email",
+        "value" : "'eshorrosh@gmail.com'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get success message",
+      "time" : {
+        "start" : 1604778478791,
+        "stop" : 1604778479003,
+        "duration" : 212
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 4,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604778479005,
+      "stop" : 1604778479060,
+      "duration" : 55
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "critical"
+  }, {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "story",
+    "value" : "Forgot Password Feature's Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_forgot_password"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestForgotPassword"
+  }, {
+    "name" : "host",
+    "value" : "fv-az67-109"
+  }, {
+    "name" : "thread",
+    "value" : "5008-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_forgot_password"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "critical",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "security" ]
+  },
+  "source" : "9469835700189ee.json",
+  "parameterValues" : [ ]
+}
