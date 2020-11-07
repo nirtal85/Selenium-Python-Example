@@ -18,7 +18,6 @@ def login(prep_properties, about_page, login_page):
 @allure.epic("Workspaces")
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.usefixtures("create_driver")
 class TestWorkspaces:
     _DATA_FILE_NAME = "workspaces_test_data.json"
 

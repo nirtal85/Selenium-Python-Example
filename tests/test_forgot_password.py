@@ -9,7 +9,6 @@ from utils.excel_parser import ExcelParser
 @allure.story("Forgot Password Feature's Functionality")
 @allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.security
-@pytest.mark.usefixtures("create_driver")
 class TestForgotPassword:
     _SUCCESS_MSG = "A reset link has been sent to the email address, if it has been used to register for an account."
     _ERROR_MSG = "We can't find a user with that e-mail address."

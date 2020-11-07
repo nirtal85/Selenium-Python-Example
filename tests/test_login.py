@@ -12,7 +12,6 @@ users = [
 @allure.epic("Security")
 @allure.story("Login Feature's Functionality")
 @pytest.mark.security
-@pytest.mark.usefixtures("create_driver")
 class TestLogin:
     _error_msg = "These credentials do not match our records."
     _page_title = "My Workspace"
