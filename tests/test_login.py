@@ -2,6 +2,8 @@ import allure
 import pytest
 from assertpy import assert_that
 
+from tests.test_base import BaseTest
+
 users = [
     ("nirt236@gmail.com", "123456"),
     ("elias@gmail.com", "12345Tr")
@@ -12,7 +14,7 @@ users = [
 @allure.epic("Security")
 @allure.story("Login Feature's Functionality")
 @pytest.mark.security
-class TestLogin:
+class TestLogin(BaseTest):
     _error_msg = "These credentials do not match our records."
     _page_title = "My Workspace"
 
@@ -20,33 +22,33 @@ class TestLogin:
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email, password, pages):
-        pages['about_page'].click_login_link()
-        pages['login_page'].login(email, password)
-        assert_that(self._error_msg).is_equal_to(pages['login_page'].get_error_message())
+    def test_invalid_login(self, email, password):
+        self.pages['about_page'].click_login_link()
+        self.pages['login_page'].login(email, password)
+        assert_that(self._error_msg).is_equal_to(self.pages['login_page'].get_error_message())
 
     @allure.description("Test valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, prep_properties, pages):
+    def test_valid_login(self, prep_properties):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
-        pages['about_page'].click_login_link()
-        pages['login_page'].login(username, password)
-        assert_that(self._page_title).is_equal_to(pages['projects_page'].get_title())
+        self.pages['about_page'].click_login_link()
+        self.pages['login_page'].login(username, password)
+        assert_that(self._page_title).is_equal_to(self.pages['projects_page'].get_title())
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @pytest.mark.run(order=2)
-    def test_logout(self, prep_properties, pages):
+    def test_logout(self, prep_properties):
         config_reader = prep_properties
         username = config_reader.config_section_dict("Base Url")["username"]
         password = config_reader.config_section_dict("Base Url")["password"]
-        pages['about_page'].click_login_link()
-        pages['login_page'].login(username, password)
-        pages['projects_page'].logout()
-        assert_that('Log in').is_equal_to(pages['login_page'].get_page_title())
+        self.pages['about_page'].click_login_link()
+        self.pages['login_page'].login(username, password)
+        self.pages['projects_page'].logout()
+        assert_that('Log in').is_equal_to(self.pages['login_page'].get_page_title())
 
     @allure.description("Skip Test example")
     @allure.title("Skipped test example")
