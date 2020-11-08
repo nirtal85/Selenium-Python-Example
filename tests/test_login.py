@@ -2,7 +2,6 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from utils.json_parser import JsonParser
 from tests.test_base import BaseTest
 
 users = [
@@ -16,44 +15,38 @@ users = [
 @allure.story("Login Feature's Functionality")
 @pytest.mark.security
 class TestLogin(BaseTest):
-    _JSON_FILE_NAME = "tests_data.json"
 
     @allure.description("test invalid login")
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
     def test_invalid_login(self, email, password):
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         self.pages['about_page'].click_login_link()
         self.pages['login_page'].login(email, password)
-        expected_error_msg = json_reader.read_from_json()["login"]["error_message"]
+        expected_error_msg = self.json_reader.read_from_json()["login"]["error_message"]
         assert_that(expected_error_msg).is_equal_to(self.pages['login_page'].get_error_message())
 
     @allure.description("Test valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, prep_properties):
-        config_reader = prep_properties
-        username = config_reader.config_section_dict("Base Url")["username"]
-        password = config_reader.config_section_dict("Base Url")["password"]
-        json_reader = JsonParser(self._JSON_FILE_NAME)
+    def test_valid_login(self):
+        username = self.config_reader.config_section_dict("Base Url")["username"]
+        password = self.config_reader.config_section_dict("Base Url")["password"]
         self.pages['about_page'].click_login_link()
         self.pages['login_page'].login(username, password)
-        expected_page_title = json_reader.read_from_json()["login"]["ws_page_title"]
+        expected_page_title = self.json_reader.read_from_json()["login"]["ws_page_title"]
         assert_that(expected_page_title).is_equal_to(self.pages['projects_page'].get_title())
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @pytest.mark.run(order=2)
-    def test_logout(self, prep_properties):
-        config_reader = prep_properties
-        username = config_reader.config_section_dict("Base Url")["username"]
-        password = config_reader.config_section_dict("Base Url")["password"]
-        json_reader = JsonParser(self._JSON_FILE_NAME)
+    def test_logout(self):
+        username = self.config_reader.config_section_dict("Base Url")["username"]
+        password = self.config_reader.config_section_dict("Base Url")["password"]
         self.pages['about_page'].click_login_link()
         self.pages['login_page'].login(username, password)
         self.pages['projects_page'].logout()
-        expected_page_title = json_reader.read_from_json()["login"]["lg_page_title"]
+        expected_page_title = self.json_reader.read_from_json()["login"]["lg_page_title"]
         assert_that(expected_page_title).is_equal_to(self.pages['login_page'].get_page_title())
 
     @allure.description("Skip Test example")

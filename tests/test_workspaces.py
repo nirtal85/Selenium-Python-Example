@@ -4,7 +4,6 @@ from assertpy import assert_that
 
 from helper_enums.status_enum import StatusEnum
 from tests.test_base import BaseTest
-from utils.json_parser import JsonParser
 
 
 # performs login operation
@@ -20,16 +19,14 @@ def login(prep_properties, pages):
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces(BaseTest):
-    _JSON_FILE_NAME = "tests_data.json"
 
     @allure.description("Create new Workspace test")
     @allure.title("Create new workspace test")
     @pytest.mark.run(order=1)
     def test_create_new_workspace(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         before = self.pages['projects_page'].get_workspaces_number()
-        self.pages['projects_page'].create_workspace(json_reader.read_from_json()["workspace"]["name"])
+        self.pages['projects_page'].create_workspace(self.json_reader.read_from_json()["workspace"]["name"])
         after = self.pages['projects_page'].get_workspaces_number()
         assert_that(after).is_greater_than(before)
 
@@ -38,12 +35,11 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
-        self.pages['projects_page'].rename_workspace(json_reader.read_from_json()["workspace"]["name"],
-                                                     json_reader.read_from_json()["workspace"][
+        self.pages['projects_page'].rename_workspace(self.json_reader.read_from_json()["workspace"]["name"],
+                                                     self.json_reader.read_from_json()["workspace"][
                                                          "new_name"])
         expected_status = self.pages['projects_page'].is_workspace_found(
-            json_reader.read_from_json()["workspace"]["new_name"])
+            self.json_reader.read_from_json()["workspace"]["new_name"])
         assert_that(expected_status).is_true()
 
     @allure.description("Delete an existing workspace test")
@@ -71,14 +67,13 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=5)
     def test_add_project_to_workspace(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         before = self.pages['projects_page'].get_projects_number_in_page()
         self.pages['projects_page'].create_new_project()
-        self.pages['project_type_page'].select_project(json_reader.read_from_json()["workspace"]["project_type"])
-        self.pages['templates_page'].choose_template(json_reader.read_from_json()["workspace"]["template_type"])
+        self.pages['project_type_page'].select_project(self.json_reader.read_from_json()["workspace"]["project_type"])
+        self.pages['templates_page'].choose_template(self.json_reader.read_from_json()["workspace"]["template_type"])
         self.pages['project_edit_page'].edit_project_prep(
-            json_reader.read_from_json()["workspace"]["project_name"],
-            json_reader.read_from_json()["workspace"]["final_slide"])
+            self.json_reader.read_from_json()["workspace"]["project_name"],
+            self.json_reader.read_from_json()["workspace"]["final_slide"])
         self.pages['project_edit_page'].click_save_and_exit()
         after = self.pages['projects_page'].get_projects_number_in_page()
         assert_that(before + 1).is_equal_to(after)
@@ -88,10 +83,9 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=6)
     def test_search_project(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
-        self.pages['projects_page'].search_project(json_reader.read_from_json()["workspace"]["project_name"])
+        self.pages['projects_page'].search_project(self.json_reader.read_from_json()["workspace"]["project_name"])
         expected_status = self.pages['projects_page'].is_project_found(
-            json_reader.read_from_json()["workspace"]["project_name"])
+            self.json_reader.read_from_json()["workspace"]["project_name"])
         assert_that(expected_status).is_true()
 
     @allure.description("Search for a non existing project")
@@ -99,10 +93,9 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         self.pages['projects_page'].search_project(
-            json_reader.read_from_json()["workspace"]["non_existing_project"])
-        expected_not_found_msg = json_reader.read_from_json()["workspace"]["no_project_found_msg"]
+            self.json_reader.read_from_json()["workspace"]["non_existing_project"])
+        expected_not_found_msg = self.json_reader.read_from_json()["workspace"]["no_project_found_msg"]
         assert_that(expected_not_found_msg).is_equal_to(self.pages['projects_page'].get_no_project_found_msg())
 
     @allure.description("Cancel project deletion")
@@ -110,9 +103,8 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         before = self.pages['projects_page'].get_projects_number_in_page()
-        self.pages['projects_page'].delete_project(json_reader.read_from_json()["workspace"]["project_name"],
+        self.pages['projects_page'].delete_project(self.json_reader.read_from_json()["workspace"]["project_name"],
                                                    StatusEnum.CANCEL.value)
         after = self.pages['projects_page'].get_projects_number_in_page()
         assert_that(before).is_equal_to(after)
@@ -122,8 +114,7 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=9)
     def test_delete_project(self, prep_properties):
         login(prep_properties, self.pages)
-        json_reader = JsonParser(self._JSON_FILE_NAME)
         before = self.pages['projects_page'].get_projects_number_in_page()
-        self.pages['projects_page'].delete_project(json_reader.read_from_json()["workspace"]["project_name"])
+        self.pages['projects_page'].delete_project(self.json_reader.read_from_json()["workspace"]["project_name"])
         after = self.pages['projects_page'].get_projects_number_in_page()
         assert_that(before).is_equal_to(after + 1)
