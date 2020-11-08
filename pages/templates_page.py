@@ -10,8 +10,8 @@ class TemplatesPage(TopNavigateBar):
     _TEMPLATES_BLOCK = (By.CSS_SELECTOR, "#template-gallery tbody tr")
     _CHOOSE_BUTTON = (By.CSS_SELECTOR, "a .btn.btn-primary")
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     def choose_template(self, template_name):
         self._wait.until(

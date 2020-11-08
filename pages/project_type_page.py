@@ -11,8 +11,8 @@ class ProjectTypePage(TopNavigateBar):
     _START_FROM_SCRATCH_BUTTON = (By.CSS_SELECTOR, ".blank div.icon")
     _PROJECTS_BLOCK = (By.CSS_SELECTOR, "#app-layout div:nth-child(3) .title")
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     @allure.step("Select project {project_name} from projects menu")
     def select_project(self, project_name):

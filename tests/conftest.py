@@ -6,7 +6,6 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-from globals import driver_global as dg
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -31,18 +30,19 @@ def prep_properties():
 # https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
 def pages():
-    about_page = AboutPage()
-    projects_page = ProjectsPage()
-    forgot_password_page = ForgotPasswordPage()
-    login_page = LoginPage()
-    project_type_page = ProjectTypePage()
-    templates_page = TemplatesPage()
-    project_edit_page = ProjectEditPage()
+    about_page = AboutPage(driver)
+    projects_page = ProjectsPage(driver)
+    forgot_password_page = ForgotPasswordPage(driver)
+    login_page = LoginPage(driver)
+    project_type_page = ProjectTypePage(driver)
+    templates_page = TemplatesPage(driver)
+    project_edit_page = ProjectEditPage(driver)
     return locals()
 
 
 @pytest.fixture(autouse=True)
 def create_driver(prep_properties, request):
+    global driver
     browser = request.config.option.browser
     config_reader = prep_properties
     base_url = config_reader.config_section_dict("Base Url")["base_url"]
@@ -66,11 +66,10 @@ def create_driver(prep_properties, request):
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
     else:
         driver = webdriver.Chrome(ChromeDriverManager().install())
-    dg.DRIVER = driver
     driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get(base_url)
-    yield driver
+    yield
     driver.quit()
 
 
@@ -78,7 +77,6 @@ def create_driver(prep_properties, request):
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport():
     outcome = yield
-    driver = dg.DRIVER
     assert driver is not None, "Expected instance of a Web Driver but got None instead"
     rep = outcome.get_result()
     if (rep.when == "setup" or rep.when == "call") and rep.failed:
