@@ -14,6 +14,7 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
+from utils.config_parser import EnvironmentParser
 
 
 # reads parameters from pytest command line
@@ -21,7 +22,14 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
+# writes a dictionary of key values into allure's environment.properties file
+def write_to_allure_env_file(dic):
+    env_parser = EnvironmentParser("environment.properties")
+    env_parser.write_to_allure_env(dic)
+
+
 @pytest.fixture(scope="session")
+# instantiates ini file parses object
 def prep_properties():
     config_reader = ConfigParserIni("props.ini")
     return config_reader
@@ -29,6 +37,7 @@ def prep_properties():
 
 # https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
+# Instantiates Page Objects
 def pages():
     about_page = AboutPage(driver)
     projects_page = ProjectsPage(driver)
@@ -41,11 +50,13 @@ def pages():
 
 
 @pytest.fixture(autouse=True)
+# Performs setup and tear down
 def create_driver(prep_properties, request):
     global driver
     browser = request.config.option.browser
     config_reader = prep_properties
     base_url = config_reader.config_section_dict("Base Url")["base_url"]
+    write_to_allure_env_file({"browser": browser, "base_url": base_url})
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
@@ -73,8 +84,8 @@ def create_driver(prep_properties, request):
     driver.quit()
 
 
-# need to pass driver pronto
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+# Takes screen shot if test fails
 def pytest_runtest_makereport():
     outcome = yield
     assert driver is not None, "Expected instance of a Web Driver but got None instead"
