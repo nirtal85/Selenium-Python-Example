@@ -16,7 +16,7 @@ users = [
 @pytest.mark.security
 class TestLogin(BaseTest):
 
-    @allure.description("test invalid login")
+    @allure.description("invalid login")
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
@@ -26,7 +26,7 @@ class TestLogin(BaseTest):
         expected_error_msg = self.json_reader.read_from_json()["login"]["error_message"]
         assert_that(expected_error_msg).is_equal_to(self.pages['login_page'].get_error_message())
 
-    @allure.description("Test valid login")
+    @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
     def test_valid_login(self):

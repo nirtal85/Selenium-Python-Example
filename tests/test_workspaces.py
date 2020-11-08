@@ -20,7 +20,7 @@ def login(prep_properties, pages):
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces(BaseTest):
 
-    @allure.description("Create new Workspace test")
+    @allure.description("Create new Workspace")
     @allure.title("Create new workspace test")
     @pytest.mark.run(order=1)
     def test_create_new_workspace(self, prep_properties):
@@ -30,7 +30,7 @@ class TestWorkspaces(BaseTest):
         after = self.pages['projects_page'].get_workspaces_number()
         assert_that(after).is_greater_than(before)
 
-    @allure.description("Rename an existing workspace test")
+    @allure.description("Rename an existing workspace")
     @allure.title("Rename an existing workspace test")
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, prep_properties):
@@ -42,8 +42,8 @@ class TestWorkspaces(BaseTest):
             self.json_reader.read_from_json()["workspace"]["new_name"])
         assert_that(expected_status).is_true()
 
-    @allure.description("Delete an existing workspace test")
-    @allure.title("Delete existing workspace test")
+    @allure.description("Delete an existing workspace")
+    @allure.title("Delete existing workspace")
     @pytest.mark.run(order=3)
     def test_delete_workspace(self, prep_properties):
         login(prep_properties, self.pages)
@@ -89,7 +89,7 @@ class TestWorkspaces(BaseTest):
         assert_that(expected_status).is_true()
 
     @allure.description("Search for a non existing project")
-    @allure.title("Search for non existing project test")
+    @allure.title("Search for non existing project")
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, prep_properties):
         login(prep_properties, self.pages)
@@ -99,7 +99,7 @@ class TestWorkspaces(BaseTest):
         assert_that(expected_not_found_msg).is_equal_to(self.pages['projects_page'].get_no_project_found_msg())
 
     @allure.description("Cancel project deletion")
-    @allure.title("Cancel a project deletion test")
+    @allure.title("Cancel a project deletion")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, prep_properties):
         login(prep_properties, self.pages)
@@ -110,7 +110,7 @@ class TestWorkspaces(BaseTest):
         assert_that(before).is_equal_to(after)
 
     @allure.description("Deleting an existing project from workspace")
-    @allure.title("Delete existing project test")
+    @allure.title("Delete existing project")
     @pytest.mark.run(order=9)
     def test_delete_project(self, prep_properties):
         login(prep_properties, self.pages)

@@ -11,7 +11,7 @@ from tests.test_base import BaseTest
 @pytest.mark.security
 class TestForgotPassword(BaseTest):
 
-    @allure.description("Forgot password feature test with a valid email address")
+    @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
     def test_valid_email(self):
         email = self.config_reader.config_section_dict("Base Url")["username"]
@@ -19,7 +19,7 @@ class TestForgotPassword(BaseTest):
         expected_success_msg = self.json_reader.read_from_json()["forgot_password"]["success_message"]
         assert_that(expected_success_msg).is_equal_to(self.pages['forgot_password_page'].get_success_msg())
 
-    @allure.description("Forgot Password feature test with invalid email address")
+    @allure.description("Forgot Password with invalid email address")
     @allure.title("Forgot Password with invalid email test")
     def test_invalid_email(self):
         emails = self.excel_reader.read_from_excel("Emails")
