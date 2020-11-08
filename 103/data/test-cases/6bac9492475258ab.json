@@ -1,0 +1,205 @@
+{
+  "uid" : "6bac9492475258ab",
+  "name" : "Forgot Password with valid email test",
+  "fullName" : "tests.test_forgot_password.TestForgotPassword#test_valid_email",
+  "historyId" : "ad76d87e5a831f6b00837c8ab7fbb24e",
+  "time" : {
+    "start" : 1604818152273,
+    "stop" : 1604818165257,
+    "duration" : 12984
+  },
+  "description" : "Forgot password feature test with a valid email address",
+  "descriptionHtml" : "<p>Forgot password feature test with a valid email address</p>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_forgot_password.TestForgotPassword object at 0x7fe416dc4d30>\n\n    @allure.description(\"Forgot password feature test with a valid email address\")\n    @allure.title(\"Forgot Password with valid email test\")\n    def test_valid_email(self):\n        email = self.config_reader.config_section_dict(\"Base Url\")[\"username\"]\n        self.pages['forgot_password_page'].send_password_reset_link(email)\n        expected_success_msg = self.json_reader.read_from_json()[\"forgot_password\"][\"success_message\"]\n>       assert_that(expected_success_msg).is_equal_to(self.pages['forgot_password_page'].get_success_msg())\n\ntests/test_forgot_password.py:20: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/forgot_password_page.py:27: in get_success_msg\n    return self.get_text(self.SUCCESS_MSG)\npages/base_page.py:40: in get_text\n    el = self._wait.until(expected_conditions.visibility_of_element_located(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"812b9d8d8ee214b027f47e6fe2e3dcd5\")>\nmethod = <selenium.webdriver.support.expected_conditions.visibility_of_element_located object at 0x7fe416e107c0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "pages",
+    "time" : {
+      "start" : 1604818152272,
+      "stop" : 1604818152272,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604818149452,
+      "stop" : 1604818152272,
+      "duration" : 2820
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604817973506,
+      "stop" : 1604817973506,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "injector",
+    "time" : {
+      "start" : 1604818152273,
+      "stop" : 1604818152273,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Forgot password feature test with a valid email address",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_forgot_password.TestForgotPassword object at 0x7fe416dc4d30>\n\n    @allure.description(\"Forgot password feature test with a valid email address\")\n    @allure.title(\"Forgot Password with valid email test\")\n    def test_valid_email(self):\n        email = self.config_reader.config_section_dict(\"Base Url\")[\"username\"]\n        self.pages['forgot_password_page'].send_password_reset_link(email)\n        expected_success_msg = self.json_reader.read_from_json()[\"forgot_password\"][\"success_message\"]\n>       assert_that(expected_success_msg).is_equal_to(self.pages['forgot_password_page'].get_success_msg())\n\ntests/test_forgot_password.py:20: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/forgot_password_page.py:27: in get_success_msg\n    return self.get_text(self.SUCCESS_MSG)\npages/base_page.py:40: in get_text\n    el = self._wait.until(expected_conditions.visibility_of_element_located(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"812b9d8d8ee214b027f47e6fe2e3dcd5\")>\nmethod = <selenium.webdriver.support.expected_conditions.visibility_of_element_located object at 0x7fe416e107c0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value is not False.\"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.time() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.time() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException",
+    "steps" : [ {
+      "name" : "Send password reset link to email address: 'elias123@gmail.com'",
+      "time" : {
+        "start" : 1604818152273,
+        "stop" : 1604818154176,
+        "duration" : 1903
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "email",
+        "value" : "'elias123@gmail.com'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get success message",
+      "time" : {
+        "start" : 1604818154176,
+        "stop" : 1604818165256,
+        "duration" : 11080
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 157, in impl\n    return func(*a, **kw)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/forgot_password_page.py\", line 27, in get_success_msg\n    return self.get_text(self.SUCCESS_MSG)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/base_page.py\", line 40, in get_text\n    el = self._wait.until(expected_conditions.visibility_of_element_located(webelement))\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py\", line 80, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "6cac06ba224770df",
+      "name" : "screenshot on failure: 08/11/2020, 06:49:25",
+      "source" : "6cac06ba224770df.png",
+      "type" : "image/png",
+      "size" : 508424
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 2,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1604818165675,
+      "stop" : 1604818165753,
+      "duration" : 78
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "Forgot Password Feature's Functionality"
+  }, {
+    "name" : "severity",
+    "value" : "critical"
+  }, {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_forgot_password"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestForgotPassword"
+  }, {
+    "name" : "host",
+    "value" : "fv-az40-174"
+  }, {
+    "name" : "thread",
+    "value" : "4797-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_forgot_password"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "critical",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "security" ]
+  },
+  "source" : "6bac9492475258ab.json",
+  "parameterValues" : [ ]
+}
