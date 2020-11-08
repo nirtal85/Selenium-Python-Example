@@ -13,8 +13,8 @@ class ProjectEditPage(BasePage):
     _START_EDITING_BUTTON = (By.CSS_SELECTOR, ".swal-button.swal-button--confirm")
     _SAVE_AND_EXIT_BUTTON = (By.CSS_SELECTOR, ".e-close.nav-link")
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     @allure.step("Click SAVE & EXIT button")
     def click_save_and_exit(self):

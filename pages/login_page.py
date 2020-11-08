@@ -13,8 +13,8 @@ class LoginPage(TopMenuBar):
     PAGE_TITLE = (By.CSS_SELECTOR, ".e-form-heading")
     FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, "[href='https://app.involve.me/password/reset']")
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     @allure.step("Log in with username: {username} and password: {password}")
     def login(self, username, password):

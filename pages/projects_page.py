@@ -33,8 +33,8 @@ class ProjectsPage(TopNavigateBar):
     _PROJECTS_BLOCK = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
     _PROJECTS_TITLES = (By.CSS_SELECTOR, "h1 a")
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     @allure.step("Create new workspace {workspace_name}")
     def create_workspace(self, workspace_name):

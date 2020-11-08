@@ -10,8 +10,8 @@ class ForgotPasswordPage(BasePage):
     ERROR_MSG = (By.CSS_SELECTOR, '.alert-danger')
     SUCCESS_MSG = (By.CSS_SELECTOR, '.alert-success')
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     @allure.step("Send password reset link to email address: {email}")
     def send_password_reset_link(self, email):

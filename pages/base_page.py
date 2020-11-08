@@ -4,14 +4,12 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.expected_conditions import StaleElementReferenceException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from globals import driver_global as dg
-
 
 class BasePage:
     """ Wrapper for selenium operations """
 
-    def __init__(self):
-        self._driver = dg.DRIVER
+    def __init__(self, driver):
+        self._driver = driver
         self._wait = WebDriverWait(self._driver, 10)
 
     def click(self, webelement):
