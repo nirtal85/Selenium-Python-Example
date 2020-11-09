@@ -58,6 +58,11 @@ def pages():
 # Performs setup and tear down
 def create_driver(get_testing_properties):
     global driver
+
+
+    browser = request.config.option.browser
+    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
+
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
@@ -82,16 +87,25 @@ def create_driver(get_testing_properties):
     driver.maximize_window()
     driver.get(base_url)
     yield
+    if request.node.rep_call.failed:
+        screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+        allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
+                      attachment_type=allure.attachment_type.PNG)
     driver.quit()
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+ allure_env
 # Takes screen shot if test fails
 def pytest_runtest_makereport():
+
+def pytest_runtest_makereport(item, call):
+    # execute all other hooks to obtain the report object
+
     outcome = yield
-    assert driver is not None, "Expected instance of a Web Driver but got None instead"
     rep = outcome.get_result()
-    if (rep.when == "setup" or rep.when == "call") and rep.failed:
-        screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
-        allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
-                      attachment_type=allure.attachment_type.PNG)
+
+    # set a report attribute for each phase of a call, which can
+    # be "setup", "call", "teardown"
+
+    setattr(item, "rep_" + rep.when, rep)
