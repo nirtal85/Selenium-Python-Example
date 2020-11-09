@@ -95,9 +95,6 @@ def create_driver(get_testing_properties):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-# Takes screen shot if test fails
-def pytest_runtest_makereport():
-
 def pytest_runtest_makereport(item, call):
     # execute all other hooks to obtain the report object
 
