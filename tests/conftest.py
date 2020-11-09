@@ -58,11 +58,6 @@ def pages():
 # Performs setup and tear down
 def create_driver(get_testing_properties):
     global driver
-
-
-    browser = request.config.option.browser
-    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
-
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
