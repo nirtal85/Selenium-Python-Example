@@ -95,7 +95,6 @@ def create_driver(get_testing_properties):
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
- allure_env
 # Takes screen shot if test fails
 def pytest_runtest_makereport():
 
