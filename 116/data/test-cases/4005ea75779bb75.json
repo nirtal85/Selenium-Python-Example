@@ -1,0 +1,123 @@
+{
+  "uid" : "4005ea75779bb75",
+  "name" : "Delete existing project",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_delete_project",
+  "historyId" : "d24bb8ba4e26861dd091ba1e78a5d0b8",
+  "time" : {
+    "start" : 1604958646920,
+    "stop" : 1604958646920,
+    "duration" : 0
+  },
+  "description" : "Deleting an existing project from workspace",
+  "descriptionHtml" : "<p>Deleting an existing project from workspace</p>\n",
+  "status" : "broken",
+  "statusMessage" : "NameError: name 'request' is not defined",
+  "statusTrace" : "get_testing_properties = None\n\n    @pytest.fixture(autouse=True)\n    # Performs setup and tear down\n    def create_driver(get_testing_properties):\n        global driver\n    \n    \n>       browser = request.config.option.browser\nE       NameError: name 'request' is not defined\n\ntests/conftest.py:63: NameError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "get_testing_properties",
+    "time" : {
+      "start" : 1604958646808,
+      "stop" : 1604958646808,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1604958646920,
+      "stop" : 1604958646920,
+      "duration" : 0
+    },
+    "status" : "broken",
+    "statusMessage" : "NameError: name 'request' is not defined\n",
+    "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/pluggy/callers.py\", line 187, in _multicall\n    res = hook_impl.function(*args)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 1111, in pytest_fixture_setup\n    result = call_fixture_func(fixturefunc, request, kwargs)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 908, in call_fixture_func\n    fixture_result = next(generator)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/tests/conftest.py\", line 63, in create_driver\n    browser = request.config.option.browser\n",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1604958646808,
+      "stop" : 1604958646808,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=9)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az71-783"
+  }, {
+    "name" : "thread",
+    "value" : "4745-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=9)" ]
+  },
+  "source" : "4005ea75779bb75.json",
+  "parameterValues" : [ ]
+}
