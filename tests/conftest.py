@@ -44,8 +44,7 @@ def pages():
 def create_driver(prep_properties, request):
     global driver
     browser = request.config.option.browser
-    config_reader = prep_properties
-    base_url = config_reader.config_section_dict("Base Url")["base_url"]
+    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
@@ -70,16 +69,20 @@ def create_driver(prep_properties, request):
     driver.maximize_window()
     driver.get(base_url)
     yield
-    driver.quit()
-
-
-# need to pass driver pronto
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport():
-    outcome = yield
-    assert driver is not None, "Expected instance of a Web Driver but got None instead"
-    rep = outcome.get_result()
-    if (rep.when == "setup" or rep.when == "call") and rep.failed:
+    if request.node.rep_call.failed:
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
         allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
+    driver.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    # execute all other hooks to obtain the report object
+    outcome = yield
+    rep = outcome.get_result()
+
+    # set a report attribute for each phase of a call, which can
+    # be "setup", "call", "teardown"
+
+    setattr(item, "rep_" + rep.when, rep)
