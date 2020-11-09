@@ -14,7 +14,7 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
-from utils.config_parser import EnvironmentParser
+from utils.config_parser import AllureEnvironmentParser
 
 
 # reads parameters from pytest command line
@@ -22,17 +22,22 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
-# writes a dictionary of key values into allure's environment.properties file
-def write_to_allure_env_file(dic):
-    env_parser = EnvironmentParser("environment.properties")
-    env_parser.write_to_allure_env(dic)
-
-
 @pytest.fixture(scope="session")
 # instantiates ini file parses object
 def prep_properties():
     config_reader = ConfigParserIni("props.ini")
     return config_reader
+
+
+@pytest.fixture(scope="session")
+# fetch browser kind, base url and writes a dictionary of key values into allure's environment.properties file
+def get_testing_properties(request, prep_properties):
+    global browser, base_url
+    browser = request.config.option.browser
+    config_reader = prep_properties
+    base_url = config_reader.config_section_dict("Base Url")["base_url"]
+    env_parser = AllureEnvironmentParser("environment.properties")
+    env_parser.write_to_allure_env({"browser": browser, "base_url": base_url})
 
 
 # https://stackoverflow.com/a/61433141/4515129
@@ -51,12 +56,8 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(prep_properties, request):
+def create_driver(get_testing_properties):
     global driver
-    browser = request.config.option.browser
-    config_reader = prep_properties
-    base_url = config_reader.config_section_dict("Base Url")["base_url"]
-    write_to_allure_env_file({"browser": browser, "base_url": base_url})
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
