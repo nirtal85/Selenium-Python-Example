@@ -56,7 +56,7 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(get_testing_properties):
+def create_driver(get_testing_properties, request):
     global driver
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
