@@ -1,0 +1,138 @@
+{
+  "uid" : "86d319319a8cd37a",
+  "name" : "Add project to workspace test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_add_project_to_workspace",
+  "historyId" : "7ab24faf7085af05bc6b25523cc84337",
+  "time" : {
+    "start" : 1605036280282,
+    "stop" : 1605036280282,
+    "duration" : 0
+  },
+  "description" : "Selecting and adding a project to workspace",
+  "descriptionHtml" : "<p>Selecting and adding a project to workspace</p>\n",
+  "status" : "broken",
+  "statusMessage" : "NameError: name 'browser' is not defined",
+  "statusTrace" : "write_allure_enviorment = None\nrequest = <SubRequest 'create_driver' for <Function test_add_project_to_workspace>>\n\n    @pytest.fixture(autouse=True)\n    # Performs setup and tear down\n    def create_driver(write_allure_enviorment, request):\n        global driver\n>       if browser == \"firefox\":\nE       NameError: name 'browser' is not defined\n\ntests/conftest.py:62: NameError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "write_allure_enviorment",
+    "time" : {
+      "start" : 1605036280154,
+      "stop" : 1605036280154,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1605036280153,
+      "stop" : 1605036280154,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1605036280283,
+      "stop" : 1605036280283,
+      "duration" : 0
+    },
+    "status" : "broken",
+    "statusMessage" : "NameError: name 'browser' is not defined\n",
+    "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/pluggy/callers.py\", line 187, in _multicall\n    res = hook_impl.function(*args)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 1111, in pytest_fixture_setup\n    result = call_fixture_func(fixturefunc, request, kwargs)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 908, in call_fixture_func\n    fixture_result = next(generator)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/tests/conftest.py\", line 62, in create_driver\n    if browser == \"firefox\":\n",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  } ],
+  "afterStages" : [ {
+    "name" : "write_allure_enviorment::0",
+    "time" : {
+      "start" : 1605036280331,
+      "stop" : 1605036280331,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=5)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az71-783"
+  }, {
+    "name" : "thread",
+    "value" : "4682-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=5)" ]
+  },
+  "source" : "86d319319a8cd37a.json",
+  "parameterValues" : [ ]
+}
