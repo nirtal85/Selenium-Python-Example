@@ -1,0 +1,141 @@
+{
+  "uid" : "644cc080a76c74d9",
+  "name" : "Login with valid credentials test",
+  "fullName" : "tests.test_login.TestLogin#test_valid_login",
+  "historyId" : "38ab8f45abf666d426f8eaf42b1feac7",
+  "time" : {
+    "start" : 1605018502984,
+    "stop" : 1605018502984,
+    "duration" : 0
+  },
+  "description" : "valid login",
+  "descriptionHtml" : "<p>valid login</p>\n",
+  "status" : "broken",
+  "statusMessage" : "NameError: name 'browser' is not defined",
+  "statusTrace" : "write_allure_enviorment = None\nrequest = <SubRequest 'create_driver' for <Function test_valid_login>>\n\n    @pytest.fixture(autouse=True)\n    # Performs setup and tear down\n    def create_driver(write_allure_enviorment, request):\n        global driver\n>       if browser == \"firefox\":\nE       NameError: name 'browser' is not defined\n\ntests/conftest.py:61: NameError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1605018502986,
+      "stop" : 1605018502986,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "write_allure_enviorment",
+    "time" : {
+      "start" : 1605018502986,
+      "stop" : 1605018502986,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1605018502986,
+      "stop" : 1605018502986,
+      "duration" : 0
+    },
+    "status" : "broken",
+    "statusMessage" : "NameError: name 'browser' is not defined\n",
+    "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/pluggy/callers.py\", line 187, in _multicall\n    res = hook_impl.function(*args)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 1111, in pytest_fixture_setup\n    result = call_fixture_func(fixturefunc, request, kwargs)\n  File \"/opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 908, in call_fixture_func\n    fixture_result = next(generator)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/tests/conftest.py\", line 61, in create_driver\n    if browser == \"firefox\":\n",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  } ],
+  "afterStages" : [ {
+    "name" : "write_allure_enviorment::0",
+    "time" : {
+      "start" : 1605018503144,
+      "stop" : 1605018503144,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "story",
+    "value" : "Login Feature's Functionality"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=1)"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_login"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "fv-az70-83"
+  }, {
+    "name" : "thread",
+    "value" : "4706-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_login"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "security", "run(order=1)" ]
+  },
+  "source" : "644cc080a76c74d9.json",
+  "parameterValues" : [ ]
+}
