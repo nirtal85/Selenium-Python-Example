@@ -31,7 +31,7 @@ def prep_properties():
 
 @pytest.fixture(scope="session")
 # fetch browser kind, base url and writes a dictionary of key values into allure's environment.properties file
-def get_testing_properties(request, prep_properties):
+def write_allure_enviorment(request, prep_properties):
     global browser, base_url
     browser = request.config.option.browser
     config_reader = prep_properties
@@ -56,7 +56,7 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(get_testing_properties, request):
+def create_driver(write_allure_enviorment, request):
     global driver
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
