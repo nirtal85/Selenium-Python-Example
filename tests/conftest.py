@@ -32,7 +32,7 @@ def prep_properties():
 @pytest.fixture(scope="session")
 # fetch browser kind, base url and writes a dictionary of key values into allure's environment.properties file
 def write_allure_enviorment(request, prep_properties):
-    global browser, base_url
+    yield
     browser = request.config.option.browser
     config_reader = prep_properties
     base_url = config_reader.config_section_dict("Base Url")["base_url"]
