@@ -30,3 +30,12 @@ class TestForgotPassword(BaseTest):
         self.pages['forgot_password_page'].send_password_reset_link(emails[0])
         expected_error_msg = self.json_reader.read_from_json()["forgot_password"]["error_message"]
         assert_that(expected_error_msg).is_equal_to(self.pages['forgot_password_page'].get_invalid_email_msg())
+
+    @allure.description("Exception catching")
+    @allure.title("Exception test")
+    def test_expected_exception_on_page_title(self):
+        self.pages['about_page'].click_login_link()
+        self.pages['login_page'].click_forgot_password()
+        with pytest.raises(AssertionError) as e:
+            assert self.pages['forgot_password_page'].get_page_title() == "something else"
+        assert "AssertionError" in str(e)

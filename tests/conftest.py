@@ -29,13 +29,10 @@ def prep_properties():
     return config_reader
 
 
-@pytest.fixture(scope="session")
-# fetch browser kind, base url and writes a dictionary of key values into allure's environment.properties file
-def write_allure_enviorment(request, prep_properties):
-    global browser, base_url
-    browser = request.config.option.browser
-    config_reader = prep_properties
-    base_url = config_reader.config_section_dict("Base Url")["base_url"]
+@pytest.fixture(autouse=True)
+# fetch browser kind and base url then writes a dictionary of key-value pair into allure's environment.properties file
+def write_allure_enviorment(prep_properties):
+    yield
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env({"browser": browser, "base_url": base_url})
 
@@ -56,8 +53,11 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(write_allure_enviorment, request):
-    global driver
+def create_driver(write_allure_enviorment, prep_properties, request):
+    global browser, base_url, driver
+    browser = request.config.option.browser
+    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
+
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "remote":
