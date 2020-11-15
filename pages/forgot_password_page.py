@@ -9,6 +9,7 @@ class ForgotPasswordPage(BasePage):
     SEND_PASSWORD_RESET_LINK_BUTTON = (By.CSS_SELECTOR, "[type='submit']")
     ERROR_MSG = (By.CSS_SELECTOR, '.alert-danger')
     SUCCESS_MSG = (By.CSS_SELECTOR, '.alert-success')
+    PAGE_TITLE = (By.CSS_SELECTOR, ".e-form-heading")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -25,3 +26,7 @@ class ForgotPasswordPage(BasePage):
     @allure.step("Get success message")
     def get_success_msg(self):
         return self.get_text(self.SUCCESS_MSG)
+
+    @allure.step("Get Forgot password page title")
+    def get_page_title(self):
+        return self.get_text(self.PAGE_TITLE)
