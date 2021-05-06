@@ -2,6 +2,7 @@ from datetime import datetime
 
 import allure
 import pytest
+import requests
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
@@ -13,13 +14,18 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.config_parser import ConfigParserIni
 from utils.config_parser import AllureEnvironmentParser
+from utils.config_parser import ConfigParserIni
 
 
 # reads parameters from pytest command line
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
+
+
+def get_public_ip():
+    res = requests.get("http://checkip.amazonaws.com")
+    return res.text.rstrip()
 
 
 @pytest.fixture(scope="session")
@@ -86,6 +92,7 @@ def create_driver(write_allure_enviorment, prep_properties, request):
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
         allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
+        allure.attach(get_public_ip(), "public ip address", attachment_type=allure.attachment_type.TEXT)
     driver.quit()
 
 
