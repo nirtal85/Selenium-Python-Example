@@ -24,8 +24,7 @@ def pytest_addoption(parser):
 
 
 def get_public_ip():
-    res = requests.get("http://checkip.amazonaws.com")
-    return res.text.rstrip()
+    return requests.get("http://checkip.amazonaws.com").text.rstrip()
 
 
 @pytest.fixture(scope="session")
