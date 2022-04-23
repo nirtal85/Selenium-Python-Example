@@ -35,8 +35,8 @@ def prep_properties():
 
 
 @pytest.fixture(autouse=True)
-# fetch browser kind and base url then writes a dictionary of key-value pair into allure's environment.properties file
-def write_allure_enviorment(prep_properties):
+# fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
+def write_allure_environment(prep_properties):
     yield
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env({"browser": browser, "base_url": base_url})
@@ -58,7 +58,7 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(write_allure_enviorment, prep_properties, request):
+def create_driver(write_allure_environment, prep_properties, request):
     global browser, base_url, driver
     browser = request.config.option.browser
     base_url = prep_properties.config_section_dict("Base Url")["base_url"]
@@ -98,11 +98,8 @@ def create_driver(write_allure_enviorment, prep_properties, request):
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     # execute all other hooks to obtain the report object
-
     outcome = yield
     rep = outcome.get_result()
-
     # set a report attribute for each phase of a call, which can
     # be "setup", "call", "teardown"
-
     setattr(item, "rep_" + rep.when, rep)
