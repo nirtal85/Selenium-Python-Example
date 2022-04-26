@@ -1,5 +1,6 @@
-import configparser
 import os
+
+import configparser
 
 from globals import dir_global
 
@@ -34,5 +35,5 @@ class AllureEnvironmentParser:
     def write_to_allure_env(self, dic):
         f = open(self.file_path, 'w+')  # opens environment.properties file - creates it if it does not exist
         for key in dic:
-            f.write(key + '=' + dic[key] + "\n")  # writes values as key-value pairs
+            f.write(key + '=' + dic[key] + "\n")  # Write values as key-value pairs
         f.close()
