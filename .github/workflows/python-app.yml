@@ -19,7 +19,7 @@ jobs:
       - name: Starting Selenoid Server (aerokube/selenoid) within actions
         uses: ajinx/selenoid@2.0
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.9
       - name: Install dependencies
