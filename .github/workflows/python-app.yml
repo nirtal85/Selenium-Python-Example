@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Starting Selenoid Server (aerokube/selenoid) within actions
         uses: ajinx/selenoid@2.0
       - name: Set up Python 3.9
