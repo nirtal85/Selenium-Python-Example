@@ -89,9 +89,9 @@ def create_driver(write_allure_environment, prep_properties, request):
     yield
     if request.node.rep_call.failed:
         screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
-        allure.attach(driver.get_screenshot_as_png(), name=screenshot_name,
+        allure.attach(body=driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
-        allure.attach(get_public_ip(), "public ip address", attachment_type=allure.attachment_type.TEXT)
+        allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
     driver.quit()
 
 
