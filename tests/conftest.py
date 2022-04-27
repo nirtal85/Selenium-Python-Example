@@ -76,11 +76,11 @@ def create_driver(write_allure_environment, prep_properties, request):
         }
         driver = webdriver.Remote(command_executor="http://localhost:4444/wd/hub", desired_capabilities=capabilities)
     elif browser == "chrome_headless":
-        opts = webdriver.ChromeOptions()
-        opts.add_argument("--headless")
-        opts.add_argument("--disable-dev-shm-usage")
-        opts.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     else:
         driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.implicitly_wait(5)
