@@ -33,7 +33,6 @@ def get_public_ip():
 @pytest.fixture(scope="session")
 # instantiates ini file parses object
 def prep_properties():
-    ChromeDriverManager().install()
     config_reader = ConfigParserIni("props.ini")
     return config_reader
 
@@ -66,9 +65,9 @@ def create_driver(prep_properties, request):
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     else:
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(ChromeDriverManager().install())
     if not writeAllureEnv:
         # fetch browser type and base url then writes a dictionary of key-value
         # pair into allure's environment.properties file
