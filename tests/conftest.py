@@ -38,12 +38,6 @@ def prep_properties():
     return config_reader
 
 
-@pytest.fixture(autouse=True)
-# fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
-def write_allure_environment(prep_properties):
-    yield
-
-
 # https://stackoverflow.com/a/61433141/4515129
 @pytest.fixture
 # Instantiates Page Objects
@@ -60,7 +54,7 @@ def pages():
 
 @pytest.fixture(autouse=True)
 # Performs setup and tear down
-def create_driver(write_allure_environment, prep_properties, request):
+def create_driver(prep_properties, request):
     global driver, writeAllureEnv
     browser = request.config.option.browser
     base_url = prep_properties.config_section_dict("Base Url")["base_url"]
@@ -76,6 +70,8 @@ def create_driver(write_allure_environment, prep_properties, request):
     else:
         driver = webdriver.Chrome()
     if not writeAllureEnv:
+        # fetch browser type and base url then writes a dictionary of key-value
+        # pair into allure's environment.properties file
         env_parser = AllureEnvironmentParser("environment.properties")
         env_parser.write_to_allure_env(
             {
