@@ -65,6 +65,12 @@ def create_driver(write_allure_environment, prep_properties, request):
 
     if browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+    elif browser == "chrome_headless":
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     else:
         driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.implicitly_wait(5)
