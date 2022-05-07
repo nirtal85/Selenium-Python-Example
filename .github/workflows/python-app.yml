@@ -15,11 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Starting Selenoid Server (aerokube/selenoid) within actions
-        uses: ajinx/selenoid@2.0
+      - uses: actions/checkout@v3
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.9
       - name: Install dependencies
@@ -30,7 +28,7 @@ jobs:
         run: pip install pytest-github-actions-annotate-failures
       - name: Test with pytest
         run: |
-          pytest --alluredir=allure-results --browser remote
+          pytest --alluredir=allure-results --browser chrome_headless
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -42,8 +40,8 @@ jobs:
           allure_history: allure-history
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
+        uses: peaceiris/actions-gh-pages@v3
+        with:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history

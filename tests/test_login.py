@@ -12,7 +12,7 @@ users = [
 
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.epic("Security")
-@allure.story("Login Feature's Functionality")
+@allure.feature("Login")
 @pytest.mark.security
 class TestLogin(BaseTest):
 
@@ -39,10 +39,13 @@ class TestLogin(BaseTest):
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
+    @allure.story("As a user i want to be able to logout after a successful login.")
     @pytest.mark.run(order=2)
     def test_logout(self):
         username = self.config_reader.config_section_dict("Base Url")["username"]
         password = self.config_reader.config_section_dict("Base Url")["password"]
+        # example of a simple text attachment
+        allure.attach(body=username, name="username", attachment_type=allure.attachment_type.TEXT)
         self.pages['about_page'].click_login_link()
         self.pages['login_page'].login(username, password)
         self.pages['projects_page'].logout()
