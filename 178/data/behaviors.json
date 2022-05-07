@@ -1,0 +1,250 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "Security",
+    "children" : [ {
+      "name" : "Login",
+      "children" : [ {
+        "name" : "Login with valid credentials test",
+        "uid" : "a7903f657946f05",
+        "parentUid" : "c0612ebb27e040972f4e157e6172de82",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954028068,
+          "stop" : 1651954031735,
+          "duration" : 3667
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "As a user i want to be able to logout after a successful login.",
+        "children" : [ {
+          "name" : "Logout of system test",
+          "uid" : "5dbdd27d3d974a74",
+          "parentUid" : "18daf2085017512b0c86e1ebfdf5b5a9",
+          "status" : "broken",
+          "time" : {
+            "start" : 1651954032685,
+            "stop" : 1651954032685,
+            "duration" : 0
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "18daf2085017512b0c86e1ebfdf5b5a9"
+      }, {
+        "name" : "Login with invalid credentials test",
+        "uid" : "dedfa2352141b4bb",
+        "parentUid" : "c0612ebb27e040972f4e157e6172de82",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954034605,
+          "stop" : 1651954034605,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'nirt236@gmail.com'", "'123456'" ]
+      }, {
+        "name" : "Login with invalid credentials test",
+        "uid" : "e4214dd14ed2894a",
+        "parentUid" : "c0612ebb27e040972f4e157e6172de82",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954035549,
+          "stop" : 1651954035549,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'elias@gmail.com'", "'12345Tr'" ]
+      }, {
+        "name" : "Skipped test example",
+        "uid" : "6b00d52e2c4a19a4",
+        "parentUid" : "c0612ebb27e040972f4e157e6172de82",
+        "status" : "skipped",
+        "time" : {
+          "start" : 1651954047032,
+          "stop" : 1651954047032,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "c0612ebb27e040972f4e157e6172de82"
+    }, {
+      "name" : "Forgot Password Feature's Functionality",
+      "children" : [ {
+        "name" : "Forgot Password with valid email test",
+        "uid" : "a84439a693df6261",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954044187,
+          "stop" : 1651954044187,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Forgot Password with invalid email test",
+        "uid" : "f0b7d19fc6864473",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954045135,
+          "stop" : 1651954045135,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Exception test",
+        "uid" : "6e91c2cdd4981702",
+        "parentUid" : "783795c916a34ff068bbd39b11f31110",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954046090,
+          "stop" : 1651954046090,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "783795c916a34ff068bbd39b11f31110"
+    } ],
+    "uid" : "526d0329f324aba33fe765945cd65d47"
+  }, {
+    "name" : "Workspaces",
+    "children" : [ {
+      "name" : "WorkSpaces Creation and Editing Functionality",
+      "children" : [ {
+        "name" : "Create new workspace test",
+        "uid" : "76dbb2204ba01138",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954031786,
+          "stop" : 1651954031786,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Rename an existing workspace test",
+        "uid" : "fca6e3711d1a11f7",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954033631,
+          "stop" : 1651954033631,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Delete existing workspace",
+        "uid" : "2c01a28f355736fb",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954036498,
+          "stop" : 1651954036498,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Number of projects displayed in page test",
+        "uid" : "2de24c525582795b",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954038461,
+          "stop" : 1651954038461,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Add project to workspace test",
+        "uid" : "67e5cb40bc5cd59c",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954039393,
+          "stop" : 1651954039393,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Search for existing project test",
+        "uid" : "1fcab0f8bf67773b",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954040367,
+          "stop" : 1651954040367,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Search for non existing project",
+        "uid" : "d15bd8f7fc8b94d4",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954041323,
+          "stop" : 1651954041323,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Cancel a project deletion",
+        "uid" : "82de74702236ac08",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954042269,
+          "stop" : 1651954042269,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Delete existing project",
+        "uid" : "de47b3ef1d9b1d59",
+        "parentUid" : "19d9d8da6f73801bcbe91bb4833c2801",
+        "status" : "broken",
+        "time" : {
+          "start" : 1651954043239,
+          "stop" : 1651954043239,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "19d9d8da6f73801bcbe91bb4833c2801"
+    } ],
+    "uid" : "d170b500587d1218631bae4955f7baf8"
+  } ],
+  "name" : "behaviors"
+}
