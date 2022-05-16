@@ -1,8 +1,8 @@
 from datetime import datetime
 
 import allure
-import pytest
 import requests
+from pytest import fixture, hookimpl
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
@@ -27,14 +27,14 @@ def get_public_ip():
     return requests.get("http://checkip.amazonaws.com").text.rstrip()
 
 
-@pytest.fixture(scope="session")
+@fixture(scope="session")
 # instantiates ini file parses object
 def prep_properties():
     config_reader = ConfigParserIni("props.ini")
     return config_reader
 
 
-@pytest.fixture(autouse=True)
+@fixture(autouse=True, scope="session")
 # fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
 def write_allure_environment(prep_properties):
     yield
@@ -48,7 +48,7 @@ def write_allure_environment(prep_properties):
 
 
 # https://stackoverflow.com/a/61433141/4515129
-@pytest.fixture
+@fixture
 # Instantiates Page Objects
 def pages():
     about_page = AboutPage(driver)
@@ -61,7 +61,7 @@ def pages():
     return locals()
 
 
-@pytest.fixture(autouse=True)
+@fixture(autouse=True)
 # Performs setup and tear down
 def create_driver(write_allure_environment, prep_properties, request):
     global browser, base_url, driver
@@ -90,7 +90,7 @@ def create_driver(write_allure_environment, prep_properties, request):
     driver.quit()
 
 
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+@hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     # execute all other hooks to obtain the report object
     outcome = yield
