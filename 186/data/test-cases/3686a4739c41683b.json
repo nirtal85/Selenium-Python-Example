@@ -1,0 +1,274 @@
+{
+  "uid" : "3686a4739c41683b",
+  "name" : "Search for non existing project",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_search_for_non_existing_project",
+  "historyId" : "eeb963ec0c1b5733e2a4663e724da814",
+  "time" : {
+    "start" : 1652685655078,
+    "stop" : 1652685670064,
+    "duration" : 14986
+  },
+  "description" : "Search for a non existing project",
+  "descriptionHtml" : "<p>Search for a non existing project</p>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \nStacktrace:\n#0 0x55e67364a533 <unknown>\n#1 0x55e6733a91e8 <unknown>\n#2 0x55e6733df2d7 <unknown>\n#3 0x55e6733df4a1 <unknown>\n#4 0x55e673412494 <unknown>\n#5 0x55e6733fcf6d <unknown>\n#6 0x55e673410224 <unknown>\n#7 0x55e6733fce33 <unknown>\n#8 0x55e6733d271a <unknown>\n#9 0x55e6733d3875 <unknown>\n#10 0x55e67368ee1d <unknown>\n#11 0x55e673692751 <unknown>\n#12 0x55e67367907e <unknown>\n#13 0x55e673693388 <unknown>\n#14 0x55e67366dfe0 <unknown>\n#15 0x55e6736af748 <unknown>\n#16 0x55e6736af8c8 <unknown>\n#17 0x55e6736c970d <unknown>\n#18 0x7f86defca609 <unknown>",
+  "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f4e4fa94fd0>\n\n    @allure.description(\"Search for a non existing project\")\n    @allure.title(\"Search for non existing project\")\n    @pytest.mark.run(order=7)\n    def test_search_for_non_existing_project(self):\n        login(self.config_reader, self.pages)\n>       self.pages['projects_page'].search_project(\n            self.json_reader.read_from_json()[\"workspace\"][\"non_existing_project\"])\n\ntests/test_workspaces.py:95: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:98: in search_project\n    self.click(self._SEARCH_BUTTON)\npages/base_page.py:16: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"8a9e39bb8057d78e14b58a71f0879f48\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f4e4e9f3ee0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except InvalidSelectorException as e:\n                raise e\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.monotonic() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message: \nE       Stacktrace:\nE       #0 0x55e67364a533 <unknown>\nE       #1 0x55e6733a91e8 <unknown>\nE       #2 0x55e6733df2d7 <unknown>\nE       #3 0x55e6733df4a1 <unknown>\nE       #4 0x55e673412494 <unknown>\nE       #5 0x55e6733fcf6d <unknown>\nE       #6 0x55e673410224 <unknown>\nE       #7 0x55e6733fce33 <unknown>\nE       #8 0x55e6733d271a <unknown>\nE       #9 0x55e6733d3875 <unknown>\nE       #10 0x55e67368ee1d <unknown>\nE       #11 0x55e673692751 <unknown>\nE       #12 0x55e67367907e <unknown>\nE       #13 0x55e673693388 <unknown>\nE       #14 0x55e67366dfe0 <unknown>\nE       #15 0x55e6736af748 <unknown>\nE       #16 0x55e6736af8c8 <unknown>\nE       #17 0x55e6736c970d <unknown>\nE       #18 0x7f86defca609 <unknown>\n\n/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:89: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1652685514084,
+      "stop" : 1652685514098,
+      "duration" : 14
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "write_allure_environment",
+    "time" : {
+      "start" : 1652685652281,
+      "stop" : 1652685652281,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "injector",
+    "time" : {
+      "start" : 1652685655077,
+      "stop" : 1652685655077,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1652685652281,
+      "stop" : 1652685655076,
+      "duration" : 2795
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "pages",
+    "time" : {
+      "start" : 1652685655076,
+      "stop" : 1652685655076,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Search for a non existing project",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \nStacktrace:\n#0 0x55e67364a533 <unknown>\n#1 0x55e6733a91e8 <unknown>\n#2 0x55e6733df2d7 <unknown>\n#3 0x55e6733df4a1 <unknown>\n#4 0x55e673412494 <unknown>\n#5 0x55e6733fcf6d <unknown>\n#6 0x55e673410224 <unknown>\n#7 0x55e6733fce33 <unknown>\n#8 0x55e6733d271a <unknown>\n#9 0x55e6733d3875 <unknown>\n#10 0x55e67368ee1d <unknown>\n#11 0x55e673692751 <unknown>\n#12 0x55e67367907e <unknown>\n#13 0x55e673693388 <unknown>\n#14 0x55e67366dfe0 <unknown>\n#15 0x55e6736af748 <unknown>\n#16 0x55e6736af8c8 <unknown>\n#17 0x55e6736c970d <unknown>\n#18 0x7f86defca609 <unknown>",
+    "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7f4e4fa94fd0>\n\n    @allure.description(\"Search for a non existing project\")\n    @allure.title(\"Search for non existing project\")\n    @pytest.mark.run(order=7)\n    def test_search_for_non_existing_project(self):\n        login(self.config_reader, self.pages)\n>       self.pages['projects_page'].search_project(\n            self.json_reader.read_from_json()[\"workspace\"][\"non_existing_project\"])\n\ntests/test_workspaces.py:95: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:98: in search_project\n    self.click(self._SEARCH_BUTTON)\npages/base_page.py:16: in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"8a9e39bb8057d78e14b58a71f0879f48\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f4e4e9f3ee0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except InvalidSelectorException as e:\n                raise e\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.monotonic() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message: \nE       Stacktrace:\nE       #0 0x55e67364a533 <unknown>\nE       #1 0x55e6733a91e8 <unknown>\nE       #2 0x55e6733df2d7 <unknown>\nE       #3 0x55e6733df4a1 <unknown>\nE       #4 0x55e673412494 <unknown>\nE       #5 0x55e6733fcf6d <unknown>\nE       #6 0x55e673410224 <unknown>\nE       #7 0x55e6733fce33 <unknown>\nE       #8 0x55e6733d271a <unknown>\nE       #9 0x55e6733d3875 <unknown>\nE       #10 0x55e67368ee1d <unknown>\nE       #11 0x55e673692751 <unknown>\nE       #12 0x55e67367907e <unknown>\nE       #13 0x55e673693388 <unknown>\nE       #14 0x55e67366dfe0 <unknown>\nE       #15 0x55e6736af748 <unknown>\nE       #16 0x55e6736af8c8 <unknown>\nE       #17 0x55e6736c970d <unknown>\nE       #18 0x7f86defca609 <unknown>\n\n/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:89: TimeoutException",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1652685655078,
+        "stop" : 1652685656717,
+        "duration" : 1639
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'elias123@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1652685656718,
+        "stop" : 1652685659036,
+        "duration" : 2318
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'elias123@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Search for project 'Non Existing'",
+      "time" : {
+        "start" : 1652685659037,
+        "stop" : 1652685670064,
+        "duration" : 11027
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \nStacktrace:\n#0 0x55e67364a533 <unknown>\n#1 0x55e6733a91e8 <unknown>\n#2 0x55e6733df2d7 <unknown>\n#3 0x55e6733df4a1 <unknown>\n#4 0x55e673412494 <unknown>\n#5 0x55e6733fcf6d <unknown>\n#6 0x55e673410224 <unknown>\n#7 0x55e6733fce33 <unknown>\n#8 0x55e6733d271a <unknown>\n#9 0x55e6733d3875 <unknown>\n#10 0x55e67368ee1d <unknown>\n#11 0x55e673692751 <unknown>\n#12 0x55e67367907e <unknown>\n#13 0x55e673693388 <unknown>\n#14 0x55e67366dfe0 <unknown>\n#15 0x55e6736af748 <unknown>\n#16 0x55e6736af8c8 <unknown>\n#17 0x55e6736c970d <unknown>\n#18 0x7f86defca609 <unknown>\n\n",
+      "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 172, in impl\n    return func(*a, **kw)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/projects_page.py\", line 98, in search_project\n    self.click(self._SEARCH_BUTTON)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/base_page.py\", line 16, in click\n    el = self._wait.until(expected_conditions.element_to_be_clickable(webelement))\n  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py\", line 89, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "project_name",
+        "value" : "'Non Existing'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "5c2db1f1a8a1b36e",
+      "name" : "log",
+      "source" : "5c2db1f1a8a1b36e.txt",
+      "type" : "text/plain",
+      "size" : 366
+    }, {
+      "uid" : "a081c01044511151",
+      "name" : "stderr",
+      "source" : "a081c01044511151.txt",
+      "type" : "text/plain",
+      "size" : 237
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "write_allure_environment::0",
+    "time" : {
+      "start" : 1652685670280,
+      "stop" : 1652685670280,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1652685670079,
+      "stop" : 1652685670279,
+      "duration" : 200
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "c0373dda178ea565",
+      "name" : "screenshot on failure: 16/05/2022, 07:21:10",
+      "source" : "c0373dda178ea565.png",
+      "type" : "image/png",
+      "size" : 65604
+    }, {
+      "uid" : "d0a07072d3efb798",
+      "name" : "public ip address",
+      "source" : "d0a07072d3efb798.txt",
+      "type" : "text/plain",
+      "size" : 14
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  } ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=7)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az213-974"
+  }, {
+    "name" : "thread",
+    "value" : "2149-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=7)" ]
+  },
+  "source" : "3686a4739c41683b.json",
+  "parameterValues" : [ ]
+}
