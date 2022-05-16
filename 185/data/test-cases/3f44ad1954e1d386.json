@@ -1,0 +1,276 @@
+{
+  "uid" : "3f44ad1954e1d386",
+  "name" : "Logout of system test",
+  "fullName" : "tests.test_login.TestLogin#test_logout",
+  "historyId" : "22bac01b3c7491378deafbf6e6797ba7",
+  "time" : {
+    "start" : 1652685531400,
+    "stop" : 1652685535430,
+    "duration" : 4030
+  },
+  "description" : "Log out from app",
+  "descriptionHtml" : "<p>Log out from app</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "injector",
+    "time" : {
+      "start" : 1652685531399,
+      "stop" : 1652685531399,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1652685529133,
+      "stop" : 1652685531398,
+      "duration" : 2265
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1652685501228,
+      "stop" : 1652685501242,
+      "duration" : 14
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "pages",
+    "time" : {
+      "start" : 1652685531399,
+      "stop" : 1652685531399,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "write_allure_environment",
+    "time" : {
+      "start" : 1652685529132,
+      "stop" : 1652685529133,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "description" : "Log out from app",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1652685531401,
+        "stop" : 1652685532299,
+        "duration" : 898
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Log in with username: 'elias123@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1652685532300,
+        "stop" : 1652685534441,
+        "duration" : 2141
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'elias123@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Logout from system",
+      "time" : {
+        "start" : 1652685534441,
+        "stop" : 1652685535359,
+        "duration" : 918
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Get page title",
+      "time" : {
+        "start" : 1652685535360,
+        "stop" : 1652685535430,
+        "duration" : 70
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "736edd67b3ab04be",
+      "name" : "username",
+      "source" : "736edd67b3ab04be.txt",
+      "type" : "text/plain",
+      "size" : 18
+    }, {
+      "uid" : "12f934a90e9e3284",
+      "name" : "log",
+      "source" : "12f934a90e9e3284.txt",
+      "type" : "text/plain",
+      "size" : 366
+    }, {
+      "uid" : "a271268c70d25b0e",
+      "name" : "stderr",
+      "source" : "a271268c70d25b0e.txt",
+      "type" : "text/plain",
+      "size" : 237
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 4,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1652685535431,
+      "stop" : 1652685535490,
+      "duration" : 59
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "write_allure_environment::0",
+    "time" : {
+      "start" : 1652685535490,
+      "stop" : 1652685535490,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "Login"
+  }, {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "story",
+    "value" : "As a user i want to be able to logout after a successful login."
+  }, {
+    "name" : "tag",
+    "value" : "run(order=2)"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_login"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "fv-az119-449"
+  }, {
+    "name" : "thread",
+    "value" : "2135-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_login"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "run(order=2)", "security" ]
+  },
+  "source" : "3f44ad1954e1d386.json",
+  "parameterValues" : [ ]
+}
