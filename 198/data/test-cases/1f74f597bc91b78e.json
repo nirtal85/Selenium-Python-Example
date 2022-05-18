@@ -1,0 +1,277 @@
+{
+  "uid" : "1f74f597bc91b78e",
+  "name" : "Rename an existing workspace test",
+  "fullName" : "tests.test_workspaces.TestWorkspaces#test_rename_workspace",
+  "historyId" : "525efb9c00e35c910eb0cf0b7189aa93",
+  "time" : {
+    "start" : 1652906719470,
+    "stop" : 1652906733506,
+    "duration" : 14036
+  },
+  "description" : "Rename an existing workspace",
+  "descriptionHtml" : "<p>Rename an existing workspace</p>\n",
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7fac15288b50>\n\n    @allure.description(\"Rename an existing workspace\")\n    @allure.title(\"Rename an existing workspace test\")\n    @pytest.mark.run(order=2)\n    def test_rename_workspace(self):\n        login(self.config_reader, self.pages)\n>       self.pages['projects_page'].rename_workspace(self.json_reader.read_from_json()[\"workspace\"][\"name\"],\n                                                     self.json_reader.read_from_json()[\"workspace\"][\n                                                         \"new_name\"])\n\ntests/test_workspaces.py:37: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:66: in rename_workspace\n    workspaces = self._wait.until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"a07b9544c9e151101447677cd4fa514e\")>\nmethod = <function visibility_of_all_elements_located.<locals>._predicate at 0x7fac14245dc0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except InvalidSelectorException as e:\n                raise e\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.monotonic() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:89: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "injector",
+    "time" : {
+      "start" : 1652906719469,
+      "stop" : 1652906719469,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "create_driver",
+    "time" : {
+      "start" : 1652906716484,
+      "stop" : 1652906719468,
+      "duration" : 2984
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "write_allure_environment",
+    "time" : {
+      "start" : 1652906676637,
+      "stop" : 1652906676637,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "pages",
+    "time" : {
+      "start" : 1652906719468,
+      "stop" : 1652906719469,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1652906676624,
+      "stop" : 1652906676637,
+      "duration" : 13
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "description" : "Rename an existing workspace",
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_workspaces.TestWorkspaces object at 0x7fac15288b50>\n\n    @allure.description(\"Rename an existing workspace\")\n    @allure.title(\"Rename an existing workspace test\")\n    @pytest.mark.run(order=2)\n    def test_rename_workspace(self):\n        login(self.config_reader, self.pages)\n>       self.pages['projects_page'].rename_workspace(self.json_reader.read_from_json()[\"workspace\"][\"name\"],\n                                                     self.json_reader.read_from_json()[\"workspace\"][\n                                                         \"new_name\"])\n\ntests/test_workspaces.py:37: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/projects_page.py:66: in rename_workspace\n    workspaces = self._wait.until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"a07b9544c9e151101447677cd4fa514e\")>\nmethod = <function visibility_of_all_elements_located.<locals>._predicate at 0x7fac14245dc0>\nmessage = ''\n\n    def until(self, method, message=''):\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except InvalidSelectorException as e:\n                raise e\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, 'screen', None)\n                stacktrace = getattr(exc, 'stacktrace', None)\n            time.sleep(self._poll)\n            if time.monotonic() > end_time:\n                break\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:89: TimeoutException",
+    "steps" : [ {
+      "name" : "Click Login link",
+      "time" : {
+        "start" : 1652906719471,
+        "stop" : 1652906720712,
+        "duration" : 1241
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Log in with username: 'elias123@gmail.com' and password: 'El123456789'",
+      "time" : {
+        "start" : 1652906720712,
+        "stop" : 1652906723390,
+        "duration" : 2678
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "'elias123@gmail.com'"
+      }, {
+        "name" : "password",
+        "value" : "'El123456789'"
+      } ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "Rename workspace 'test' to 'another test'",
+      "time" : {
+        "start" : 1652906723390,
+        "stop" : 1652906733505,
+        "duration" : 10115
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 172, in impl\n    return func(*a, **kw)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/pages/projects_page.py\", line 66, in rename_workspace\n    workspaces = self._wait.until(\n  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/selenium/webdriver/support/wait.py\", line 89, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "old_name",
+        "value" : "'test'"
+      }, {
+        "name" : "new_name",
+        "value" : "'another test'"
+      } ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "28afa6d85f0474bd",
+      "name" : "log",
+      "source" : "28afa6d85f0474bd.txt",
+      "type" : "text/plain",
+      "size" : 366
+    }, {
+      "uid" : "280b9bdb1b9a56e4",
+      "name" : "stderr",
+      "source" : "280b9bdb1b9a56e4.txt",
+      "type" : "text/plain",
+      "size" : 237
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 3
+  },
+  "afterStages" : [ {
+    "name" : "create_driver::0",
+    "time" : {
+      "start" : 1652906733523,
+      "stop" : 1652906733820,
+      "duration" : 297
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "516493297772f971",
+      "name" : "screenshot on failure: 18/05/2022, 20:45:33",
+      "source" : "516493297772f971.png",
+      "type" : "image/png",
+      "size" : 65604
+    }, {
+      "uid" : "d70ebfe9dbf02b35",
+      "name" : "public ip address",
+      "source" : "d70ebfe9dbf02b35.txt",
+      "type" : "text/plain",
+      "size" : 14
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true,
+    "stepsCount" : 0
+  }, {
+    "name" : "write_allure_environment::0",
+    "time" : {
+      "start" : 1652906896847,
+      "stop" : 1652906896847,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "WorkSpaces Creation and Editing Functionality"
+  }, {
+    "name" : "epic",
+    "value" : "Workspaces"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "tag",
+    "value" : "run(order=2)"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_workspaces"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestWorkspaces"
+  }, {
+    "name" : "host",
+    "value" : "fv-az83-288"
+  }, {
+    "name" : "thread",
+    "value" : "2203-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_workspaces"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "run(order=2)" ]
+  },
+  "source" : "1f74f597bc91b78e.json",
+  "parameterValues" : [ ]
+}
