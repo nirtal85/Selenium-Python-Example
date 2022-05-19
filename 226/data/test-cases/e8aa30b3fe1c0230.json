@@ -1,12 +1,12 @@
 {
-  "uid" : "aeac436c948db049",
+  "uid" : "e8aa30b3fe1c0230",
   "name" : "Login with valid credentials test",
   "fullName" : "tests.test_login.TestLogin#test_valid_login",
   "historyId" : "38ab8f45abf666d426f8eaf42b1feac7",
   "time" : {
-    "start" : 1652991226689,
-    "stop" : 1652991230172,
-    "duration" : 3483
+    "start" : 1652991730132,
+    "stop" : 1652991735146,
+    "duration" : 5014
   },
   "description" : "valid login",
   "descriptionHtml" : "<p>valid login</p>\n",
@@ -14,11 +14,11 @@
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "prep_properties",
+    "name" : "injector",
     "time" : {
-      "start" : 1652991223571,
-      "stop" : 1652991223572,
-      "duration" : 1
+      "start" : 1652991730095,
+      "stop" : 1652991730095,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -31,38 +31,8 @@
   }, {
     "name" : "write_allure_environment",
     "time" : {
-      "start" : 1652991223572,
-      "stop" : 1652991223572,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "pages",
-    "time" : {
-      "start" : 1652991226686,
-      "stop" : 1652991226686,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "injector",
-    "time" : {
-      "start" : 1652991226686,
-      "stop" : 1652991226686,
+      "start" : 1652991726531,
+      "stop" : 1652991726531,
       "duration" : 0
     },
     "status" : "passed",
@@ -76,9 +46,39 @@
   }, {
     "name" : "create_driver",
     "time" : {
-      "start" : 1652991223572,
-      "stop" : 1652991226685,
-      "duration" : 3113
+      "start" : 1652991726531,
+      "stop" : 1652991730094,
+      "duration" : 3563
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "pages",
+    "time" : {
+      "start" : 1652991730095,
+      "stop" : 1652991730095,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1652991726530,
+      "stop" : 1652991726531,
+      "duration" : 1
     },
     "status" : "passed",
     "steps" : [ ],
@@ -95,9 +95,9 @@
     "steps" : [ {
       "name" : "Click Login link",
       "time" : {
-        "start" : 1652991226690,
-        "stop" : 1652991228112,
-        "duration" : 1422
+        "start" : 1652991730132,
+        "stop" : 1652991731986,
+        "duration" : 1854
       },
       "status" : "passed",
       "steps" : [ ],
@@ -110,9 +110,9 @@
     }, {
       "name" : "Log in with username: 'elias123@gmail.com' and password: 'El123456789'",
       "time" : {
-        "start" : 1652991228112,
-        "stop" : 1652991230071,
-        "duration" : 1959
+        "start" : 1652991731986,
+        "stop" : 1652991735037,
+        "duration" : 3051
       },
       "status" : "passed",
       "steps" : [ ],
@@ -131,9 +131,9 @@
     }, {
       "name" : "Get projects' page title",
       "time" : {
-        "start" : 1652991230071,
-        "stop" : 1652991230171,
-        "duration" : 100
+        "start" : 1652991735037,
+        "stop" : 1652991735145,
+        "duration" : 108
       },
       "status" : "passed",
       "steps" : [ ],
@@ -145,15 +145,15 @@
       "hasContent" : false
     } ],
     "attachments" : [ {
-      "uid" : "aefff25919e465e1",
+      "uid" : "3dde850300423b4e",
       "name" : "log",
-      "source" : "aefff25919e465e1.txt",
+      "source" : "3dde850300423b4e.txt",
       "type" : "text/plain",
       "size" : 599
     }, {
-      "uid" : "bf255152924d5967",
+      "uid" : "e5ac2eb0a157c376",
       "name" : "stderr",
-      "source" : "bf255152924d5967.txt",
+      "source" : "e5ac2eb0a157c376.txt",
       "type" : "text/plain",
       "size" : 418
     } ],
@@ -166,9 +166,9 @@
   "afterStages" : [ {
     "name" : "write_allure_environment::0",
     "time" : {
-      "start" : 1652991230232,
-      "stop" : 1652991230233,
-      "duration" : 1
+      "start" : 1652991735208,
+      "stop" : 1652991735208,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -181,9 +181,9 @@
   }, {
     "name" : "create_driver::0",
     "time" : {
-      "start" : 1652991230173,
-      "stop" : 1652991230231,
-      "duration" : 58
+      "start" : 1652991735148,
+      "stop" : 1652991735207,
+      "duration" : 59
     },
     "status" : "passed",
     "steps" : [ ],
@@ -195,14 +195,14 @@
     "hasContent" : false
   } ],
   "labels" : [ {
-    "name" : "epic",
-    "value" : "Security"
-  }, {
     "name" : "feature",
     "value" : "Login"
   }, {
     "name" : "severity",
     "value" : "blocker"
+  }, {
+    "name" : "epic",
+    "value" : "Security"
   }, {
     "name" : "tag",
     "value" : "run(order=1)"
@@ -220,10 +220,10 @@
     "value" : "TestLogin"
   }, {
     "name" : "host",
-    "value" : "fv-az28-506"
+    "value" : "fv-az135-630"
   }, {
     "name" : "thread",
-    "value" : "2097-MainThread"
+    "value" : "2086-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -247,6 +247,6 @@
     "categories" : [ ],
     "tags" : [ "security", "run(order=1)" ]
   },
-  "source" : "aeac436c948db049.json",
+  "source" : "e8aa30b3fe1c0230.json",
   "parameterValues" : [ ]
 }
