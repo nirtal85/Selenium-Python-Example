@@ -2,13 +2,11 @@ from datetime import datetime
 
 import allure
 import requests
-from git import Repo
 from pytest import fixture, hookimpl
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -41,7 +39,6 @@ def prep_properties():
 def write_allure_environment(prep_properties):
     yield
     # test
-    repo = Repo(ROOT_DIR)
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env(
         {
