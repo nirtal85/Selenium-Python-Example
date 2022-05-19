@@ -45,9 +45,9 @@ def write_allure_environment(prep_properties):
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env(
         {
-            "Browser": driver.name,
-            "Driver_Version": driver.capabilities['browserVersion'],
-            "URL": base_url
+            "browser": driver.name,
+            "version": driver.capabilities['browserVersion'],
+            "base.url": base_url
         })
 
 
