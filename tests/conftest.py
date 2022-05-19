@@ -93,6 +93,8 @@ def create_driver(write_allure_environment, prep_properties, request):
         allure.attach(body=driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
         allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
+        allure.attach(body=driver.get_log("client"), name="Client logs", attachment_type=allure.attachment_type.JSON)
+        allure.attach(body=driver.get_log("browser"), name="Browser logs", attachment_type=allure.attachment_type.JSON)
     driver.quit()
 
 
