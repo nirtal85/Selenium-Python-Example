@@ -29,6 +29,7 @@ class TestLogin(BaseTest):
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
+    @pytest.mark.test
     def test_valid_login(self):
         username = self.config_reader.config_section_dict("Base Url")["username"]
         password = self.config_reader.config_section_dict("Base Url")["password"]
