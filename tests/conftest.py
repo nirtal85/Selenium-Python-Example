@@ -26,6 +26,7 @@ def pytest_addoption(parser):
 
 
 def get_public_ip():
+    #
     return requests.get("http://checkip.amazonaws.com").text.rstrip()
 
 
