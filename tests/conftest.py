@@ -45,12 +45,13 @@ def write_allure_environment(prep_properties):
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env(
         {
-            "browser": driver.name,
-            "version": driver.capabilities['browserVersion'],
-            "base_url": base_url,
-            "Author-Name": head_commit.author.name,
-            "Commit-date": str(head_commit.committed_date),
-            "Commit-Name": head_commit.message
+            "Browser": driver.name,
+            "Driver Version": driver.capabilities['browserVersion'],
+            "Base URL": base_url,
+            "Commit Author Name": head_commit.author.name,
+            "Commit Date": str(head_commit.committed_date),
+            "Branch": repo.active_branch.name,
+            "Commit Message": head_commit.commitmessage
         })
 
 
