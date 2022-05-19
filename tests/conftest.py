@@ -46,10 +46,7 @@ def write_allure_environment(prep_properties):
         {
             "Browser": driver.name,
             "Driver_Version": driver.capabilities['browserVersion'],
-            "Base_URL": base_url,
-            "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
-            "Commit_Author_Name": repo.head.commit.author.name,
-            "Branch": repo.active_branch.name
+            "Base_URL": base_url
         })
 
 
