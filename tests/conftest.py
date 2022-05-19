@@ -38,13 +38,12 @@ def prep_properties():
 # fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
 def write_allure_environment(prep_properties):
     yield
-    # test
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env(
         {
             "browser": driver.name,
             "version": driver.capabilities['browserVersion'],
-            "base.url": base_url
+            "base_url": base_url
         })
 
 
