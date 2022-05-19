@@ -47,7 +47,7 @@ def write_allure_environment(prep_properties):
         {
             "Browser": driver.name,
             "Driver_Version": driver.capabilities['browserVersion'],
-            "Base_URL": base_url
+            "URL": base_url
         })
 
 
