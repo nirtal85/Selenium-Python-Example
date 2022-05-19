@@ -2,11 +2,13 @@ from datetime import datetime
 
 import allure
 import requests
+from git import Repo
 from pytest import fixture, hookimpl
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
+from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -38,12 +40,17 @@ def prep_properties():
 # fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
 def write_allure_environment(prep_properties):
     yield
+    repo = Repo(ROOT_DIR)
     env_parser = AllureEnvironmentParser("environment.properties")
     env_parser.write_to_allure_env(
         {
-            "browser": driver.name,
-            "version": driver.capabilities['browserVersion'],
-            "base_url": base_url
+            "Browser": driver.name,
+            "Driver Version": driver.capabilities['browserVersion'],
+            "Base URL": base_url,
+            "Commit Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
+            "Commit Message": repo.head.commit.commitmessage,
+            "Commit Author Name": repo.head.commit.author.name,
+            "Branch": repo.active_branch.name
         })
 
 
