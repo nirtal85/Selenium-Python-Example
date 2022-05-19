@@ -63,7 +63,7 @@ When no browser was selected then chrome will be used.
 * Run according to tags:
 
 ```
-pipenv run pytest -k "<tag_name>" --browser <firefox/chrome_headless>
+pipenv run pytest -m <tag_name> --browser <firefox/chrome_headless>
 ```
 
 ## Viewing Test Results
