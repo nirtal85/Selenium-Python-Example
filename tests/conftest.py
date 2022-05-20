@@ -1,4 +1,6 @@
+import os
 from datetime import datetime
+from xml.dom.minidom import Document
 
 import allure
 import requests
@@ -8,7 +10,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-from globals.dir_global import ROOT_DIR
+from globals.dir_global import ROOT_DIR, ALLURE_RESULTS_PATH
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -16,7 +18,6 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.config_parser import AllureEnvironmentParser
 from utils.config_parser import ConfigParserIni
 
 
@@ -41,16 +42,27 @@ def prep_properties():
 def write_allure_environment(prep_properties):
     yield
     repo = Repo(ROOT_DIR)
-    env_parser = AllureEnvironmentParser("environment.properties")
-    env_parser.write_to_allure_env(
-        {
-            "Browser": driver.name,
-            "Driver_Version": driver.capabilities['browserVersion'],
-            "Base_URL": base_url,
-            "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
-            "Commit_Author_Name": repo.head.commit.author.name,
-            "Branch": repo.active_branch.name
-        })
+    allure_environment = {
+        "commit.date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
+        "branch": repo.active_branch.name,
+        "author.name": repo.head.commit.author.name,
+        "browser": driver.name,
+        "version": driver.capabilities['browserVersion'],
+        "base_url": base_url
+    }
+    doc = Document()
+    environment = doc.createElement("environment")
+    for key, value in allure_environment.items():
+        parameter = doc.createElement("parameter")
+        current_key = doc.createElement("key")
+        current_key.appendChild(doc.createTextNode(key))
+        parameter.appendChild(current_key)
+        current_value = doc.createElement("value")
+        current_value.appendChild(doc.createTextNode(value))
+        parameter.appendChild(current_value)
+        environment.appendChild(parameter)
+    doc.appendChild(environment)
+    doc.writexml(open(os.path.join(ALLURE_RESULTS_PATH, "environment.xml"), 'w'))
 
 
 # https://stackoverflow.com/a/61433141/4515129
