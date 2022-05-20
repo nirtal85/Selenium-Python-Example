@@ -43,7 +43,8 @@ def write_allure_environment(prep_properties):
     yield
     repo = Repo(ROOT_DIR)
     allure_environment = {
-        "commit.date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
+        # "commit.date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
+        "commit.message": repo.head.commit.message,
         "branch": repo.active_branch.name,
         "author.name": repo.head.commit.author.name,
         "browser": driver.name,
