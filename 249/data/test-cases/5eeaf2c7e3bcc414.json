@@ -1,0 +1,122 @@
+{
+  "uid" : "5eeaf2c7e3bcc414",
+  "name" : "Skipped test example",
+  "fullName" : "tests.test_login.TestLogin#test_skip",
+  "historyId" : "a8b64fdd5cd2dd5994e87807df215ffd",
+  "time" : {
+    "start" : 1653154107165,
+    "stop" : 1653154107165,
+    "duration" : 0
+  },
+  "description" : "Skip Test example",
+  "descriptionHtml" : "<p>Skip Test example</p>\n",
+  "status" : "skipped",
+  "statusMessage" : "Skipped: no way of currently testing this",
+  "statusTrace" : "('/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/tests/test_login.py', 55, 'Skipped: no way of currently testing this')",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "prep_properties",
+    "time" : {
+      "start" : 1653153893129,
+      "stop" : 1653153893129,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "write_allure_environment",
+    "time" : {
+      "start" : 1653153893129,
+      "stop" : 1653153893129,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "write_allure_environment::0",
+    "time" : {
+      "start" : 1653154107167,
+      "stop" : 1653154107179,
+      "duration" : 12
+    },
+    "status" : "broken",
+    "statusMessage" : "TypeError: HEAD is a detached symbolic reference as it points to 'abe0012f824585e7f59a45c2693e4c15396d31c3'\n",
+    "statusTrace" : "  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/allure_commons/_allure.py\", line 200, in __call__\n    return self._fixture_function(*args, **kwargs)\n  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/_pytest/fixtures.py\", line 899, in _teardown_yield_fixture\n    next(it)\n  File \"/home/runner/work/Selenium-Python-Example/Selenium-Python-Example/tests/conftest.py\", line 51, in write_allure_environment\n    \"branch\": repo.active_branch.name,\n  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/git/repo/base.py\", line 797, in active_branch\n    return self.head.reference\n  File \"/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/git/refs/symbolic.py\", line 294, in _get_reference\n    raise TypeError(\"%s is a detached symbolic reference as it points to %r\" % (self, sha))\n",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  } ],
+  "labels" : [ {
+    "name" : "epic",
+    "value" : "Security"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "feature",
+    "value" : "Login"
+  }, {
+    "name" : "tag",
+    "value" : "@pytest.mark.skip(reason='no way of currently testing this')"
+  }, {
+    "name" : "tag",
+    "value" : "security"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_login"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "fv-az128-809"
+  }, {
+    "name" : "thread",
+    "value" : "2108-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_login"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "security", "@pytest.mark.skip(reason='no way of currently testing this')" ]
+  },
+  "source" : "5eeaf2c7e3bcc414.json",
+  "parameterValues" : [ ]
+}
