@@ -68,7 +68,6 @@ def pages():
 
 
 @fixture(autouse=True)
-# Performs setup and tear down
 def create_driver(write_allure_environment, prep_properties, request):
     global browser, base_url, driver
     browser = request.config.option.browser
@@ -89,7 +88,7 @@ def create_driver(write_allure_environment, prep_properties, request):
     driver.get(base_url)
     yield
     if request.node.rep_call.failed:
-        screenshot_name = 'screenshot on failure: %s' % datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+        screenshot_name = f"screenshot on failure: {datetime.now().strftime('%d/%m/%Y, %H:%M:%S')}"
         allure.attach(body=driver.get_screenshot_as_png(), name=screenshot_name,
                       attachment_type=allure.attachment_type.PNG)
         allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
@@ -103,4 +102,4 @@ def pytest_runtest_makereport(item, call):
     rep = outcome.get_result()
     # set a report attribute for each phase of a call, which can
     # be "setup", "call", "teardown"
-    setattr(item, "rep_" + rep.when, rep)
+    setattr(item, f"rep_{rep.when}", rep)

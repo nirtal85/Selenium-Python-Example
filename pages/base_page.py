@@ -54,7 +54,7 @@ class BasePage:
 
     def _highlight_element(self, webelement, color):
         original_style = webelement.get_attribute("style")
-        new_style = "background-color:yellow;border: 1px solid " + color + original_style
+        new_style = f"background-color:yellow;border: 1px solid {color}{original_style}"
         self._driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
             + new_style + "');},0);", webelement)

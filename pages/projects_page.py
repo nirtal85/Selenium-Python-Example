@@ -62,16 +62,12 @@ class ProjectsPage(TopNavigateBar):
 
     @allure.step("Rename workspace {old_name} to {new_name}")
     def rename_workspace(self, old_name, new_name):
-        flag = False
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         # get workspaces as text
         workspaces_text_list = [workspace.text for workspace in workspaces]
-        # if the old workspace name is not present in list, then add it
-        for i in range(len(workspaces_text_list)):
-            if old_name in workspaces_text_list[i]:
-                flag = True
-                break
+        flag = any(old_name in workspaces_text_list[i] for i in range(len(workspaces_text_list)))
+
         # case the old workspace is not present
         if not flag:
             self.create_workspace(old_name)
@@ -140,10 +136,7 @@ class ProjectsPage(TopNavigateBar):
         self._wait.until(expected_conditions.invisibility_of_element_located(self._RENAME_FIELD))
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
-        for workspace in workspaces:
-            if workspace_name in workspace.text:
-                return True
-        return False
+        return any(workspace_name in workspace.text for workspace in workspaces)
 
     @allure.step("Get projects' page title")
     def get_title(self):
@@ -156,10 +149,7 @@ class ProjectsPage(TopNavigateBar):
     def is_project_found(self, project_name):
         projects_titles = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._PROJECTS_TITLES))
-        for project_title in projects_titles:
-            if project_name != project_title.text.lower():
-                return False
-        return True
+        return all(project_name == project_title.text.lower() for project_title in projects_titles)
 
     # clicks on a specific project's drop down arrow
     def click_drop_down_menu(self, project):

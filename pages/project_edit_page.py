@@ -23,10 +23,8 @@ class ProjectEditPage(BasePage):
     @allure.step("Open new project for editing - project name: {project_name}, project type: {project_type}")
     def edit_project_prep(self, project_name, project_type):
         self.fill_text(self._PROJECT_NAME_FIELD, project_name)
-        if project_type == "thank you page":
+        if project_type == "thank you page" or project_type != "outcome":
             self.click(self._THANK_YOU_PAGE_TYPE_BUTTON)
-        elif project_type == "outcome":
-            self.click(self._OUTCOME_PAGES_TYPE_BUTTON)
         else:
-            self.click(self._THANK_YOU_PAGE_TYPE_BUTTON)
+            self.click(self._OUTCOME_PAGES_TYPE_BUTTON)
         self.click(self._START_EDITING_BUTTON)
