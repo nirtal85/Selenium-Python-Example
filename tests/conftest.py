@@ -30,10 +30,8 @@ def get_public_ip():
 
 
 @fixture(scope="session")
-# instantiates ini file parses object
 def prep_properties():
-    config_reader = ConfigParserIni("props.ini")
-    return config_reader
+    return ConfigParserIni("props.ini")
 
 
 @fixture(autouse=True, scope="session")
