@@ -1,12 +1,12 @@
+import os
+import subprocess
 from datetime import datetime
 
 import allure
 import requests
-from git import Repo
 from pytest import fixture, hookimpl
 from selenium import webdriver
 
-from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -36,18 +36,27 @@ def prep_properties():
 # fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
 def write_allure_environment(prep_properties):
     yield
-    repo = Repo(ROOT_DIR)
     env_parser = AllureEnvironmentParser("environment.properties")
+    # Run the 'git log' command to retrieve the latest commit information
+    result = subprocess.run(['git', '-C', os.getcwd(), 'log', '-1', '--pretty=format:"%h|%cd|%B|%an|%d"'],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    # Split the result into separate pieces of information
+    commit_info = result.stdout.strip().split('|')
+    commit_id = commit_info[0]
+    commit_date = commit_info[1]
+    commit_message = commit_info[2]
+    commit_author = commit_info[3]
+    working_branch = commit_info[4]
     env_parser.write_to_allure_env(
         {
             "Browser": driver.name,
             "Driver_Version": driver.capabilities['browserVersion'],
             "Base_URL": base_url,
-            "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
-            "Commit Message": repo.head.commit.message,
-            "Commit Id": repo.head.commit.hexsha,
-            "Commit_Author_Name": repo.head.commit.author.name,
-            "Branch": repo.active_branch.name
+            "Commit_Date": commit_date,
+            "Commit Message": commit_message,
+            "Commit Id": commit_id,
+            "Commit_Author_Name": commit_author,
+            "Branch": working_branch
         })
 
 
