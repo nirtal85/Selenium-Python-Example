@@ -5,8 +5,6 @@ import requests
 from git import Repo
 from pytest import fixture, hookimpl
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
 
 from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
@@ -72,15 +70,15 @@ def create_driver(write_allure_environment, prep_properties, request):
     base_url = prep_properties.config_section_dict("Base Url")["base_url"]
 
     if browser == "firefox":
-        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+        driver = webdriver.Firefox()
     elif browser == "chrome_headless":
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options)
     else:
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver = webdriver.Chrome()
     driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get(base_url)

@@ -13,9 +13,9 @@ class AboutPage(BasePage):
         super().__init__(driver)
 
     @allure.step("Click Login link")
-    def click_login_link(self):
+    def click_login_link(self) -> None:
         self.click(self.LOGIN_LINK)
 
     @allure.step("Click Register link")
-    def click_register_link(self):
+    def click_register_link(self) -> None:
         self.click(self.REGISTER_LINK)

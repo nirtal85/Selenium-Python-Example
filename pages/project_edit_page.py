@@ -17,11 +17,11 @@ class ProjectEditPage(BasePage):
         super().__init__(driver)
 
     @allure.step("Click SAVE & EXIT button")
-    def click_save_and_exit(self):
+    def click_save_and_exit(self) -> None:
         self.click(self._SAVE_AND_EXIT_BUTTON)
 
     @allure.step("Open new project for editing - project name: {project_name}, project type: {project_type}")
-    def edit_project_prep(self, project_name, project_type):
+    def edit_project_prep(self, project_name: str, project_type: str) -> None:
         self.fill_text(self._PROJECT_NAME_FIELD, project_name)
         if project_type == "thank you page" or project_type != "outcome":
             self.click(self._THANK_YOU_PAGE_TYPE_BUTTON)

@@ -13,7 +13,7 @@ class TemplatesPage(TopNavigateBar):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def choose_template(self, template_name):
+    def choose_template(self, template_name: str) -> None:
         self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
         templates = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))

@@ -15,7 +15,7 @@ class ProjectTypePage(TopNavigateBar):
         super().__init__(driver)
 
     @allure.step("Select project {project_name} from projects menu")
-    def select_project(self, project_name):
+    def select_project(self, project_name: str) -> None:
         projects = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
         for project in projects:
             if project_name == project.text.lower():

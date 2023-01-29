@@ -37,13 +37,13 @@ class ProjectsPage(TopNavigateBar):
         super().__init__(driver)
 
     @allure.step("Create new workspace {workspace_name}")
-    def create_workspace(self, workspace_name):
+    def create_workspace(self, workspace_name: str) -> None:
         self.click(self._CREATE_NEW_WORKSPACE_BUTTON)
         self.fill_text(self._NEW_WORKSPACE_NAME_FIELD, workspace_name)
         self.click(self._CONFIRMATION_BUTTON)
 
     @allure.step("Delete a workspace")
-    def delete_workspace(self):
+    def delete_workspace(self) -> None:
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         # in case only the main workspace exists, then create another
@@ -61,7 +61,7 @@ class ProjectsPage(TopNavigateBar):
         self.click(self._CONFIRMATION_BUTTON)
 
     @allure.step("Rename workspace {old_name} to {new_name}")
-    def rename_workspace(self, old_name, new_name):
+    def rename_workspace(self, old_name: str, new_name: str):
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         # get workspaces as text
@@ -83,19 +83,19 @@ class ProjectsPage(TopNavigateBar):
                 break
 
     @allure.step("Start a new project")
-    def create_new_project(self):
+    def create_new_project(self) -> None:
         if self.is_elem_displayed(self._driver.find_element(*self._START_BUTTON)):
             self.click(self._START_BUTTON)
         elif self.is_elem_displayed(self._driver.find_element(*self._CREATE_PROJECT_BUTTON)):
             self.click(self._CREATE_NEW_WORKSPACE_BUTTON)
 
     @allure.step("Search for project {project_name}")
-    def search_project(self, project_name):
+    def search_project(self, project_name: str):
         self.click(self._SEARCH_BUTTON)
         self.fill_text(self._SEARCH_FIELD, project_name)
 
     @allure.step("Delete or cancel deletion of project {project_name}")
-    def delete_project(self, project_name, status="confirm"):
+    def delete_project(self, project_name: str, status="confirm"):
         projects = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
         deleted_project = None
         for project in projects:
@@ -111,7 +111,7 @@ class ProjectsPage(TopNavigateBar):
             self._wait.until(expected_conditions.invisibility_of_element(deleted_project))
 
     @allure.step("Get workspaces number")
-    def get_workspaces_number(self):
+    def get_workspaces_number(self) -> int:
         self._wait.until(
             expected_conditions.invisibility_of_element_located(self._NEW_WORKSPACE_NAME_FIELD))
         workspaces = self._wait.until(
@@ -119,39 +119,39 @@ class ProjectsPage(TopNavigateBar):
         return len(workspaces)
 
     @allure.step("Get number of projects display on page")
-    def get_projects_number_in_page(self):
+    def get_projects_number_in_page(self) -> int:
         projects = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
         return len(projects)
 
     @allure.step("Get number of projects displayed next to main workspace (My Workspace) name")
-    def get_projects_number_from_workspace(self):
+    def get_projects_number_from_workspace(self) -> int:
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         number = workspaces[0].find_element(*self._NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK)
         return int(number.text)
 
     @allure.step("Verify if workspace {workspace_name} exists")
-    def is_workspace_found(self, workspace_name):
+    def is_workspace_found(self, workspace_name: str) -> bool:
         self._wait.until(expected_conditions.invisibility_of_element_located(self._RENAME_FIELD))
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         return any(workspace_name in workspace.text for workspace in workspaces)
 
     @allure.step("Get projects' page title")
-    def get_title(self):
+    def get_title(self) -> str:
         return self.get_text(self._PROJECT_PAGE_TITLE)
 
     def get_no_project_found_msg(self):
         return self.get_text(self._NO_PROJECT_FOUND_MSG)
 
     @allure.step("Check if {project_name} is present")
-    def is_project_found(self, project_name):
+    def is_project_found(self, project_name: str) -> bool:
         projects_titles = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._PROJECTS_TITLES))
         return all(project_name == project_title.text.lower() for project_title in projects_titles)
 
     # clicks on a specific project's drop down arrow
-    def click_drop_down_menu(self, project):
+    def click_drop_down_menu(self, project) -> None:
         dropdown_menu_button = project.find_element(*self._DROP_DOWN_BUTTON)
         dropdown_menu_button.click()

@@ -17,19 +17,19 @@ class LoginPage(TopMenuBar):
         super().__init__(driver)
 
     @allure.step("Log in with username: {username} and password: {password}")
-    def login(self, username, password):
+    def login(self, username: str, password: str):
         self.fill_text(self.USERNAME_FIELD, username)
         self.fill_text(self.PASSWORD_FIELD, password)
         self.click(self.LOGIN_BUTTON)
 
     @allure.step("Get error message")
-    def get_error_message(self):
+    def get_error_message(self) -> str:
         return self.get_text(self.LOGIN_ERROR_MESSAGE)
 
     @allure.step("Get page title")
-    def get_page_title(self):
+    def get_page_title(self) -> str:
         return self.get_text(self.PAGE_TITLE)
 
     @allure.step("Click Forgot Password link")
-    def click_forgot_password(self):
+    def click_forgot_password(self) -> None:
         self.click(self.FORGOT_PASSWORD_LINK)
