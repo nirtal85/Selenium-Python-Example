@@ -23,7 +23,7 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
-def get_public_ip():
+def get_public_ip() -> str:
     return requests.get("http://checkip.amazonaws.com").text.rstrip()
 
 
@@ -69,7 +69,7 @@ def pages():
 def create_driver(write_allure_environment, prep_properties, request):
     global browser, base_url, driver
     browser = request.config.option.browser
-    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
+    base_url: str = prep_properties.config_section_dict("Base Url")["base_url"]
 
     if browser == "firefox":
         driver = webdriver.Firefox()
