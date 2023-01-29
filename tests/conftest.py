@@ -69,7 +69,7 @@ def pages():
 def create_driver(write_allure_environment, prep_properties, request):
     global browser, base_url, driver
     browser = request.config.option.browser
-    base_url: str = prep_properties.config_section_dict("Base Url")["base_url"]
+    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
 
     if browser == "firefox":
         driver = webdriver.Firefox()
