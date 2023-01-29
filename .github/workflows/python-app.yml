@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Python Dependency Installation
-        uses: py-actions/py-dependency-install@v3.0.0
+        uses: py-actions/py-dependency-install@v4.0.0
       - name: Install plugin
         run: pip install pytest-github-actions-annotate-failures
       - name: Test with pytest
