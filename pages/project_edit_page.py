@@ -8,8 +8,8 @@ class ProjectEditPage(BasePage):
     """ Project Edit page - the page where adding to and editing projects is done """
 
     _PROJECT_NAME_FIELD = (By.CSS_SELECTOR, "input#project-name")
-    _THANK_YOU_PAGE_TYPE_BUTTON = (By.CSS_SELECTOR, "[for='select-single-outcome']")
-    _OUTCOME_PAGES_TYPE_BUTTON = (By.CSS_SELECTOR, "[for='select-outcomes']")
+    _THANK_YOU_PAGE_TYPE_BUTTON = (By.CSS_SELECTOR, "[for=select-single-outcome]")
+    _OUTCOME_PAGES_TYPE_BUTTON = (By.CSS_SELECTOR, "[for=select-outcomes]")
     _START_EDITING_BUTTON = (By.CSS_SELECTOR, ".swal-button.swal-button--confirm")
     _SAVE_AND_EXIT_BUTTON = (By.CSS_SELECTOR, ".e-close.nav-link")
 

@@ -5,8 +5,8 @@ from pages.base_page import BasePage
 
 
 class ForgotPasswordPage(BasePage):
-    EMAIL_FIELD = (By.CSS_SELECTOR, "[name='email']")
-    SEND_PASSWORD_RESET_LINK_BUTTON = (By.CSS_SELECTOR, "[type='submit']")
+    EMAIL_FIELD = (By.CSS_SELECTOR, "[name=email]")
+    SEND_PASSWORD_RESET_LINK_BUTTON = (By.CSS_SELECTOR, "[type=submit]")
     ERROR_MSG = (By.CSS_SELECTOR, '.alert-danger')
     SUCCESS_MSG = (By.CSS_SELECTOR, '.alert-success')
     PAGE_TITLE = (By.CSS_SELECTOR, ".e-form-heading")

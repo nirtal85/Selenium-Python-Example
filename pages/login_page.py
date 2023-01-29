@@ -6,9 +6,9 @@ from pages.top_bars.top_menu_bar import TopMenuBar
 
 class LoginPage(TopMenuBar):
     """ Login Page """
-    USERNAME_FIELD = (By.CSS_SELECTOR, "input[name='email']")
-    PASSWORD_FIELD = (By.CSS_SELECTOR, "input[name='password']")
-    LOGIN_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
+    USERNAME_FIELD = (By.CSS_SELECTOR, "input[type=email]")
+    PASSWORD_FIELD = (By.CSS_SELECTOR, "input[type=password]")
+    LOGIN_BUTTON = (By.CSS_SELECTOR, "button[type=submit]")
     LOGIN_ERROR_MESSAGE = (By.CSS_SELECTOR, "div.alert-danger")
     PAGE_TITLE = (By.CSS_SELECTOR, ".e-form-heading")
     FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, "[href='https://app.involve.me/password/reset']")
