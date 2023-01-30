@@ -4,12 +4,10 @@
 
 ## Articles written about this project
 
-1. [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions
-   ](https://www.linkedin.com/pulse/test-automation-how-build-cicd-pipeline-using-pytest-nir-tal/)
-2. [Test Automation - How To Attach Public IP Adress to Allure report using Pytest and Requests
-   ](https://www.linkedin.com/pulse/test-automation-how-attach-public-ip-adress-allure-report-nir-tal/)
-3. [Test Automation - Selenium Example Python Project 2022 Updates
-   ](https://www.linkedin.com/pulse/test-automation-selenium-example-python-project-2022-nir-tal/)
+1. [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-build-cicd-pipeline-using-pytest-nir-tal/)
+2. [Test Automation - How To Attach Public IP Adress to Allure report using Pytest and Requests](https://www.linkedin.com/pulse/test-automation-how-attach-public-ip-adress-allure-report-nir-tal/)
+3. [Test Automation - Selenium Example Python Project 2022 Updates](https://www.linkedin.com/pulse/test-automation-selenium-example-python-project-2022-nir-tal/)
+4. [Test Automation - How To Add Git Version Control Data To Allure Report in Java](https://www.linkedin.com/pulse/test-automation-how-add-version-control-data-allure-nir-tal/)
 
 ## Project Setup
 
