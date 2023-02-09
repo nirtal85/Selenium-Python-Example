@@ -93,6 +93,9 @@ def create_driver(write_allure_environment, prep_properties, request):
         allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
         allure.attach(body=json.dumps(driver.get_cookies(), indent=4), name="Cookies",
                       attachment_type=allure.attachment_type.JSON)
+        allure.attach(body=json.dumps(
+            {item[0]: item[1] for item in driver.execute_script("return Object.entries(localStorage);")}, indent=4),
+            name="Local Storage", attachment_type=allure.attachment_type.JSON)
     driver.quit()
 
 
