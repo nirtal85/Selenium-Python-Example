@@ -127,7 +127,6 @@ def create_unified_list(data):
     unified_items = {}
 
     # Loop through the data list
-    # Loop through the data list
     for item in data:
         method = item.get("method")
         params = item.get("params")
