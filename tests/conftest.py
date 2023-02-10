@@ -138,6 +138,9 @@ def create_unified_list(data):
                 unified_item = unified_items[request_id]
                 if method == "Network.responseReceived":
                     unified_item["response"] = item
+                    with suppress(Exception):
+                        unified_item["response"]["body"] = driver.execute_cdp_cmd("Network.getResponseBody",
+                                                                                  {"requestId": request_id})
                 elif method == "Network.requestWillBeSent":
                     unified_item["request"] = item
                     if params.get("request").get("hasPostData"):
@@ -149,6 +152,9 @@ def create_unified_list(data):
                 unified_item = {}
                 if method == "Network.responseReceived":
                     unified_item["response"] = item
+                    with suppress(Exception):
+                        unified_item["response"]["body"] = driver.execute_cdp_cmd("Network.getResponseBody",
+                                                                                  {"requestId": request_id})
                 elif method == "Network.requestWillBeSent":
                     unified_item["request"] = item
                     if params.get("request").get("hasPostData"):
