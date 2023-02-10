@@ -126,14 +126,17 @@ def pytest_runtest_makereport(item, call):
 
 
 def get_response_body(request_id):
+    """Get the response body for the specified request ID."""
     return driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": request_id})
 
 
 def get_request_post_data(request_id):
+    """Get the request post data for the specified request ID."""
     return driver.execute_cdp_cmd("Network.getRequestPostData", {"requestId": request_id})
 
 
 def create_unified_list(data):
+    """Create a unified list of request and matching response from the given data."""
     unified_items = defaultdict(dict)
     for item in data:
         method = item.get("method")
