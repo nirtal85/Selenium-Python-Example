@@ -68,20 +68,25 @@ def pages():
 
 @fixture(autouse=True)
 def create_driver(write_allure_environment, prep_properties, request):
-    global browser, base_url, driver
+    global browser, base_url, driver, chrome_options
     browser = request.config.option.browser
     base_url = prep_properties.config_section_dict("Base Url")["base_url"]
 
+    if browser in ("chrome", "chrome_headless"):
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.set_capability(
+            "goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"}
+        )
     if browser == "firefox":
         driver = webdriver.Firefox()
     elif browser == "chrome_headless":
-        chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
         driver = webdriver.Chrome(options=chrome_options)
     else:
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options)
+
     driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get(base_url)
@@ -99,6 +104,8 @@ def create_driver(write_allure_environment, prep_properties, request):
             {item[0]: item[1] for item in driver.execute_script("return Object.entries(localStorage);")}, indent=4),
             name="Local Storage", attachment_type=allure.attachment_type.JSON)
         allure.attach(body=json.dumps(driver.get_log("browser"), indent=4), name="Console Logs",
+                      attachment_type=allure.attachment_type.JSON)
+        allure.attach(body=json.dumps(driver.get_log("performance"), indent=4), name="Network Logs",
                       attachment_type=allure.attachment_type.JSON)
     driver.quit()
 
