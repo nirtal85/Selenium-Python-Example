@@ -105,8 +105,10 @@ def create_driver(write_allure_environment, prep_properties, request):
             name="Local Storage", attachment_type=allure.attachment_type.JSON)
         allure.attach(body=json.dumps(driver.get_log("browser"), indent=4), name="Console Logs",
                       attachment_type=allure.attachment_type.JSON)
-        allure.attach(body=json.dumps(driver.get_log("performance"), indent=4), name="Network Logs",
-                      attachment_type=allure.attachment_type.JSON)
+        allure.attach(body=json.dumps(
+            create_unified_list([json.loads(log["message"])["message"] for log in driver.get_log("performance")]),
+            indent=4), name="Network Logs",
+            attachment_type=allure.attachment_type.JSON)
     driver.quit()
 
 
@@ -118,3 +120,34 @@ def pytest_runtest_makereport(item, call):
     # set a report attribute for each phase of a call, which can
     # be "setup", "call", "teardown"
     setattr(item, f"rep_{rep.when}", rep)
+
+
+def create_unified_list(data):
+    # Create a dictionary to store the unified items
+    unified_items = {}
+
+    # Loop through the data list
+    # Loop through the data list
+    for item in data:
+        method = item.get("method")
+        params = item.get("params")
+        if params.get("type") == "XHR":
+            request_id = params["requestId"]
+            if request_id in unified_items:
+                # If the requestId already exists in the dictionary, update the existing entry
+                unified_item = unified_items[request_id]
+                if method == "Network.responseReceived":
+                    unified_item["response"] = item
+                elif method == "Network.requestWillBeSent":
+                    unified_item["request"] = item
+            else:
+                # If the requestId does not exist in the dictionary, add a new entry
+                unified_item = {}
+                if method == "Network.responseReceived":
+                    unified_item["response"] = item
+                elif method == "Network.requestWillBeSent":
+                    unified_item["request"] = item
+                unified_items[request_id] = unified_item
+
+    # Return the unified items as a list
+    return list(unified_items.values())
