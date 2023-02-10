@@ -1,4 +1,5 @@
 import json
+from contextlib import suppress
 from datetime import datetime
 
 import allure
@@ -139,6 +140,10 @@ def create_unified_list(data):
                     unified_item["response"] = item
                 elif method == "Network.requestWillBeSent":
                     unified_item["request"] = item
+                    if params.get("request").get("hasPostData"):
+                        with suppress(Exception):
+                            unified_item["request"]["body"] = driver.execute_cdp_cmd("Network.getRequestPostData",
+                                                                                     {"requestId": request_id})
             else:
                 # If the requestId does not exist in the dictionary, add a new entry
                 unified_item = {}
@@ -146,7 +151,11 @@ def create_unified_list(data):
                     unified_item["response"] = item
                 elif method == "Network.requestWillBeSent":
                     unified_item["request"] = item
+                    if params.get("request").get("hasPostData"):
+                        with suppress(Exception):
+                            unified_item["request"]["body"] = driver.execute_cdp_cmd("Network.getRequestPostData",
+                                                                                     {"requestId": request_id})
                 unified_items[request_id] = unified_item
 
-    # Return the unified items as a list
-    return list(unified_items.values())
+        # Filter out the items without response
+    return [item for item in unified_items.values() if "response" in item]
