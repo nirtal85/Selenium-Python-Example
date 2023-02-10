@@ -1,4 +1,5 @@
 import json
+from collections import defaultdict
 from contextlib import suppress
 from datetime import datetime
 
@@ -124,45 +125,30 @@ def pytest_runtest_makereport(item, call):
     setattr(item, f"rep_{rep.when}", rep)
 
 
-def create_unified_list(data):
-    # Create a dictionary to store the unified items
-    unified_items = {}
+def get_response_body(request_id):
+    return driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": request_id})
 
-    # Loop through the data list
+
+def get_request_post_data(request_id):
+    return driver.execute_cdp_cmd("Network.getRequestPostData", {"requestId": request_id})
+
+
+def create_unified_list(data):
+    unified_items = defaultdict(dict)
     for item in data:
         method = item.get("method")
         params = item.get("params")
-        if params.get("type") == "XHR":
-            request_id = params["requestId"]
-            if request_id in unified_items:
-                # If the requestId already exists in the dictionary, update the existing entry
-                unified_item = unified_items[request_id]
-                if method == "Network.responseReceived":
-                    unified_item["response"] = item
-                    with suppress(Exception):
-                        unified_item["response"]["body"] = driver.execute_cdp_cmd("Network.getResponseBody",
-                                                                                  {"requestId": request_id})
-                elif method == "Network.requestWillBeSent":
-                    unified_item["request"] = item
-                    if params.get("request").get("hasPostData"):
-                        with suppress(Exception):
-                            unified_item["request"]["body"] = driver.execute_cdp_cmd("Network.getRequestPostData",
-                                                                                     {"requestId": request_id})
-            else:
-                # If the requestId does not exist in the dictionary, add a new entry
-                unified_item = {}
-                if method == "Network.responseReceived":
-                    unified_item["response"] = item
-                    with suppress(Exception):
-                        unified_item["response"]["body"] = driver.execute_cdp_cmd("Network.getResponseBody",
-                                                                                  {"requestId": request_id})
-                elif method == "Network.requestWillBeSent":
-                    unified_item["request"] = item
-                    if params.get("request").get("hasPostData"):
-                        with suppress(Exception):
-                            unified_item["request"]["body"] = driver.execute_cdp_cmd("Network.getRequestPostData",
-                                                                                     {"requestId": request_id})
-                unified_items[request_id] = unified_item
-
-        # Filter out the items without response
+        if params.get("type") != "XHR":
+            continue
+        request_id = params["requestId"]
+        unified_item = unified_items[request_id]
+        if method == "Network.responseReceived":
+            unified_item["response"] = item
+            with suppress(Exception):
+                unified_item["response"]["body"] = get_response_body(request_id)
+        elif method == "Network.requestWillBeSent":
+            unified_item["request"] = item
+            if params.get("request", {}).get("hasPostData"):
+                with suppress(Exception):
+                    unified_item["request"]["body"] = get_request_post_data(request_id)
     return [item for item in unified_items.values() if "response" in item]
