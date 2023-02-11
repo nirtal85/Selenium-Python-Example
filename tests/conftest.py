@@ -108,10 +108,8 @@ def create_driver(write_allure_environment, prep_properties, request):
             name="Local Storage", attachment_type=allure.attachment_type.JSON)
         allure.attach(body=json.dumps(driver.get_log("browser"), indent=4), name="Console Logs",
                       attachment_type=allure.attachment_type.JSON)
-        allure.attach(body=json.dumps(
-            create_unified_list([json.loads(log["message"])["message"] for log in driver.get_log("performance")]),
-            indent=4), name="Network Logs",
-            attachment_type=allure.attachment_type.JSON)
+        allure.attach(body=json.dumps(attach_network_logs(), indent=4), name="Network Logs",
+                      attachment_type=allure.attachment_type.JSON)
     driver.quit()
 
 
@@ -135,23 +133,22 @@ def get_request_post_data(request_id):
     return driver.execute_cdp_cmd("Network.getRequestPostData", {"requestId": request_id})
 
 
-def create_unified_list(data):
-    """Create a unified list of request and matching response from the given data."""
-    unified_items = defaultdict(dict)
-    for item in data:
-        method = item.get("method")
+def attach_network_logs():
+    network_logs = defaultdict(dict)
+    for item in [json.loads(log["message"])["message"] for log in driver.get_log("performance")]:
         params = item.get("params")
         if params.get("type") != "XHR":
             continue
+        method = item.get("method")
         request_id = params["requestId"]
-        unified_item = unified_items[request_id]
+        network_log = network_logs[request_id]
         if method == "Network.responseReceived":
-            unified_item["response"] = item
+            network_log["response"] = item
             with suppress(Exception):
-                unified_item["response"]["body"] = get_response_body(request_id)
+                network_log["response"]["body"] = get_response_body(request_id)
         elif method == "Network.requestWillBeSent":
-            unified_item["request"] = item
+            network_log["request"] = item
             if params.get("request", {}).get("hasPostData"):
                 with suppress(Exception):
-                    unified_item["request"]["body"] = get_request_post_data(request_id)
-    return [item for item in unified_items.values() if "response" in item]
+                    network_log["request"]["body"] = get_request_post_data(request_id)
+    return [item for item in network_logs.values() if "response" in item]
