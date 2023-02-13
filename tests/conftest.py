@@ -105,8 +105,6 @@ def create_driver(write_allure_environment, prep_properties, request):
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(body=driver.current_url, name=f"URL of window in index {window}",
                               attachment_type=allure.attachment_type.URI_LIST)
-    allure.attach(body=driver.get_screenshot_as_png(), name="Screenshot",
-                  attachment_type=allure.attachment_type.PNG)
     allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
     allure.attach(body=json.dumps(driver.get_cookies(), indent=4), name="Cookies",
                   attachment_type=allure.attachment_type.JSON)
