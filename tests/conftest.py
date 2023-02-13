@@ -98,7 +98,7 @@ def create_driver(write_allure_environment, prep_properties, request):
                           attachment_type=allure.attachment_type.PNG)
         else:
             for window in range(window_count):
-                driver.switch_to.window(window)
+                driver.switch_to.window(driver.window_handles[window])
                 allure.attach(body=driver.get_screenshot_as_png(),
                               name=f"Full Page Screen Shot of window in index {window}",
                               attachment_type=allure.attachment_type.PNG)
