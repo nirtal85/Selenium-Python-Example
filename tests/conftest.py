@@ -78,15 +78,18 @@ def create_driver(write_allure_environment, prep_properties, request):
         chrome_options.set_capability(
             "goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"}
         )
-    if browser == "firefox":
-        driver = webdriver.Firefox()
-    elif browser == "chrome_headless":
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(options=chrome_options)
-    else:
-        driver = webdriver.Chrome(options=chrome_options)
+    match browser:
+        case "firefox":
+            driver = webdriver.Firefox()
+        case "chrome_headless":
+
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            chrome_options.add_argument("--no-sandbox")
+            driver = webdriver.Chrome(options=chrome_options)
+        case _:
+            driver = webdriver.Chrome(options=chrome_options)
+
     driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get(base_url)
