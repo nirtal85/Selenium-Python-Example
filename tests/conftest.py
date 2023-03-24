@@ -5,6 +5,8 @@ from datetime import datetime
 
 import allure
 import requests
+from PIL import Image
+from Screenshot import Screenshot
 from git import Repo
 from pytest import fixture, hookimpl
 from selenium import webdriver
@@ -112,13 +114,13 @@ def create_driver(write_allure_environment, prep_properties, request):
     if request.node.rep_call.failed:
         window_count = len(driver.window_handles)
         if window_count == 1:
-            allure.attach(body=driver.get_screenshot_as_png(), name="Screenshot",
+            allure.attach(body=Image.open(Screenshot.Screenshot().full_Screenshot(driver, image_name=f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.png")), name="Screenshot",
                           attachment_type=allure.attachment_type.PNG)
             allure.attach(body=driver.current_url, name="URL", attachment_type=allure.attachment_type.URI_LIST)
         else:
             for window in range(window_count):
                 driver.switch_to.window(driver.window_handles[window])
-                allure.attach(body=driver.get_screenshot_as_png(),
+                allure.attach(body=Image.open(Screenshot.Screenshot().full_Screenshot(driver, image_name=f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.png")),
                               name=f"Full Page Screen Shot of window in index {window}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(body=driver.current_url, name=f"URL of window in index {window}",
