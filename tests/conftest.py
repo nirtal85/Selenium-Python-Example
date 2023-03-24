@@ -78,19 +78,34 @@ def create_driver(write_allure_environment, prep_properties, request):
         chrome_options.set_capability(
             "goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"}
         )
+        chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
+        chrome_options.add_experimental_option("prefs", {
+            "profile.default_content_setting_values.notifications": 2,
+            "profile.default_content_setting_values.media_stream_mic": 1,
+            "profile.default_content_setting_values.geolocation": 1,
+            "profile.default_content_setting_values.media_stream_camera": 1,
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False})
+        chrome_options.add_argument("disable-dev-shm-usage")
+        chrome_options.add_argument("no-sandbox")
+        chrome_options.add_argument("allow-file-access-from-files")
+        chrome_options.add_argument("use-fake-device-for-media-stream")
+        chrome_options.add_argument("use-fake-ui-for-media-stream")
+        chrome_options.add_argument("hide-scrollbars")
+        chrome_options.add_argument("disable-features=VizDisplayCompositor")
+        chrome_options.add_argument("disable-features=IsolateOrigins,site-per-process")
+        chrome_options.add_argument("disable-popup-blocking")
+        chrome_options.add_argument("disable-dev-shm-usage")
+        chrome_options.add_argument("disable-notifications")
     match browser:
         case "firefox":
             driver = webdriver.Firefox()
         case "chrome_headless":
-
-            chrome_options.add_argument("--headless")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("headless=new")
             driver = webdriver.Chrome(options=chrome_options)
         case _:
             driver = webdriver.Chrome(options=chrome_options)
 
-    driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get(base_url)
     yield
