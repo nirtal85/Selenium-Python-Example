@@ -135,13 +135,14 @@ def create_driver(write_allure_environment, prep_properties, request):
         name="Local Storage", attachment_type=allure.attachment_type.JSON)
     allure.attach(body=json.dumps(driver.get_log("browser"), indent=4), name="Console Logs",
                   attachment_type=allure.attachment_type.JSON)
+    bad_responses, good_responses = attach_network_logs()
     allure.attach(
-        body=json.dumps(attach_network_logs()[0], indent=4),
+        body=json.dumps(bad_responses, indent=4),
         name="Bad Responses Network Logs",
         attachment_type=allure.attachment_type.JSON
     )
     allure.attach(
-        body=json.dumps(attach_network_logs()[1], indent=4),
+        body=json.dumps(good_responses, indent=4),
         name="Good Responses Network Logs",
         attachment_type=allure.attachment_type.JSON
     )
