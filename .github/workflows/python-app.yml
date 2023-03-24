@@ -19,8 +19,8 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-            python-version: '3.10' 
-            cache: 'pip' # caching pip dependencies
+          python-version: '3.10'
+            cache: 'pip'
       - name: Python Dependency Installation
         uses: py-actions/py-dependency-install@v4.0.0
       - name: Install plugin
