@@ -2,6 +2,7 @@ import json
 from collections import defaultdict
 from contextlib import suppress
 from datetime import datetime
+from http import HTTPStatus
 
 import allure
 import requests
@@ -134,8 +135,16 @@ def create_driver(write_allure_environment, prep_properties, request):
         name="Local Storage", attachment_type=allure.attachment_type.JSON)
     allure.attach(body=json.dumps(driver.get_log("browser"), indent=4), name="Console Logs",
                   attachment_type=allure.attachment_type.JSON)
-    allure.attach(body=json.dumps(attach_network_logs(), indent=4), name="Network Logs",
-                  attachment_type=allure.attachment_type.JSON)
+    allure.attach(
+        body=json.dumps(attach_network_logs()[0], indent=4),
+        name="Bad Responses Network Logs",
+        attachment_type=allure.attachment_type.JSON
+    )
+    allure.attach(
+        body=json.dumps(attach_network_logs()[1], indent=4),
+        name="Good Responses Network Logs",
+        attachment_type=allure.attachment_type.JSON
+    )
     driver.quit()
 
 
@@ -160,21 +169,29 @@ def get_request_post_data(request_id):
 
 
 def attach_network_logs():
-    network_logs = defaultdict(dict)
+    bad_responses = defaultdict(dict)
+    good_responses = defaultdict(dict)
     for item in [json.loads(log["message"])["message"] for log in driver.get_log("performance")]:
         params = item.get("params")
         if params.get("type") != "XHR":
             continue
         method = item.get("method")
         request_id = params["requestId"]
-        network_log = network_logs[request_id]
         if method == "Network.responseReceived":
-            network_log["response"] = item
+            response_status = item["params"]["response"]["status"]
+            if response_status >= HTTPStatus.BAD_REQUEST:
+                response_log = bad_responses[request_id]
+            else:
+                response_log = good_responses[request_id]
+            response_log["response"] = item
             with suppress(Exception):
-                network_log["response"]["body"] = get_response_body(request_id)
+                response_log["response"]["body"] = get_response_body(request_id)
         elif method == "Network.requestWillBeSent":
-            network_log["request"] = item
+            request_log = good_responses[request_id]
+            request_log["request"] = item
             if params.get("request", {}).get("hasPostData"):
                 with suppress(Exception):
-                    network_log["request"]["body"] = get_request_post_data(request_id)
-    return [item for item in network_logs.values() if "response" in item]
+                    request_log["request"]["body"] = get_request_post_data(request_id)
+    bad_responses = [item for item in bad_responses.values() if "response" in item]
+    good_responses = [item for item in good_responses.values() if "response" in item]
+    return bad_responses, good_responses
