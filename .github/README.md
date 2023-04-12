@@ -12,7 +12,7 @@
 
 ## Project Setup
 
-* Install scoop from www.scoop.sh
+* [Install scoop](https://scoop.sh/)
 * Install allure commandline by running the following command:
 
 ```
@@ -73,8 +73,7 @@ pipenv run pytest -m <tag_name> --browser <firefox/chrome_headless>
 allure serve allure-results
 ```
 
-* View allure results via Github pages:<br/>
-  https://nirtal85.github.io/Selenium-Python-Example/
+* [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
 ## View Help And Custom CLI Options
 
