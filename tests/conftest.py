@@ -1,3 +1,4 @@
+import base64
 import json
 from collections import defaultdict
 from contextlib import suppress
@@ -112,14 +113,14 @@ def create_driver(write_allure_environment, prep_properties, request):
     if request.node.rep_call.failed:
         window_count = len(driver.window_handles)
         if window_count == 1:
-            allure.attach(body=driver.get_screenshot_as_png(), name="Screenshot",
+            allure.attach(body=capture_full_page_screenshot(), name="Full Page Screenshot",
                           attachment_type=allure.attachment_type.PNG)
             allure.attach(body=driver.current_url, name="URL", attachment_type=allure.attachment_type.URI_LIST)
         else:
             for window in range(window_count):
                 driver.switch_to.window(driver.window_handles[window])
-                allure.attach(body=driver.get_screenshot_as_png(),
-                              name=f"Full Page Screen Shot of window in index {window}",
+                allure.attach(body=capture_full_page_screenshot(), name=f"Full Page Screen Shot of window in "
+                                                                              f"index {window}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(body=driver.current_url, name=f"URL of window in index {window}",
                               attachment_type=allure.attachment_type.URI_LIST)
@@ -158,6 +159,20 @@ def get_request_post_data(request_id):
     """Get the request post data for the specified request ID."""
     return driver.execute_cdp_cmd("Network.getRequestPostData", {"requestId": request_id})
 
+
+def capture_full_page_screenshot():
+    metrics = driver.execute_cdp_cmd("Page.getLayoutMetrics", {})
+    return base64.b64decode(driver.execute_cdp_cmd("Page.captureScreenshot", {
+        "clip": {
+            "x": 0,
+            "y": 0,
+            "width": metrics['contentSize']['width'],
+            "height": metrics['contentSize']['height'],
+            "scale": 1
+        },
+        "captureBeyondViewport": True,
+        "optimizeForSpeed": False
+    })['data'])
 
 def attach_network_logs():
     network_logs = defaultdict(dict)
