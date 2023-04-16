@@ -170,8 +170,7 @@ def capture_full_page_screenshot():
             "height": metrics['contentSize']['height'],
             "scale": 1
         },
-        "captureBeyondViewport": True,
-        "optimizeForSpeed": False
+        "captureBeyondViewport": True
     })['data'])
 
 def attach_network_logs():
