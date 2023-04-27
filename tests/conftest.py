@@ -6,6 +6,7 @@ from datetime import datetime
 
 import allure
 import requests
+from _pytest.config.argparsing import Parser
 from _pytest.reports import BaseReport
 from git import Repo
 from pytest import fixture
@@ -24,7 +25,7 @@ from utils.config_parser import ConfigParserIni
 
 
 # reads parameters from pytest command line
-def pytest_addoption(parser):
+def pytest_addoption(parser: Parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
 
 
@@ -33,13 +34,13 @@ def get_public_ip() -> str:
 
 
 @fixture(scope="session")
-def prep_properties():
+def prep_properties() -> ConfigParserIni:
     return ConfigParserIni("props.ini")
 
 
 @fixture(autouse=True, scope="session")
 # fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
-def write_allure_environment(prep_properties):
+def write_allure_environment():
     yield
     repo = Repo(ROOT_DIR)
     env_parser = AllureEnvironmentParser("environment.properties")
@@ -71,7 +72,7 @@ def pages():
 
 
 @fixture(autouse=True)
-def create_driver(write_allure_environment, prep_properties, request):
+def create_driver(request, prep_properties):
     global browser, base_url, driver, chrome_options
     browser = request.config.option.browser
     base_url = prep_properties.config_section_dict("Base Url")["base_url"]
