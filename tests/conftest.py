@@ -6,8 +6,9 @@ from datetime import datetime
 
 import allure
 import requests
+from _pytest.reports import BaseReport
 from git import Repo
-from pytest import fixture, hookimpl
+from pytest import fixture
 from selenium import webdriver
 
 from globals.dir_global import ROOT_DIR
@@ -110,20 +111,25 @@ def create_driver(write_allure_environment, prep_properties, request):
     driver.maximize_window()
     driver.get(base_url)
     yield
-    if request.node.rep_call.failed:
-        window_count = len(driver.window_handles)
-        if window_count == 1:
-            allure.attach(body=capture_full_page_screenshot(), name="Full Page Screenshot",
+    driver.quit()
+
+
+def pytest_exception_interact(report: BaseReport):
+    if not report.failed:
+        return
+    window_count = len(driver.window_handles)
+    if window_count == 1:
+        allure.attach(body=capture_full_page_screenshot(), name="Full Page Screenshot",
+                      attachment_type=allure.attachment_type.PNG)
+        allure.attach(body=driver.current_url, name="URL", attachment_type=allure.attachment_type.URI_LIST)
+    else:
+        for window in range(window_count):
+            driver.switch_to.window(driver.window_handles[window])
+            allure.attach(body=capture_full_page_screenshot(), name=f"Full Page Screen Shot of window in "
+                                                                    f"index {window}",
                           attachment_type=allure.attachment_type.PNG)
-            allure.attach(body=driver.current_url, name="URL", attachment_type=allure.attachment_type.URI_LIST)
-        else:
-            for window in range(window_count):
-                driver.switch_to.window(driver.window_handles[window])
-                allure.attach(body=capture_full_page_screenshot(), name=f"Full Page Screen Shot of window in "
-                                                                        f"index {window}",
-                              attachment_type=allure.attachment_type.PNG)
-                allure.attach(body=driver.current_url, name=f"URL of window in index {window}",
-                              attachment_type=allure.attachment_type.URI_LIST)
+            allure.attach(body=driver.current_url, name=f"URL of window in index {window}",
+                          attachment_type=allure.attachment_type.URI_LIST)
     allure.attach(body=get_public_ip(), name="public ip address", attachment_type=allure.attachment_type.TEXT)
     allure.attach(body=json.dumps(driver.get_cookies(), indent=4), name="Cookies",
                   attachment_type=allure.attachment_type.JSON)
@@ -137,17 +143,6 @@ def create_driver(write_allure_environment, prep_properties, request):
                   attachment_type=allure.attachment_type.JSON)
     allure.attach(body=json.dumps(attach_network_logs(), indent=4), name="Network Logs",
                   attachment_type=allure.attachment_type.JSON)
-    driver.quit()
-
-
-@hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    # execute all other hooks to obtain the report object
-    outcome = yield
-    rep = outcome.get_result()
-    # set a report attribute for each phase of a call, which can
-    # be "setup", "call", "teardown"
-    setattr(item, f"rep_{rep.when}", rep)
 
 
 def get_response_body(request_id):
