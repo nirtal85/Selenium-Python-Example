@@ -1,6 +1,5 @@
-import os
-
 import configparser
+import os
 
 from globals import dir_global
 
@@ -24,15 +23,3 @@ class ConfigParserIni:
                 print(f"exception found in {key}")
                 section_dict[key] = None
         return section_dict
-
-
-class AllureEnvironmentParser:
-    """ Writes environment variables into allure environment file"""
-
-    def __init__(self, file_name):
-        self.file_path = os.path.join(dir_global.ALLURE_RESULTS_PATH, file_name)
-
-    def write_to_allure_env(self, dic):
-        with open(self.file_path, 'w+') as f:
-            for key in dic:
-                f.write(f'{key}={dic[key]}' + "\n")

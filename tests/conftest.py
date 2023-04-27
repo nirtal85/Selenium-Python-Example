@@ -1,5 +1,6 @@
 import base64
 import json
+import os
 from collections import defaultdict
 from contextlib import suppress
 from datetime import datetime
@@ -20,7 +21,6 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.config_parser import AllureEnvironmentParser
 from utils.config_parser import ConfigParserIni
 
 
@@ -38,23 +38,22 @@ def prep_properties() -> ConfigParserIni:
     return ConfigParserIni("props.ini")
 
 
-@fixture(autouse=True, scope="session")
-# fetch browser type and base url then writes a dictionary of key-value pair into allure's environment.properties file
-def write_allure_environment():
-    yield
+def pytest_sessionfinish() -> None:
     repo = Repo(ROOT_DIR)
-    env_parser = AllureEnvironmentParser("environment.properties")
-    env_parser.write_to_allure_env(
-        {
-            "Browser": driver.name,
-            "Driver_Version": driver.capabilities['browserVersion'],
-            "Base_URL": base_url,
-            "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
-            "Commit_Message": repo.head.commit.message.strip(),
-            "Commit_Id": repo.head.object.hexsha,
-            "Commit_Author_Name": repo.head.commit.author.name,
-            "Branch": repo.active_branch.name
-        })
+    environment_properties = {
+        "Browser": driver.name,
+        "Driver_Version": driver.capabilities['browserVersion'],
+        "Base_URL": base_url,
+        "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime('%c'),
+        "Commit_Message": repo.head.commit.message.strip(),
+        "Commit_Id": repo.head.object.hexsha,
+        "Commit_Author_Name": repo.head.commit.author.name,
+        "Branch": repo.active_branch.name
+    }
+    allure_env_path = os.path.join("allure-results", 'environment.properties')
+    with open(allure_env_path, 'w') as f:
+        data = '\n'.join([f'{variable}={value}' for variable, value in environment_properties.items()])
+        f.write(data)
 
 
 # https://stackoverflow.com/a/61433141/4515129
