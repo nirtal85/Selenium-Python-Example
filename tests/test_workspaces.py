@@ -46,7 +46,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Rename an existing workspace test")
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         projects_page.rename_workspace(json_reader.read_from_json()["workspace"]["name"],
                                        json_reader.read_from_json()["workspace"][
@@ -59,7 +58,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Delete existing workspace")
     @pytest.mark.run(order=3)
     def test_delete_workspace(self, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         before = projects_page.get_workspaces_number()
         projects_page.delete_workspace()
@@ -71,7 +69,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Number of projects displayed in page test")
     @pytest.mark.run(order=4)
     def test_number_of_existing_projects(self, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         number_of_displayed_projects = projects_page.get_projects_number_in_page()
         number_of_projects_in_workspace = projects_page.get_projects_number_from_workspace()
@@ -81,7 +78,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Add project to workspace test")
     @pytest.mark.run(order=5)
     def test_add_project_to_workspace(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         before = projects_page.get_projects_number_in_page()
         projects_page.create_new_project()
@@ -101,7 +97,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Search for existing project test")
     @pytest.mark.run(order=6)
     def test_search_project(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         projects_page.search_project(json_reader.read_from_json()["workspace"]["project_name"])
         expected_status = projects_page.is_project_found(
@@ -112,7 +107,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Search for non existing project")
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         projects_page.search_project(
             json_reader.read_from_json()["workspace"]["non_existing_project"])
@@ -123,7 +117,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Cancel a project deletion")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         before = projects_page.get_projects_number_in_page()
         projects_page.delete_project(json_reader.read_from_json()["workspace"]["project_name"],
@@ -135,7 +128,6 @@ class TestWorkspaces(BaseTest):
     @allure.title("Delete existing project")
     @pytest.mark.run(order=9)
     def test_delete_project(self, json_reader, ini_reader):
-
         projects_page = ProjectsPage(self.driver)
         before = projects_page.get_projects_number_in_page()
         projects_page.delete_project(json_reader.read_from_json()["workspace"]["project_name"])
