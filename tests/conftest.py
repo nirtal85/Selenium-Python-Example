@@ -8,6 +8,7 @@ from datetime import datetime
 import allure
 import requests
 from _pytest.config.argparsing import Parser
+from _pytest.fixtures import FixtureRequest
 from _pytest.reports import BaseReport
 from git import Repo
 from pytest import fixture
@@ -62,7 +63,7 @@ def pytest_sessionfinish() -> None:
 
 
 @fixture(autouse=True)
-def create_driver(request, ini_reader):
+def create_driver(request: FixtureRequest, ini_reader):
     global browser, base_url, driver, chrome_options
     browser = request.config.option.browser
     base_url = ini_reader.config_section_dict("Base Url")["base_url"]
