@@ -141,7 +141,7 @@ class ProjectsPage(TopNavigateBar):
     def get_title(self) -> str:
         return self.get_text(self._PROJECT_PAGE_TITLE)
 
-    def get_no_project_found_msg(self):
+    def get_no_project_found_message(self):
         return self.get_text(self._NO_PROJECT_FOUND_MSG)
 
     @allure.step("Check if {project_name} is present")

@@ -14,14 +14,9 @@ from pytest import fixture
 from selenium import webdriver
 
 from globals.dir_global import ROOT_DIR
-from pages.about_page import AboutPage
-from pages.forgot_password_page import ForgotPasswordPage
-from pages.login_page import LoginPage
-from pages.project_edit_page import ProjectEditPage
-from pages.project_type_page import ProjectTypePage
-from pages.projects_page import ProjectsPage
-from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
+from utils.excel_parser import ExcelParser
+from utils.json_parser import JsonParser
 
 
 # reads parameters from pytest command line
@@ -34,8 +29,18 @@ def get_public_ip() -> str:
 
 
 @fixture(scope="session")
-def prep_properties() -> ConfigParserIni:
+def ini_reader() -> ConfigParserIni:
     return ConfigParserIni("props.ini")
+
+
+@fixture(scope="session")
+def json_reader() -> JsonParser:
+    return JsonParser("props.ini")
+
+
+@fixture(scope="session")
+def excel_reader() -> ExcelParser:
+    return ExcelParser("data.xls")
 
 
 def pytest_sessionfinish() -> None:
@@ -56,25 +61,11 @@ def pytest_sessionfinish() -> None:
         f.write(data)
 
 
-# https://stackoverflow.com/a/61433141/4515129
-@fixture
-# Instantiates Page Objects
-def pages():
-    about_page = AboutPage(driver)
-    projects_page = ProjectsPage(driver)
-    forgot_password_page = ForgotPasswordPage(driver)
-    login_page = LoginPage(driver)
-    project_type_page = ProjectTypePage(driver)
-    templates_page = TemplatesPage(driver)
-    project_edit_page = ProjectEditPage(driver)
-    return locals()
-
-
 @fixture(autouse=True)
-def create_driver(request, prep_properties):
+def create_driver(request, ini_reader):
     global browser, base_url, driver, chrome_options
     browser = request.config.option.browser
-    base_url = prep_properties.config_section_dict("Base Url")["base_url"]
+    base_url = ini_reader.config_section_dict("Base Url")["base_url"]
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
@@ -107,7 +98,7 @@ def create_driver(request, prep_properties):
             driver = webdriver.Chrome(options=chrome_options)
         case _:
             driver = webdriver.Chrome(options=chrome_options)
-
+    request.cls.driver = driver
     driver.maximize_window()
     driver.get(base_url)
     yield

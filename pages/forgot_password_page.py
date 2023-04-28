@@ -20,11 +20,11 @@ class ForgotPasswordPage(BasePage):
         self.click(self.SEND_PASSWORD_RESET_LINK_BUTTON)
 
     @allure.step("Get invalid email message")
-    def get_invalid_email_msg(self) -> str:
+    def get_invalid_email_message(self) -> str:
         return self.get_text(self.ERROR_MSG)
 
     @allure.step("Get success message")
-    def get_success_msg(self) -> str:
+    def get_success_message(self) -> str:
         return self.get_text(self.SUCCESS_MSG)
 
     @allure.step("Get Forgot password page title")

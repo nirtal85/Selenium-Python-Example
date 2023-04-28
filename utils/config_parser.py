@@ -9,7 +9,7 @@ class ConfigParserIni:
 
     def __init__(self, ini_file):
         self.config = configparser.ConfigParser()
-        self.file_path = os.path.join(dir_global.INI_CONFIGS_PATH, ini_file)
+        self.file_path = os.path.join(dir_global.DATA_FILES_PATH, ini_file)
         self.config.read(self.file_path)
 
     # returns ini file sections as dictionary
