@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
@@ -7,8 +9,8 @@ from pages.top_bars.top_navigate_bar import TopNavigateBar
 class TemplatesPage(TopNavigateBar):
     """ Templates page - contains variety of templates to select """
 
-    _TEMPLATES_BLOCK = (By.CSS_SELECTOR, "#template-gallery tbody tr")
-    _CHOOSE_BUTTON = (By.CSS_SELECTOR, "a .btn.btn-primary")
+    _TEMPLATES_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "#template-gallery tbody tr")
+    _CHOOSE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "a .btn.btn-primary")
 
     def __init__(self, driver):
         super().__init__(driver)

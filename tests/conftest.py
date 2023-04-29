@@ -15,6 +15,13 @@ from pytest import fixture
 from selenium import webdriver
 
 from globals.dir_global import ROOT_DIR
+from pages.about_page import AboutPage
+from pages.forgot_password_page import ForgotPasswordPage
+from pages.login_page import LoginPage
+from pages.project_edit_page import ProjectEditPage
+from pages.project_type_page import ProjectTypePage
+from pages.projects_page import ProjectsPage
+from pages.templates_page import TemplatesPage
 from utils.config_parser import ConfigParserIni
 from utils.excel_parser import ExcelParser
 from utils.json_parser import JsonParser
@@ -102,6 +109,13 @@ def create_driver(request: FixtureRequest, ini_reader):
     request.cls.driver = driver
     driver.maximize_window()
     driver.get(base_url)
+    request.cls.about_page = AboutPage(driver)
+    request.cls.login_page = LoginPage(driver)
+    request.cls.projects_page = ProjectsPage(driver)
+    request.cls.forget_password_page = ForgotPasswordPage(driver)
+    request.cls.templates_page = TemplatesPage(driver)
+    request.cls.project_type_page = ProjectTypePage(driver)
+    request.cls.project_edit_page = ProjectEditPage(driver)
     yield
     driver.quit()
 

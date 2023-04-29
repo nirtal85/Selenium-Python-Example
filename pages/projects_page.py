@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -9,28 +11,28 @@ from pages.top_bars.top_navigate_bar import TopNavigateBar
 class ProjectsPage(TopNavigateBar):
     """ Projects page - Where projects are added and edited"""
 
-    _START_BUTTON = (By.CSS_SELECTOR, "#app .px-4 a")
-    _CREATE_NEW_WORKSPACE_BUTTON = (By.CSS_SELECTOR, ".font-medium button")
-    _WORKSPACE_EDIT_BUTTON = (By.CSS_SELECTOR, "[data-icon='chevron-down']")
-    _RENAME_WORKSPACE_BUTTON = (By.CSS_SELECTOR, ".mr-3 .hover\\:bg-gray-600")
-    _DELETE_WORKSPACE_BUTTON = (By.CSS_SELECTOR, ".mr-3 .text-red-600")
-    _RENAME_FIELD = (By.CSS_SELECTOR, ".vue-portal-target input")
-    _CONFIRMATION_BUTTON = (By.CSS_SELECTOR, "#confirm-create-button")
-    _NEW_WORKSPACE_NAME_FIELD = (By.CSS_SELECTOR, "[placeholder='Workspace name']")
-    _DELETE_WORKSPACE_FIELD = (By.CSS_SELECTOR, ".h-12")
-    _CREATE_PROJECT_BUTTON = (By.CSS_SELECTOR, ".hidden.px-3")
-    _SEARCH_BUTTON = (By.CSS_SELECTOR, "[data-icon='search']")
-    _SEARCH_FIELD = (By.CSS_SELECTOR, "[type=text]")
-    _CONFIRM_DELETE_PROJECT_BUTTON = (By.CSS_SELECTOR, "#confirm-delete-button")
-    _CANCEL_PROJECT_DELETION_BUTTON = (By.CSS_SELECTOR, "form [type=button]")
-    _PROJECT_PAGE_TITLE = (By.CSS_SELECTOR, "#app h1.leading-tight.truncate")
-    _NO_PROJECT_FOUND_MSG = (By.CSS_SELECTOR, "#app h1.block")
-    _NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK = (By.CSS_SELECTOR, "span:nth-child(2)")
-    _DROP_DOWN_BUTTON = (By.CSS_SELECTOR, ".justify-right button svg")
-    _DELETE_PROJECT_BUTTON = (By.XPATH, "//button[text()='Delete Project']")
-    _WORKSPACE_LIST = (By.CSS_SELECTOR, ".mt-6 a")
-    _PROJECTS_BLOCK = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
-    _PROJECTS_TITLES = (By.CSS_SELECTOR, "h1 a")
+    _START_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "#app .px-4 a")
+    _CREATE_NEW_WORKSPACE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".font-medium button")
+    _WORKSPACE_EDIT_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "[data-icon='chevron-down']")
+    _RENAME_WORKSPACE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".mr-3 .hover\\:bg-gray-600")
+    _DELETE_WORKSPACE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".mr-3 .text-red-600")
+    _RENAME_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, ".vue-portal-target input")
+    _CONFIRMATION_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "#confirm-create-button")
+    _NEW_WORKSPACE_NAME_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, "[placeholder='Workspace name']")
+    _DELETE_WORKSPACE_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, ".h-12")
+    _CREATE_PROJECT_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".hidden.px-3")
+    _SEARCH_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "[data-icon='search']")
+    _SEARCH_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, "[type=text]")
+    _CONFIRM_DELETE_PROJECT_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "#confirm-delete-button")
+    _CANCEL_PROJECT_DELETION_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "form [type=button]")
+    _PROJECT_PAGE_TITLE: Tuple[By, str] = (By.CSS_SELECTOR, "#app h1.leading-tight.truncate")
+    _NO_PROJECT_FOUND_MSG: Tuple[By, str] = (By.CSS_SELECTOR, "#app h1.block")
+    _NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "span:nth-child(2)")
+    _DROP_DOWN_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".justify-right button svg")
+    _DELETE_PROJECT_BUTTON: Tuple[By, str] = (By.XPATH, "//button[text()='Delete Project']")
+    _WORKSPACE_LIST: Tuple[By, str] = (By.CSS_SELECTOR, ".mt-6 a")
+    _PROJECTS_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "#app .max-w-full div .mt-4 > .mt-8 > div")
+    _PROJECTS_TITLES: Tuple[By, str] = (By.CSS_SELECTOR, "h1 a")
 
     def __init__(self, driver):
         super().__init__(driver)

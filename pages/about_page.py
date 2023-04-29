@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import allure
 from selenium.webdriver.common.by import By
 
@@ -6,8 +8,8 @@ from pages.base_page import BasePage
 
 class AboutPage(BasePage):
     """ About page - The first page that appears when navigating to base URL"""
-    LOGIN_LINK = (By.CSS_SELECTOR, '.login')
-    REGISTER_LINK = (By.CSS_SELECTOR, '.register')
+    LOGIN_LINK: Tuple[By, str] = (By.CSS_SELECTOR, '.login')
+    REGISTER_LINK: Tuple[By, str] = (By.CSS_SELECTOR, '.register')
 
     def __init__(self, driver):
         super().__init__(driver)

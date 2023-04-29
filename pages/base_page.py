@@ -1,5 +1,9 @@
+from typing import Union, Tuple
+
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import ActionChains
+from selenium.webdriver import Chrome, Firefox, Edge
+from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.expected_conditions import StaleElementReferenceException
@@ -9,43 +13,43 @@ from selenium.webdriver.support.wait import WebDriverWait
 class BasePage:
     """ Wrapper for selenium operations """
 
-    def __init__(self, driver):
+    def __init__(self, driver: Union[Chrome, Firefox, Edge]):
         self._driver = driver
         self._wait = WebDriverWait(self._driver, 10)
 
-    def click(self, webelement) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
+    def click(self, locator: Tuple[By, str]) -> None:
+        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
         self._highlight_element(el, "green")
         el.click()
 
-    def fill_text(self, webelement, txt: str) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
+    def fill_text(self, locator: Tuple[By, str], txt: str) -> None:
+        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
         self._highlight_element(el, "green")
         el.send_keys(txt)
 
-    def clear_text(self, webelement) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(webelement))
+    def clear_text(self, locator: Tuple[By, str]) -> None:
+        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
 
     def scroll_to_bottom(self) -> None:
         self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def submit(self, webelement) -> None:
+    def submit(self,  webelement: WebElement) -> None:
         self._highlight_element(webelement, "green")
         webelement.submit()
 
-    def get_text(self, webelement) -> str:
-        el: WebElement = self._wait.until(expected_conditions.visibility_of_element_located(webelement))
+    def get_text(self, locator: Tuple[By, str]) -> str:
+        el: WebElement = self._wait.until(expected_conditions.visibility_of_element_located(locator))
         self._highlight_element(el, "green")
         return el.text
 
-    def move_to_element(self, webelement) -> None:
+    def move_to_element(self, webelement: WebElement) -> None:
         action = ActionChains(self._driver)
         self._wait.until(expected_conditions.visibility_of(webelement))
         action.move_to_element(webelement).perform()
 
-    def is_elem_displayed(self, webelement) -> bool:
+    def is_elem_displayed(self, webelement: WebElement) -> bool:
         try:
             return webelement.is_displayed()
         except StaleElementReferenceException:
@@ -53,7 +57,7 @@ class BasePage:
         except NoSuchElementException:
             return False
 
-    def _highlight_element(self, webelement, color: str) -> None:
+    def _highlight_element(self, webelement: WebElement, color: str) -> None:
         original_style = webelement.get_attribute("style")
         new_style = f"background-color:yellow;border: 1px solid {color}{original_style}"
         self._driver.execute_script(
