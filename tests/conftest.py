@@ -74,7 +74,7 @@ def pytest_sessionfinish() -> None:
         f.write(data)
 
 
-def pytest_runtest_setup(item: Item):
+def pytest_runtest_setup(item: Item) -> None:
     global browser, base_url, driver, chrome_options
     browser = item.config.option.browser
     base_url = item.config.getini("base_url")
@@ -122,11 +122,11 @@ def pytest_runtest_setup(item: Item):
     item.cls.project_edit_page = ProjectEditPage(driver)
 
 
-def pytest_runtest_teardown():
+def pytest_runtest_teardown() -> None:
     driver.quit()
 
 
-def pytest_exception_interact(report: BaseReport):
+def pytest_exception_interact(report: BaseReport) -> None:
     if not report.failed:
         return
     window_count = len(driver.window_handles)
