@@ -21,28 +21,28 @@ class TestLogin(BaseTest):
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email: str, password: str, json_reader):
+    def test_invalid_login(self, email: str, password: str, json_data: dict):
         self.about_page.click_login_link()
         self.login_page.login(email, password)
-        expected_error_message = json_reader.read_from_json()["login"]["error_message"]
+        expected_error_message = json_data["login"]["error_message"]
         assert_that(expected_error_message).is_equal_to(self.login_page.get_error_message())
 
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, json_reader, request: FixtureRequest):
+    def test_valid_login(self, json_data: dict, request: FixtureRequest):
         username = request.config.getini("username")
         password = request.config.getini("password")
         self.about_page.click_login_link()
         self.login_page.login(username, password)
-        expected_page_title = json_reader.read_from_json()["login"]["ws_page_title"]
+        expected_page_title = json_data["login"]["ws_page_title"]
         assert_that(expected_page_title).is_equal_to(self.project_page.get_title())
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @allure.story("As a user i want to be able to logout after a successful login.")
     @pytest.mark.run(order=2)
-    def test_logout(self, json_reader, request: FixtureRequest):
+    def test_logout(self, json_data: dict, request: FixtureRequest):
         username = request.config.getini("username")
         password = request.config.getini("password")
         # example of a simple text attachment
@@ -50,7 +50,7 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(username, password)
         self.project_page.logout()
-        expected_page_title = json_reader.read_from_json()["login"]["lg_page_title"]
+        expected_page_title = json_data["login"]["lg_page_title"]
         assert_that(expected_page_title).is_equal_to(self.login_page.get_page_title())
 
     @allure.description("Skip Test example")

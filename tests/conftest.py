@@ -9,12 +9,13 @@ import allure
 import requests
 from _pytest.config import Config
 from _pytest.config.argparsing import Parser
+from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from _pytest.reports import BaseReport
 from git import Repo
-from pytest import fixture
 from selenium import webdriver
 
+from globals import dir_global
 from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
@@ -24,7 +25,6 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.excel_parser import ExcelParser
-from utils.json_parser import JsonParser
 
 
 # reads parameters from pytest command line
@@ -39,13 +39,16 @@ def pytest_configure(config: Config) -> None:
     config.option.allure_report_dir = "allure-results"
 
 
+@fixture(scope="session")
+def json_data() -> dict:
+    json_path = os.path.join(dir_global.DATA_FILES_PATH, "tests_data.json")
+    with open(json_path) as json_file:
+        data = json.load(json_file)
+    return data
+
+
 def get_public_ip() -> str:
     return requests.get("http://checkip.amazonaws.com").text.rstrip()
-
-
-@fixture(scope="session")
-def json_reader() -> JsonParser:
-    return JsonParser("tests_data.json")
 
 
 @fixture(scope="session")
