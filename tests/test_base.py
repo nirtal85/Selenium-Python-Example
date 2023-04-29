@@ -1,6 +1,6 @@
 from typing import Union
 
-from selenium.webdriver import Chrome, Firefox, Edge
+from selenium.webdriver import Chrome, Edge, Firefox
 
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
