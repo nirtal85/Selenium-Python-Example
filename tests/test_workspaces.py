@@ -1,18 +1,18 @@
 import allure
 import pytest
+from _pytest.fixtures import FixtureRequest
 from assertpy import assert_that
 
 from helper_enums.status_enum import StatusEnum
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from tests.test_base import BaseTest
-from utils.config_parser import ConfigParserIni
 
 
 # performs login operation
-def login(ini_reader: ConfigParserIni, about_page: AboutPage, login_page: LoginPage):
-    username = ini_reader.config_section_dict("Base Url")["username"]
-    password = ini_reader.config_section_dict("Base Url")["password"]
+def login(request: FixtureRequest, about_page: AboutPage, login_page: LoginPage):
+    username = request.config.getini("username")
+    password = request.config.getini("password")
     about_page.click_login_link()
     login_page.login(username, password)
 
@@ -23,13 +23,13 @@ def login(ini_reader: ConfigParserIni, about_page: AboutPage, login_page: LoginP
 class TestWorkspaces(BaseTest):
 
     @pytest.fixture(autouse=True)
-    def setup_method_fixture(self, ini_reader):
-        login(ini_reader, self.about_page, self.login_page)
+    def setup_method_fixture(self, request):
+        login(request, self.about_page, self.login_page)
 
     @allure.description("Create new Workspace")
     @allure.title("Create new workspace test")
     @pytest.mark.run(order=1)
-    def test_create_new_workspace(self, json_reader, ini_reader):
+    def test_create_new_workspace(self, json_reader):
         before = self.projects_page.get_workspaces_number()
         self.projects_page.create_workspace(json_reader.read_from_json()["workspace"]["name"])
         after = self.projects_page.get_workspaces_number()
@@ -38,7 +38,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Rename an existing workspace")
     @allure.title("Rename an existing workspace test")
     @pytest.mark.run(order=2)
-    def test_rename_workspace(self, json_reader, ini_reader):
+    def test_rename_workspace(self, json_reader):
         self.projects_page.rename_workspace(json_reader.read_from_json()["workspace"]["name"],
                                             json_reader.read_from_json()["workspace"][
                                                 "new_name"])
@@ -49,7 +49,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Delete an existing workspace")
     @allure.title("Delete existing workspace")
     @pytest.mark.run(order=3)
-    def test_delete_workspace(self, ini_reader):
+    def test_delete_workspace(self):
         before = self.projects_page.get_workspaces_number()
         self.projects_page.delete_workspace()
         after = self.projects_page.get_workspaces_number()
@@ -59,7 +59,7 @@ class TestWorkspaces(BaseTest):
         "Compare between the actual number of projects seen on page and the number shown in workspaces block")
     @allure.title("Number of projects displayed in page test")
     @pytest.mark.run(order=4)
-    def test_number_of_existing_projects(self, ini_reader):
+    def test_number_of_existing_projects(self):
         number_of_displayed_projects = self.projects_page.get_projects_number_in_page()
         number_of_projects_in_workspace = self.projects_page.get_projects_number_from_workspace()
         assert_that(number_of_displayed_projects).is_equal_to(number_of_projects_in_workspace)
@@ -67,7 +67,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Selecting and adding a project to workspace")
     @allure.title("Add project to workspace test")
     @pytest.mark.run(order=5)
-    def test_add_project_to_workspace(self, json_reader, ini_reader):
+    def test_add_project_to_workspace(self, json_reader):
         before = self.projects_page.get_projects_number_in_page()
         self.projects_page.create_new_project()
         self.project_type_page.select_project(json_reader.read_from_json()["workspace"]["project_type"])
@@ -82,7 +82,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Search for an existing project")
     @allure.title("Search for existing project test")
     @pytest.mark.run(order=6)
-    def test_search_project(self, json_reader, ini_reader):
+    def test_search_project(self, json_reader):
         self.projects_page.search_project(json_reader.read_from_json()["workspace"]["project_name"])
         expected_status = self.projects_page.is_project_found(
             json_reader.read_from_json()["workspace"]["project_name"])
@@ -91,7 +91,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Search for a non existing project")
     @allure.title("Search for non existing project")
     @pytest.mark.run(order=7)
-    def test_search_for_non_existing_project(self, json_reader, ini_reader):
+    def test_search_for_non_existing_project(self, json_reader):
         self.projects_page.search_project(
             json_reader.read_from_json()["workspace"]["non_existing_project"])
         expected_not_found_message = json_reader.read_from_json()["workspace"]["no_project_found_message"]
@@ -100,7 +100,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Cancel project deletion")
     @allure.title("Cancel a project deletion")
     @pytest.mark.run(order=8)
-    def test_cancel_project_deletion(self, json_reader, ini_reader):
+    def test_cancel_project_deletion(self, json_reader):
         before = self.projects_page.get_projects_number_in_page()
         self.projects_page.delete_project(json_reader.read_from_json()["workspace"]["project_name"],
                                           StatusEnum.CANCEL.value)
@@ -110,7 +110,7 @@ class TestWorkspaces(BaseTest):
     @allure.description("Deleting an existing project from workspace")
     @allure.title("Delete existing project")
     @pytest.mark.run(order=9)
-    def test_delete_project(self, json_reader, ini_reader):
+    def test_delete_project(self, json_reader):
         before = self.projects_page.get_projects_number_in_page()
         self.projects_page.delete_project(json_reader.read_from_json()["workspace"]["project_name"])
         after = self.projects_page.get_projects_number_in_page()

@@ -1,5 +1,6 @@
 import allure
 import pytest
+from _pytest.fixtures import FixtureRequest
 from assertpy import assert_that
 
 from tests.test_base import BaseTest
@@ -29,9 +30,9 @@ class TestLogin(BaseTest):
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, json_reader, ini_reader):
-        username = ini_reader.config_section_dict("Base Url")["username"]
-        password = ini_reader.config_section_dict("Base Url")["password"]
+    def test_valid_login(self, json_reader, request: FixtureRequest):
+        username = request.config.getini("username")
+        password = request.config.getini("password")
         self.about_page.click_login_link()
         self.login_page.login(username, password)
         expected_page_title = json_reader.read_from_json()["login"]["ws_page_title"]
@@ -41,9 +42,9 @@ class TestLogin(BaseTest):
     @allure.title("Logout of system test")
     @allure.story("As a user i want to be able to logout after a successful login.")
     @pytest.mark.run(order=2)
-    def test_logout(self, json_reader, ini_reader):
-        username = ini_reader.config_section_dict("Base Url")["username"]
-        password = ini_reader.config_section_dict("Base Url")["password"]
+    def test_logout(self, json_reader, request: FixtureRequest):
+        username = request.config.getini("username")
+        password = request.config.getini("password")
         # example of a simple text attachment
         allure.attach(body=username, name="username", attachment_type=allure.attachment_type.TEXT)
         self.about_page.click_login_link()

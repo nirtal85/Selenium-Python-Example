@@ -1,5 +1,6 @@
 import allure
 import pytest
+from _pytest.fixtures import FixtureRequest
 from assertpy import assert_that
 
 from tests.test_base import BaseTest
@@ -13,8 +14,8 @@ class TestForgotPassword(BaseTest):
 
     @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
-    def test_valid_email(self, ini_reader, json_reader):
-        email = ini_reader.config_section_dict("Base Url")["username"]
+    def test_valid_email(self, json_reader, request: FixtureRequest):
+        email = request.config.getini("username")
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
         self.forget_password_page.send_password_reset_link(email)

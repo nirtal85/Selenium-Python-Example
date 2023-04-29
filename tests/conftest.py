@@ -23,7 +23,6 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.config_parser import ConfigParserIni
 from utils.excel_parser import ExcelParser
 from utils.json_parser import JsonParser
 
@@ -31,6 +30,9 @@ from utils.json_parser import JsonParser
 # reads parameters from pytest command line
 def pytest_addoption(parser: Parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
+    parser.addini("base_url", "Base URL of the application")
+    parser.addini("username", "Username for login")
+    parser.addini("password", "Password for login")
 
 
 def pytest_configure(config: Config) -> None:
@@ -42,13 +44,8 @@ def get_public_ip() -> str:
 
 
 @fixture(scope="session")
-def ini_reader() -> ConfigParserIni:
-    return ConfigParserIni("props.ini")
-
-
-@fixture(scope="session")
 def json_reader() -> JsonParser:
-    return JsonParser("props.ini")
+    return JsonParser("tests_data.json")
 
 
 @fixture(scope="session")
@@ -75,10 +72,10 @@ def pytest_sessionfinish() -> None:
 
 
 @fixture(autouse=True)
-def create_driver(request: FixtureRequest, ini_reader):
+def create_driver(request: FixtureRequest):
     global browser, base_url, driver, chrome_options
     browser = request.config.option.browser
-    base_url = ini_reader.config_section_dict("Base Url")["base_url"]
+    base_url = request.config.getini("base_url")
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
