@@ -62,7 +62,7 @@ class ProjectsPage(TopNavigateBar):
         self.click(self._CONFIRMATION_BUTTON)
 
     @allure.step("Rename workspace {old_name} to {new_name}")
-    def rename_workspace(self, old_name: str, new_name: str):
+    def rename_workspace(self, old_name: str, new_name: str) -> None:
         workspaces = self._wait.until(
             expected_conditions.visibility_of_all_elements_located(self._WORKSPACE_LIST))
         # get workspaces as text
@@ -91,12 +91,12 @@ class ProjectsPage(TopNavigateBar):
             self.click(self._CREATE_NEW_WORKSPACE_BUTTON)
 
     @allure.step("Search for project {project_name}")
-    def search_project(self, project_name: str):
+    def search_project(self, project_name: str) -> None:
         self.click(self._SEARCH_BUTTON)
         self.fill_text(self._SEARCH_FIELD, project_name)
 
     @allure.step("Delete or cancel deletion of project {project_name}")
-    def delete_project(self, project_name: str, status="confirm"):
+    def delete_project(self, project_name: str, status="confirm") -> None:
         projects = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._PROJECTS_BLOCK))
         deleted_project = None
         for project in projects:
@@ -143,7 +143,7 @@ class ProjectsPage(TopNavigateBar):
     def get_title(self) -> str:
         return self.get_text(self._PROJECT_PAGE_TITLE)
 
-    def get_no_project_found_message(self):
+    def get_no_project_found_message(self) -> str:
         return self.get_text(self._NO_PROJECT_FOUND_MSG)
 
     @allure.step("Check if {project_name} is present")

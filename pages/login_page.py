@@ -19,7 +19,7 @@ class LoginPage(TopMenuBar):
         super().__init__(driver)
 
     @allure.step("Log in with username: {username} and password: {password}")
-    def login(self, username: str, password: str):
+    def login(self, username: str, password: str) -> None:
         self.fill_text(self.USERNAME_FIELD, username)
         self.fill_text(self.PASSWORD_FIELD, password)
         self.click(self.LOGIN_BUTTON)
