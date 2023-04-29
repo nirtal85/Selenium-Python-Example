@@ -7,6 +7,7 @@ from datetime import datetime
 
 import allure
 import requests
+from _pytest.config import Config
 from _pytest.config.argparsing import Parser
 from _pytest.fixtures import FixtureRequest
 from _pytest.reports import BaseReport
@@ -30,6 +31,10 @@ from utils.json_parser import JsonParser
 # reads parameters from pytest command line
 def pytest_addoption(parser: Parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
+
+
+def pytest_configure(config: Config) -> None:
+    config.option.allure_report_dir = "allure-results"
 
 
 def get_public_ip() -> str:
