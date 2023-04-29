@@ -21,7 +21,7 @@ class TestLogin(BaseTest):
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email: str, password : str, json_reader):
+    def test_invalid_login(self, email: str, password: str, json_reader):
         self.about_page.click_login_link()
         self.login_page.login(email, password)
         expected_error_message = json_reader.read_from_json()["login"]["error_message"]

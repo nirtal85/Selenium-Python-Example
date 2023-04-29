@@ -9,7 +9,7 @@ import allure
 import requests
 from _pytest.config import Config
 from _pytest.config.argparsing import Parser
-from _pytest.fixtures import FixtureRequest
+from _pytest.nodes import Item
 from _pytest.reports import BaseReport
 from git import Repo
 from pytest import fixture
@@ -71,11 +71,10 @@ def pytest_sessionfinish() -> None:
         f.write(data)
 
 
-@fixture(autouse=True)
-def create_driver(request: FixtureRequest):
+def pytest_runtest_setup(item: Item):
     global browser, base_url, driver, chrome_options
-    browser = request.config.option.browser
-    base_url = request.config.getini("base_url")
+    browser = item.config.option.browser
+    base_url = item.config.getini("base_url")
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
@@ -108,17 +107,19 @@ def create_driver(request: FixtureRequest):
             driver = webdriver.Chrome(options=chrome_options)
         case _:
             driver = webdriver.Chrome(options=chrome_options)
-    request.cls.driver = driver
+    item.cls.driver = driver
     driver.maximize_window()
     driver.get(base_url)
-    request.cls.about_page = AboutPage(driver)
-    request.cls.login_page = LoginPage(driver)
-    request.cls.projects_page = ProjectsPage(driver)
-    request.cls.forget_password_page = ForgotPasswordPage(driver)
-    request.cls.templates_page = TemplatesPage(driver)
-    request.cls.project_type_page = ProjectTypePage(driver)
-    request.cls.project_edit_page = ProjectEditPage(driver)
-    yield
+    item.cls.about_page = AboutPage(driver)
+    item.cls.login_page = LoginPage(driver)
+    item.cls.projects_page = ProjectsPage(driver)
+    item.cls.forget_password_page = ForgotPasswordPage(driver)
+    item.cls.templates_page = TemplatesPage(driver)
+    item.cls.project_type_page = ProjectTypePage(driver)
+    item.cls.project_edit_page = ProjectEditPage(driver)
+
+
+def pytest_runtest_teardown():
     driver.quit()
 
 
