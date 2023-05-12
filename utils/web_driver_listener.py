@@ -7,6 +7,7 @@ from selenium.webdriver.support.abstract_event_listener import AbstractEventList
 
 
 class DriverEventListener(AbstractEventListener):
+
     def after_find(self, by: By, value: str, driver: Union[Chrome, Firefox, Edge]) -> None:
         webelements: List[WebElement] = driver.find_elements(by=by, value=value)
         for element in webelements:
