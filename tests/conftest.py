@@ -14,6 +14,7 @@ from _pytest.nodes import Item
 from _pytest.reports import BaseReport
 from git import Repo
 from selenium import webdriver
+from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 
 from globals import dir_global
@@ -26,11 +27,13 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.excel_parser import ExcelParser
+from utils.web_driver_listener import DriverEventListener
 
 
 # reads parameters from pytest command line
 def pytest_addoption(parser: Parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
+    parser.addoption("--decorate_driver", action="store", default=False, help="should we decorate the driver")
     parser.addini("base_url", "Base URL of the application")
     parser.addini("username", "Username for login")
     parser.addini("password", "Password for login")
@@ -110,7 +113,10 @@ def pytest_runtest_setup(item: Item) -> None:
             chrome_options.add_argument("headless=new")
             driver = webdriver.Chrome(options=chrome_options)
         case _:
-            driver = webdriver.Chrome(options=chrome_options)
+            if item.config.option.decorate_driver:
+                driver = EventFiringWebDriver(webdriver.Chrome(options=chrome_options), DriverEventListener())
+            else:
+                driver = webdriver.Chrome(options=chrome_options)
     item.cls.driver = driver
     driver.maximize_window()
     driver.get(base_url)
