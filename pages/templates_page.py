@@ -12,13 +12,13 @@ class TemplatesPage(TopNavigateBar):
     _TEMPLATES_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "#template-gallery tbody tr")
     _CHOOSE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "a .btn.btn-primary")
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     def choose_template(self, template_name: str) -> None:
-        self._wait.until(
+        self.wait.until(
             expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
-        templates = self._wait.until(expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
+        templates = self.wait.until(expected_conditions.visibility_of_all_elements_located(self._TEMPLATES_BLOCK))
         for template in templates:
             if template_name in template.text:
                 button = template.find_element(*self._CHOOSE_BUTTON)

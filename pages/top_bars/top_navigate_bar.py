@@ -14,8 +14,8 @@ class TopNavigateBar(BasePage):
     ACCOUNT_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#nav-dropdown")
     LOGOUT_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/logout']")
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     @allure.step("Click Projects tab")
     def click_projects(self):

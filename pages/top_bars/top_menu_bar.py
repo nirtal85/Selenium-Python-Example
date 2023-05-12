@@ -9,8 +9,8 @@ class TopMenuBar(BasePage):
     LOGIN_LINK = (By.CSS_SELECTOR, '.login')
     REGISTER_LINK = (By.CSS_SELECTOR, '.register')
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     @allure.step("Click Login button")
     def click_login(self):

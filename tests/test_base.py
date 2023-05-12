@@ -1,6 +1,7 @@
 from typing import Union
 
 from selenium.webdriver import Chrome, Edge, Firefox
+from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
@@ -13,6 +14,7 @@ from pages.templates_page import TemplatesPage
 
 class BaseTest:
     driver: Union[Chrome, Firefox, Edge]
+    wait: WebDriverWait
     about_page: AboutPage
     login_page: LoginPage
     projects_page: ProjectsPage

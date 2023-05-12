@@ -14,6 +14,7 @@ from _pytest.nodes import Item
 from _pytest.reports import BaseReport
 from git import Repo
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
 
 from globals import dir_global
 from globals.dir_global import ROOT_DIR
@@ -113,13 +114,15 @@ def pytest_runtest_setup(item: Item) -> None:
     item.cls.driver = driver
     driver.maximize_window()
     driver.get(base_url)
-    item.cls.about_page = AboutPage(driver)
-    item.cls.login_page = LoginPage(driver)
-    item.cls.projects_page = ProjectsPage(driver)
-    item.cls.forget_password_page = ForgotPasswordPage(driver)
-    item.cls.templates_page = TemplatesPage(driver)
-    item.cls.project_type_page = ProjectTypePage(driver)
-    item.cls.project_edit_page = ProjectEditPage(driver)
+    wait = WebDriverWait(driver, 10)
+    item.cls.wait = wait
+    item.cls.about_page = AboutPage(driver, wait)
+    item.cls.login_page = LoginPage(driver, wait)
+    item.cls.projects_page = ProjectsPage(driver, wait)
+    item.cls.forget_password_page = ForgotPasswordPage(driver, wait)
+    item.cls.templates_page = TemplatesPage(driver, wait)
+    item.cls.project_type_page = ProjectTypePage(driver, wait)
+    item.cls.project_edit_page = ProjectEditPage(driver, wait)
 
 
 def pytest_runtest_teardown() -> None:

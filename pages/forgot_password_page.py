@@ -13,8 +13,8 @@ class ForgotPasswordPage(BasePage):
     SUCCESS_MSG: Tuple[By, str] = (By.CSS_SELECTOR, '.alert-success')
     PAGE_TITLE: Tuple[By, str] = (By.CSS_SELECTOR, ".e-form-heading")
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     @allure.step("Send password reset link to email address: {email}")
     def send_password_reset_link(self, email: str) -> None:

@@ -12,41 +12,43 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage:
     """ Wrapper for selenium operations """
+    driver: Union[Chrome, Firefox, Edge]
+    wait: WebDriverWait
 
-    def __init__(self, driver: Union[Chrome, Firefox, Edge]):
-        self._driver = driver
-        self._wait = WebDriverWait(self._driver, 10)
+    def __init__(self, driver, wait):
+        self.driver = driver
+        self.wait = wait
 
     def click(self, locator: Tuple[By, str]) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         self._highlight_element(el, "green")
         el.click()
 
     def fill_text(self, locator: Tuple[By, str], txt: str) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
         self._highlight_element(el, "green")
         el.send_keys(txt)
 
     def clear_text(self, locator: Tuple[By, str]) -> None:
-        el: WebElement = self._wait.until(expected_conditions.element_to_be_clickable(locator))
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
 
     def scroll_to_bottom(self) -> None:
-        self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     def submit(self,  webelement: WebElement) -> None:
         self._highlight_element(webelement, "green")
         webelement.submit()
 
     def get_text(self, locator: Tuple[By, str]) -> str:
-        el: WebElement = self._wait.until(expected_conditions.visibility_of_element_located(locator))
+        el: WebElement = self.wait.until(expected_conditions.visibility_of_element_located(locator))
         self._highlight_element(el, "green")
         return el.text
 
     def move_to_element(self, webelement: WebElement) -> None:
-        action = ActionChains(self._driver)
-        self._wait.until(expected_conditions.visibility_of(webelement))
+        action = ActionChains(self.driver)
+        self.wait.until(expected_conditions.visibility_of(webelement))
         action.move_to_element(webelement).perform()
 
     def is_elem_displayed(self, webelement: WebElement) -> bool:
@@ -60,9 +62,9 @@ class BasePage:
     def _highlight_element(self, webelement: WebElement, color: str) -> None:
         original_style = webelement.get_attribute("style")
         new_style = f"background-color:yellow;border: 1px solid {color}{original_style}"
-        self._driver.execute_script(
+        self.driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
             + new_style + "');},0);", webelement)
-        self._driver.execute_script(
+        self.driver.execute_script(
             "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
             + original_style + "');},400);", webelement)

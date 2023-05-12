@@ -11,8 +11,8 @@ class AboutPage(BasePage):
     LOGIN_LINK: Tuple[By, str] = (By.CSS_SELECTOR, '.login')
     REGISTER_LINK: Tuple[By, str] = (By.CSS_SELECTOR, '.register')
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, driver, wait):
+        super().__init__(driver, wait)
 
     @allure.step("Click Login link")
     def click_login_link(self) -> None:
