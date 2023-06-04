@@ -19,6 +19,20 @@ class BasePage:
         self.driver = driver
         self.wait = wait
 
+    def edit_cookie(self, cookie_key, cookie_value):
+        cookie = self.wait.until(
+        lambda d: d.get_cookie(cookie_key),
+        message=f"Cookie '{cookie_key}' does not exist within the given timeout")
+        self.driver.delete_cookie(cookie_key)
+        self.driver.add_cookie({
+            "name": cookie['name'],
+            "value": cookie_value,
+            "domain": cookie['domain'],
+            "path": cookie['path'],
+            "secure": cookie['secure'],
+            "expiry":(cookie['expiry'])
+        })
+
     def click(self, locator: Tuple[By, str]) -> None:
         el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         self._highlight_element(el, "green")
