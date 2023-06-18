@@ -17,33 +17,33 @@
 * [Install scoop](https://scoop.sh/)
 * Install allure commandline by running the following command:
 
-```
+```bash
 scoop install allure
 ```
 
-* git clone
+* clone the project
 * cd to project directory
 * Install virtualenv:
 
-```
+```bash
 py -m pip install --user virtualenv
 ```
 
 * Create a virtual environment:
 
-```
+```bash
 py -m venv env
 ```
 
-* Activate your virtual environment:
+* Activate the virtual environment:
 
-```
+```bash
 .\env\Scripts\activate
 ```
 
 * Install pipenv:
 
-```
+```bash
 pip install pipenv
 ```
 
@@ -55,7 +55,7 @@ pipenv install
 
 ## Running Tests
 
-```
+```bash
 pipenv run pytest --alluredir=allure-results --browser <firefox/chrome_headless>
 ```
 
@@ -63,7 +63,7 @@ When no browser was selected then chrome will be used.
 
 * Run according to tags:
 
-```
+```bash
 pipenv run pytest -m <tag_name> --browser <firefox/chrome_headless>
 ```
 
@@ -71,7 +71,7 @@ pipenv run pytest -m <tag_name> --browser <firefox/chrome_headless>
 
 * View allure results locally:
 
-```
+```bash
 allure serve allure-results
 ```
 
@@ -79,6 +79,12 @@ allure serve allure-results
 
 ## View Help And Custom CLI Options
 
-```
+```bash
 pytest --help
+```
+
+## Sort imports
+
+```bash
+isort .
 ```
