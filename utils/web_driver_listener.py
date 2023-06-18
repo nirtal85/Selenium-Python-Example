@@ -1,10 +1,11 @@
-from typing import Union, List
+from typing import List, Union
 
 from selenium.webdriver import Chrome, Edge, Firefox
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.abstract_event_listener import AbstractEventListener
+from selenium.webdriver.support.abstract_event_listener import \
+    AbstractEventListener
 from selenium.webdriver.support.wait import WebDriverWait
 
 

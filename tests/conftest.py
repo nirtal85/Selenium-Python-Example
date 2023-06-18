@@ -13,7 +13,8 @@ from _pytest.nodes import Item
 from _pytest.reports import BaseReport
 from git import Repo
 from selenium import webdriver
-from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
+from selenium.webdriver.support.event_firing_webdriver import \
+    EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 
 from globals import dir_global
