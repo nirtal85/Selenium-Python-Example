@@ -20,11 +20,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-          cache: 'pip'
-      - name: Python Dependency Installation
-        uses: py-actions/py-dependency-install@v4.0.0
-      - name: Install plugin
-        run: pip install pytest-github-actions-annotate-failures
+          cache: 'poetry'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
       - name: Test with pytest
         run: |
           pytest --browser chrome_headless
