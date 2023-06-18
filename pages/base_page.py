@@ -12,14 +12,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage:
     """ Wrapper for selenium operations """
-    driver: Union[Chrome, Firefox, Edge]
-    wait: WebDriverWait
 
-    def __init__(self, driver, wait):
+    def __init__(self, driver: Union[Chrome, Firefox, Edge], wait: WebDriverWait):
         self.driver = driver
         self.wait = wait
 
-    def edit_cookie(self, cookie_key, cookie_value):
+    def edit_cookie(self, cookie_key: str, cookie_value: str):
         cookie = self.wait.until(
         lambda d: d.get_cookie(cookie_key),
         message=f"Cookie '{cookie_key}' does not exist within the given timeout")

@@ -7,7 +7,6 @@ from datetime import datetime
 
 import allure
 import requests
-from _pytest.config import Config
 from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
 from _pytest.nodes import Item
@@ -37,11 +36,6 @@ def pytest_addoption(parser: Parser):
     parser.addini("base_url", "Base URL of the application")
     parser.addini("username", "Username for login")
     parser.addini("password", "Password for login")
-
-
-def pytest_configure(config: Config) -> None:
-    config.option.allure_report_dir = "allure-results"
-
 
 @fixture(scope="session")
 def json_data() -> dict:
