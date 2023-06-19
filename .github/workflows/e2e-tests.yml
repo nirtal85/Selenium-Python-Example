@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python application
+name: E2E tests
 
 on:
   push:
@@ -16,17 +16,29 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.10
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          cache: 'pip'
-      - name: Python Dependency Installation
-        uses: py-actions/py-dependency-install@v4.0.0
+          python-version: '3.11'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install Dependencies
+        run: poetry install --no-interaction --no-root
       - name: Install plugin
         run: pip install pytest-github-actions-annotate-failures
       - name: Test with pytest
         run: |
+          source .venv/bin/activate
           pytest --browser chrome_headless
       - name: Allure results
         uses: simple-elf/allure-report-action@master
