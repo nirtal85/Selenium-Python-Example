@@ -8,6 +8,12 @@ authors = ["Nir Tal <nirt236@gmail.com>"]
 readme = "README.md"
 packages = [{include = "selenium_python_example"}]
 
+[tool.pytest.ini_options]
+addopts = '--alluredir=allure-results'
+base_url = 'https://www.involve.me/'
+username = 'elias123@gmail.com'
+password = 'El123456789'
+
 [tool.poetry.dependencies]
 python = "^3.10"
 allure-pytest = "2.13.2"
