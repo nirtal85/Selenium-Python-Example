@@ -1,9 +1,11 @@
-from typing import Tuple
-
 import allure
 from selenium.webdriver.common.by import By
 
 from pages.top_bars.top_menu_bar import TopMenuBar
+
+
+from typing import Tuple
+
 
 
 class LoginPage(TopMenuBar):
