@@ -8,12 +8,12 @@ from pages.top_bars.top_menu_bar import TopMenuBar
 
 class LoginPage(TopMenuBar):
     """ Login Page """
-    USERNAME_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, "input[type=email]")
-    PASSWORD_FIELD: Tuple[By, str] = (By.CSS_SELECTOR, "input[type=password]")
-    LOGIN_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "button[type=submit]")
-    LOGIN_ERROR_MESSAGE: Tuple[By, str] = (By.CSS_SELECTOR, "div.alert-danger")
-    PAGE_TITLE: Tuple[By, str] = (By.CSS_SELECTOR, ".e-form-heading")
-    FORGOT_PASSWORD_LINK: Tuple[By, str] = (By.CSS_SELECTOR, "[href='https://app.involve.me/password/reset']")
+    USERNAME_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=email]")
+    PASSWORD_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=password]")
+    LOGIN_BUTTON: Tuple[str, str] = (By.CSS_SELECTOR, "button[type=submit]")
+    LOGIN_ERROR_MESSAGE: Tuple[str, str] = (By.CSS_SELECTOR, "div.alert-danger")
+    PAGE_TITLE: Tuple[str, str] = (By.CSS_SELECTOR, ".e-form-heading")
+    FORGOT_PASSWORD_LINK: Tuple[str, str] = (By.CSS_SELECTOR, "[href='https://app.involve.me/password/reset']")
 
     def __init__(self, driver, wait):
         super().__init__(driver, wait)
