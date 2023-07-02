@@ -18,8 +18,8 @@ class BasePage:
 
     def edit_cookie(self, cookie_key: str, cookie_value: str):
         cookie = self.wait.until(
-        lambda d: d.get_cookie(cookie_key),
-        message=f"Cookie '{cookie_key}' does not exist within the given timeout")
+            lambda d: d.get_cookie(cookie_key),
+            message=f"Cookie '{cookie_key}' does not exist within the given timeout")
         self.driver.delete_cookie(cookie_key)
         self.driver.add_cookie({
             "name": cookie['name'],
@@ -27,7 +27,7 @@ class BasePage:
             "domain": cookie['domain'],
             "path": cookie['path'],
             "secure": cookie['secure'],
-            "expiry":(cookie['expiry'])
+            "expiry": (cookie['expiry'])
         })
 
     def click(self, locator: Tuple[str, str]) -> None:
@@ -48,7 +48,7 @@ class BasePage:
     def scroll_to_bottom(self) -> None:
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    def submit(self,  webelement: WebElement) -> None:
+    def submit(self, webelement: WebElement) -> None:
         self._highlight_element(webelement, "green")
         webelement.submit()
 
