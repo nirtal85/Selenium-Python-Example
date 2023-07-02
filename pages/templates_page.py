@@ -9,8 +9,8 @@ from pages.top_bars.top_navigate_bar import TopNavigateBar
 class TemplatesPage(TopNavigateBar):
     """ Templates page - contains variety of templates to select """
 
-    _TEMPLATES_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "#template-gallery tbody tr")
-    _CHOOSE_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, "a .btn.btn-primary")
+    _TEMPLATES_BLOCK: Tuple[str, str] = (By.CSS_SELECTOR, "#template-gallery tbody tr")
+    _CHOOSE_BUTTON: Tuple[str, str] = (By.CSS_SELECTOR, "a .btn.btn-primary")
 
     def __init__(self, driver, wait):
         super().__init__(driver, wait)

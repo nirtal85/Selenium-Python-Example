@@ -2,7 +2,6 @@ from typing import Tuple, Union
 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import ActionChains, Chrome, Edge, Firefox
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.expected_conditions import \
@@ -31,18 +30,18 @@ class BasePage:
             "expiry":(cookie['expiry'])
         })
 
-    def click(self, locator: Tuple[By, str]) -> None:
+    def click(self, locator: Tuple[str, str]) -> None:
         el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         self._highlight_element(el, "green")
         el.click()
 
-    def fill_text(self, locator: Tuple[By, str], txt: str) -> None:
+    def fill_text(self, locator: Tuple[str, str], txt: str) -> None:
         el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
         self._highlight_element(el, "green")
         el.send_keys(txt)
 
-    def clear_text(self, locator: Tuple[By, str]) -> None:
+    def clear_text(self, locator: Tuple[str, str]) -> None:
         el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
 
@@ -53,7 +52,7 @@ class BasePage:
         self._highlight_element(webelement, "green")
         webelement.submit()
 
-    def get_text(self, locator: Tuple[By, str]) -> str:
+    def get_text(self, locator: Tuple[str, str]) -> str:
         el: WebElement = self.wait.until(expected_conditions.visibility_of_element_located(locator))
         self._highlight_element(el, "green")
         return el.text

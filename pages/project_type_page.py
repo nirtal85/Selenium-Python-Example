@@ -10,8 +10,8 @@ from pages.top_bars.top_navigate_bar import TopNavigateBar
 class ProjectTypePage(TopNavigateBar):
     """ Project Type page - where one can choose which kind of templates to work with """
 
-    _START_FROM_SCRATCH_BUTTON: Tuple[By, str] = (By.CSS_SELECTOR, ".blank div.icon")
-    _PROJECTS_BLOCK: Tuple[By, str] = (By.CSS_SELECTOR, "#app-layout div:nth-child(3) .title")
+    _START_FROM_SCRATCH_BUTTON: Tuple[str, str] = (By.CSS_SELECTOR, ".blank div.icon")
+    _PROJECTS_BLOCK: Tuple[str, str] = (By.CSS_SELECTOR, "#app-layout div:nth-child(3) .title")
 
     def __init__(self, driver, wait):
         super().__init__(driver, wait)
