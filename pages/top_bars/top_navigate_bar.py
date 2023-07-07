@@ -5,12 +5,16 @@ from pages.base_page import BasePage
 
 
 class TopNavigateBar(BasePage):
-    """ Top navigation bar - the bar that appears at the top of the page after login"""
+    """Top navigation bar - the bar that appears at the top of the page after login"""
+
     PROJECTS_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/projects']")
     TEMPLATES_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/templates']")
     ANALYTICS_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/analytics']")
     INTEGRATIONS_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/integrations']")
-    AFFILIATE_PROGRAM_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/affiliate']")
+    AFFILIATE_PROGRAM_BTN = (
+        By.CSS_SELECTOR,
+        "[href='https://app.involve.me/affiliate']",
+    )
     ACCOUNT_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#nav-dropdown")
     LOGOUT_BTN = (By.CSS_SELECTOR, "[href='https://app.involve.me/logout']")
 

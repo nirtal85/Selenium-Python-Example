@@ -5,9 +5,10 @@ from pages.base_page import BasePage
 
 
 class TopMenuBar(BasePage):
-    """Top menu bar - The bar that appears on the top of the page prior to login """
-    LOGIN_LINK = (By.CSS_SELECTOR, '.login')
-    REGISTER_LINK = (By.CSS_SELECTOR, '.register')
+    """Top menu bar - The bar that appears on the top of the page prior to login"""
+
+    LOGIN_LINK = (By.CSS_SELECTOR, ".login")
+    REGISTER_LINK = (By.CSS_SELECTOR, ".register")
 
     def __init__(self, driver, wait):
         super().__init__(driver, wait)

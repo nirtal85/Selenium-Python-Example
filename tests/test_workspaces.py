@@ -21,7 +21,6 @@ def login(request: FixtureRequest, about_page: AboutPage, login_page: LoginPage)
 @allure.story("WorkSpaces Creation and Editing Functionality")
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces(BaseTest):
-
     @pytest.fixture(autouse=True)
     def setup_method_fixture(self, request):
         login(request, self.about_page, self.login_page)
@@ -39,11 +38,12 @@ class TestWorkspaces(BaseTest):
     @allure.title("Rename an existing workspace test")
     @pytest.mark.run(order=2)
     def test_rename_workspace(self, json_data: dict):
-        self.projects_page.rename_workspace(json_data["workspace"]["name"],
-                                            json_data["workspace"][
-                                                "new_name"])
+        self.projects_page.rename_workspace(
+            json_data["workspace"]["name"], json_data["workspace"]["new_name"]
+        )
         expected_status = self.projects_page.is_workspace_found(
-            json_data["workspace"]["new_name"])
+            json_data["workspace"]["new_name"]
+        )
         assert_that(expected_status).is_true()
 
     @allure.description("Delete an existing workspace")
@@ -56,13 +56,18 @@ class TestWorkspaces(BaseTest):
         assert_that(after).is_less_than(before)
 
     @allure.description(
-        "Compare between the actual number of projects seen on page and the number shown in workspaces block")
+        "Compare between the actual number of projects seen on page and the number shown in workspaces block"
+    )
     @allure.title("Number of projects displayed in page test")
     @pytest.mark.run(order=4)
     def test_number_of_existing_projects(self):
         number_of_displayed_projects = self.projects_page.get_projects_number_in_page()
-        number_of_projects_in_workspace = self.projects_page.get_projects_number_from_workspace()
-        assert_that(number_of_displayed_projects).is_equal_to(number_of_projects_in_workspace)
+        number_of_projects_in_workspace = (
+            self.projects_page.get_projects_number_from_workspace()
+        )
+        assert_that(number_of_displayed_projects).is_equal_to(
+            number_of_projects_in_workspace
+        )
 
     @allure.description("Selecting and adding a project to workspace")
     @allure.title("Add project to workspace test")
@@ -74,7 +79,8 @@ class TestWorkspaces(BaseTest):
         self.templates_page.choose_template(json_data["workspace"]["template_type"])
         self.project_edit_page.edit_project_prep(
             json_data["workspace"]["project_name"],
-            json_data["workspace"]["final_slide"])
+            json_data["workspace"]["final_slide"],
+        )
         self.project_edit_page.click_save_and_exit()
         after = self.projects_page.get_projects_number_in_page()
         assert_that(before + 1).is_equal_to(after)
@@ -85,7 +91,8 @@ class TestWorkspaces(BaseTest):
     def test_search_project(self, json_data: dict):
         self.projects_page.search_project(json_data["workspace"]["project_name"])
         expected_status = self.projects_page.is_project_found(
-            json_data["workspace"]["project_name"])
+            json_data["workspace"]["project_name"]
+        )
         assert_that(expected_status).is_true()
 
     @allure.description("Search for a non existing project")
@@ -93,17 +100,21 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, json_data: dict):
         self.projects_page.search_project(
-            json_data["workspace"]["non_existing_project"])
+            json_data["workspace"]["non_existing_project"]
+        )
         expected_not_found_message = json_data["workspace"]["no_project_found_message"]
-        assert_that(expected_not_found_message).is_equal_to(self.projects_page.get_no_project_found_message())
+        assert_that(expected_not_found_message).is_equal_to(
+            self.projects_page.get_no_project_found_message()
+        )
 
     @allure.description("Cancel project deletion")
     @allure.title("Cancel a project deletion")
     @pytest.mark.run(order=8)
     def test_cancel_project_deletion(self, json_data: dict):
         before = self.projects_page.get_projects_number_in_page()
-        self.projects_page.delete_project(json_data["workspace"]["project_name"],
-                                          StatusEnum.CANCEL.value)
+        self.projects_page.delete_project(
+            json_data["workspace"]["project_name"], StatusEnum.CANCEL.value
+        )
         after = self.projects_page.get_projects_number_in_page()
         assert_that(before).is_equal_to(after)
 

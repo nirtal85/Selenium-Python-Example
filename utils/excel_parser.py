@@ -18,7 +18,9 @@ class ExcelParser:
 
         # get all values, iterating through rows and columns
         num_cols = sheet.ncols  # Number of columns
-        for row_idx, col_idx in itertools.product(range(1, sheet.nrows), range(num_cols)):
+        for row_idx, col_idx in itertools.product(
+            range(1, sheet.nrows), range(num_cols)
+        ):
             cell_obj = sheet.cell(row_idx, col_idx)  # Get cell object by row, col
             # Convert cell to string,split it according to "'" and take the second cell in the array created
             # e.g.: cell_obj == "text:'something'" --> after convert and splitting == "something"
