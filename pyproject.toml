@@ -8,6 +8,10 @@ authors = ["Nir Tal <nirt236@gmail.com>"]
 readme = "README.md"
 packages = [{include = "selenium_python_example"}]
 
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+isort = "5.12.0"
+
 [tool.pytest.ini_options]
 addopts = '--alluredir=allure-results'
 base_url = 'https://www.involve.me/'
@@ -47,8 +51,6 @@ virtualenv = "20.23.1"
 virtualenv-clone = "0.5.7"
 xlrd = "2.0.1"
 gitpython = "3.1.31"
-isort = "5.12.0"
-
 
 [build-system]
 requires = ["poetry-core"]
