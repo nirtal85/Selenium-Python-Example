@@ -21,8 +21,8 @@
 scoop install allure
 ```
 
-* clone the project
-* navigate to the project directory
+* Clone the project
+* Navigate to the project directory
 * Install virtualenv:
 
 ```bash
