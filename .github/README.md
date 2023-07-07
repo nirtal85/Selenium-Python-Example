@@ -41,22 +41,16 @@ py -m venv env
 .\env\Scripts\activate
 ```
 
-* Install pipenv:
-
-```bash
-pip install pipenv
-```
-
-* Install project dependencies using pipenv:
+* Install project dependencies:
 
 ```
-pipenv install
+poetry install
 ```
 
 ## Running Tests
 
 ```bash
-pipenv run pytest --browser <firefox/chrome_headless>
+pytest --browser <firefox/chrome_headless>
 ```
 
 When no browser was selected then chrome will be used.
@@ -64,7 +58,7 @@ When no browser was selected then chrome will be used.
 * Run according to tags:
 
 ```bash
-pipenv run pytest -m <tag_name> --browser <firefox/chrome_headless>
+pytest -m <tag_name> --browser <firefox/chrome_headless>
 ```
 
 ## Viewing Test Results
