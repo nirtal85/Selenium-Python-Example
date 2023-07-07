@@ -21,8 +21,8 @@
 scoop install allure
 ```
 
-* clone the project
-* cd to project directory
+* Clone the project
+* Navigate to the project directory
 * Install virtualenv:
 
 ```bash
@@ -56,7 +56,7 @@ pipenv install
 ## Running Tests
 
 ```bash
-pipenv run pytest --alluredir=allure-results --browser <firefox/chrome_headless>
+pipenv run pytest --browser <firefox/chrome_headless>
 ```
 
 When no browser was selected then chrome will be used.
@@ -87,4 +87,10 @@ pytest --help
 
 ```bash
 isort .
+```
+
+## format code
+
+```bash
+black .
 ```
