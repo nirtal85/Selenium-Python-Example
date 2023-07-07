@@ -30,8 +30,8 @@ from utils.excel_parser import ExcelParser
 from utils.web_driver_listener import DriverEventListener
 
 
-# reads parameters from pytest command line
-def pytest_addoption(parser: Parser):
+def pytest_addoption(parser: Parser) -> None:
+    """reads parameters from pytest command line"""
     parser.addoption("--browser", action="store", default="chrome", help="browser that the automation will run in")
     parser.addoption("--decorate_driver", action="store", default=False, help="should we decorate the driver")
     parser.addini("base_url", "Base URL of the application")

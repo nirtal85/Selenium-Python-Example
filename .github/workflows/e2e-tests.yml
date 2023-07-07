@@ -10,10 +10,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  run_e2e:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
