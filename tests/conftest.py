@@ -134,7 +134,11 @@ def pytest_runtest_setup(item: Item) -> None:
                 desired_capabilities={
                     "browserName": "chrome",
                     "browserVersion": "114.0",
-                    "selenoid:options": {"enableVNC": True, "enableVideo": True},
+                    "selenoid:options": {
+                        "enableVNC": True,
+                        "enableVideo": True,
+                        "videoName": f"{item.name}.mp4",
+                    },
                 },
             )
         case _:
@@ -182,7 +186,7 @@ def pytest_exception_interact(report: BaseReport) -> None:
             driver.switch_to.window(driver.window_handles[window])
             allure.attach(
                 body=capture_full_page_screenshot(),
-                name=f"Full Page Screen Shot of window in " f"index {window}",
+                name=f"Full Page Screen Shot of window in index {window}",
                 attachment_type=allure.attachment_type.PNG,
             )
             allure.attach(
