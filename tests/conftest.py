@@ -128,6 +128,15 @@ def pytest_runtest_setup(item: Item) -> None:
         case "chrome_headless":
             chrome_options.add_argument("headless=new")
             driver = webdriver.Chrome(options=chrome_options)
+        case "remote":
+            driver = webdriver.Remote(
+                command_executor="http://localhost:4444/wd/hub",
+                desired_capabilities={
+                    "browserName": "chrome",
+                    "browserVersion": "114.0",
+                    "selenoid:options": {"enableVNC": True, "enableVideo": True},
+                },
+            )
         case _:
             if item.config.option.decorate_driver:
                 driver = EventFiringWebDriver(
