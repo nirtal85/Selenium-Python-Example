@@ -10,7 +10,7 @@ import requests
 from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
 from _pytest.nodes import Item
-from _pytest.reports import BaseReport
+from _pytest.reports import TestReport
 from git import Repo
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
@@ -166,34 +166,17 @@ def pytest_runtest_teardown() -> None:
     driver.quit()
 
 
-def pytest_exception_interact(report: BaseReport) -> None:
+def pytest_exception_interact(node: Item, report: TestReport) -> None:
     if not report.failed:
         return
-    window_count = len(driver.window_handles)
-    if window_count == 1:
+    if browser == "remote":
         allure.attach(
-            body=capture_full_page_screenshot(),
-            name="Full Page Screenshot",
-            attachment_type=allure.attachment_type.PNG,
+            body="<html><body><video width='100%%' height='100%%' controls autoplay><source "
+                 f"src='http://localhost:4444/video/{node.name}.mp4' "
+                 "type='video/mp4'></video></body></html>",
+            name="Video record",
+            attachment_type=allure.attachment_type.HTML,
         )
-        allure.attach(
-            body=driver.current_url,
-            name="URL",
-            attachment_type=allure.attachment_type.URI_LIST,
-        )
-    else:
-        for window in range(window_count):
-            driver.switch_to.window(driver.window_handles[window])
-            allure.attach(
-                body=capture_full_page_screenshot(),
-                name=f"Full Page Screen Shot of window in index {window}",
-                attachment_type=allure.attachment_type.PNG,
-            )
-            allure.attach(
-                body=driver.current_url,
-                name=f"URL of window in index {window}",
-                attachment_type=allure.attachment_type.URI_LIST,
-            )
     allure.attach(
         body=get_public_ip(),
         name="public ip address",
@@ -209,8 +192,8 @@ def pytest_exception_interact(report: BaseReport) -> None:
             {
                 item[0]: item[1]
                 for item in driver.execute_script(
-                    "return Object.entries(sessionStorage);"
-                )
+                "return Object.entries(sessionStorage);"
+            )
             },
             indent=4,
         ),
@@ -222,8 +205,8 @@ def pytest_exception_interact(report: BaseReport) -> None:
             {
                 item[0]: item[1]
                 for item in driver.execute_script(
-                    "return Object.entries(localStorage);"
-                )
+                "return Object.entries(localStorage);"
+            )
             },
             indent=4,
         ),
@@ -235,11 +218,38 @@ def pytest_exception_interact(report: BaseReport) -> None:
         name="Console Logs",
         attachment_type=allure.attachment_type.JSON,
     )
-    allure.attach(
-        body=json.dumps(attach_network_logs(), indent=4),
-        name="Network Logs",
-        attachment_type=allure.attachment_type.JSON,
-    )
+    if browser != "remote":
+        # looks like cdp not working with remote: https://github.com/SeleniumHQ/selenium/issues/8672
+        window_count = len(driver.window_handles)
+        if window_count == 1:
+            allure.attach(
+                body=capture_full_page_screenshot(),
+                name="Full Page Screenshot",
+                attachment_type=allure.attachment_type.PNG,
+            )
+            allure.attach(
+                body=driver.current_url,
+                name="URL",
+                attachment_type=allure.attachment_type.URI_LIST,
+            )
+        else:
+            for window in range(window_count):
+                driver.switch_to.window(driver.window_handles[window])
+                allure.attach(
+                    body=capture_full_page_screenshot(),
+                    name=f"Full Page Screen Shot of window in index {window}",
+                    attachment_type=allure.attachment_type.PNG,
+                )
+                allure.attach(
+                    body=driver.current_url,
+                    name=f"URL of window in index {window}",
+                    attachment_type=allure.attachment_type.URI_LIST,
+                )
+        allure.attach(
+            body=json.dumps(attach_network_logs(), indent=4),
+            name="Network Logs",
+            attachment_type=allure.attachment_type.JSON,
+        )
 
 
 def get_response_body(request_id):
