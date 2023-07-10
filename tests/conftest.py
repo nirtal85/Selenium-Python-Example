@@ -169,14 +169,39 @@ def pytest_runtest_teardown() -> None:
 def pytest_exception_interact(node: Item, report: TestReport) -> None:
     if not report.failed:
         return
+    window_count = len(driver.window_handles)
     if browser == "remote":
         allure.attach(
             body="<html><body><video width='100%%' height='100%%' controls autoplay><source "
-                 f"src='http://localhost:4444/video/{node.name}.mp4' "
-                 "type='video/mp4'></video></body></html>",
+            f"src='http://localhost:4444/video/{node.name}.mp4' "
+            "type='video/mp4'></video></body></html>",
             name="Video record",
             attachment_type=allure.attachment_type.HTML,
         )
+        if window_count == 1:
+            allure.attach(
+                body=driver.get_screenshot_as_png(),
+                name="Full Page Screenshot",
+                attachment_type=allure.attachment_type.PNG,
+            )
+            allure.attach(
+                body=driver.current_url,
+                name="URL",
+                attachment_type=allure.attachment_type.URI_LIST,
+            )
+        else:
+            for window in range(window_count):
+                driver.switch_to.window(driver.window_handles[window])
+                allure.attach(
+                    body=driver.get_screenshot_as_png(),
+                    name=f"Full Page Screen Shot of window in index {window}",
+                    attachment_type=allure.attachment_type.PNG,
+                )
+                allure.attach(
+                    body=driver.current_url,
+                    name=f"URL of window in index {window}",
+                    attachment_type=allure.attachment_type.URI_LIST,
+                )
     allure.attach(
         body=get_public_ip(),
         name="public ip address",
@@ -192,8 +217,8 @@ def pytest_exception_interact(node: Item, report: TestReport) -> None:
             {
                 item[0]: item[1]
                 for item in driver.execute_script(
-                "return Object.entries(sessionStorage);"
-            )
+                    "return Object.entries(sessionStorage);"
+                )
             },
             indent=4,
         ),
@@ -205,8 +230,8 @@ def pytest_exception_interact(node: Item, report: TestReport) -> None:
             {
                 item[0]: item[1]
                 for item in driver.execute_script(
-                "return Object.entries(localStorage);"
-            )
+                    "return Object.entries(localStorage);"
+                )
             },
             indent=4,
         ),
@@ -220,7 +245,6 @@ def pytest_exception_interact(node: Item, report: TestReport) -> None:
     )
     if browser != "remote":
         # looks like cdp not working with remote: https://github.com/SeleniumHQ/selenium/issues/8672
-        window_count = len(driver.window_handles)
         if window_count == 1:
             allure.attach(
                 body=capture_full_page_screenshot(),
