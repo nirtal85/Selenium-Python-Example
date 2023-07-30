@@ -18,10 +18,13 @@ log_cli = true
 log_cli_level = "INFO"
 log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 log_cli_date_format = "%Y-%m-%d %H:%M:%S"
-addopts = '--alluredir=allure-results --color=yes'
+addopts = ["--alluredir=allure-results", "--color=yes"]
 base_url = 'https://www.involve.me/'
 username = 'elias123@gmail.com'
 password = 'El123456789'
+testpaths = [
+  "tests",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
