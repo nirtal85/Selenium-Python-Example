@@ -22,6 +22,9 @@ addopts = ["--alluredir=allure-results", "--color=yes"]
 base_url = 'https://www.involve.me/'
 username = 'elias123@gmail.com'
 password = 'El123456789'
+markers = [
+    "security: marks security tests",
+]
 testpaths = [
   "tests",
 ]
