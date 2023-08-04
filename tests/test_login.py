@@ -27,7 +27,7 @@ class TestLogin(BaseTest):
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
-    def test_invalid_login(self, request: FixtureRequest):
+    def test_sanity(self, request: FixtureRequest):
         assert_that(self.driver.current_url).is_equal_to(
             request.config.getini("base_url")
         )
