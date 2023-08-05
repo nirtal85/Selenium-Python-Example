@@ -35,7 +35,7 @@ jobs:
       - name: Test with pytest
         run: |
           source .venv/bin/activate
-          pytest --browser chrome_headless -m devRun
+          pytest --browser chrome_headless
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
