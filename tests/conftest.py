@@ -3,7 +3,6 @@ import json
 import os
 from collections import defaultdict
 from contextlib import suppress
-from datetime import datetime
 
 import allure
 import requests
@@ -11,13 +10,11 @@ from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from _pytest.reports import TestReport
-from git import Repo
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 
 from globals import dir_global
-from globals.dir_global import ROOT_DIR
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -63,32 +60,6 @@ def get_public_ip() -> str:
 @fixture(scope="session")
 def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
-
-
-def pytest_sessionfinish() -> None:
-    repo = Repo(ROOT_DIR)
-    environment_properties = {
-        "Browser": driver.name,
-        "Driver_Version": driver.capabilities["browserVersion"],
-        "Base_URL": base_url,
-        "Commit_Date": datetime.fromtimestamp(repo.head.commit.committed_date).strftime(
-            "%c"
-        ),
-        "Commit_Message": repo.head.commit.message.strip(),
-        "Commit_Id": repo.head.object.hexsha,
-        "Commit_Author_Name": repo.head.commit.author.name,
-        "Branch": repo.active_branch.name,
-    }
-    allure_env_path = os.path.join("allure-results", "environment.properties")
-    with open(allure_env_path, "w") as f:
-        data = "\n".join(
-            [
-                f"{variable}={value}"
-                for variable, value in environment_properties.items()
-            ]
-        )
-        f.write(data)
-
 
 def pytest_runtest_setup(item: Item) -> None:
     global browser, base_url, driver, chrome_options

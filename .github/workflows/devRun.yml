@@ -40,6 +40,13 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest --browser chrome_headless -m devRun
+      - name: Add allure information
+        run: |
+          echo GIT_BRANCH=${GITHUB_REF#refs/heads/} >> tests/allure-results/environment.properties
+          echo GIT_COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA") >> tests/allure-results/environment.properties
+          echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> tests/allure-results/environment.properties
+          echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> tests/allure-results/environment.properties
+          echo CHROME_VERSION=$(google-chrome --product-version) >> tests/allure-results/environment.properties
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
