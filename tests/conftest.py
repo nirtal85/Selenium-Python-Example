@@ -61,6 +61,7 @@ def get_public_ip() -> str:
 def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
 
+
 def pytest_runtest_setup(item: Item) -> None:
     global browser, base_url, driver, chrome_options
     browser = item.config.option.browser
