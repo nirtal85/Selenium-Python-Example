@@ -48,7 +48,6 @@ jobs:
           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> environment.properties
           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
           echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
-          cat environment.properties
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
