@@ -42,6 +42,7 @@ jobs:
           pytest --browser chrome_headless -m devRun
       - name: Add allure information
         working-directory: allure-results
+        if: always()
         run: |
           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}  >> environment.properties
           echo GIT_COMMIT_ID=${{ github.sha }} >> environment.properties
