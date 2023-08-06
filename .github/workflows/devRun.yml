@@ -39,7 +39,7 @@ jobs:
       - name: Test with pytest
         run: |
           source .venv/bin/activate
-          pytest --browser chrome_headless -m "not devRun"
+          pytest --browser chrome_headless -m devRun
       - name: Add allure information
         working-directory: allure-results
         run: |
