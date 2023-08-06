@@ -46,6 +46,7 @@ jobs:
           echo GIT_BRANCH=${{ env.branch }} >> environment.properties
           echo GIT_COMMIT_ID=${{ github.sha }} >> environment.properties
           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> environment.properties
+          echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD) >> environment.properties
           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
           echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
       - name: Allure results
