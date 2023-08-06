@@ -39,8 +39,8 @@ jobs:
       - name: Add allure information
         working-directory: allure-results
         run: |
-          echo GIT_BRANCH=${GITHUB_REF#refs/heads/} >> environment.properties
-          echo GIT_COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA") >> environment.properties
+          echo GIT_BRANCH=${{ env.branch }} >> environment.properties
+          echo GIT_COMMIT_ID=${{ github.sha }} >> environment.properties
           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> environment.properties
           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
           echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
