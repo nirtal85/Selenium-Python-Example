@@ -41,7 +41,7 @@ jobs:
           source .venv/bin/activate
           pytest --browser chrome_headless -m devRun
       - name: Add allure information
-        working-directory: ./tests/allure-results
+        working-directory: tests/allure-results
         run: |
           echo GIT_BRANCH=${GITHUB_REF#refs/heads/} >> environment.properties
           echo GIT_COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA") >> environment.properties
