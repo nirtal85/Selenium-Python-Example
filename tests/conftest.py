@@ -1,5 +1,6 @@
 import base64
 import json
+import logging
 import os
 from collections import defaultdict
 from contextlib import suppress
@@ -66,6 +67,9 @@ def pytest_runtest_setup(item: Item) -> None:
     global browser, base_url, driver, chrome_options
     browser = item.config.option.browser
     base_url = item.config.getini("base_url")
+    logging.basicConfig(level=logging.WARN)
+    logger = logging.getLogger('selenium')
+    logger.setLevel(logging.DEBUG)
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
