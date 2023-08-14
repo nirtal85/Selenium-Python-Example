@@ -41,7 +41,6 @@ def pytest_addoption(parser: Parser) -> None:
         default=False,
         help="should we decorate the driver",
     )
-    parser.addini("base_url", "Base URL of the application")
     parser.addini("username", "Username for login")
     parser.addini("password", "Password for login")
 
@@ -64,9 +63,9 @@ def excel_reader() -> ExcelParser:
 
 
 def pytest_runtest_setup(item: Item) -> None:
-    global browser, base_url, driver, chrome_options
+    global browser, driver, chrome_options
     browser = item.config.option.browser
-    base_url = item.config.getini("base_url")
+    base_url = item.config.option.base_url
     logging.basicConfig(level=logging.WARN)
     logger = logging.getLogger("selenium")
     logger.setLevel(logging.DEBUG)
