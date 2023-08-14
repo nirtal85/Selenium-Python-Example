@@ -1,9 +1,9 @@
 import base64
 import json
 import logging
-import os
 from collections import defaultdict
 from contextlib import suppress
+from pathlib import Path
 
 import allure
 import requests
@@ -15,7 +15,6 @@ from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 
-from globals import dir_global
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
@@ -47,7 +46,7 @@ def pytest_addoption(parser: Parser) -> None:
 
 @fixture(scope="session")
 def json_data() -> dict:
-    json_path = os.path.join(dir_global.DATA_FILES_PATH, "tests_data.json")
+    json_path = Path(Path(__file__).absolute().parent.parent, "data", "tests_data.json")
     with open(json_path) as json_file:
         data = json.load(json_file)
     return data
