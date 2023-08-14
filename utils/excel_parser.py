@@ -1,14 +1,14 @@
 import itertools
-import os
+from pathlib import Path
 
 import xlrd
-
-from globals import dir_global
 
 
 class ExcelParser:
     def __init__(self, excel_path):
-        self.excel_path = os.path.join(dir_global.DATA_FILES_PATH, excel_path)
+        self.excel_path = Path(
+            Path(__file__).absolute().parent.parent, "data", excel_path
+        )
 
     def read_from_excel(self, sheet_name):
         rows_val = []
