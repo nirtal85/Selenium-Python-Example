@@ -34,7 +34,7 @@ class TestLogin(BaseTest):
     @pytest.mark.run(order=1)
     def test_valid_login(self, secret_data: dict, json_data: dict):
         self.about_page.click_login_link()
-        self.login_page.login(secret_data.get("username"), secret_data.get("password"))
+        self.login_page.login(secret_data.get("email"), secret_data.get("password"))
         expected_page_title = json_data["login"]["ws_page_title"]
         assert_that(expected_page_title).is_equal_to(self.projects_page.get_title())
 
@@ -50,7 +50,7 @@ class TestLogin(BaseTest):
             attachment_type=allure.attachment_type.TEXT,
         )
         self.about_page.click_login_link()
-        self.login_page.login(secret_data.get("username"), secret_data.get("password"))
+        self.login_page.login(secret_data.get("email"), secret_data.get("password"))
         self.projects_page.logout()
         expected_page_title = json_data["login"]["lg_page_title"]
         assert_that(expected_page_title).is_equal_to(self.login_page.get_page_title())

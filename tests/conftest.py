@@ -71,7 +71,7 @@ def secret_data() -> dict:
     """
     load_dotenv()
     return {
-        "username": os.getenv("EMAIL"),
+        "email": os.getenv("EMAIL"),
         "password": os.getenv("PASSWORD"),
     }
 

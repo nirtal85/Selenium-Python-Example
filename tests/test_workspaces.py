@@ -11,7 +11,7 @@ from tests.test_base import BaseTest
 # performs login operation
 def login(secret_data: dict, about_page: AboutPage, login_page: LoginPage):
     about_page.click_login_link()
-    login_page.login(secret_data.get("username"), secret_data.get("password"))
+    login_page.login(secret_data.get("email"), secret_data.get("password"))
 
 
 @allure.epic("Workspaces")
