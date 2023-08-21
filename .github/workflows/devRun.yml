@@ -37,9 +37,6 @@ jobs:
       - name: Install plugin
         run: pip install pytest-github-actions-annotate-failures
       - name: Test with pytest
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           source .venv/bin/activate
           pytest --browser chrome_headless -m devRun
