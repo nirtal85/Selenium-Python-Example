@@ -26,12 +26,7 @@ class TestLogin(BaseTest):
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
-    def test_sanity(self, base_url, secret_data: dict):
-        allure.attach(
-            body=secret_data.get("email"),
-            name="email",
-            attachment_type=allure.attachment_type.TEXT,
-        )
+    def test_sanity(self, base_url):
         assert_that(self.driver.current_url).is_equal_to(base_url)
 
     @allure.description("valid login")
