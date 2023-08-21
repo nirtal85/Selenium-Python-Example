@@ -1,6 +1,5 @@
 import allure
 import pytest
-from _pytest.fixtures import FixtureRequest
 from assertpy import assert_that
 
 from helper_enums.status_enum import StatusEnum
@@ -10,11 +9,9 @@ from tests.test_base import BaseTest
 
 
 # performs login operation
-def login(request: FixtureRequest, about_page: AboutPage, login_page: LoginPage):
-    username = request.config.getini("username")
-    password = request.config.getini("password")
+def login(secret_data: dict, about_page: AboutPage, login_page: LoginPage):
     about_page.click_login_link()
-    login_page.login(username, password)
+    login_page.login(secret_data.get("email"), secret_data.get("password"))
 
 
 @allure.epic("Workspaces")
@@ -22,8 +19,8 @@ def login(request: FixtureRequest, about_page: AboutPage, login_page: LoginPage)
 @allure.severity(allure.severity_level.NORMAL)
 class TestWorkspaces(BaseTest):
     @pytest.fixture(autouse=True)
-    def setup_method_fixture(self, request):
-        login(request, self.about_page, self.login_page)
+    def setup_method_fixture(self, secret_data: dict):
+        login(secret_data, self.about_page, self.login_page)
 
     @allure.description("Create new Workspace")
     @allure.title("Create new workspace test")

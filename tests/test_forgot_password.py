@@ -1,6 +1,5 @@
 import allure
 import pytest
-from _pytest.fixtures import FixtureRequest
 from assertpy import assert_that
 
 from tests.test_base import BaseTest
@@ -13,11 +12,10 @@ from tests.test_base import BaseTest
 class TestForgotPassword(BaseTest):
     @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
-    def test_valid_email(self, json_data: dict, request: FixtureRequest):
-        email = request.config.getini("username")
+    def test_valid_email(self, json_data: dict, secret_data: dict):
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
-        self.forget_password_page.send_password_reset_link(email)
+        self.forget_password_page.send_password_reset_link(secret_data.get("email"))
         expected_success_message = json_data["forgot_password"]["success_message"]
         assert_that(expected_success_message).is_equal_to(
             self.forget_password_page.get_success_message()
