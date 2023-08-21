@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+import os
 from collections import defaultdict
 from contextlib import suppress
 from pathlib import Path
@@ -11,6 +12,7 @@ from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from _pytest.reports import TestReport
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -40,8 +42,6 @@ def pytest_addoption(parser: Parser) -> None:
         default=False,
         help="should we decorate the driver",
     )
-    parser.addini("username", "Username for login")
-    parser.addini("password", "Password for login")
 
 
 @fixture(scope="session")
@@ -59,6 +59,21 @@ def get_public_ip() -> str:
 @fixture(scope="session")
 def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
+
+
+@fixture(scope="session")
+def secret_data() -> dict:
+    """
+    Fixture to load sensitive data from environment variables.
+
+    Returns:
+        dict: A dictionary containing sensitive data, including username and password.
+    """
+    load_dotenv()
+    return {
+        "username": os.getenv("EMAIL"),
+        "password": os.getenv("PASSWORD"),
+    }
 
 
 def pytest_runtest_setup(item: Item) -> None:
