@@ -9,6 +9,9 @@ from tests.test_base import BaseTest
 @allure.story("Forgot Password Feature's Functionality")
 @allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.security
+@allure.parent_suite("Custom parent suite")
+@allure.suite("Custom suite")
+@allure.sub_suite("Custom sub suite")
 class TestForgotPassword(BaseTest):
     @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
@@ -35,6 +38,13 @@ class TestForgotPassword(BaseTest):
 
     @allure.description("Exception catching")
     @allure.title("Exception test")
+    @allure.link("https://github.com/allure-examples/", name="Allure Examples")
+    @allure.issue(
+        "https://github.com/allure-examples/allure-examples/issues/1", name="ISSUE-1"
+    )
+    @allure.testcase(
+        "https://github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2"
+    )
     def test_expected_exception_on_page_title(self):
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()

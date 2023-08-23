@@ -119,7 +119,11 @@ class TestWorkspaces(BaseTest):
     @allure.title("Delete existing project")
     @pytest.mark.run(order=9)
     def test_delete_project(self, json_data: dict):
-        before = self.projects_page.get_projects_number_in_page()
-        self.projects_page.delete_project(json_data["workspace"]["project_name"])
-        after = self.projects_page.get_projects_number_in_page()
-        assert_that(before).is_equal_to(after + 1)
+        with allure.step("grand parent step"):
+            with allure.step("parent step"):
+                before = self.projects_page.get_projects_number_in_page()
+                self.projects_page.delete_project(
+                    json_data["workspace"]["project_name"]
+                )
+                after = self.projects_page.get_projects_number_in_page()
+                assert_that(before).is_equal_to(after + 1)

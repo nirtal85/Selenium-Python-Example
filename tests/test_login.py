@@ -1,3 +1,5 @@
+import json
+
 import allure
 import pytest
 from assertpy import assert_that
@@ -31,6 +33,7 @@ class TestLogin(BaseTest):
 
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
+    @allure.tag("Tagged test")
     @pytest.mark.run(order=1)
     def test_valid_login(self, secret_data: dict, json_data: dict):
         self.about_page.click_login_link()
@@ -45,9 +48,44 @@ class TestLogin(BaseTest):
     def test_logout(self, json_data: dict, secret_data: dict):
         # example of a simple text attachment
         allure.attach(
-            body="hello from allure",
-            name="dummy print statement",
+            "<h1>Example html attachment</h1>",
+            name="HTML example",
+            attachment_type=allure.attachment_type.HTML,
+        )
+        allure.attach(
+            "Some text content",
+            name="TXT example",
             attachment_type=allure.attachment_type.TEXT,
+        )
+        allure.attach(
+            "first,second,third\none,two,three",
+            name="CSV example",
+            attachment_type=allure.attachment_type.CSV,
+        )
+        allure.attach(
+            json.dumps({"first": 1, "second": 2}, indent=2),
+            name="JSON example",
+            attachment_type=allure.attachment_type.JSON,
+        )
+        xml_content = """<?xml version="1.0" encoding="UTF-8"?>
+            <tag>
+                 <inside>...</inside>
+             </tag>
+         """
+        allure.attach(
+            xml_content,
+            name="some attachment name",
+            attachment_type=allure.attachment_type.XML,
+        )
+        allure.attach(
+            "\n".join(
+                [
+                    "https://github.com/allure-framework",
+                    "https://github.com/allure-examples",
+                ]
+            ),
+            name="URI List example",
+            attachment_type=allure.attachment_type.URI_LIST,
         )
         self.about_page.click_login_link()
         self.login_page.login(secret_data.get("email"), secret_data.get("password"))
@@ -57,6 +95,7 @@ class TestLogin(BaseTest):
 
     @allure.description("Skip Test example")
     @allure.title("Skipped test example")
+    @allure.label("owner", "nir tal")
     @pytest.mark.skip(reason="no way of currently testing this")
     def test_skip(self):
         pass
