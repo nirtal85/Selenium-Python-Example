@@ -34,6 +34,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
         run: poetry install --no-interaction --no-root
+      - uses: jakebailey/pyright-action@v1
       - name: Install plugin
         run: pip install pytest-github-actions-annotate-failures
       - name: Test with pytest
