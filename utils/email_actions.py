@@ -4,6 +4,26 @@ from mailinator import GetInboxRequest, Mailinator, Message
 
 
 class EmailActions:
+
+    """
+    A class for performing email-related actions using the Mailinator service.
+
+    This class provides methods to interact with the Mailinator API and perform actions
+    such as waiting for specific emails to arrive and counting email subjects in an inbox.
+
+    Args:
+        mailinator (Mailinator): An instance of the Mailinator client.
+        mailinator_domain (str): The domain name associated with the Mailinator service.
+
+    Attributes:
+        mailinator (Mailinator): An instance of the Mailinator client.
+        mailinator_domain (str): The domain name associated with the Mailinator service.
+
+    Example:
+        # Initialize the EmailActions class with the Mailinator client and domain name.
+        email_actions = EmailActions(mailinator_client, "example.com")
+    """
+
     def __init__(self, mailinator: Mailinator, mailinator_domain: str):
         self.mailinator = mailinator
         self.mailinator_domain = mailinator_domain
