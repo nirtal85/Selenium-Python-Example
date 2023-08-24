@@ -1,6 +1,6 @@
 from collections import Counter
 
-from mailinator import GetInboxRequest, Message, Mailinator
+from mailinator import GetInboxRequest, Mailinator, Message
 
 
 class EmailActions:
