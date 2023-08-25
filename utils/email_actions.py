@@ -69,7 +69,7 @@ class EmailActions:
         ]
         return filtered_messages[0] if filtered_messages else None
 
-    def count_messages_by_subject(self, user_email: str) -> Counter[str]:
+    def count_messages_by_subject(self, user_email: str) -> dict[str, int]:
         """
         Count the occurrences of email subjects in a user's inbox.
 
@@ -80,17 +80,17 @@ class EmailActions:
             user_email (str): The email address of the user whose inbox is being counted.
 
         Returns:
-            Counter[str]: A Counter object containing a count of each unique email subject
-            in the user's inbox.
+            dict[str, int]: A dictionary where keys are unique email subjects and values are
+            their respective counts in the user's inbox.
 
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
             fetching the inbox.
 
         Example:
+            from unittest import TestCase
             subject_counts = count_messages_by_subject(self, "user@example.com")
-            for subject, count in subject_counts.items():
-                print(f"Subject: {subject}, Count: {count}")
+            TestCase().assertDictEqual({"some subject": 1}, subject_counts)
         """
         messages = self.mailinator.request(
             GetInboxRequest(
@@ -101,4 +101,4 @@ class EmailActions:
         # Use a list comprehension to extract the subjects from each message
         subjects = [message.subject for message in messages]
         # Count the occurrences of each subject
-        return Counter(subjects)
+        return dict(Counter(subjects))
