@@ -1,6 +1,7 @@
 # Selenium Python Example
 
-![Python application](https://github.com/nirtal85/Selenium-Python-Example/workflows/Python%20application/badge.svg)
+![dev run](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
+![nightly](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
 
 ## Articles written about this project
 
