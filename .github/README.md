@@ -79,14 +79,8 @@ allure serve allure-results
 pytest --help
 ```
 
-## Sort imports
+## Run pre commit checks automatically
 
 ```bash
-isort .
-```
-
-## format code
-
-```bash
-black .
+pre-commit install
 ```
