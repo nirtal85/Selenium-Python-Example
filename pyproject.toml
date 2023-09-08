@@ -12,6 +12,7 @@ packages = [{include = "selenium_python_example"}]
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 isort = "5.12.0"
+pre-commit = "^3.4.0"
 
 [tool.pytest.ini_options]
 addopts = ["--alluredir=allure-results", "--color=yes", "-s", "-p no:logging"]
