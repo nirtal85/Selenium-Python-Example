@@ -84,3 +84,15 @@ pytest --help
 ```bash
 pre-commit install
 ```
+
+## Sort imports
+
+```bash
+isort .
+```
+
+## format code
+
+```bash
+black .
+```
