@@ -1,0 +1,936 @@
+[
+    {
+        "request": {
+            "method": "Network.requestWillBeSent",
+            "params": {
+                "documentURL": "https://www.involve.me/",
+                "frameId": "DE546EDF4C73508DF0485CE1E5F6F69C",
+                "hasUserGesture": false,
+                "initiator": {
+                    "stack": {
+                        "callFrames": [
+                            {
+                                "columnNumber": 68445,
+                                "functionName": "wn",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 30676,
+                                "functionName": "value",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 52559,
+                                "functionName": "value",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 28575,
+                                "functionName": "value",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 45193,
+                                "functionName": "",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 6554,
+                                "functionName": "C",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 45173,
+                                "functionName": "",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 45212,
+                                "functionName": "",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            }
+                        ]
+                    },
+                    "type": "script"
+                },
+                "loaderId": "CBCA96EFC79676F3040D9C97BD9158FA",
+                "redirectHasExtraInfo": false,
+                "request": {
+                    "hasPostData": true,
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Referer": "https://www.involve.me/",
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Linux\""
+                    },
+                    "initialPriority": "High",
+                    "isSameSite": true,
+                    "method": "POST",
+                    "mixedContentType": "none",
+                    "postData": "data=eyJ0b2tlbiI6InBoY181cndOclIwZVlMZDJzcVZsNU5aOVVHT0VEaFNUVTZmZkY5S0hMR2haWlkwIiwiZGlzdGluY3RfaWQiOiIwMThhYTBiMS1mYjBlLTdlZjYtYjdlNC01MTkyNzcwMGIyZDAiLCJncm91cHMiOnt9fQ%3D%3D",
+                    "postDataEntries": [
+                        {
+                            "bytes": "ZGF0YT1leUowYjJ0bGJpSTZJbkJvWTE4MWNuZE9jbEl3WlZsTVpESnpjVlpzTlU1YU9WVkhUMFZFYUZOVVZUWm1aa1k1UzBoTVIyaGFXbGt3SWl3aVpHbHpkR2x1WTNSZmFXUWlPaUl3TVRoaFlUQmlNUzFtWWpCbExUZGxaall0WWpkbE5DMDFNVGt5Tnpjd01HSXlaREFpTENKbmNtOTFjSE1pT250OWZRJTNEJTNE"
+                        }
+                    ],
+                    "referrerPolicy": "strict-origin-when-cross-origin",
+                    "url": "https://posthog.admin.involve.me/decide/?v=3&ip=1&_=1694913133338&ver=1.77.0"
+                },
+                "requestId": "2607.245",
+                "timestamp": 113.132226,
+                "type": "XHR",
+                "wallTime": 1694913133.345343
+            },
+            "body": {
+                "postData": "data=eyJ0b2tlbiI6InBoY181cndOclIwZVlMZDJzcVZsNU5aOVVHT0VEaFNUVTZmZkY5S0hMR2haWlkwIiwiZGlzdGluY3RfaWQiOiIwMThhYTBiMS1mYjBlLTdlZjYtYjdlNC01MTkyNzcwMGIyZDAiLCJncm91cHMiOnt9fQ%3D%3D"
+            }
+        },
+        "response": {
+            "method": "Network.responseReceived",
+            "params": {
+                "frameId": "DE546EDF4C73508DF0485CE1E5F6F69C",
+                "hasExtraInfo": true,
+                "loaderId": "CBCA96EFC79676F3040D9C97BD9158FA",
+                "requestId": "2607.245",
+                "response": {
+                    "alternateProtocolUsage": "mainJobWonRace",
+                    "connectionId": 541,
+                    "connectionReused": true,
+                    "encodedDataLength": 160,
+                    "fromDiskCache": false,
+                    "fromPrefetchCache": false,
+                    "fromServiceWorker": false,
+                    "headers": {
+                        "access-control-allow-credentials": "true",
+                        "access-control-allow-headers": "X-Requested-With,Content-Type",
+                        "access-control-allow-methods": "GET, POST, OPTIONS",
+                        "access-control-allow-origin": "https://www.involve.me",
+                        "alt-svc": "h3=\":443\"; ma=2592000",
+                        "content-type": "application/json",
+                        "date": "Sun, 17 Sep 2023 01:12:13 GMT",
+                        "referrer-policy": "same-origin",
+                        "server": "Caddy, gunicorn",
+                        "x-content-type-options": "nosniff"
+                    },
+                    "mimeType": "application/json",
+                    "protocol": "h2",
+                    "remoteIPAddress": "144.76.169.69",
+                    "remotePort": 443,
+                    "responseTime": 1694913133452.115,
+                    "securityDetails": {
+                        "certificateId": 0,
+                        "certificateTransparencyCompliance": "compliant",
+                        "cipher": "AES_128_GCM",
+                        "encryptedClientHello": false,
+                        "issuer": "R3",
+                        "keyExchange": "",
+                        "keyExchangeGroup": "X25519",
+                        "protocol": "TLS 1.3",
+                        "sanList": [
+                            "posthog.admin.involve.me"
+                        ],
+                        "serverSignatureAlgorithm": 1027,
+                        "signedCertificateTimestampList": [
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Cloudflare 'Nimbus2023' Log",
+                                "logId": "7A328C54D8B72DB620EA38E0521EE98416703213854D3BD22BC13A57A352EB52",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "304502203AB485F0527445687952E37EE549D94F314E660BEBD08A4E7F2FA5C04B56591D022100EBD04F086679E5FF1508CCDC5A4445D3D4F219C9AF7F7E1040EF2000A9048B38",
+                                "status": "Verified",
+                                "timestamp": 1694082562711.0
+                            },
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Google 'Xenon2023' log",
+                                "logId": "ADF7BEFA7CFF10C88B9D3D9C1E3E186AB467295DCFB10C24CA858634EBDC828A",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "3046022100C229D55C62544336BEE6A528AADACCFFD615F62FACEE1111FA6FDFCFEF2D64F3022100B2B75352BBFFED13007654FF6AFC5A69F6988A842EC0EEE8235521C97E93B7A5",
+                                "status": "Verified",
+                                "timestamp": 1694082562762.0
+                            }
+                        ],
+                        "subjectName": "posthog.admin.involve.me",
+                        "validFrom": 1694078962,
+                        "validTo": 1701854961
+                    },
+                    "securityState": "secure",
+                    "status": 200,
+                    "statusText": "",
+                    "timing": {
+                        "connectEnd": -1,
+                        "connectStart": -1,
+                        "dnsEnd": -1,
+                        "dnsStart": -1,
+                        "proxyEnd": -1,
+                        "proxyStart": -1,
+                        "pushEnd": 0,
+                        "pushStart": 0,
+                        "receiveHeadersEnd": 105.69,
+                        "receiveHeadersStart": 105.567,
+                        "requestTime": 113.139775,
+                        "sendEnd": 3.579,
+                        "sendStart": 2.144,
+                        "sslEnd": -1,
+                        "sslStart": -1,
+                        "workerFetchStart": -1,
+                        "workerReady": -1,
+                        "workerRespondWithSettled": -1,
+                        "workerStart": -1
+                    },
+                    "url": "https://posthog.admin.involve.me/decide/?v=3&ip=1&_=1694913133338&ver=1.77.0"
+                },
+                "timestamp": 113.255244,
+                "type": "XHR"
+            },
+            "body": {
+                "base64Encoded": false,
+                "body": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {}, \"sessionRecording\": false, \"errorsWhileComputingFlags\": false, \"featureFlagPayloads\": {}, \"capturePerformance\": false, \"autocapture_opt_out\": false, \"autocaptureExceptions\": false, \"siteApps\": []}"
+            }
+        }
+    },
+    {
+        "request": {
+            "method": "Network.requestWillBeSent",
+            "params": {
+                "documentURL": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasUserGesture": false,
+                "initiator": {
+                    "stack": {
+                        "callFrames": [
+                            {
+                                "columnNumber": 2538,
+                                "functionName": "a.checks.xhr",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 2853,
+                                "functionName": "a.check",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 3713,
+                                "functionName": "g",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            }
+                        ]
+                    },
+                    "type": "script"
+                },
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "redirectHasExtraInfo": false,
+                "request": {
+                    "headers": {
+                        "Referer": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Linux\""
+                    },
+                    "initialPriority": "High",
+                    "isSameSite": false,
+                    "method": "HEAD",
+                    "mixedContentType": "none",
+                    "referrerPolicy": "no-referrer-when-downgrade",
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=472011938"
+                },
+                "requestId": "2607.286",
+                "timestamp": 113.268877,
+                "type": "XHR",
+                "wallTime": 1694913133.475708
+            }
+        },
+        "response": {
+            "method": "Network.responseReceived",
+            "params": {
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasExtraInfo": true,
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "requestId": "2607.286",
+                "response": {
+                    "alternateProtocolUsage": "unspecifiedReason",
+                    "connectionId": 866,
+                    "connectionReused": false,
+                    "encodedDataLength": 808,
+                    "fromDiskCache": false,
+                    "fromPrefetchCache": false,
+                    "fromServiceWorker": false,
+                    "headers": {
+                        "accept-ranges": "bytes",
+                        "access-control-allow-methods": "HEAD, GET, PUT, POST",
+                        "access-control-allow-origin": "*",
+                        "age": "1432",
+                        "alt-svc": "h3=\":443\"; ma=86400",
+                        "cache-control": "public, max-age=14400",
+                        "cf-cache-status": "HIT",
+                        "cf-ray": "807d7acc6d9a81b2-IAD",
+                        "content-length": "70",
+                        "content-type": "application/octet-stream",
+                        "date": "Sun, 17 Sep 2023 01:12:13 GMT",
+                        "etag": "\"e9a7d10e1d6fd8bdc561798b9ae4c4b3\"",
+                        "last-modified": "Thu, 18 May 2023 14:56:01 GMT",
+                        "nel": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                        "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=OBSBte3VeikPD6cH8aIdEQS4I%2FowxlaeC3vbMjix6mdnYKthEIoVrrLQLOWg79LUXYu85MVakalUE766Vc7GqKSnE0MeJTGbVzb8VLSkW2S3gQLyIASWn9nT9%2BVGQWoQPw%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+                        "server": "cloudflare",
+                        "vary": "Accept-Encoding,Origin,Access-Control-Request-Headers,Access-Control-Request-Method",
+                        "via": "1.1 87f435824e071614a6eded8da925c802.cloudfront.net (CloudFront)",
+                        "x-amz-cf-id": "OL0hsUsxESi8OS1mqoL_icic_ncZJ7t0owNGVom8xdIULKqjwMtQYA==",
+                        "x-amz-cf-pop": "IAD66-C1",
+                        "x-amz-server-side-encryption": "AES256",
+                        "x-amz-version-id": "iyIkMfnxXfx.S55KTDADuV5kVxXc_937",
+                        "x-cache": "Hit from cloudfront"
+                    },
+                    "mimeType": "application/octet-stream",
+                    "protocol": "h2",
+                    "remoteIPAddress": "104.21.66.101",
+                    "remotePort": 443,
+                    "responseTime": 1694913133512.595,
+                    "securityDetails": {
+                        "certificateId": 0,
+                        "certificateTransparencyCompliance": "compliant",
+                        "cipher": "AES_128_GCM",
+                        "encryptedClientHello": false,
+                        "issuer": "E1",
+                        "keyExchange": "",
+                        "keyExchangeGroup": "X25519",
+                        "protocol": "TLS 1.3",
+                        "sanList": [
+                            "*.ivlv.me",
+                            "ivlv.me"
+                        ],
+                        "serverSignatureAlgorithm": 1027,
+                        "signedCertificateTimestampList": [
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Cloudflare 'Nimbus2023' Log",
+                                "logId": "7A328C54D8B72DB620EA38E0521EE98416703213854D3BD22BC13A57A352EB52",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "3045022100E7C16893ED51FC5124C9B1899A191D199D6A5E160F8B1016FD95FACB0934160502207F2605B595D25C9660BEB2EA5AC3214AA547672DABA2C68C021E36432BDE88C5",
+                                "status": "Verified",
+                                "timestamp": 1690756576288.0
+                            },
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Google 'Argon2023' log",
+                                "logId": "E83ED0DA3EF5063532E75728BC896BC903D3CBD1116BECEB69E1777D6D06BD6E",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "304602210094D98794575E4EC9C6A0E9B7E6BBFDE29A19B175EC95F45442222CA4A79440CC022100B55CB6CC14476AA21FC550324FDF30B6C459FD080A008FC602D6DB54CE65830D",
+                                "status": "Verified",
+                                "timestamp": 1690756576302.0
+                            }
+                        ],
+                        "subjectName": "ivlv.me",
+                        "validFrom": 1690752976,
+                        "validTo": 1698528975
+                    },
+                    "securityState": "secure",
+                    "status": 200,
+                    "statusText": "",
+                    "timing": {
+                        "connectEnd": 22.589,
+                        "connectStart": 0.445,
+                        "dnsEnd": 0.445,
+                        "dnsStart": 0.081,
+                        "proxyEnd": -1,
+                        "proxyStart": -1,
+                        "pushEnd": 0,
+                        "pushStart": 0,
+                        "receiveHeadersEnd": 36.771,
+                        "receiveHeadersStart": 36.62,
+                        "requestTime": 113.269179,
+                        "sendEnd": 23.035,
+                        "sendStart": 22.696,
+                        "sslEnd": 22.583,
+                        "sslStart": 6.559,
+                        "workerFetchStart": -1,
+                        "workerReady": -1,
+                        "workerRespondWithSettled": -1,
+                        "workerStart": -1
+                    },
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=472011938"
+                },
+                "timestamp": 113.37508,
+                "type": "XHR"
+            },
+            "body": {
+                "base64Encoded": false,
+                "body": ""
+            }
+        }
+    },
+    {
+        "request": {
+            "method": "Network.requestWillBeSent",
+            "params": {
+                "documentURL": "https://www.involve.me/",
+                "frameId": "DE546EDF4C73508DF0485CE1E5F6F69C",
+                "hasUserGesture": false,
+                "initiator": {
+                    "stack": {
+                        "callFrames": [
+                            {
+                                "columnNumber": 68445,
+                                "functionName": "wn",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 30676,
+                                "functionName": "value",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 30038,
+                                "functionName": "value",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 29701,
+                                "functionName": "value",
+                                "lineNumber": 9,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 58795,
+                                "functionName": "n",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            },
+                            {
+                                "columnNumber": 58836,
+                                "functionName": "",
+                                "lineNumber": 0,
+                                "scriptId": "71",
+                                "url": "https://posthog.admin.involve.me/static/array.js"
+                            }
+                        ]
+                    },
+                    "type": "script"
+                },
+                "loaderId": "CBCA96EFC79676F3040D9C97BD9158FA",
+                "redirectHasExtraInfo": false,
+                "request": {
+                    "hasPostData": true,
+                    "headers": {
+                        "Content-Type": "text/plain",
+                        "Referer": "https://www.involve.me/",
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Linux\""
+                    },
+                    "initialPriority": "High",
+                    "isSameSite": true,
+                    "method": "POST",
+                    "mixedContentType": "none",
+                    "referrerPolicy": "strict-origin-when-cross-origin",
+                    "url": "https://posthog.admin.involve.me/e/?compression=gzip-js&ip=1&_=1694913136829&ver=1.77.0"
+                },
+                "requestId": "2607.473",
+                "timestamp": 116.62369,
+                "type": "XHR",
+                "wallTime": 1694913136.830623
+            },
+            "body": {
+                "postData": "\u001f\u008b\b\u0000\u0000\u0000\u0000\u0000\u0000\u0003\u00ed\u009amo\u00db6\u0010\u0080\u00ff\u008a \u00e4c\u0098\u00ea]\u0096\u00b7\u0001\u0003\u00d6\u00ad\u0003V\u00b4\u00c0\u00da\u000eh\u008bA E\u00d2bL\u008b*E\u00f9%Y\u00ff\u00fb\u008e\u00b2c\u00cb\u008e\u009d\u00a2\u00dd\u001a$\u0088\u00beX\u00d6\u00f1\u00c8\u00bb\u00e3\u001dO\u008f\u0005\u007f\u00bcv\u00dbVPw\u00ecz\u00fe\bc\u008f\u00f8\u0088\u0013?D\u00a9\u001f\u00f9\u0088$\u0099\u008f\u00928\u00f3X\u0010\u00e2\u0080x\u009e{\u00ee\u00b29\u00ab\f\u00a8\u009f\u00d5x\u00c2\u00e6\u0082-@VkU3m\u0004k\u00dc\u00f1\u00b5{\u00a6\u00e0\u00e2\u00be\u0014U\u00bb\u0084\u00b13\u00a2\u00d5\u00a2a\u001aD\u00bf\u0094Z\u00cd\u0098\u0095Q\u0098Y\u00b0\u00dc\u00acj\u0006\u00f2\u00e7\u00ac\u0099\u001aU\u00db\u0081\u00a2\u00d5\u001a\u00d6\u00cf[-a\u00a04\u00a6n\u00c6\u00cf\u009e-\u0016\u008b\u000bQ\u00cd\u0095\u009c\u00b3\u008b\u0019{f\u0015K\u00d5X/\u00f6G\u00ec@\u008dMYa\u00f8>v;\u00c5\u008d\u00f9|\u00cet#T\u00e5\u008e}?\u00e9\u0089%\u00ae&-D\u0002\u00ea\u00acB\u00ef\u00de\u00d8)M\u00a1\u0019\u00ab\u00f2\u0092\u0089I\tF\u0012\u00cf\u00db\t\u0017\u0082\u009a\u00d2\u001d\u008f:\u0099\r\u00bfV\u00dalU\u00e3 \u00ec\u008b\u00f7\u0094\u00a5 \u00d6aF\u00ac\t\u00b8\u00d9y\u00e4\u00fa\u0017iza7\u00f7LT\u00e0\u0094\u00c9\u00bb\u0084\u0014\u0005&\u00f3\u00c4\u00bf\u00aae3\u00bf\n\u00fc\u00c4\u008e\u001ba#\u00f3\u0093,\u00ca\u00fc\u00d0\u000f\u00c3\u008b0\u008c\u00ce]*\u001a#\u00aab3\u00af\u0097H\u008f\u00a1\u0094\u00f1\u0004\u0091\u0094E(\u00f6\u00b3 M=\u008f\u0004\u00b4\u00b3\u00b5I\u00c2W\u00cd\u00d1\u008c3\u00c8\u0090\u00cd\u00e6\u0019\u0015\u009a\u0015f'\u0015\u00d5$\u00a7j\u0086\u0085\ri7**\u00c34.\f\u0084\u009a7-\u0081}\u0014uw#1a6\u00cbmE\u0019\u0017\u0015\u00a3\u0007\u00ca\u0014\u00af\u009a\u00bc\u0081\u00b8X\u00ae\u00d9\u0004B\u00d4\u00d8\u00ca\u00bf4\u0003\u00ae5d\u00f5\u000e\u00b5\u00f5j\u0090\u00fcB\u00b5\u0095\u00d1+\u00b8R[\u0000}}\u00a3\u00a6\u00cc\u00aeQ\u0097E\u001e\u00eb\u00c5+\u00fd\u00a7\u00c7\u00de\u00bf\u00a4A\u00f3\u00e9/\u0019\u00bf\u00fa\u0090\u00bd{\u00f1\u00fa\u00d7\u00e7\u00e5\u009b\u00b7\u00ef\u0012\u00ce\u007f\u00cb\u00fe\u00f8\u00fd\u00e5\u008b\u00f2\u00c3\u0087\u00f7\u00dd\u001e5\u00ac\u00b1y\u00bd\u00b5\u00b1~\u008cRNB\u00d8\u00d8,B\u0005\u008byZDA\u00c4\u00d3\u00c0NZ\u0088\u008a\u00aa\u00c5\u0097\u00e6$^\u00c0y\u0092\u00c6<\u00b6.\n#\u00ad\u00db\u00bb\u00faw\u00feqT%!\u0002\u00a7R\u00c8\u0006\u00e5\u0090VH\u00ca\u00b4\u00c3\u0095v\u00b6[0gN\u00a1\u00e0\u0006\u00ce\u00f1\u00e7sWq\u00de0\u00a8\u00dd0\u00ca\u00bc\u00cf\u00e7G\u00da\u0001\r#\u0094fY\u0086\b\u00c5\u001c\u00e1QA\bK1\r\"\u00eb\u00c4\u00b6\u001d\u00e0\u00d6\u00a8\u0002\u00d7\u00a6\u00d5\u00f6\u0018\u000e\u001d\u00e1{t\u00848\u00a2b\u00e1O\u00ca`QL\u00e9(\u0019\u001d\u00ed\b\u00a34\u00bd\u00cf\u008e\u00d0\u00cb{\u000eV1\u0091\u008c\u00e6\u00e02\u00c4\u0002\u0087\u00d7\u009e+\u008ee\u00c3\u00acfWz9g\u00b8S\u00e6\u0012O\u00a0,>\u00fe\rC}Y^\u00e3\u0095T\u0098\u00da\u00ca\u0081\u00f2\u00fc\u0096\u0096s\u00d6U\u00e5M1\u0015%d\u00b4\u00ab\u0004\u0088m\u0097t\u00ab&\u00d9\f\u0014\u00ad\u0017\u00d7\u00ae\u0001\u00d3\u009b2\u0011U\u00dd\u00ae\u00d7\u0091\u00b9aK[VpWH\u00dc\u00c0\u00d9\u0006ewF\u000bT\u0094\u00ac\u0098\u0012\u00b5\u00cca\u0096\r\f\u000e\u001c4\u0013%\u00ad\u00a6RS(\u00fd\u00ae\u00d3\u00e5[\u00bd\u00f5\u00aa\u0010.6F\u00e7\u009b\u001e\u00bf\u00a7\u0089\r\u009b(\u00e8G\u00d0\u00eaD\u0017\u00c8Z\u0093b\u0083a\u00f5\u009df\u0017\u00d4zUt\u00e3\u00ebZu\u001b\u00f2zt+\u00ef|\u0087\u0081\u00bb\u001c\u0087\u00a6p\u00da\u00ed\u009b\u0085\u00e6X\u00b6\u00d6\u00c2\u00a1\u008b\u009b\u00cc\u00afwjc\u00d3\u00aep#\u00aaL\t\u0002hF\u00dd\u00ce\u00db;\u00c57\u00de\u00fa\u00b6\u00eb\u00f4v\u009f\u008a\u00f9\u00e9\u00dd\u00de\u00ed\u00df\u00b1\u0090\u00fe\u00a3\u00a1\u00a3\u001bp\u00db\u00e2q\u00b5o0}\u00b2\u00106k6\u00ffg<\u00a5\u00a0\u0014\u001eiwG\u00b3Q\u00ba\u00c3\u00b5\u00ee\u00c6\u00d8d/4\u00b6\u001d\u00ba\u00e7 \u00b4\u00d1=\u0007\u0093\u00af\u008aZT\u0097p|\u00bb\u00a7\u00ef\u00a6\u00981\u0081\u00a7\"[\u00dan\u00b4\u0015B\u00a1\u00da\u00a5\u00b0\u0084\u00ae\u00b8\u0015b-0\u0092P\u00cbv\u0004\u00a2\u0087'\u000f|\u00df;?\u0095j*Q\u00d7\u00f6I\u00d7+\u00d1\u00cd\u001el\u0005\u008dYu\u00cb\u00ab\u001a\u0017\u00c2\u00ac\u00c6\u008e\u00f7\u00c3~\u0088\u00e1\u00e8 \u00c6\u00f0 F\u00a2\u00e8j?\u000b\u009a\u00c9\u00ee\u009c\u0081\u0094K\u0088f}\u0081Sg[E\u0089x+\u00ed\u0017\u00dbg\u0010\u0091\u00b8\u0098\u00c2\r\u0099@4\u00f0\u00fc\u00a8X\u000b\u00d4c\u0087\u001b\u00e8U\u001d\u00bd\u008ca\u00ac\u00d6b\u0086\u00b55\u00b3\u0013w\u00f3\u0017\u00a50\u00ecv\u008ao<p\u00ac\u00e1\u00ee\u00c3Zw\u00d6\u00b6\u009d\u009de\u00e7\u00c0\u00aes\u00ccjO\u00d8\u00b3ycr\u0089\u00ecn\u0083\u00cdk\u0007\u00d2\u00aa$\u00f4\u0084\u00b7\u00ea\u00ad\u00aa\u00c7\u008e\u00d1-s>o\u0015\u007f^\u000f_\u00ac\u00c1\u00c7v\u0094\u00be\u00ba\u00f3\u0093\u00b3\u001e\u00b8\u00b0?3\u00de\u00bf\u00ee\u0018\u00c5\u00f9\u00d1\u00f1m!\u00f4\u00d2\u0011\u00dc:\u0012\u0010\u00fc\u0083g\u00b7\u001eu\u0005Y\u0094\u009e\u00a0\u00ae\u0004\u00a58\u001a!\u0012q\u008cH\u0010\u0091\u0098\u0017\u00a4H\t\u001e\u00a8\u00eb~\u00a9+\u00cb&\u00d1r\u00dax\u00b1\u00e6W\u00b4\u009d\u00da\u00fd?F]\u00d0\u0018\u0006\u00eaz\u00cc\u00d4\u0005G\u0007~&\u00cd0\u00fc\u00e0|\u00d0\u00e8\u00b5\u00ef\u00e7\u0013\u0003\u00ab\u00c3\u0086\u001f\f`5\u0080\u00d5\u0000V\u0003X\u001d\u0001\u00ab\u00f8\u0004X\u00a5\u0000V\u009c\"\u001c\u008fBDY\u009c\u008e2\u00ee\u00b1hd_\u00a7\f`u\u008f`\u00c5/\u00c5U+>\u00b5j\u00c4\u00d3\u0091\u00c8\u00a2\u00e3`5p\u00d5#\u00e7*\u0083\u00f5\u0084A\u00fe&\u000f\u009a\u00aa\u00fa^>1\u00a6\u0082#}\u00e7\u0093w`\u00aa\u0081\u00a9\u0006\u00a6\u001a\u0098\u00ca2Ut\u0082\u00a92\u0094\u00a64DY\u00911\u00e4%0\u00c0}\u009e\u001d\u00fcc``\u00aa\u00ef\u00cfT^5iF*KVb\u00da,e1;\u00c1TP\u008a\u0003T=f\u00a8\u00e2-\u00a4\u000e\u00bc\u00c4\u0012:\u00ff\u0083\u0006\u00abCO\u009f\u0018\\\u00c1\u00dfs\u00f6Lw\rt\u0080\u00ab\u0001\u00ae\u0006\u00b8\u001a\u00e0\u00ea\u0000\u00ae\u00ba\u0097\u00d9G\u00e0\u008a\u00c0\u00df13\u000f\u0091,JP\u0016d!\u00a1\u0084\u00f8)\u00b7/L\u0006\u00b8\u00baG\u00b8\n\u00b2ZF\u0097\u00a9\u00bfJ\u00ca\u008c7\u0097\u00fa\u0004\\\u0081\u00c5\u0001\u00ae\u001e3\\\u0001\u00b1X[\u0082\u008b\u00de3\u00e8!\u00b2\u00d5\u0081\u00a3O\f\u00ad\u00e2\u0003\u00d3\u00dd\u00fb\u00fe\u0001\u00ad\u0006\u00b4\u001a\u00d0j@\u00ab\u0003\u00b4\u0002\u009f\u00ff\u0005\u00ccBLd\u00eb2\u0000\u0000"
+            }
+        },
+        "response": {
+            "method": "Network.responseReceived",
+            "params": {
+                "frameId": "DE546EDF4C73508DF0485CE1E5F6F69C",
+                "hasExtraInfo": true,
+                "loaderId": "CBCA96EFC79676F3040D9C97BD9158FA",
+                "requestId": "2607.473",
+                "response": {
+                    "alternateProtocolUsage": "mainJobWonRace",
+                    "connectionId": 541,
+                    "connectionReused": true,
+                    "encodedDataLength": 44,
+                    "fromDiskCache": false,
+                    "fromPrefetchCache": false,
+                    "fromServiceWorker": false,
+                    "headers": {
+                        "access-control-allow-credentials": "true",
+                        "access-control-allow-headers": "X-Requested-With,Content-Type",
+                        "access-control-allow-methods": "GET, POST, OPTIONS",
+                        "access-control-allow-origin": "https://www.involve.me",
+                        "alt-svc": "h3=\":443\"; ma=2592000",
+                        "content-type": "application/json",
+                        "date": "Sun, 17 Sep 2023 01:12:16 GMT",
+                        "referrer-policy": "same-origin",
+                        "server": "Caddy, gunicorn",
+                        "x-content-type-options": "nosniff"
+                    },
+                    "mimeType": "application/json",
+                    "protocol": "h2",
+                    "remoteIPAddress": "144.76.169.69",
+                    "remotePort": 443,
+                    "responseTime": 1694913136932.793,
+                    "securityDetails": {
+                        "certificateId": 0,
+                        "certificateTransparencyCompliance": "compliant",
+                        "cipher": "AES_128_GCM",
+                        "encryptedClientHello": false,
+                        "issuer": "R3",
+                        "keyExchange": "",
+                        "keyExchangeGroup": "X25519",
+                        "protocol": "TLS 1.3",
+                        "sanList": [
+                            "posthog.admin.involve.me"
+                        ],
+                        "serverSignatureAlgorithm": 1027,
+                        "signedCertificateTimestampList": [
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Cloudflare 'Nimbus2023' Log",
+                                "logId": "7A328C54D8B72DB620EA38E0521EE98416703213854D3BD22BC13A57A352EB52",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "304502203AB485F0527445687952E37EE549D94F314E660BEBD08A4E7F2FA5C04B56591D022100EBD04F086679E5FF1508CCDC5A4445D3D4F219C9AF7F7E1040EF2000A9048B38",
+                                "status": "Verified",
+                                "timestamp": 1694082562711.0
+                            },
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Google 'Xenon2023' log",
+                                "logId": "ADF7BEFA7CFF10C88B9D3D9C1E3E186AB467295DCFB10C24CA858634EBDC828A",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "3046022100C229D55C62544336BEE6A528AADACCFFD615F62FACEE1111FA6FDFCFEF2D64F3022100B2B75352BBFFED13007654FF6AFC5A69F6988A842EC0EEE8235521C97E93B7A5",
+                                "status": "Verified",
+                                "timestamp": 1694082562762.0
+                            }
+                        ],
+                        "subjectName": "posthog.admin.involve.me",
+                        "validFrom": 1694078962,
+                        "validTo": 1701854961
+                    },
+                    "securityState": "secure",
+                    "status": 200,
+                    "statusText": "",
+                    "timing": {
+                        "connectEnd": -1,
+                        "connectStart": -1,
+                        "dnsEnd": -1,
+                        "dnsStart": -1,
+                        "proxyEnd": -1,
+                        "proxyStart": -1,
+                        "pushEnd": 0,
+                        "pushStart": 0,
+                        "receiveHeadersEnd": 101.713,
+                        "receiveHeadersStart": 101.6,
+                        "requestTime": 116.624419,
+                        "sendEnd": 0.852,
+                        "sendStart": 0.641,
+                        "sslEnd": -1,
+                        "sslStart": -1,
+                        "workerFetchStart": -1,
+                        "workerReady": -1,
+                        "workerRespondWithSettled": -1,
+                        "workerStart": -1
+                    },
+                    "url": "https://posthog.admin.involve.me/e/?compression=gzip-js&ip=1&_=1694913136829&ver=1.77.0"
+                },
+                "timestamp": 116.726938,
+                "type": "XHR"
+            },
+            "body": {
+                "base64Encoded": false,
+                "body": "{\"status\": 1}"
+            }
+        }
+    },
+    {
+        "request": {
+            "method": "Network.requestWillBeSent",
+            "params": {
+                "documentURL": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasUserGesture": false,
+                "initiator": {
+                    "stack": {
+                        "callFrames": [
+                            {
+                                "columnNumber": 2538,
+                                "functionName": "a.checks.xhr",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 2853,
+                                "functionName": "a.check",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 24,
+                                "functionName": "",
+                                "lineNumber": 279,
+                                "scriptId": "92",
+                                "url": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F"
+                            }
+                        ]
+                    },
+                    "type": "script"
+                },
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "redirectHasExtraInfo": false,
+                "request": {
+                    "headers": {
+                        "Referer": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Linux\""
+                    },
+                    "initialPriority": "High",
+                    "isSameSite": false,
+                    "method": "HEAD",
+                    "mixedContentType": "none",
+                    "referrerPolicy": "no-referrer-when-downgrade",
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=230510508"
+                },
+                "requestId": "2607.474",
+                "timestamp": 119.000448,
+                "type": "XHR",
+                "wallTime": 1694913139.207272
+            }
+        },
+        "response": {
+            "method": "Network.responseReceived",
+            "params": {
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasExtraInfo": true,
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "requestId": "2607.474",
+                "response": {
+                    "alternateProtocolUsage": "mainJobWonRace",
+                    "connectionId": 866,
+                    "connectionReused": true,
+                    "encodedDataLength": 287,
+                    "fromDiskCache": false,
+                    "fromPrefetchCache": false,
+                    "fromServiceWorker": false,
+                    "headers": {
+                        "accept-ranges": "bytes",
+                        "access-control-allow-methods": "HEAD, GET, PUT, POST",
+                        "access-control-allow-origin": "*",
+                        "age": "1438",
+                        "alt-svc": "h3=\":443\"; ma=86400",
+                        "cache-control": "public, max-age=14400",
+                        "cf-cache-status": "HIT",
+                        "cf-ray": "807d7af01f4381b2-IAD",
+                        "content-length": "70",
+                        "content-type": "application/octet-stream",
+                        "date": "Sun, 17 Sep 2023 01:12:19 GMT",
+                        "etag": "\"e9a7d10e1d6fd8bdc561798b9ae4c4b3\"",
+                        "last-modified": "Thu, 18 May 2023 14:56:01 GMT",
+                        "nel": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                        "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=U7B9WK8aOtkrsUKINmxmjQQvDArpW5dMjun6P1eJQbgGVBZu0wIeW3sWGD2sJjOPe5JpoFyc4qo3qq0KOyLb6%2B5mSQRs4kYSxHxw%2F2YfdbFlwY0eRl67jducQYR80O44Dw%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+                        "server": "cloudflare",
+                        "vary": "Accept-Encoding,Origin,Access-Control-Request-Headers,Access-Control-Request-Method",
+                        "via": "1.1 87f435824e071614a6eded8da925c802.cloudfront.net (CloudFront)",
+                        "x-amz-cf-id": "OL0hsUsxESi8OS1mqoL_icic_ncZJ7t0owNGVom8xdIULKqjwMtQYA==",
+                        "x-amz-cf-pop": "IAD66-C1",
+                        "x-amz-server-side-encryption": "AES256",
+                        "x-amz-version-id": "iyIkMfnxXfx.S55KTDADuV5kVxXc_937",
+                        "x-cache": "Hit from cloudfront"
+                    },
+                    "mimeType": "application/octet-stream",
+                    "protocol": "h2",
+                    "remoteIPAddress": "104.21.66.101",
+                    "remotePort": 443,
+                    "responseTime": 1694913139220.311,
+                    "securityDetails": {
+                        "certificateId": 0,
+                        "certificateTransparencyCompliance": "compliant",
+                        "cipher": "AES_128_GCM",
+                        "encryptedClientHello": false,
+                        "issuer": "E1",
+                        "keyExchange": "",
+                        "keyExchangeGroup": "X25519",
+                        "protocol": "TLS 1.3",
+                        "sanList": [
+                            "*.ivlv.me",
+                            "ivlv.me"
+                        ],
+                        "serverSignatureAlgorithm": 1027,
+                        "signedCertificateTimestampList": [
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Cloudflare 'Nimbus2023' Log",
+                                "logId": "7A328C54D8B72DB620EA38E0521EE98416703213854D3BD22BC13A57A352EB52",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "3045022100E7C16893ED51FC5124C9B1899A191D199D6A5E160F8B1016FD95FACB0934160502207F2605B595D25C9660BEB2EA5AC3214AA547672DABA2C68C021E36432BDE88C5",
+                                "status": "Verified",
+                                "timestamp": 1690756576288.0
+                            },
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Google 'Argon2023' log",
+                                "logId": "E83ED0DA3EF5063532E75728BC896BC903D3CBD1116BECEB69E1777D6D06BD6E",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "304602210094D98794575E4EC9C6A0E9B7E6BBFDE29A19B175EC95F45442222CA4A79440CC022100B55CB6CC14476AA21FC550324FDF30B6C459FD080A008FC602D6DB54CE65830D",
+                                "status": "Verified",
+                                "timestamp": 1690756576302.0
+                            }
+                        ],
+                        "subjectName": "ivlv.me",
+                        "validFrom": 1690752976,
+                        "validTo": 1698528975
+                    },
+                    "securityState": "secure",
+                    "status": 200,
+                    "statusText": "",
+                    "timing": {
+                        "connectEnd": -1,
+                        "connectStart": -1,
+                        "dnsEnd": -1,
+                        "dnsStart": -1,
+                        "proxyEnd": -1,
+                        "proxyStart": -1,
+                        "pushEnd": 0,
+                        "pushStart": 0,
+                        "receiveHeadersEnd": 12.817,
+                        "receiveHeadersStart": 12.622,
+                        "requestTime": 119.000899,
+                        "sendEnd": 0.602,
+                        "sendStart": 0.499,
+                        "sslEnd": -1,
+                        "sslStart": -1,
+                        "workerFetchStart": -1,
+                        "workerReady": -1,
+                        "workerRespondWithSettled": -1,
+                        "workerStart": -1
+                    },
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=230510508"
+                },
+                "timestamp": 119.014323,
+                "type": "XHR"
+            },
+            "body": {
+                "base64Encoded": false,
+                "body": ""
+            }
+        }
+    },
+    {
+        "request": {
+            "method": "Network.requestWillBeSent",
+            "params": {
+                "documentURL": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasUserGesture": false,
+                "initiator": {
+                    "stack": {
+                        "callFrames": [
+                            {
+                                "columnNumber": 2538,
+                                "functionName": "a.checks.xhr",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 2853,
+                                "functionName": "a.check",
+                                "lineNumber": 1,
+                                "scriptId": "94",
+                                "url": "https://cdn.ivlv.me/0c41eb83-f336-4d9a-b434-da39f33aa075/js/offline.min.js"
+                            },
+                            {
+                                "columnNumber": 24,
+                                "functionName": "",
+                                "lineNumber": 279,
+                                "scriptId": "92",
+                                "url": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F"
+                            }
+                        ]
+                    },
+                    "type": "script"
+                },
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "redirectHasExtraInfo": false,
+                "request": {
+                    "headers": {
+                        "Referer": "https://involveme.involve.me/new-homepage-funnel?embed=1&src=https%3A%2F%2Fwww.involve.me%2F",
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+                        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Linux\""
+                    },
+                    "initialPriority": "High",
+                    "isSameSite": false,
+                    "method": "HEAD",
+                    "mixedContentType": "none",
+                    "referrerPolicy": "no-referrer-when-downgrade",
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=761513026"
+                },
+                "requestId": "2607.475",
+                "timestamp": 124.000309,
+                "type": "XHR",
+                "wallTime": 1694913144.207107
+            }
+        },
+        "response": {
+            "method": "Network.responseReceived",
+            "params": {
+                "frameId": "92820BA9CAE823D9C876FE03797A35B4",
+                "hasExtraInfo": true,
+                "loaderId": "3C9C293DA7C550594695557BF9438337",
+                "requestId": "2607.475",
+                "response": {
+                    "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+                    "connectionId": 0,
+                    "connectionReused": false,
+                    "encodedDataLength": 814,
+                    "fromDiskCache": false,
+                    "fromPrefetchCache": false,
+                    "fromServiceWorker": false,
+                    "headers": {
+                        "accept-ranges": "bytes",
+                        "access-control-allow-methods": "HEAD, GET, PUT, POST",
+                        "access-control-allow-origin": "*",
+                        "age": "1443",
+                        "alt-svc": "h3=\":443\"; ma=86400",
+                        "cache-control": "public, max-age=14400",
+                        "cf-cache-status": "HIT",
+                        "cf-ray": "807d7b0f5a1d56ce-IAD",
+                        "content-length": "70",
+                        "content-type": "application/octet-stream",
+                        "date": "Sun, 17 Sep 2023 01:12:24 GMT",
+                        "etag": "\"e9a7d10e1d6fd8bdc561798b9ae4c4b3\"",
+                        "last-modified": "Thu, 18 May 2023 14:56:01 GMT",
+                        "nel": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                        "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=dLHL27w%2BEYFuzSHd16iS%2BaC1FHXNP0uJZXNu6nthaDWfiCxG8PLjSoFJnu%2BlD%2BMW9p0w04Dkj%2F01H4BB5i3hCw3og9Ay9ij5iJwJvb1Uv5YF1oLDobiPXW%2BWz5IYUKAqeA%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+                        "server": "cloudflare",
+                        "vary": "Accept-Encoding,Origin,Access-Control-Request-Headers,Access-Control-Request-Method",
+                        "via": "1.1 87f435824e071614a6eded8da925c802.cloudfront.net (CloudFront)",
+                        "x-amz-cf-id": "OL0hsUsxESi8OS1mqoL_icic_ncZJ7t0owNGVom8xdIULKqjwMtQYA==",
+                        "x-amz-cf-pop": "IAD66-C1",
+                        "x-amz-server-side-encryption": "AES256",
+                        "x-amz-version-id": "iyIkMfnxXfx.S55KTDADuV5kVxXc_937",
+                        "x-cache": "Hit from cloudfront"
+                    },
+                    "mimeType": "application/octet-stream",
+                    "protocol": "h3",
+                    "remoteIPAddress": "104.21.66.101",
+                    "remotePort": 443,
+                    "responseTime": 1694913144222.696,
+                    "securityDetails": {
+                        "certificateId": 0,
+                        "certificateTransparencyCompliance": "compliant",
+                        "cipher": "AES_128_GCM",
+                        "encryptedClientHello": false,
+                        "issuer": "E1",
+                        "keyExchange": "",
+                        "keyExchangeGroup": "X25519",
+                        "protocol": "QUIC",
+                        "sanList": [
+                            "*.ivlv.me",
+                            "ivlv.me"
+                        ],
+                        "serverSignatureAlgorithm": 1027,
+                        "signedCertificateTimestampList": [
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Cloudflare 'Nimbus2023' Log",
+                                "logId": "7A328C54D8B72DB620EA38E0521EE98416703213854D3BD22BC13A57A352EB52",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "3045022100E7C16893ED51FC5124C9B1899A191D199D6A5E160F8B1016FD95FACB0934160502207F2605B595D25C9660BEB2EA5AC3214AA547672DABA2C68C021E36432BDE88C5",
+                                "status": "Verified",
+                                "timestamp": 1690756576288.0
+                            },
+                            {
+                                "hashAlgorithm": "SHA-256",
+                                "logDescription": "Google 'Argon2023' log",
+                                "logId": "E83ED0DA3EF5063532E75728BC896BC903D3CBD1116BECEB69E1777D6D06BD6E",
+                                "origin": "Embedded in certificate",
+                                "signatureAlgorithm": "ECDSA",
+                                "signatureData": "304602210094D98794575E4EC9C6A0E9B7E6BBFDE29A19B175EC95F45442222CA4A79440CC022100B55CB6CC14476AA21FC550324FDF30B6C459FD080A008FC602D6DB54CE65830D",
+                                "status": "Verified",
+                                "timestamp": 1690756576302.0
+                            }
+                        ],
+                        "subjectName": "ivlv.me",
+                        "validFrom": 1690752976,
+                        "validTo": 1698528975
+                    },
+                    "securityState": "secure",
+                    "status": 200,
+                    "statusText": "",
+                    "timing": {
+                        "connectEnd": 0,
+                        "connectStart": 0,
+                        "dnsEnd": 0,
+                        "dnsStart": 0,
+                        "proxyEnd": -1,
+                        "proxyStart": -1,
+                        "pushEnd": 0,
+                        "pushStart": 0,
+                        "receiveHeadersEnd": 15.436,
+                        "receiveHeadersStart": 15.269,
+                        "requestTime": 124.000648,
+                        "sendEnd": 0.349,
+                        "sendStart": 0.215,
+                        "sslEnd": 0,
+                        "sslStart": 0,
+                        "workerFetchStart": -1,
+                        "workerReady": -1,
+                        "workerRespondWithSettled": -1,
+                        "workerStart": -1
+                    },
+                    "url": "https://assets.ivlv.me/assets/img/offline_check.png?_=761513026"
+                },
+                "timestamp": 124.133389,
+                "type": "XHR"
+            },
+            "body": {
+                "base64Encoded": false,
+                "body": ""
+            }
+        }
+    }
+]
