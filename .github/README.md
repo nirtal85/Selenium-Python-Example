@@ -85,6 +85,13 @@ pytest --help
 pre-commit install
 ```
 
+## Bump pre commit hooks version
+
+```bash
+pre-commit autoupdate
+```
+
+
 ## Run pre commit checks manually on the entire project
 
 ```bash
