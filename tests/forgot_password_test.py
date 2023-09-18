@@ -2,7 +2,7 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from tests.test_base import BaseTest
+from tests.base_test import BaseTest
 
 
 @allure.epic("Security")
