@@ -1,10 +1,11 @@
 import json
+from pathlib import Path
 
 import allure
 import pytest
 from assertpy import assert_that
 
-from tests.test_base import BaseTest
+from tests.base_test import BaseTest
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 
@@ -51,6 +52,12 @@ class TestLogin(BaseTest):
             "<h1>Example html attachment</h1>",
             name="HTML example",
             attachment_type=allure.attachment_type.HTML,
+        )
+        # example of a file attachment
+        allure.attach.file(
+            Path(Path(__file__).absolute().parent.parent, "data", "dog.png"),
+            name="Attach file example",
+            attachment_type=allure.attachment_type.PNG,
         )
         allure.attach(
             "Some text content",
