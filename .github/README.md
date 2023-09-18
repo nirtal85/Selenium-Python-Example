@@ -85,6 +85,12 @@ pytest --help
 pre-commit install
 ```
 
+## Run pre commit checks manually on the entire project
+
+```bash
+pre-commit run --all-files
+```
+
 ## Sort imports
 
 ```bash

@@ -5,8 +5,8 @@ from mailinator import GetInboxRequest, Mailinator, Message
 
 class EmailActions:
 
-    """
-    A class for performing email-related actions using the Mailinator service.
+    """A class for performing email-related actions using the Mailinator
+    service.
 
     This class provides methods to interact with the Mailinator API and perform actions
     such as waiting for specific emails to arrive and counting email subjects in an inbox.
@@ -29,8 +29,8 @@ class EmailActions:
         self.mailinator_domain = mailinator_domain
 
     def wait_for_email_to_arrive(self, user_email: str, email_subject: str) -> Message:
-        """
-        Wait for an email to arrive with a specific subject in a user's inbox.
+        """Wait for an email to arrive with a specific subject in a user's
+        inbox.
 
         This method requests the inbox of a specified user and waits until an email with the
         provided subject arrives. Once the email is found, it returns the first email that
@@ -70,8 +70,7 @@ class EmailActions:
         return filtered_messages[0] if filtered_messages else None
 
     def count_messages_by_subject(self, user_email: str) -> dict[str, int]:
-        """
-        Count the occurrences of email subjects in a user's inbox.
+        """Count the occurrences of email subjects in a user's inbox.
 
         This method fetches the messages in a specified user's inbox, extracts the subjects
         of each email, and counts how many times each subject appears in the inbox.
