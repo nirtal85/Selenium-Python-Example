@@ -29,7 +29,7 @@ from utils.web_driver_listener import DriverEventListener
 
 
 def pytest_addoption(parser: Parser) -> None:
-    """reads parameters from pytest command line"""
+    """Reads parameters from pytest command line."""
     parser.addoption(
         "--browser",
         action="store",
@@ -63,8 +63,7 @@ def excel_reader() -> ExcelParser:
 
 @fixture(scope="session")
 def secret_data() -> dict:
-    """
-    Fixture to load sensitive data from environment variables.
+    """Fixture to load sensitive data from environment variables.
 
     Returns:
         dict: A dictionary containing sensitive data, including username and password.

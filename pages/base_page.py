@@ -11,7 +11,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
-    """Wrapper for selenium operations"""
+    """Wrapper for selenium operations."""
 
     def __init__(self, driver: Union[Chrome, Firefox, Edge], wait: WebDriverWait):
         self.driver = driver

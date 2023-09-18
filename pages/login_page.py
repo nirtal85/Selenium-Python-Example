@@ -7,7 +7,7 @@ from pages.top_bars.top_menu_bar import TopMenuBar
 
 
 class LoginPage(TopMenuBar):
-    """Login Page"""
+    """Login Page."""
 
     USERNAME_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=email]")
     PASSWORD_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=password]")
