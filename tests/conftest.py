@@ -47,7 +47,7 @@ def pytest_addoption(parser: Parser) -> None:
 @fixture(scope="session")
 def json_data() -> dict:
     json_path = Path(Path(__file__).absolute().parent.parent, "data", "tests_data.json")
-    with open(json_path, "r", encoding="utf-8") as json_file:
+    with open(json_path, encoding="utf-8") as json_file:
         data = json.load(json_file)
     return data
 
