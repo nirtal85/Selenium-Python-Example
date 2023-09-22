@@ -373,19 +373,6 @@ files = [
 colorama = "*"
 
 [[package]]
-name = "dacite"
-version = "1.8.1"
-description = "Simple creation of data classes from dictionaries."
-optional = false
-python-versions = ">=3.6"
-files = [
-    { file = "dacite-1.8.1-py3-none-any.whl", hash = "sha256:cc31ad6fdea1f49962ea42db9421772afe01ac5442380d9a99fcf3d188c61afe" },
-]
-
-[package.extras]
-dev = ["black", "coveralls", "mypy", "pre-commit", "pylint", "pytest (>=5)", "pytest-benchmark", "pytest-cov"]
-
-[[package]]
 name = "distlib"
 version = "0.3.7"
 description = "Distribution utilities"
@@ -964,13 +951,13 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "virtualenv"
-version = "20.24.4"
+version = "20.24.5"
 description = "Virtual Python Environment builder"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "virtualenv-20.24.4-py3-none-any.whl", hash = "sha256:29c70bb9b88510f6414ac3e55c8b413a1f96239b6b789ca123437d5e892190cb"},
-    {file = "virtualenv-20.24.4.tar.gz", hash = "sha256:772b05bfda7ed3b8ecd16021ca9716273ad9f4467c801f27e83ac73430246dca"},
+    {file = "virtualenv-20.24.5-py3-none-any.whl", hash = "sha256:b80039f280f4919c77b30f1c23294ae357c4c8701042086e3fc005963e4e537b"},
+    {file = "virtualenv-20.24.5.tar.gz", hash = "sha256:e8361967f6da6fbdf1426483bfe9fca8287c242ac0bc30429905721cefbff752"},
 ]
 
 [package.dependencies]
@@ -992,24 +979,6 @@ files = [
     {file = "virtualenv-clone-0.5.7.tar.gz", hash = "sha256:418ee935c36152f8f153c79824bb93eaf6f0f7984bae31d3f48f350b9183501a"},
     {file = "virtualenv_clone-0.5.7-py3-none-any.whl", hash = "sha256:44d5263bceed0bac3e1424d64f798095233b64def1c5689afa43dc3223caf5b0"},
 ]
-
-[[package]]
-name = "visual-regression-tracker"
-version = "4.9.0"
-description = "Open source, self hosted solution for visual testing and managing results of visual testing."
-optional = false
-python-versions = ">=3.6"
-files = [
-    { file = "visual_regression_tracker-4.9.0-py2.py3-none-any.whl", hash = "sha256:06d782d54c1b333bc1b204ce3c8a925c2505eda285a35c8856ed1782a8fa5d09" },
-    { file = "visual_regression_tracker-4.9.0.tar.gz", hash = "sha256:b7937e9f6229623c14260d5a046a8e0c2d7ac9db0730442ea7ac507d531f97e4" },
-]
-
-[package.dependencies]
-dacite = "*"
-requests = "*"
-
-[package.extras]
-playwright = ["playwright"]
 
 [[package]]
 name = "wsproto"
@@ -1044,4 +1013,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6692722644d4bf112a0564ca4739e7886b72899ce4c08550621a7839ad13b3bd"
+content-hash = "839049daf853bb4d2f2350a751ca6bd24e63942d5781754eb287e305e1b44127"
