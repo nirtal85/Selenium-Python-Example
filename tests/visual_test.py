@@ -12,7 +12,7 @@ from tests.base_test import BaseTest
 @pytest.mark.skip(reason="requires a running VRT server")
 class TestVisual(BaseTest):
     @allure.title("Visual test of login page")
-    def test_logout(self, vrt_tracker):
+    def test_login_visual(self, vrt_tracker):
         assert_that(
             vrt_tracker.track(
                 TestRun(
