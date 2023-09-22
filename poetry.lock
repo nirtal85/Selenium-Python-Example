@@ -373,6 +373,19 @@ files = [
 colorama = "*"
 
 [[package]]
+name = "dacite"
+version = "1.8.1"
+description = "Simple creation of data classes from dictionaries."
+optional = false
+python-versions = ">=3.6"
+files = [
+    { file = "dacite-1.8.1-py3-none-any.whl", hash = "sha256:cc31ad6fdea1f49962ea42db9421772afe01ac5442380d9a99fcf3d188c61afe" },
+]
+
+[package.extras]
+dev = ["black", "coveralls", "mypy", "pre-commit", "pylint", "pytest (>=5)", "pytest-benchmark", "pytest-cov"]
+
+[[package]]
 name = "distlib"
 version = "0.3.7"
 description = "Distribution utilities"
@@ -981,6 +994,24 @@ files = [
 ]
 
 [[package]]
+name = "visual-regression-tracker"
+version = "4.9.0"
+description = "Open source, self hosted solution for visual testing and managing results of visual testing."
+optional = false
+python-versions = ">=3.6"
+files = [
+    { file = "visual_regression_tracker-4.9.0-py2.py3-none-any.whl", hash = "sha256:06d782d54c1b333bc1b204ce3c8a925c2505eda285a35c8856ed1782a8fa5d09" },
+    { file = "visual_regression_tracker-4.9.0.tar.gz", hash = "sha256:b7937e9f6229623c14260d5a046a8e0c2d7ac9db0730442ea7ac507d531f97e4" },
+]
+
+[package.dependencies]
+dacite = "*"
+requests = "*"
+
+[package.extras]
+playwright = ["playwright"]
+
+[[package]]
 name = "wsproto"
 version = "1.2.0"
 description = "WebSockets state-machine based protocol implementation"
@@ -1013,4 +1044,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6059a7205a4199de4926becaf475c49a560e7fe20e96ab96c2b5ca6b910d8c29"
+content-hash = "6692722644d4bf112a0564ca4739e7886b72899ce4c08550621a7839ad13b3bd"

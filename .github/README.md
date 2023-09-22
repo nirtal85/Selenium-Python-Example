@@ -49,6 +49,19 @@ py -m venv env
 poetry install
 ```
 
+need to create .env file in the project root with the following properties:
+
+| Parameter            | Description                             | Example Value                 |
+|----------------------|-----------------------------------------|-------------------------------|
+| EMAIL                | Your email address for authentication   | "your@email.com"              |
+| PASSWORD             | Your secret password for authentication | "your_secret_password"        |
+| VRT_APIURL           | Visual Regression Tracker API URL       | "https://vrt.example.com/api" |
+| VRT_PROJECT          | Visual Regression Tracker Project ID    | "project_id"                  |
+| VRT_CIBUILDID        | Visual Regression Tracker Build Number  | "build_number"                |
+| VRT_BRANCHNAME       | Visual Regression Tracker Branch Name   | "main"                        |
+| VRT_APIKEY           | Visual Regression Tracker API Key       | "your_api_key"                |
+| VRT_ENABLESOFTASSERT | Enable Soft Assertions                  | True (or False)               |
+
 ## Running Tests
 
 ```bash

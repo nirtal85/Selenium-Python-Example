@@ -7,6 +7,7 @@ from contextlib import suppress
 from pathlib import Path
 
 import allure
+import pytest
 import requests
 from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
@@ -16,6 +17,7 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
+from visual_regression_tracker import VisualRegressionTracker
 
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
@@ -73,6 +75,28 @@ def secret_data() -> dict:
         "email": os.getenv("EMAIL"),
         "password": os.getenv("PASSWORD"),
     }
+
+
+@pytest.fixture(scope="session")
+def vrt_tracker(secret_data):
+    """Fixture for creating a Visual Regression Tracker (VRT) object.
+
+    This fixture sets up a Visual Regression Tracker object that communicates
+    with a running server. It starts the server before all tests and stops it
+    after all tests have completed.
+
+    Usage:
+    1. Import this fixture into your test module.
+    2. Use `vrt_tracker` as a parameter in your test functions to access the VRT object.
+
+    Links:
+    - Visual Regression Tracker GitHub Repository: https://github.com/Visual-Regression-Tracker/examples-python
+    - Visual Regression Tracker SDK for Python: https://github.com/Visual-Regression-Tracker/sdk-python
+    """
+    vrt = VisualRegressionTracker()
+    vrt.start()
+    yield vrt
+    vrt.stop()
 
 
 def pytest_runtest_setup(item: Item) -> None:
