@@ -103,6 +103,6 @@ class TestLogin(BaseTest):
     @allure.description("Skip Test example")
     @allure.title("Skipped test example")
     @allure.label("owner", "nir tal")
-    @pytest.mark.skip(reason="no way of currently testing this")
+    @pytest.mark.skip(reason="skip test example")
     def test_skip(self):
         pass
