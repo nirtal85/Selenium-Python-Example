@@ -1,7 +1,6 @@
 import base64
 import json
 import logging
-import os
 from collections import defaultdict
 from contextlib import suppress
 from pathlib import Path
@@ -63,22 +62,14 @@ def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
 
 
-@fixture(scope="session")
-def secret_data() -> dict:
-    """Fixture to load sensitive data from environment variables.
-
-    Returns:
-        dict: A dictionary containing sensitive data, including username and password.
-    """
+@fixture(scope="session", autouse=True)
+def secret_data() -> None:
+    """Fixture to load sensitive data from environment variables."""
     load_dotenv()
-    return {
-        "email": os.getenv("EMAIL"),
-        "password": os.getenv("PASSWORD"),
-    }
 
 
 @pytest.fixture(scope="session")
-def vrt_tracker(secret_data):
+def vrt_tracker():
     """Fixture for creating a Visual Regression Tracker (VRT) object.
 
     This fixture sets up a Visual Regression Tracker object that communicates

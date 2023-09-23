@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 
 import allure
@@ -36,9 +37,9 @@ class TestLogin(BaseTest):
     @allure.title("Login with valid credentials test")
     @allure.tag("Tagged test")
     @pytest.mark.run(order=1)
-    def test_valid_login(self, secret_data: dict, json_data: dict):
+    def test_valid_login(self, json_data: dict):
         self.about_page.click_login_link()
-        self.login_page.login(secret_data.get("email"), secret_data.get("password"))
+        self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         expected_page_title = json_data["login"]["ws_page_title"]
         assert_that(expected_page_title).is_equal_to(self.projects_page.get_title())
 
@@ -46,7 +47,7 @@ class TestLogin(BaseTest):
     @allure.title("Logout of system test")
     @allure.story("As a user i want to be able to logout after a successful login.")
     @pytest.mark.run(order=2)
-    def test_logout(self, json_data: dict, secret_data: dict):
+    def test_logout(self, json_data: dict):
         # example of a simple text attachment
         allure.attach(
             "<h1>Example html attachment</h1>",
@@ -95,7 +96,7 @@ class TestLogin(BaseTest):
             attachment_type=allure.attachment_type.URI_LIST,
         )
         self.about_page.click_login_link()
-        self.login_page.login(secret_data.get("email"), secret_data.get("password"))
+        self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         self.projects_page.logout()
         expected_page_title = json_data["login"]["lg_page_title"]
         assert_that(expected_page_title).is_equal_to(self.login_page.get_page_title())
