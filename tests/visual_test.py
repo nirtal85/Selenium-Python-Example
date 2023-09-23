@@ -23,20 +23,12 @@ class TestVisual(BaseTest):
                     imageBase64=self.driver.get_screenshot_as_base64(),
                 )
             ).testRunResponse.status.name
-        ).is_equal_to(TestRunStatus.OK)
+        ).is_equal_to(TestRunStatus.OK.name)
 
     @allure.title("Visual test of login page with ignored area")
     def test_shoot_page_with_ignore_area(self, vrt_tracker):
         element_to_ignore: WebElement = self.wait.until(
             expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, "h1"))
-        )
-        location = element_to_ignore.location
-        size = element_to_ignore.size
-        width, height, x, y = (
-            size["width"],
-            size["height"],
-            location["x"],
-            location["y"],
         )
         assert_that(
             vrt_tracker.track(
@@ -46,16 +38,16 @@ class TestVisual(BaseTest):
                     ignoreAreas=(
                         [
                             IgnoreArea(
-                                x=x,
-                                y=y,
-                                width=width,
-                                height=height,
+                                x=element_to_ignore.location["x"],
+                                y=element_to_ignore.location["y"],
+                                width=element_to_ignore.size["width"],
+                                height=element_to_ignore.size["height"],
                             )
                         ]
                     ),
                 )
             ).testRunResponse.status.name
-        ).is_equal_to(TestRunStatus.OK)
+        ).is_equal_to(TestRunStatus.OK.name)
 
     @allure.title("Visual test of login page element")
     def test_shoot_element(self, vrt_tracker):
@@ -69,4 +61,4 @@ class TestVisual(BaseTest):
                     imageBase64=element_to_shoot.screenshot_as_base64,
                 )
             ).testRunResponse.status.name
-        ).is_equal_to(TestRunStatus.OK)
+        ).is_equal_to(TestRunStatus.OK.name)
