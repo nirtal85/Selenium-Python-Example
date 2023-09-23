@@ -1,3 +1,5 @@
+import os
+
 import allure
 import pytest
 from assertpy import assert_that
@@ -15,10 +17,10 @@ from tests.base_test import BaseTest
 class TestForgotPassword(BaseTest):
     @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
-    def test_valid_email(self, json_data: dict, secret_data: dict):
+    def test_valid_email(self, json_data: dict):
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
-        self.forget_password_page.send_password_reset_link(secret_data.get("email"))
+        self.forget_password_page.send_password_reset_link(os.getenv("EMAIL"))
         expected_success_message = json_data["forgot_password"]["success_message"]
         assert_that(expected_success_message).is_equal_to(
             self.forget_password_page.get_success_message()
