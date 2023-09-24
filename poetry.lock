@@ -699,6 +699,20 @@ pytest = ">=3.0.0,<8.0.0"
 requests = ">=2.9"
 
 [[package]]
+name = "pytest-check"
+version = "2.2.2"
+description = "A pytest plugin that allows multiple failures per test."
+optional = false
+python-versions = ">=3.7"
+files = [
+    { file = "pytest_check-2.2.2-py3-none-any.whl", hash = "sha256:c51dd795e3a054734f6f779c5a3691985bd455007f9643eff0c2e743aff36552" },
+    { file = "pytest_check-2.2.2.tar.gz", hash = "sha256:7ae7e99e90f127d3d02d29c02a8b2d95b5a87db3d30dccd169e9fd66c44fdbe8" },
+]
+
+[package.dependencies]
+pytest = "*"
+
+[[package]]
 name = "pytest-ordering"
 version = "0.6"
 description = "pytest plugin to run your tests in a specific order"
@@ -1044,4 +1058,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "9632319db2d64a3b184b2996639b6055ffb4e7da1c94479f0828898e3f0e93dc"
+content-hash = "8bbe55c5a17e8e258b80d525c864128418862631d2e5d69641e93990e611b55a"

@@ -26,6 +26,7 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.excel_parser import ExcelParser
+from utils.vrt_helper import VrtHelper
 from utils.web_driver_listener import DriverEventListener
 
 
@@ -69,7 +70,7 @@ def secret_data() -> None:
 
 
 @pytest.fixture(scope="session")
-def vrt_tracker():
+def vrt_helper():
     """Fixture for creating a Visual Regression Tracker (VRT) object.
 
     This fixture sets up a Visual Regression Tracker object that communicates
@@ -86,12 +87,12 @@ def vrt_tracker():
     """
     vrt = VisualRegressionTracker()
     vrt.start()
-    yield vrt
+    yield VrtHelper(driver, vrt, wait)
     vrt.stop()
 
 
 def pytest_runtest_setup(item: Item) -> None:
-    global browser, driver, chrome_options
+    global browser, driver, chrome_options, wait
     browser = item.config.option.browser
     base_url = item.config.option.base_url
     logging.basicConfig(level=logging.WARN)
