@@ -22,9 +22,9 @@ class TestForgotPassword(BaseTest):
         self.login_page.click_forgot_password()
         self.forget_password_page.send_password_reset_link(os.getenv("EMAIL"))
         expected_success_message = json_data["forgot_password"]["success_message"]
-        assert_that(expected_success_message).is_equal_to(
-            self.forget_password_page.get_success_message()
-        )
+        assert_that(expected_success_message).described_as(
+            "success message"
+        ).is_equal_to(self.forget_password_page.get_success_message())
 
     @allure.description("Forgot Password with invalid email address")
     @allure.title("Forgot Password with invalid email test")
@@ -34,7 +34,7 @@ class TestForgotPassword(BaseTest):
         self.login_page.click_forgot_password()
         self.forget_password_page.send_password_reset_link(emails[0])
         expected_error_message = json_data["forgot_password"]["error_message"]
-        assert_that(expected_error_message).is_equal_to(
+        assert_that(expected_error_message).described_as("error message").is_equal_to(
             self.forget_password_page.get_invalid_email_message()
         )
 
@@ -51,5 +51,7 @@ class TestForgotPassword(BaseTest):
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
         with pytest.raises(AssertionError) as e:
-            assert self.forget_password_page.get_page_title() == "something else"
+            assert_that(self.forget_password_page.get_page_title()).described_as(
+                "page title"
+            ).is_equal_to("something else")
         assert "AssertionError" in str(e)
