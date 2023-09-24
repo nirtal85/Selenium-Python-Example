@@ -10,7 +10,6 @@ from pages.login_page import LoginPage
 from tests.base_test import BaseTest
 
 
-# performs login operation
 def login(about_page: AboutPage, login_page: LoginPage):
     about_page.click_login_link()
     login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
