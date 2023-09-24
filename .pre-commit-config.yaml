@@ -26,7 +26,7 @@ repos:
     rev: v2.2.1
     hooks:
       - id: autoflake
-        args: [ --remove-all-unused-imports, --in-place ]
+        args: [ --remove-all-unused-imports, --remove-unused-variables, --in-place ]
   - repo: https://github.com/PyCQA/isort
     rev: 5.12.0
     hooks:
