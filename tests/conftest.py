@@ -71,15 +71,17 @@ def secret_data() -> None:
 
 @pytest.fixture(scope="session")
 def vrt_helper():
-    """Fixture for creating a Visual Regression Tracker (VRT) object.
+    """Fixture for creating a Visual Regression Tracker (VRT) helper object.
 
-    This fixture sets up a Visual Regression Tracker object that communicates
-    with a running server. It starts the server before all tests and stops it
+    This fixture sets up a Visual Regression Tracker helper object that provides
+    convenient methods for capturing and comparing screenshots with a Visual Regression
+    Tracker (VRT) server. It starts the VRT server before all tests and stops it
     after all tests have completed.
 
     Usage:
     1. Import this fixture into your test module.
-    2. Use `vrt_tracker` as a parameter in your test functions to access the VRT object.
+    2. Use the returned `VrtHelper` instance as a parameter in your test functions to
+       access methods for VRT-related tasks.
 
     Links:
     - Visual Regression Tracker GitHub Repository: https://github.com/Visual-Regression-Tracker/examples-python
