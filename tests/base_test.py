@@ -2,7 +2,6 @@ from typing import Union
 
 from selenium.webdriver import Chrome, Edge, Firefox
 from selenium.webdriver.support.wait import WebDriverWait
-from visual_regression_tracker import VisualRegressionTracker
 
 from pages.about_page import AboutPage
 from pages.forgot_password_page import ForgotPasswordPage
@@ -11,6 +10,7 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
+from utils.vrt_helper import VrtHelper
 
 
 class BaseTest:
@@ -23,4 +23,4 @@ class BaseTest:
     templates_page: TemplatesPage
     project_type_page: ProjectTypePage
     project_edit_page: ProjectEditPage
-    vrt_tracker: VisualRegressionTracker
+    vrt_helper: VrtHelper
