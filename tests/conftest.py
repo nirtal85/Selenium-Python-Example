@@ -133,19 +133,26 @@ def pytest_runtest_setup(item: Item) -> None:
             driver = webdriver.Firefox()
         case "chrome_headless":
             chrome_options.add_argument("headless=new")
+            chrome_options.add_argument("force-device-scale-factor=0.6")
+            chrome_options.add_argument("window-size=1920,1080")
             driver = webdriver.Chrome(options=chrome_options)
+        # https://stackoverflow.com/questions/76430192/getting-typeerror-webdriver-init-got-an-unexpected-keyword-argument-desi
         case "remote":
-            driver = webdriver.Remote(
-                command_executor="http://localhost:4444/wd/hub",
-                desired_capabilities={
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.set_capability(
+                "cloud:options",
+                {
                     "browserName": "chrome",
-                    "browserVersion": "114.0",
+                    "browserVersion": "117.0",
                     "selenoid:options": {
                         "enableVNC": True,
                         "enableVideo": True,
                         "videoName": f"{item.name}.mp4",
                     },
                 },
+            )
+            driver = webdriver.Remote(
+                command_executor="http://localhost:4444/wd/hub", options=chrome_options
             )
         case _:
             if item.config.option.decorate_driver:
