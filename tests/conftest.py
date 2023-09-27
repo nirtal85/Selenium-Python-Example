@@ -97,9 +97,6 @@ def pytest_runtest_setup(item: Item) -> None:
     global browser, driver, chrome_options, wait
     browser = item.config.option.browser
     base_url = item.config.option.base_url
-    logging.basicConfig(level=logging.WARN)
-    logger = logging.getLogger("selenium")
-    logger.setLevel(logging.DEBUG)
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
@@ -174,6 +171,12 @@ def pytest_runtest_setup(item: Item) -> None:
 
 def pytest_runtest_teardown() -> None:
     driver.quit()
+
+
+def pytest_sessionstart() -> None:
+    logging.basicConfig(level=logging.WARN)
+    logger = logging.getLogger("selenium")
+    logger.setLevel(logging.DEBUG)
 
 
 def pytest_exception_interact(node: Item, report: TestReport) -> None:
