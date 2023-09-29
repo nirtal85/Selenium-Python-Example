@@ -3,7 +3,22 @@
 ![dev run](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
 ![nightly](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
 
-## Articles written about this project
+## Tech Stack
+
+| Tool                                                                             | Description                                                              |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [selenium](https://pypi.org/project/selenium/)                                   | A powerful tool for automating web browsers and conducting web tests.    |
+| [pytest](https://pypi.org/project/pytest/)                                       | A popular testing framework for Python.                                  |
+| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                     | Pytest plugin for setting a base URL for your tests.                     |
+| [python-dotenv](https://pypi.org/project/python-dotenv/)                         | Loads environment variables from a .env file, simplifying configuration. |
+| [mailinator-python-client](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service.       |
+| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/) | Performs visual regression testing.                                      |
+| [pytest-check](https://pypi.org/project/pytest-check/)                           | Provides additional checking functionality for your Pytest tests.        |
+| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)           | Pytest plugin to rerun failed tests automatically.                       |
+| [allure-pytest](https://pypi.org/project/allure-pytest/)                         | Integrates Allure reporting with your Pytest tests for better reporting. |
+| [requests](https://pypi.org/project/requests/)                                   | A versatile library for making HTTP requests in Python.                  |
+
+## Articles Written About This Project
 
 * [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-build-cicd-pipeline-using-pytest-nir-tal/)
 * [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.linkedin.com/pulse/test-automation-how-attach-public-ip-adress-allure-report-nir-tal/)
@@ -86,38 +101,37 @@ allure serve allure-results
 
 * [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
-## View Help And Custom CLI Options
+### View Help And Custom CLI Options
 
 ```bash
 pytest --help
 ```
 
-## Run pre commit checks automatically
+### Run Pre Commit Checks Automatically
 
 ```bash
 pre-commit install
 ```
 
-## Bump pre commit hooks version
+### Bump Pre Commit Hooks Version
 
 ```bash
 pre-commit autoupdate
 ```
 
-
-## Run pre commit checks manually on the entire project
+### Run Pre Commit Checks Manually On The Entire Project
 
 ```bash
 pre-commit run --all-files
 ```
 
-## Sort imports
+### Sort Imports
 
 ```bash
 isort .
 ```
 
-## format code
+### Format Code
 
 ```bash
 black .
