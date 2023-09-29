@@ -63,12 +63,6 @@ def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
 
 
-@fixture(scope="session", autouse=True)
-def secret_data() -> None:
-    """Fixture to load sensitive data from environment variables."""
-    load_dotenv()
-
-
 @pytest.fixture(scope="session")
 def vrt_helper():
     """Fixture for creating a Visual Regression Tracker (VRT) helper object.
@@ -174,6 +168,11 @@ def pytest_runtest_teardown() -> None:
 
 
 def pytest_sessionstart() -> None:
+    """Loading sensitive data from environment variables.
+
+    and setting selenium logging
+    """
+    load_dotenv()
     logging.basicConfig(level=logging.WARN)
     logger = logging.getLogger("selenium")
     logger.setLevel(logging.DEBUG)
