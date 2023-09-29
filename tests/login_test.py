@@ -36,7 +36,7 @@ class TestLogin(BaseTest):
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @allure.tag("Tagged test")
-    @pytest.mark.run(order=1)
+    @pytest.mark.flaky(reruns=1)
     def test_valid_login(self, json_data: dict):
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
@@ -46,7 +46,6 @@ class TestLogin(BaseTest):
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @allure.story("As a user i want to be able to logout after a successful login.")
-    @pytest.mark.run(order=2)
     def test_logout(self, json_data: dict):
         # example of a simple text attachment
         allure.attach(
