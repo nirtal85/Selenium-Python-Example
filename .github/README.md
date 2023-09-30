@@ -124,15 +124,3 @@ pre-commit autoupdate
 ```bash
 pre-commit run --all-files
 ```
-
-### Sort Imports
-
-```bash
-isort .
-```
-
-### Format Code
-
-```bash
-black .
-```
