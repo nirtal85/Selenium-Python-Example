@@ -1,5 +1,6 @@
 # Selenium Python Example
 
+![twitter](https://img.shields.io/twitter/follow/NirTal2)
 ![dev run](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
 ![nightly](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
 
