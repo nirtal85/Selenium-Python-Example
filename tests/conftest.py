@@ -55,7 +55,11 @@ def json_data() -> dict:
 
 
 def get_public_ip() -> str:
-    return requests.get("http://checkip.amazonaws.com", timeout=40).text.rstrip()
+    return requests.get(
+        "http://checkip.amazonaws.com",
+        timeout=40,
+        headers={"User-Agent": "automation"},
+    ).text.rstrip()
 
 
 @fixture(scope="session")
@@ -114,6 +118,7 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("use-fake-device-for-media-stream")
         chrome_options.add_argument("use-fake-ui-for-media-stream")
         chrome_options.add_argument("hide-scrollbars")
+        chrome_options.add_argument("user-agent=automation")
         chrome_options.add_argument("disable-features=VizDisplayCompositor")
         chrome_options.add_argument("disable-features=IsolateOrigins,site-per-process")
         chrome_options.add_argument("disable-popup-blocking")
