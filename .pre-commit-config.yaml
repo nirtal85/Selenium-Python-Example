@@ -12,6 +12,16 @@ repos:
       - id: check-json
       - id: pretty-format-json
         args: [ --autofix ]
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: debug-statements
+      - id: detect-private-key
+      - id: no-commit-to-branch
+        args: [ '--branch', 'main' ]
   - repo: https://github.com/psf/black
     rev: 23.11.0
     hooks:
