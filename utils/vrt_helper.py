@@ -130,7 +130,7 @@ class VrtHelper:
 
     def censor_all_dates(self) -> None:
         """Replaces the dates in the text of all elements with "placeholder"
-        characters.
+        characters in the format 'mmm dd, yyyy'.
 
         This method iterates through each month and finds elements
         containing that month in the text. It then replaces the day and
@@ -175,11 +175,9 @@ class VrtHelper:
                     )
 
     def censor_credit_card_expiration(self) -> None:
-        """Replaces the dates of credit card expiration with "placeholder"
-        characters.
+        """Replaces credit card expiration dates in the text of elements
+        containing the text 'Expires' with 'placeholder' characters.
 
-        Finds elements containing the text 'Expires' and replaces the
-        content with a placeholder.
         :return: None
         """
         if credit_card_expiration_element := self.driver.find_elements(
@@ -193,7 +191,7 @@ class VrtHelper:
 
     def censor_all_times(self) -> None:
         """Replaces the times (hours:minutes AM/PM) in the text of all elements
-        with "placeholder" characters.
+        with "placeholder" characters in the format 'hh:mm AA'.
 
         Finds elements with text containing ':' and 'AM' or 'PM', then
         replaces the time format with placeholders.
