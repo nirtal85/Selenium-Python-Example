@@ -1,3 +1,4 @@
+import re
 import time
 from contextlib import suppress
 from typing import Tuple, Union
@@ -136,8 +137,8 @@ class VrtHelper:
         year or just the day in the text with placeholders.
         :return: None
         """
-        day_and_year_regex = " [0-3]?[0-9], [0-9]{4}"
-        day_regex = " [0-3]?[0-9]"
+        day_and_year_regex = r" [0-3]?[0-9], [0-9]{4}"
+        day_regex = r" [0-3]?[0-9]"
         months = [
             "Jan",
             "Feb",
@@ -163,9 +164,10 @@ class VrtHelper:
             if elements_with_month:
                 for element_with_month in elements_with_month:
                     element_text = element_with_month.text
-                    element_text = element_text.replace(
-                        month + day_and_year_regex, "mmm dd, yyyy"
-                    ).replace(month + day_regex, "mmm dd")
+                    element_text = re.sub(
+                        f"{month}{day_and_year_regex}", "mmm dd, yyyy", element_text
+                    )
+                    element_text = re.sub(f"{month}{day_regex}", "mmm dd", element_text)
 
                     self.driver.execute_script(
                         f"arguments[0].innerHTML='{element_text}';",
@@ -197,15 +199,16 @@ class VrtHelper:
         replaces the time format with placeholders.
         :return: None
         """
-        time_regex = "[0-9]{1,2}:[0-9]{1,2} (AM|PM)"
-        if elements_with_time := self.driver.find_elements(
+        time_regex = r"\d{1,2}:\d{1,2} (AM|PM)"
+        elements_with_time = self.driver.find_elements(
             By.XPATH,
             "//*[text()[contains(., ':') and (contains(., 'AM') or contains(., 'PM'))]]",
-        ):
-            for element_with_time in elements_with_time:
-                element_text = element_with_time.text
-                element_text = element_text.replace(time_regex, "hh:mm AA")
+        )
 
-                self.driver.execute_script(
-                    f"arguments[0].innerHTML='{element_text}';", element_with_time
-                )
+        for element_with_time in elements_with_time:
+            element_text = element_with_time.text
+            element_text = re.sub(time_regex, "hh:mm AA", element_text)
+
+            self.driver.execute_script(
+                f"arguments[0].innerHTML='{element_text}';", element_with_time
+            )
