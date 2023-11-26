@@ -93,8 +93,8 @@ def vrt_helper():
 
 def pytest_runtest_setup(item: Item) -> None:
     global browser, driver, chrome_options, wait
-    browser = item.config.option.browser
-    base_url = item.config.option.base_url
+    browser = item.config.getoption("browser")
+    base_url = item.config.getoption("base_url")
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability(
@@ -148,7 +148,7 @@ def pytest_runtest_setup(item: Item) -> None:
                 command_executor="http://localhost:4444/wd/hub", options=chrome_options
             )
         case _:
-            if item.config.option.decorate_driver:
+            if item.config.getoption("decorate_driver"):
                 driver = EventFiringWebDriver(
                     webdriver.Chrome(options=chrome_options), DriverEventListener()
                 )
