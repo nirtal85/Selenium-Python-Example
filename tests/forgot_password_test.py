@@ -28,7 +28,12 @@ class TestForgotPassword(BaseTest):
 
     @allure.description("Forgot Password with invalid email address")
     @allure.title("Forgot Password with invalid email test")
+    @pytest.mark.skipif(
+        "'involve' in config.getoption('base_url')",
+        reason="Conditional skip based on base url",
+    )
     def test_invalid_email(self, excel_reader, json_data: dict):
+        """This test is an example of a conditional skip based on base url."""
         emails = excel_reader.read_from_excel("Emails")
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
