@@ -1,6 +1,7 @@
 from collections import Counter
 
 from mailinator import GetInboxRequest, Mailinator, Message
+from tenacity import retry, retry_if_result, stop_after_attempt, wait_fixed
 
 
 class MailinatorHelper:
@@ -28,6 +29,14 @@ class MailinatorHelper:
         self.mailinator = mailinator
         self.mailinator_domain = mailinator_domain
 
+    @staticmethod
+    def is_none(value):
+        """Return True if value is None."""
+        return value is None
+
+    @retry(
+        retry=retry_if_result(is_none), stop=(stop_after_attempt(3)), wait=wait_fixed(4)
+    )
     def wait_for_email_to_arrive(self, user_email: str, email_subject: str) -> Message:
         """Wait for an email to arrive with a specific subject in a user's
         inbox.
