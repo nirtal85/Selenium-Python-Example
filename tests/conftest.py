@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+import os
 from collections import defaultdict
 from contextlib import suppress
 from pathlib import Path
@@ -13,6 +14,7 @@ from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from _pytest.reports import TestReport
 from dotenv import load_dotenv
+from mailinator import Mailinator
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -26,6 +28,7 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.excel_parser import ExcelParser
+from utils.mailinator_helper import MailinatorHelper
 from utils.vrt_helper import VrtHelper
 from utils.web_driver_listener import DriverEventListener
 
@@ -65,6 +68,14 @@ def get_public_ip() -> str:
 @fixture(scope="session")
 def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
+
+
+@fixture(scope="session")
+def mailinator_helper() -> MailinatorHelper:
+    return MailinatorHelper(
+        Mailinator(os.environ.get("MAILINATOR_API_KEY")),
+        os.environ.get("MAILINATOR_DOMAIN_NAME"),
+    )
 
 
 @pytest.fixture(scope="session")
