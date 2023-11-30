@@ -3,7 +3,7 @@ from collections import Counter
 from mailinator import GetInboxRequest, Mailinator, Message
 
 
-class EmailActions:
+class MailinatorHelper:
 
     """A class for performing email-related actions using the Mailinator
     service.
