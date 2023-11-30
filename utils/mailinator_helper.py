@@ -31,7 +31,20 @@ class MailinatorHelper:
 
     @staticmethod
     def is_none(value):
-        """Return True if value is None."""
+        """Return True if value is None.
+
+        You can use the `tenacity` library to handle retrying operations.
+        Check the `tenacity` documentation for more details:
+        `tenacity Documentation <https://tenacity.readthedocs.io/en/latest/>`_
+
+        Additionally, here is a helpful article on using `tenacity` in Python:
+        `Retry Flaky Task in Python using Tenacity <https://paragkamble.medium.com/retry-flaky-task-in-python-using-tenacity-c6fabcf9a3be>`_
+
+        :param value: The value to check for None.
+        :type value: Any
+        :return: True if the value is None, False otherwise.
+        :rtype: bool
+        """
         return value is None
 
     @retry(
