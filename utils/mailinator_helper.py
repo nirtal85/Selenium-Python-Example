@@ -1,6 +1,7 @@
 from collections import Counter
 
 from mailinator import GetInboxRequest, Mailinator, Message
+from tenacity import retry, retry_if_result, stop_after_attempt, wait_fixed
 
 
 class MailinatorHelper:
@@ -28,6 +29,27 @@ class MailinatorHelper:
         self.mailinator = mailinator
         self.mailinator_domain = mailinator_domain
 
+    @staticmethod
+    def is_none(value):
+        """Return True if value is None.
+
+        You can use the `tenacity` library to handle retrying operations.
+        Check the `tenacity` documentation for more details:
+        `tenacity Documentation <https://tenacity.readthedocs.io/en/latest/>`_
+
+        Additionally, here is a helpful article on using `tenacity` in Python:
+        `Retry Flaky Task in Python using Tenacity <https://paragkamble.medium.com/retry-flaky-task-in-python-using-tenacity-c6fabcf9a3be>`_
+
+        :param value: The value to check for None.
+        :type value: Any
+        :return: True if the value is None, False otherwise.
+        :rtype: bool
+        """
+        return value is None
+
+    @retry(
+        retry=retry_if_result(is_none), stop=(stop_after_attempt(3)), wait=wait_fixed(4)
+    )
     def wait_for_email_to_arrive(self, user_email: str, email_subject: str) -> Message:
         """Wait for an email to arrive with a specific subject in a user's
         inbox.

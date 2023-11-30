@@ -20,6 +20,7 @@
 | [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)           | Pytest plugin to rerun failed tests automatically.                       |
 | [allure-pytest](https://pypi.org/project/allure-pytest/)                         | Integrates Allure reporting with your Pytest tests for better reporting. |
 | [requests](https://pypi.org/project/requests/)                                   | A versatile library for making HTTP requests in Python.                  |
+| [tenacity](https://pypi.org/project/tenacity/)                                   | Retrying library                                                         |
 
 ## Articles Written About This Project
 
@@ -69,16 +70,18 @@ poetry install
 
 need to create .env file in the project root with the following properties:
 
-| Parameter            | Description                             | Example Value                 |
-|----------------------|-----------------------------------------|-------------------------------|
-| EMAIL                | Your email address for authentication   | "your@email.com"              |
-| PASSWORD             | Your secret password for authentication | "your_secret_password"        |
-| VRT_APIURL           | Visual Regression Tracker API URL       | "https://vrt.example.com/api" |
-| VRT_PROJECT          | Visual Regression Tracker Project ID    | "project_id"                  |
-| VRT_CIBUILDID        | Visual Regression Tracker Build Number  | "build_number"                |
-| VRT_BRANCHNAME       | Visual Regression Tracker Branch Name   | "main"                        |
-| VRT_APIKEY           | Visual Regression Tracker API Key       | "your_api_key"                |
-| VRT_ENABLESOFTASSERT | Enable Soft Assertions                  | True (or False)               |
+| Parameter              | Description                             | Example Value                 |
+|------------------------|-----------------------------------------|-------------------------------|
+| EMAIL                  | Your email address for authentication   | "your@email.com"              |
+| PASSWORD               | Your secret password for authentication | "your_secret_password"        |
+| VRT_APIURL             | Visual Regression Tracker API URL       | "https://vrt.example.com/api" |
+| VRT_PROJECT            | Visual Regression Tracker Project ID    | "project_id"                  |
+| VRT_CIBUILDID          | Visual Regression Tracker Build Number  | "build_number"                |
+| VRT_BRANCHNAME         | Visual Regression Tracker Branch Name   | "main"                        |
+| VRT_APIKEY             | Visual Regression Tracker API Key       | "your_api_key"                |
+| VRT_ENABLESOFTASSERT   | Enable Soft Assertions                  | True (or False)               |
+| MAILINATOR_API_KEY     | API Key for Mailinator service          | "your_mailinator_api_key"     |
+| MAILINATOR_DOMAIN_NAME | Domain name for Mailinator              | "your_mailinator_domain"      |
 
 ## Running Tests
 
