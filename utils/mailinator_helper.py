@@ -1,6 +1,6 @@
 from collections import Counter
 
-from mailinator import GetInboxRequest, Mailinator, Message
+from mailinator import GetInboxRequest, GetMessageRequest, Mailinator, Message
 from tenacity import retry, retry_if_result, stop_after_attempt, wait_fixed
 
 
@@ -50,32 +50,25 @@ class MailinatorHelper:
     @retry(
         retry=retry_if_result(is_none), stop=(stop_after_attempt(3)), wait=wait_fixed(4)
     )
-    def wait_for_email_to_arrive(self, user_email: str, email_subject: str) -> Message:
+    def __get_message_id(self, user_email: str, email_subject: str) -> str:
         """Wait for an email to arrive with a specific subject in a user's
-        inbox.
+        inbox and return its message ID.
 
         This method requests the inbox of a specified user and waits until an email with the
-        provided subject arrives. Once the email is found, it returns the first email that
-        matches the given subject.
+        provided subject arrives. Once the email is found, it returns the message ID of the
+        first email that matches the given subject.
 
         Args:
             user_email (str): The email address of the user.
             email_subject (str): The subject of the email to wait for.
 
         Returns:
-            Message or None: The email message with the specified subject, or None if the email
+            str or None: The message ID of the email with the specified subject, or None if the email
             is not found within the inbox.
 
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
             fetching the inbox.
-
-        Example:
-            email = wait_for_email_to_arrive(self, "user@example.com", "Important Subject")
-            if email:
-                print(f"Found email: {email.subject}")
-            else:
-                print("Email not found within the specified timeout.")
         """
         messages = self.mailinator.request(
             GetInboxRequest(
@@ -83,13 +76,40 @@ class MailinatorHelper:
                 inbox=user_email.split("@")[0],
             )
         ).msgs
-        filtered_messages = [
+        filtered_messages: list[Message] = [
             message
             for message in messages
             if message.to == user_email.split("@")[0]
             and message.subject == email_subject
         ]
-        return filtered_messages[0] if filtered_messages else None
+        return filtered_messages[0].id if filtered_messages else None
+
+    def get_message(self, user_email: str, email_subject: str) -> Message:
+        """Retrieve the email message with the specified subject in a user's
+        inbox.
+
+        This method retrieves the email message with the specified subject in a user's
+        inbox using the previously obtained message ID.
+
+        Args:
+            user_email (str): The email address of the user.
+            email_subject (str): The subject of the email to retrieve.
+
+        Returns:
+            Message or None: The email message with the specified subject, or None if the email
+            is not found within the inbox.
+
+        Raises:
+            Any exceptions raised by the underlying `self.mailinator.request` method when
+            fetching the email message.
+        """
+        return self.mailinator.request(
+            GetMessageRequest(
+                domain=self.mailinator_domain,
+                inbox=user_email,
+                message_id=self.__get_message_id(user_email, email_subject),
+            )
+        )
 
     def count_messages_by_subject(self, user_email: str) -> dict[str, int]:
         """Count the occurrences of email subjects in a user's inbox.
