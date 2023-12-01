@@ -96,8 +96,7 @@ class MailinatorHelper:
             email_subject (str): The subject of the email to retrieve.
 
         Returns:
-            Message or None: The email message with the specified subject, or None if the email
-            is not found within the inbox.
+            Message: The email message with the specified subject.
 
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
