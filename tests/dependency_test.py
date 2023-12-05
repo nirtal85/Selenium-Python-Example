@@ -3,9 +3,9 @@ import pytest
 from tests.base_test import BaseTest
 
 
-# @pytest.mark.skip(reason="Example only")
+@pytest.mark.skip(reason="Example only")
 class TestDependencyExample(BaseTest):
-    """Test suite for demonstrating test dependencies.
+    """Test suite for demonstrating test dependencies in the same class.
 
     This class defines a test suite with four test cases, illustrating the use
     of test dependencies using the pytest-dependency plugin.
