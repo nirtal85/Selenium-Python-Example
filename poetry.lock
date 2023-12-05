@@ -697,6 +697,19 @@ files = [
 pytest = "*"
 
 [[package]]
+name = "pytest-dependency"
+version = "0.5.1"
+description = "Manage dependencies of tests"
+optional = false
+python-versions = "*"
+files = [
+    { file = "pytest-dependency-0.5.1.tar.gz", hash = "sha256:c2a892906192663f85030a6ab91304e508e546cddfe557d692d61ec57a1d946b" },
+]
+
+[package.dependencies]
+pytest = ">=3.6.0"
+
+[[package]]
 name = "pytest-ordering"
 version = "0.6"
 description = "pytest plugin to run your tests in a specific order"
@@ -1071,4 +1084,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0865e24c052c7149082102d402946bb533b118ad154520af62e5ba41f9349acb"
+content-hash = "b6d6548d495498d10e9dbf65dcbce136b4313611478c03b21d414b4603e27153"

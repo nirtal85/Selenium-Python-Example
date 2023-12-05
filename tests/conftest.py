@@ -12,7 +12,6 @@ import requests
 from _pytest.config.argparsing import Parser
 from _pytest.fixtures import fixture
 from _pytest.nodes import Item
-from _pytest.reports import TestReport
 from dotenv import load_dotenv
 from mailinator import Mailinator
 from selenium import webdriver
@@ -180,7 +179,19 @@ def pytest_runtest_setup(item: Item) -> None:
 
 
 def pytest_runtest_teardown() -> None:
-    driver.quit()
+    """Pytest hook for teardown after each test.
+
+    Checks if the 'driver' variable is present in the local or global namespace.
+    If found, it calls the 'quit()' method on the 'driver' object to close the browser.
+
+    Note: This function assumes that the 'driver' variable is used for browser automation,
+    and its presence is necessary for cleanup.
+
+    Returns:
+        None
+    """
+    if "driver" in locals() or "driver" in globals():
+        driver.quit()
 
 
 def pytest_sessionstart() -> None:
@@ -194,8 +205,20 @@ def pytest_sessionstart() -> None:
     logger.setLevel(logging.DEBUG)
 
 
-def pytest_exception_interact(node: Item, report: TestReport) -> None:
-    if not report.failed:
+def pytest_exception_interact(node: Item) -> None:
+    """Pytest hook for interacting with exceptions during test execution.
+
+    If the 'driver' variable is present in the local or global namespace, this function performs various
+    actions for reporting using the 'allure' reporting framework. If 'driver' is not present, the function
+    returns without taking any action.
+
+    Args:
+        node (Item): The pytest Item representing the test item.
+
+    Returns:
+        None
+    """
+    if "driver" not in locals() and "driver" not in globals():
         return
     window_count = len(driver.window_handles)
     if browser == "remote":
