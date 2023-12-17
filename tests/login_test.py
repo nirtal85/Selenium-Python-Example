@@ -1,5 +1,6 @@
 import json
 import os
+import socket
 from pathlib import Path
 
 import allure
@@ -45,9 +46,39 @@ class TestLogin(BaseTest):
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
-    @allure.story("As a user i want to be able to logout after a successful login.")
+    @allure.story("As a user I want to be able to logout after a successful login.")
     def test_logout(self, json_data: dict):
-        # example of a simple text attachment
+        """Test case to verify the logout functionality.
+
+        :param json_data: A dictionary containing JSON data.
+        :type json_data: dict
+
+        Source:
+        - Example attachments from Allure-Pytest GitHub repository: https://github.com/allure-framework/allure-python/tree/master/allure-pytest/examples
+
+        Steps:
+        1. Perform a login with valid credentials.
+        2. Click on the logout link.
+        3. Verify that the page title matches the expected title after logout.
+
+        Attachments:
+        - A simple text attachment with masked password and hidden hostname.
+        - Example HTML attachment.
+        - Example file attachment (dog.png).
+        - Example text content attachment.
+        - Example CSV content attachment.
+        - Example JSON content attachment.
+        - Example XML content attachment.
+        - Example URI list attachment.
+
+        :return: None
+        """
+        allure.dynamic.parameter(
+            "password", "qwerty", mode=allure.parameter_mode.MASKED
+        )
+        allure.dynamic.parameter(
+            "hostname", socket.gethostname(), mode=allure.parameter_mode.HIDDEN
+        )
         allure.attach(
             "<h1>Example html attachment</h1>",
             name="HTML example",
@@ -75,10 +106,10 @@ class TestLogin(BaseTest):
             attachment_type=allure.attachment_type.JSON,
         )
         xml_content = """<?xml version="1.0" encoding="UTF-8"?>
-            <tag>
-                 <inside>...</inside>
-             </tag>
-         """
+                <tag>
+                     <inside>...</inside>
+                 </tag>
+             """
         allure.attach(
             xml_content,
             name="some attachment name",
