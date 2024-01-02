@@ -698,16 +698,17 @@ pytest = "*"
 
 [[package]]
 name = "pytest-dependency"
-version = "0.5.1"
+version = "0.6.0"
 description = "Manage dependencies of tests"
 optional = false
-python-versions = "*"
+python-versions = ">=3.4"
 files = [
-    { file = "pytest-dependency-0.5.1.tar.gz", hash = "sha256:c2a892906192663f85030a6ab91304e508e546cddfe557d692d61ec57a1d946b" },
+    {file = "pytest-dependency-0.6.0.tar.gz", hash = "sha256:934b0e6a39d95995062c193f7eaeed8a8ffa06ff1bcef4b62b0dc74a708bacc1"},
 ]
 
 [package.dependencies]
-pytest = ">=3.6.0"
+pytest = ">=3.7.0"
+setuptools = "*"
 
 [[package]]
 name = "pytest-ordering"
@@ -1084,4 +1085,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b6d6548d495498d10e9dbf65dcbce136b4313611478c03b21d414b4603e27153"
+content-hash = "c9bd99c2f76ea140677e2ea94023adf765e2952a0319b73bd28829600f29514f"
