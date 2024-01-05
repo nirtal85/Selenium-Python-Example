@@ -42,6 +42,7 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           source .venv/bin/activate
+          sudo apt-get install xvfb fluxbox
           SCREEN_WIDTH=1920
           SCREEN_HEIGHT=1080
           SCREEN_DEPTH=24
