@@ -8,21 +8,21 @@
 
 ## Tech Stack
 
-| Tool                                                                             | Description                                                              |
-|----------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [selenium](https://pypi.org/project/selenium/)                                   | A powerful tool for automating web browsers and conducting web tests.    |
-| [pytest](https://pypi.org/project/pytest/)                                       | A popular testing framework for Python.                                  |
-| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                     | Pytest plugin for setting a base URL for your tests.                     |
-| [python-dotenv](https://pypi.org/project/python-dotenv/)                         | Loads environment variables from a .env file, simplifying configuration. |
-| [mailinator-python-client](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service.       |
-| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/) | Performs visual regression testing.                                      |
-| [pytest-check](https://pypi.org/project/pytest-check/)                           | Provides additional checking functionality for your Pytest tests.        |
-| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)           | Pytest plugin to rerun failed tests automatically.                       |
-| [allure-pytest](https://pypi.org/project/allure-pytest/)                         | Integrates Allure reporting with your Pytest tests for better reporting. |
-| [requests](https://pypi.org/project/requests/)                                   | A versatile library for making HTTP requests in Python.                  |
-| [tenacity](https://pypi.org/project/tenacity/)                                   | Retrying library                                                         |
-| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                 | Pytest plugin that allows declaring dependencies between tests.          |
-| [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                    |
+| Tool                                                                             | Description                                                             |
+|----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [selenium](https://pypi.org/project/selenium/)                                   | A powerful tool for automating web browsers and conducting web tests    |
+| [pytest](https://pypi.org/project/pytest/)                                       | A popular testing framework for Python                                  |
+| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                     | Pytest plugin for setting a base URL for your tests                     |
+| [python-dotenv](https://pypi.org/project/python-dotenv/)                         | Loads environment variables from a .env file, simplifying configuration |
+| [mailinator-python-client](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service       |
+| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/) | Performs visual regression testing                                      |
+| [pytest-check](https://pypi.org/project/pytest-check/)                           | Provides additional checking functionality for your Pytest tests        |
+| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)           | Pytest plugin to rerun failed tests automatically                       |
+| [allure-pytest](https://pypi.org/project/allure-pytest/)                         | Integrates Allure reporting with your Pytest tests for better reporting |
+| [requests](https://pypi.org/project/requests/)                                   | A versatile library for making HTTP requests in Python                  |
+| [tenacity](https://pypi.org/project/tenacity/)                                   | Retrying library                                                        |
+| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                 | Pytest plugin that allows declaring dependencies between tests          |
+| [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                   |
 
 ## Articles Written About This Project
 
