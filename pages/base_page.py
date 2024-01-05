@@ -1,5 +1,6 @@
 from typing import Tuple, Union
 
+from deprecated import deprecated
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import ActionChains, Chrome, Edge, Firefox
 from selenium.webdriver.remote.webelement import WebElement
@@ -82,6 +83,7 @@ class BasePage:
         except NoSuchElementException:
             return False
 
+    @deprecated(reason="You should use another function")
     def _highlight_element(self, webelement: WebElement, color: str) -> None:
         original_style = webelement.get_attribute("style")
         new_style = f"background-color:yellow;border: 1px solid {color}{original_style}"

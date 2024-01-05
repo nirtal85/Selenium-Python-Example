@@ -21,6 +21,8 @@
 | [allure-pytest](https://pypi.org/project/allure-pytest/)                         | Integrates Allure reporting with your Pytest tests for better reporting. |
 | [requests](https://pypi.org/project/requests/)                                   | A versatile library for making HTTP requests in Python.                  |
 | [tenacity](https://pypi.org/project/tenacity/)                                   | Retrying library                                                         |
+| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                 | Pytest plugin that allows declaring dependencies between tests.          |
+| [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                    |
 
 ## Articles Written About This Project
 
@@ -65,7 +67,7 @@ py -m venv env
 * Install project dependencies:
 
 ```
-poetry install
+poetry install --no-root
 ```
 
 need to create .env file in the project root with the following properties:
