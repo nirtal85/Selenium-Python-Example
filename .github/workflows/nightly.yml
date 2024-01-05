@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -30,15 +30,30 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
         run: poetry install --no-interaction --no-root
-      - name: Install plugin
-        run: pip install pytest-github-actions-annotate-failures
+      - name: Install xvfb and fluxbox
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: xvfb fluxbox
+          version: 1.0
       - name: Test with pytest
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           source .venv/bin/activate
-          pytest --browser chrome_headless -m "not devRun"
+          SCREEN_WIDTH=1920
+          SCREEN_HEIGHT=1080
+          SCREEN_DEPTH=24
+          SCREEN_DPI=300
+          export GEOMETRY="${SCREEN_WIDTH}""x""${SCREEN_HEIGHT}""x""${SCREEN_DEPTH}"
+          export DISPLAY=:99.0
+          rm -f /tmp/.X*lock
+          xvfb-run --server-num=99 \
+          --listen-tcp \
+          --server-args="-screen 0 ${GEOMETRY} -fbdir /var/tmp -dpi ${SCREEN_DPI} -listen tcp -noreset -ac +extension RANDR" \
+          fluxbox -display :99.0 2&1>/dev/null &
+          exec $@
+          pytest -m "not devRun"
       - name: Add allure information
         working-directory: allure-results
         if: always()
