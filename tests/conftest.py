@@ -26,6 +26,7 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
+from utils.constants import Constants
 from utils.excel_parser import ExcelParser
 from utils.mailinator_helper import MailinatorHelper
 from utils.vrt_helper import VrtHelper
@@ -60,7 +61,7 @@ def get_public_ip() -> str:
     return requests.get(
         "http://checkip.amazonaws.com",
         timeout=40,
-        headers={"User-Agent": "automation"},
+        headers={"User-Agent": Constants.AUTOMATION_USER_AGENT},
     ).text.rstrip()
 
 
@@ -128,7 +129,7 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("use-fake-device-for-media-stream")
         chrome_options.add_argument("use-fake-ui-for-media-stream")
         chrome_options.add_argument("hide-scrollbars")
-        chrome_options.add_argument("user-agent=automation")
+        chrome_options.add_argument(f"user-agent={Constants.AUTOMATION_USER_AGENT}")
         chrome_options.add_argument("disable-features=VizDisplayCompositor")
         chrome_options.add_argument("disable-features=IsolateOrigins,site-per-process")
         chrome_options.add_argument("disable-popup-blocking")
