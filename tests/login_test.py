@@ -39,6 +39,7 @@ class TestLogin(BaseTest):
     @allure.tag("Tagged test")
     @pytest.mark.flaky(reruns=1)
     def test_valid_login(self, json_data: dict):
+        self.about_page.set_geo_location(30.3079823, -97.893803)
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         expected_page_title = json_data["login"]["ws_page_title"]

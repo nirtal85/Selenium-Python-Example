@@ -35,6 +35,27 @@ class BasePage:
             }
         )
 
+    def set_geo_location(self, latitude: float, longitude: float) -> None:
+        """Sets the geolocation for the web browser using the Chrome DevTools
+        Protocol (CDP).
+
+        Parameters:
+        - latitude (float): The latitude of the desired geolocation.
+        - longitude (float): The longitude of the desired geolocation.
+
+        Returns:
+        None
+
+        Note:
+        This method uses the Chrome DevTools Protocol (CDP) to override the geolocation
+        in the web browser, allowing simulation of a specific geographic location for testing purposes.
+        The accuracy is set to 1 for simplicity in this method.
+        """
+        self.driver.execute_cdp_cmd(
+            "Emulation.setGeolocationOverride",
+            {"latitude": latitude, "longitude": longitude, "accuracy": 1},
+        )
+
     def click(self, locator: Tuple[str, str]) -> None:
         el: WebElement = self.wait.until(
             expected_conditions.element_to_be_clickable(locator)
