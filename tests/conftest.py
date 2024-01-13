@@ -127,9 +127,13 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("allow-file-access-from-files")
         chrome_options.add_argument("use-fake-device-for-media-stream")
-        chrome_options.add_argument("use-fake-ui-for-media-stream")
         chrome_options.add_argument("hide-scrollbars")
-        chrome_options.add_argument(f"user-agent={Constants.AUTOMATION_USER_AGENT}")
+        # example of adding specific chrome option based on test file name
+        if item.fspath.purebasename == "workspaces_test":
+            chrome_options.add_argument("use-fake-ui-for-media-stream")
+        # example of adding specific chrome option based on test name
+        if item.name == "test_invalid_login":
+            chrome_options.add_argument(f"user-agent={Constants.AUTOMATION_USER_AGENT}")
         chrome_options.add_argument("disable-features=VizDisplayCompositor")
         chrome_options.add_argument("disable-features=IsolateOrigins,site-per-process")
         chrome_options.add_argument("disable-popup-blocking")
