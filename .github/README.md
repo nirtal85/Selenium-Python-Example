@@ -23,7 +23,6 @@
 | [tenacity](https://pypi.org/project/tenacity/)                                   | Retrying library                                                        |
 | [pytest-dependency](https://pypi.org/project/pytest-dependency/)                 | Pytest plugin that allows declaring dependencies between tests          |
 | [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                   |
-| [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                   |
 | [dataclasses-json](https://pypi.org/project/dataclasses-json/)                   | A library for serialization of dataclasses to and from JSON             |
 
 ## Articles Written About This Project
