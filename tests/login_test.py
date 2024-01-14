@@ -52,8 +52,8 @@ class TestLogin(BaseTest):
     def test_logout(self, data: Data):
         """Test case to verify the logout functionality.
 
-        :param json_data: A dictionary containing JSON data.
-        :type json_data: dict
+        :param data: An instance of the Data dataclass containing test data.
+        :type data: Data
 
         Source:
         - Example attachments from Allure-Pytest GitHub repository: https://github.com/allure-framework/allure-python/tree/master/allure-pytest/examples
