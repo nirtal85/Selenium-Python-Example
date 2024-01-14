@@ -8,6 +8,7 @@ import pytest
 from assertpy import assert_that
 
 from tests.base_test import BaseTest
+from utils.data import Data
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 
@@ -21,10 +22,10 @@ class TestLogin(BaseTest):
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email: str, password: str, json_data: dict):
+    def test_invalid_login(self, email: str, password: str, data: Data):
         self.about_page.click_login_link()
         self.login_page.login(email, password)
-        expected_error_message = json_data["login"]["error_message"]
+        expected_error_message = data.login.error_message
         assert_that(expected_error_message).is_equal_to(
             self.login_page.get_error_message()
         )
@@ -38,21 +39,21 @@ class TestLogin(BaseTest):
     @allure.title("Login with valid credentials test")
     @allure.tag("Tagged test")
     @pytest.mark.flaky(reruns=1)
-    def test_valid_login(self, json_data: dict):
+    def test_valid_login(self, data: Data):
         self.about_page.set_geo_location(30.3079823, -97.893803)
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
-        expected_page_title = json_data["login"]["ws_page_title"]
+        expected_page_title = data.login.ws_page_title
         assert_that(expected_page_title).is_equal_to(self.projects_page.get_title())
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @allure.story("As a user I want to be able to logout after a successful login.")
-    def test_logout(self, json_data: dict):
+    def test_logout(self, data: Data):
         """Test case to verify the logout functionality.
 
-        :param json_data: A dictionary containing JSON data.
-        :type json_data: dict
+        :param data: An instance of the Data dataclass containing test data.
+        :type data: Data
 
         Source:
         - Example attachments from Allure-Pytest GitHub repository: https://github.com/allure-framework/allure-python/tree/master/allure-pytest/examples
@@ -129,7 +130,7 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         self.projects_page.logout()
-        expected_page_title = json_data["login"]["lg_page_title"]
+        expected_page_title = data.login.lg_page_title
         assert_that(expected_page_title).is_equal_to(self.login_page.get_page_title())
 
     @allure.description("Skip Test example")

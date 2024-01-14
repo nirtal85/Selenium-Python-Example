@@ -27,6 +27,7 @@ from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
 from utils.constants import Constants
+from utils.data import Data
 from utils.excel_parser import ExcelParser
 from utils.mailinator_helper import MailinatorHelper
 from utils.vrt_helper import VrtHelper
@@ -50,11 +51,11 @@ def pytest_addoption(parser: Parser) -> None:
 
 
 @fixture(scope="session")
-def json_data() -> dict:
+def data() -> Data:
     json_path = Path(Path(__file__).absolute().parent.parent, "data", "tests_data.json")
     with open(json_path, encoding="utf-8") as json_file:
-        data = json.load(json_file)
-    return data
+        json_data = json.load(json_file)
+    return Data.from_dict(json_data)
 
 
 def get_public_ip() -> str:
