@@ -26,14 +26,14 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(email, password)
         expected_error_message = data.login.error_message
-        assert_that(expected_error_message).is_equal_to(
-            self.login_page.get_error_message()
-        )
+        assert_that(expected_error_message).described_as(
+            "login error message"
+        ).is_equal_to(self.login_page.get_error_message())
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
     def test_sanity(self, base_url):
-        assert_that(self.driver.current_url).is_equal_to(base_url)
+        assert_that(self.driver.current_url).described_as("URL").is_equal_to(base_url)
 
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
@@ -44,7 +44,9 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         expected_page_title = data.login.ws_page_title
-        assert_that(expected_page_title).is_equal_to(self.projects_page.get_title())
+        assert_that(expected_page_title).described_as("page title").is_equal_to(
+            self.projects_page.get_title()
+        )
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
@@ -131,7 +133,9 @@ class TestLogin(BaseTest):
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         self.projects_page.logout()
         expected_page_title = data.login.lg_page_title
-        assert_that(expected_page_title).is_equal_to(self.login_page.get_page_title())
+        assert_that(expected_page_title).described_as("page title").is_equal_to(
+            self.login_page.get_page_title()
+        )
 
     @allure.description("Skip Test example")
     @allure.title("Skipped test example")

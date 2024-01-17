@@ -31,7 +31,9 @@ class TestWorkspaces(BaseTest):
         before = self.projects_page.get_workspaces_number()
         self.projects_page.create_workspace(data.workspace.name)
         after = self.projects_page.get_workspaces_number()
-        assert_that(after).is_greater_than(before)
+        assert_that(after).described_as(
+            "number of displayed workspaces"
+        ).is_greater_than(before)
 
     @allure.description("Rename an existing workspace")
     @allure.title("Rename an existing workspace test")
@@ -41,7 +43,7 @@ class TestWorkspaces(BaseTest):
             data.workspace.name, data.workspace.new_name
         )
         expected_status = self.projects_page.is_workspace_found(data.workspace.new_name)
-        assert_that(expected_status).is_true()
+        assert_that(expected_status).described_as("status").is_true()
 
     @allure.description("Delete an existing workspace")
     @allure.title("Delete existing workspace")
@@ -50,7 +52,7 @@ class TestWorkspaces(BaseTest):
         before = self.projects_page.get_workspaces_number()
         self.projects_page.delete_workspace()
         after = self.projects_page.get_workspaces_number()
-        assert_that(after).is_less_than(before)
+        assert_that(after).described_as("workspace number").is_less_than(before)
 
     @allure.description(
         "Compare between the actual number of projects seen on page and the number shown in workspaces block"
@@ -62,9 +64,9 @@ class TestWorkspaces(BaseTest):
         number_of_projects_in_workspace = (
             self.projects_page.get_projects_number_from_workspace()
         )
-        assert_that(number_of_displayed_projects).is_equal_to(
-            number_of_projects_in_workspace
-        )
+        assert_that(number_of_displayed_projects).described_as(
+            "number of displayed projects"
+        ).is_equal_to(number_of_projects_in_workspace)
 
     @allure.description("Selecting and adding a project to workspace")
     @allure.title("Add project to workspace test")
@@ -80,7 +82,9 @@ class TestWorkspaces(BaseTest):
         )
         self.project_edit_page.click_save_and_exit()
         after = self.projects_page.get_projects_number_in_page()
-        assert_that(before + 1).is_equal_to(after)
+        assert_that(before + 1).described_as(
+            "number of displayed projects"
+        ).is_equal_to(after)
 
     @allure.description("Search for an existing project")
     @allure.title("Search for existing project test")
@@ -90,7 +94,7 @@ class TestWorkspaces(BaseTest):
         expected_status = self.projects_page.is_project_found(
             data.workspace.project_name
         )
-        assert_that(expected_status).is_true()
+        assert_that(expected_status).described_as("status").is_true()
 
     @allure.description("Search for a non existing project")
     @allure.title("Search for non existing project")
@@ -98,9 +102,9 @@ class TestWorkspaces(BaseTest):
     def test_search_for_non_existing_project(self, data: Data):
         self.projects_page.search_project(data.workspace.non_existing_project)
         expected_not_found_message = data.workspace.no_project_found_msg
-        assert_that(expected_not_found_message).is_equal_to(
-            self.projects_page.get_no_project_found_message()
-        )
+        assert_that(expected_not_found_message).described_as(
+            "not found message"
+        ).is_equal_to(self.projects_page.get_no_project_found_message())
 
     @allure.description("Cancel project deletion")
     @allure.title("Cancel a project deletion")
@@ -111,7 +115,9 @@ class TestWorkspaces(BaseTest):
             data.workspace.project_name, StatusEnum.CANCEL.value
         )
         after = self.projects_page.get_projects_number_in_page()
-        assert_that(before).is_equal_to(after)
+        assert_that(before).described_as("number of displayed projects").is_equal_to(
+            after
+        )
 
     @allure.description("Deleting an existing project from workspace")
     @allure.title("Delete existing project")
@@ -122,4 +128,6 @@ class TestWorkspaces(BaseTest):
                 before = self.projects_page.get_projects_number_in_page()
                 self.projects_page.delete_project(data.workspace.project_name)
                 after = self.projects_page.get_projects_number_in_page()
-                assert_that(before).is_equal_to(after + 1)
+                assert_that(before).described_as(
+                    "number of displayed projects"
+                ).is_equal_to(after + 1)
