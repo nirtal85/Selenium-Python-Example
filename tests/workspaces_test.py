@@ -52,7 +52,7 @@ class TestWorkspaces(BaseTest):
         before = self.projects_page.get_workspaces_number()
         self.projects_page.delete_workspace()
         after = self.projects_page.get_workspaces_number()
-        (assert_that(after).described_as("workspace number").is_less_than(before))
+        assert_that(after).described_as("workspace number").is_less_than(before)
 
     @allure.description(
         "Compare between the actual number of projects seen on page and the number shown in workspaces block"
@@ -64,11 +64,9 @@ class TestWorkspaces(BaseTest):
         number_of_projects_in_workspace = (
             self.projects_page.get_projects_number_from_workspace()
         )
-        (
-            assert_that(number_of_displayed_projects)
-            .described_as("number of displayed projects")
-            .is_equal_to(number_of_projects_in_workspace)
-        )
+        assert_that(number_of_displayed_projects).described_as(
+            "number of displayed projects"
+        ).is_equal_to(number_of_projects_in_workspace)
 
     @allure.description("Selecting and adding a project to workspace")
     @allure.title("Add project to workspace test")
