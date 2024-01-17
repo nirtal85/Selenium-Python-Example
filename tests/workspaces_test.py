@@ -43,7 +43,7 @@ class TestWorkspaces(BaseTest):
             data.workspace.name, data.workspace.new_name
         )
         expected_status = self.projects_page.is_workspace_found(data.workspace.new_name)
-        (assert_that(expected_status).described_as("status").is_true())
+        assert_that(expected_status).described_as("status").is_true()
 
     @allure.description("Delete an existing workspace")
     @allure.title("Delete existing workspace")
@@ -96,7 +96,7 @@ class TestWorkspaces(BaseTest):
         expected_status = self.projects_page.is_project_found(
             data.workspace.project_name
         )
-        (assert_that(expected_status).described_as("status").is_true())
+        assert_that(expected_status).described_as("status").is_true()
 
     @allure.description("Search for a non existing project")
     @allure.title("Search for non existing project")
