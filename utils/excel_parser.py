@@ -1,14 +1,13 @@
 import itertools
-from pathlib import Path
 
 import xlrd
+
+from utils.constants import Constants
 
 
 class ExcelParser:
     def __init__(self, excel_path):
-        self.excel_path = Path(
-            Path(__file__).absolute().parent.parent, "data", excel_path
-        )
+        self.excel_path = Constants.DATA_PATH / excel_path
 
     def read_from_excel(self, sheet_name):
         rows_val = []

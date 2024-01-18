@@ -1,13 +1,13 @@
 import json
 import os
 import socket
-from pathlib import Path
 
 import allure
 import pytest
 from assertpy import assert_that
 
 from tests.base_test import BaseTest
+from utils.constants import Constants
 from utils.data import Data
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
@@ -90,7 +90,7 @@ class TestLogin(BaseTest):
         )
         # example of a file attachment
         allure.attach.file(
-            Path(Path(__file__).absolute().parent.parent, "data", "dog.png"),
+            Constants.DATA_PATH / "dog.png",
             name="Attach file example",
             attachment_type=allure.attachment_type.PNG,
         )
