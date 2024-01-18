@@ -4,7 +4,6 @@ import logging
 import os
 from collections import defaultdict
 from contextlib import suppress
-from pathlib import Path
 
 import allure
 import pytest
@@ -52,7 +51,7 @@ def pytest_addoption(parser: Parser) -> None:
 
 @fixture(scope="session")
 def data() -> Data:
-    json_path = Path(Path(__file__).absolute().parent.parent, "data", "tests_data.json")
+    json_path = Constants.DATA_PATH / "tests_data.json"
     with open(json_path, encoding="utf-8") as json_file:
         json_data = json.load(json_file)
     return Data.from_dict(json_data)
