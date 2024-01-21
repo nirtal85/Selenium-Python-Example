@@ -65,6 +65,12 @@ py -m venv env
 .\env\Scripts\activate
 ```
 
+* Install poetry:
+
+```
+pip install poetry
+```
+
 * Install project dependencies:
 
 ```
