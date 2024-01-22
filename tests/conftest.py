@@ -122,7 +122,7 @@ def pytest_runtest_setup(item: Item) -> None:
                 "credentials_enable_service": False,
                 "profile.password_manager_enabled": False,
                 "download.default_directory": os.path.abspath(
-                    Constants.DATA_PATH.absolute().as_posix()
+                    Constants.CHROME_DOWNLOAD_DIRECTORY.absolute().as_posix()
                 ),
             },
         )
