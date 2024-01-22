@@ -2,5 +2,6 @@ from pathlib import Path
 
 
 class Constants:
-    AUTOMATION_USER_AGENT = "automation"
-    DATA_PATH = Path(Path(__file__).absolute().parent.parent, "data")
+    AUTOMATION_USER_AGENT: str = "automation"
+    DATA_PATH: Path = Path(Path(__file__).absolute().parent.parent, "data")
+    CHROME_DOWNLOAD_DIRECTORY: Path = DATA_PATH / "downloads"
