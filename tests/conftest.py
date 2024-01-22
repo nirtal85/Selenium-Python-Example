@@ -121,6 +121,9 @@ def pytest_runtest_setup(item: Item) -> None:
                 "profile.default_content_setting_values.media_stream_camera": 1,
                 "credentials_enable_service": False,
                 "profile.password_manager_enabled": False,
+                "download.default_directory": os.path.abspath(
+                    Constants.DATA_PATH.absolute().as_posix()
+                ),
             },
         )
         chrome_options.add_argument("disable-dev-shm-usage")
