@@ -91,7 +91,7 @@ class TestLogin(BaseTest):
         # example of a file attachment
         allure.attach.file(
             Constants.DATA_PATH / "dog.png",
-            name="Attach file example",
+            name="File Attachment Example",
             attachment_type=allure.attachment_type.PNG,
         )
         allure.attach(
