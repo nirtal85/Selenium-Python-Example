@@ -16,6 +16,8 @@ from visual_regression_tracker import (
     VisualRegressionTracker,
 )
 
+from utils.constants import Constants
+
 
 class VrtHelper:
     """Helper class for capturing and comparing screenshots in Visual
@@ -54,6 +56,7 @@ class VrtHelper:
             self.vrt_tracker.track(
                 TestRun(
                     name=baseline_name,
+                    diffTollerancePercent=Constants.DIFF_TOLERANCE_PERCENT,
                     imageBase64=self.driver.get_screenshot_as_base64(),
                 )
             ).testRunResponse.status.name,
@@ -93,6 +96,7 @@ class VrtHelper:
                 self.vrt_tracker.track(
                     TestRun(
                         name=baseline_name,
+                        diffTollerancePercent=Constants.DIFF_TOLERANCE_PERCENT,
                         imageBase64=self.driver.get_screenshot_as_base64(),
                         ignoreAreas=ignore_areas,
                     )
@@ -122,6 +126,7 @@ class VrtHelper:
             self.vrt_tracker.track(
                 TestRun(
                     name=baseline_name,
+                    diffTollerancePercent=Constants.DIFF_TOLERANCE_PERCENT,
                     imageBase64=element_to_shoot.screenshot_as_base64,
                 )
             ).testRunResponse.status.name,
