@@ -85,7 +85,7 @@ class TestLogin(BaseTest):
         )
         allure.attach(
             "<h1>Example html attachment</h1>",
-            name="HTML example",
+            name="HTML Attachment Example",
             attachment_type=allure.attachment_type.HTML,
         )
         # example of a file attachment
@@ -96,17 +96,17 @@ class TestLogin(BaseTest):
         )
         allure.attach(
             "Some text content",
-            name="TXT example",
+            name="Text Attachment Example",
             attachment_type=allure.attachment_type.TEXT,
         )
         allure.attach(
             "first,second,third\none,two,three",
-            name="CSV example",
+            name="CSV Attachment Example",
             attachment_type=allure.attachment_type.CSV,
         )
         allure.attach(
             json.dumps({"first": 1, "second": 2}, indent=2),
-            name="JSON example",
+            name="JSON Attachment Example",
             attachment_type=allure.attachment_type.JSON,
         )
         xml_content = """<?xml version="1.0" encoding="UTF-8"?>
@@ -116,7 +116,7 @@ class TestLogin(BaseTest):
              """
         allure.attach(
             xml_content,
-            name="some attachment name",
+            name="XML Attachment Example",
             attachment_type=allure.attachment_type.XML,
         )
         allure.attach(
@@ -126,7 +126,7 @@ class TestLogin(BaseTest):
                     "https://github.com/allure-examples",
                 ]
             ),
-            name="URI List example",
+            name="URI List Attachment Example",
             attachment_type=allure.attachment_type.URI_LIST,
         )
         self.about_page.click_login_link()
