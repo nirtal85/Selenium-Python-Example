@@ -36,48 +36,65 @@
 * [Test Automation - How To Edit Cookies in Selenium Python](https://www.linkedin.com/pulse/test-automation-how-edit-cookies-selenium-python-nir-tal/)
 * [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.linkedin.com/pulse/test-automation-pre-merge-testing-github-actions-step-by-step-tal/)
 
-## Project Setup
+## Setup Instructions
 
-* [Install scoop](https://scoop.sh/)
-* Install allure commandline by running the following command:
+### Step 1: Install Allure Commandline To View Test results
+
+#### For Windows:
+
+Follow the instructions [here](https://scoop.sh/) to install Scoop.<br>
+Run the following command to install Allure using Scoop:
 
 ```bash
 scoop install allure
 ```
 
-* Clone the project
-* Navigate to the project directory
-* Install virtualenv:
+#### For Mac:
 
+```bash
+brew install allure
+```
+
+### Step 2: Clone the project
+
+```bash
+git clone https://github.com/nirtal85/Selenium-Python-Example.git
+cd selenium-python-example
+```
+
+### Step 3: Create and activate a virtual environment
+
+#### For Windows:
 ```bash
 py -m pip install --user virtualenv
-```
-
-* Create a virtual environment:
-
-```bash
 py -m venv env
-```
-
-* Activate the virtual environment:
-
-```bash
 .\env\Scripts\activate
 ```
 
-* Install poetry:
+#### For Mac:
+```bash
+python3 -m pip install --user virtualenv
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 4: Install Poetry
 
 ```
 pip install poetry
 ```
 
-* Install project dependencies:
+### Step 5: Install Project Dependencies
 
 ```
 poetry install --no-root
 ```
 
-need to create .env file in the project root with the following properties:
+### Step 6:  Create .env File
+
+Create a `.env` file in the project root directory to securely store project secrets and configuration variables. This
+file will be used to define key-value pairs for various parameters required by the project. Add the following properties
+to the `.env` file:
 
 | Parameter              | Description                             | Example Value                 |
 |------------------------|-----------------------------------------|-------------------------------|
