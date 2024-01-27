@@ -38,31 +38,14 @@
 
 ## Setup Instructions
 
-### Step 1: Install Allure Commandline To View Test results
-
-#### For Windows:
-
-Follow the instructions [here](https://scoop.sh/) to install Scoop.<br>
-Run the following command to install Allure using Scoop:
-
-```bash
-scoop install allure
-```
-
-#### For Mac:
-
-```bash
-brew install allure
-```
-
-### Step 2: Clone the project
+### Step 1: Clone the project
 
 ```bash
 git clone https://github.com/nirtal85/Selenium-Python-Example.git
 cd selenium-python-example
 ```
 
-### Step 3: Create and activate a virtual environment
+### Step 2: Create and activate a virtual environment
 
 #### For Windows:
 ```bash
@@ -78,19 +61,19 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Step 4: Install Poetry
+### Step 3: Install Poetry
 
-```
+```bash
 pip install poetry
 ```
 
-### Step 5: Install Project Dependencies
+### Step 4: Install Project Dependencies
 
-```
+```bash
 poetry install --no-root
 ```
 
-### Step 6:  Create .env File
+### Step 5: Create .env File
 
 Create a `.env` file in the project root directory to securely store project secrets and configuration variables. This
 file will be used to define key-value pairs for various parameters required by the project. Add the following properties
@@ -125,33 +108,54 @@ pytest -m <tag_name> --browser <firefox/chrome_headless>
 
 ## Viewing Test Results
 
-* View allure results locally:
+### Install Allure Commandline To View Test results
+
+#### For Windows:
+
+Follow the instructions [here](https://scoop.sh/) to install Scoop.<br>
+Run the following command to install Allure using Scoop:
+
+```bash
+scoop install allure
+```
+
+#### For Mac:
+
+```bash
+brew install allure
+```
+
+### View Results Locally:
 
 ```bash
 allure serve allure-results
 ```
 
-* [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
+### View Results Online:
 
-### View Help And Custom CLI Options
+[View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
+
+## View Help And Other CLI Options
 
 ```bash
 pytest --help
 ```
 
-### Run Pre Commit Checks Automatically
+### Pre Commit
+
+#### Run Pre Commit Checks Automatically
 
 ```bash
 pre-commit install
 ```
 
-### Bump Pre Commit Hooks Version
+#### Bump Pre Commit Hooks Version
 
 ```bash
 pre-commit autoupdate
 ```
 
-### Run Pre Commit Checks Manually On The Entire Project
+#### Run Pre Commit Checks Manually On The Entire Project
 
 ```bash
 pre-commit run --all-files
