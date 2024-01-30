@@ -24,6 +24,7 @@
 | [pytest-dependency](https://pypi.org/project/pytest-dependency/)                 | Pytest plugin that allows declaring dependencies between tests          |
 | [Deprecated](https://pypi.org/project/Deprecated/)                               | A library for emitting warnings about deprecated code                   |
 | [dataclasses-json](https://pypi.org/project/dataclasses-json/)                   | A library for serialization of dataclasses to and from JSON             |
+| [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)       | Interface for connecting to MySQL databases and executing SQL queries   |
 
 ## Articles Written About This Project
 
