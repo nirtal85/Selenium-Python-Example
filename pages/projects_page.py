@@ -4,7 +4,7 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-from helper_enums.status_enum import StatusEnum
+from enums.status_enum import Status
 from pages.top_bars.top_navigate_bar import TopNavigateBar
 
 
@@ -152,9 +152,9 @@ class ProjectsPage(TopNavigateBar):
                 self.click_drop_down_menu(project)
                 project.find_element(*self._DELETE_PROJECT_BUTTON).click()
                 break
-        if status == StatusEnum.CANCEL.value:
+        if status == Status.CANCEL.value:
             self.click(self._CANCEL_PROJECT_DELETION_BUTTON)
-        elif status == StatusEnum.CONFIRM.value:
+        elif status == Status.CONFIRM.value:
             self.click(self._CONFIRM_DELETE_PROJECT_BUTTON)
             self.wait.until(
                 expected_conditions.invisibility_of_element(deleted_project)

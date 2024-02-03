@@ -25,12 +25,12 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.constants import Constants
-from utils.data import Data
-from utils.excel_parser import ExcelParser
-from utils.mailinator_helper import MailinatorHelper
-from utils.vrt_helper import VrtHelper
-from utils.web_driver_listener import DriverEventListener
+from utilities.constants import Constants
+from utilities.data import Data
+from utilities.excel_parser import ExcelParser
+from utilities.mailinator_helper import MailinatorHelper
+from utilities.vrt_helper import VrtHelper
+from utilities.web_driver_listener import DriverEventListener
 
 
 def pytest_addoption(parser: Parser) -> None:

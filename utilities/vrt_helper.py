@@ -16,7 +16,7 @@ from visual_regression_tracker import (
     VisualRegressionTracker,
 )
 
-from utils.constants import Constants
+from utilities.constants import Constants
 
 
 class VrtHelper:
