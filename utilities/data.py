@@ -12,8 +12,7 @@ class ForgotPassword:
 @dataclass
 class Login:
     error_message: str
-    lg_page_title: str
-    ws_page_title: str
+    page_title: str
 
 
 @dataclass
@@ -23,6 +22,7 @@ class Workspace:
     new_name: str
     no_project_found_msg: str
     non_existing_project: str
+    page_title: str
     project_name: str
     project_type: str
     template_type: str

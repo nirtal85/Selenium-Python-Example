@@ -43,7 +43,7 @@ class TestLogin(BaseTest):
         self.about_page.set_geo_location(30.3079823, -97.893803)
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
-        expected_page_title = data.login.ws_page_title
+        expected_page_title = data.workspace.page_title
         assert_that(expected_page_title).described_as("page title").is_equal_to(
             self.projects_page.get_title()
         )
@@ -132,7 +132,7 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         self.projects_page.logout()
-        expected_page_title = data.login.lg_page_title
+        expected_page_title = data.login.page_title
         assert_that(expected_page_title).described_as("page title").is_equal_to(
             self.login_page.get_page_title()
         )
