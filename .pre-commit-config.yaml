@@ -24,7 +24,7 @@ repos:
       - id: no-commit-to-branch
         args: [ '--branch', 'main' ]
   - repo: https://github.com/psf/black
-    rev: 23.12.1
+    rev: 24.1.1
     hooks:
       - id: black
         language_version: python3
@@ -63,6 +63,6 @@ repos:
         additional_dependencies:
           - tomli
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.15
+    rev: v0.16
     hooks:
       - id: validate-pyproject

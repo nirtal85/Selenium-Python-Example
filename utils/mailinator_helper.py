@@ -5,7 +5,6 @@ from tenacity import retry, retry_if_result, stop_after_attempt, wait_fixed
 
 
 class MailinatorHelper:
-
     """A class for performing email-related actions using the Mailinator
     service.
 
