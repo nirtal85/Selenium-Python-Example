@@ -7,8 +7,8 @@ import pytest
 from assertpy import assert_that
 
 from tests.base_test import BaseTest
-from utils.constants import Constants
-from utils.data import Data
+from utilities.constants import Constants
+from utilities.data import Data
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 

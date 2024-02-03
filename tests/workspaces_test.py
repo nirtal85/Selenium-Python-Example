@@ -4,11 +4,11 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from helper_enums.status_enum import StatusEnum
+from enums.status_enum import Status
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
-from utils.data import Data
+from utilities.data import Data
 
 
 def login(about_page: AboutPage, login_page: LoginPage):
@@ -112,7 +112,7 @@ class TestWorkspaces(BaseTest):
     def test_cancel_project_deletion(self, data: Data):
         before = self.projects_page.get_projects_number_in_page()
         self.projects_page.delete_project(
-            data.workspace.project_name, StatusEnum.CANCEL.value
+            data.workspace.project_name, Status.CANCEL.value
         )
         after = self.projects_page.get_projects_number_in_page()
         assert_that(before).described_as("number of displayed projects").is_equal_to(

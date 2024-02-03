@@ -17,7 +17,16 @@ isort = "5.13.2"
 pre-commit = "^3.6.0"
 
 [tool.pytest.ini_options]
-addopts = ["--clean-alluredir", "--alluredir=allure-results", "--color=yes", "-s", "-p no:logging"]
+addopts = [
+    "--clean-alluredir",
+    "--alluredir=allure-results",
+    "--allure-link-pattern", "issue:https://{}",
+    "--allure-link-pattern", "link:https://{}",
+    "--allure-link-pattern", "tms:https://{}",
+    "--color=yes",
+    "-s",
+    "-p no:logging"
+]
 base_url = 'https://www.involve.me/'
 
 markers = [
@@ -29,7 +38,7 @@ testpaths = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 allure-pytest = "2.13.2"
 allure-python-commons = "2.13.2"
 assertpy = "1.1"

@@ -10,8 +10,8 @@ from pages.project_edit_page import ProjectEditPage
 from pages.project_type_page import ProjectTypePage
 from pages.projects_page import ProjectsPage
 from pages.templates_page import TemplatesPage
-from utils.mailinator_helper import MailinatorHelper
-from utils.vrt_helper import VrtHelper
+from utilities.mailinator_helper import MailinatorHelper
+from utilities.vrt_helper import VrtHelper
 
 
 class BaseTest:

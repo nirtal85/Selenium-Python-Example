@@ -5,7 +5,7 @@ import pytest
 from assertpy import assert_that
 
 from tests.base_test import BaseTest
-from utils.data import Data
+from utilities.data import Data
 
 
 @allure.epic("Security")
@@ -46,12 +46,10 @@ class TestForgotPassword(BaseTest):
 
     @allure.description("Exception catching")
     @allure.title("Exception test")
-    @allure.link("https://github.com/allure-examples/", name="Allure Examples")
-    @allure.issue(
-        "https://github.com/allure-examples/allure-examples/issues/1", name="ISSUE-1"
-    )
+    @allure.link("github.com/allure-examples/", name="Allure Examples")
+    @allure.issue("github.com/allure-examples/allure-examples/issues/1", name="ISSUE-1")
     @allure.testcase(
-        "https://github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2"
+        "github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2"
     )
     def test_expected_exception_on_page_title(self):
         self.about_page.click_login_link()
