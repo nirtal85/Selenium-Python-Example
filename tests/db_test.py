@@ -13,7 +13,7 @@ class TestDatabaseExample:
         ) as connection:
             cursor = connection.cursor()
             cursor.execute("select Population from city where CountryCode='DNK'")
-            population_amount = [item[0] for item in cursor.fetchall()]
+            population_amount: list[int] = [item[0] for item in cursor.fetchall()]
         assert_that(population_amount).described_as("population amount").is_equal_to(
             [495699, 284846, 183912, 161161, 90327]
         )
