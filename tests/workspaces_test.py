@@ -4,7 +4,7 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from enums.status_enum import Status
+from enums.status import Status
 from pages.about_page import AboutPage
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
