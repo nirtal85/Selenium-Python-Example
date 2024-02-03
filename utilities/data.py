@@ -20,7 +20,7 @@ class Workspace:
     final_slide: str
     name: str
     new_name: str
-    no_project_found_msg: str
+    no_project_found_message: str
     non_existing_project: str
     page_title: str
     project_name: str

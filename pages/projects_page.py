@@ -47,7 +47,7 @@ class ProjectsPage(TopNavigateBar):
         By.CSS_SELECTOR,
         "#app h1.leading-tight.truncate",
     )
-    _NO_PROJECT_FOUND_MSG: Tuple[str, str] = (By.CSS_SELECTOR, "#app h1.block")
+    _NO_PROJECT_FOUND_MESSAGE: Tuple[str, str] = (By.CSS_SELECTOR, "#app h1.block")
     _NUMBER_OF_PROJECTS_IN_WORKSPACE_BLOCK: Tuple[str, str] = (
         By.CSS_SELECTOR,
         "span:nth-child(2)",
@@ -206,7 +206,7 @@ class ProjectsPage(TopNavigateBar):
         return self.get_text(self._PROJECT_PAGE_TITLE)
 
     def get_no_project_found_message(self) -> str:
-        return self.get_text(self._NO_PROJECT_FOUND_MSG)
+        return self.get_text(self._NO_PROJECT_FOUND_MESSAGE)
 
     @allure.step("Check if {project_name} is present")
     def is_project_found(self, project_name: str) -> bool:

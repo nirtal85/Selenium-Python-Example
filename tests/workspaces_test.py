@@ -42,8 +42,9 @@ class TestWorkspaces(BaseTest):
         self.projects_page.rename_workspace(
             data.workspace.name, data.workspace.new_name
         )
-        expected_status = self.projects_page.is_workspace_found(data.workspace.new_name)
-        assert_that(expected_status).described_as("status").is_true()
+        assert_that(
+            self.projects_page.is_workspace_found(data.workspace.new_name)
+        ).described_as("status").is_true()
 
     @allure.description("Delete an existing workspace")
     @allure.title("Delete existing workspace")
@@ -101,10 +102,9 @@ class TestWorkspaces(BaseTest):
     @pytest.mark.run(order=7)
     def test_search_for_non_existing_project(self, data: Data):
         self.projects_page.search_project(data.workspace.non_existing_project)
-        expected_not_found_message = data.workspace.no_project_found_msg
-        assert_that(expected_not_found_message).described_as(
+        assert_that(self.projects_page.get_no_project_found_message()).described_as(
             "not found message"
-        ).is_equal_to(self.projects_page.get_no_project_found_message())
+        ).is_equal_to(data.workspace.no_project_found_message)
 
     @allure.description("Cancel project deletion")
     @allure.title("Cancel a project deletion")
