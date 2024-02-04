@@ -97,7 +97,7 @@ to the `.env` file:
 ## Running Tests
 
 ```bash
-pytest --browser <firefox/chrome_headless>
+pytest --driver <firefox/chrome_headless>
 ```
 
 When no browser was selected then chrome will be used.

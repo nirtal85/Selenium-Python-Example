@@ -32,14 +32,17 @@ from utilities.mailinator_helper import MailinatorHelper
 from utilities.vrt_helper import VrtHelper
 from utilities.web_driver_listener import DriverEventListener
 
+drivers = ("chrome", "firefox", "chrome_headless", "remote")
+
 
 def pytest_addoption(parser: Parser) -> None:
     """Reads parameters from pytest command line."""
     parser.addoption(
-        "--browser",
+        "--driver",
         action="store",
+        choices=drivers,
         default="chrome",
-        help="browser that the automation will run in",
+        help="driver to run tests against",
     )
     parser.addoption(
         "--decorate_driver",
