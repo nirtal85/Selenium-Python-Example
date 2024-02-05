@@ -31,10 +31,8 @@ class TestLogin(BaseTest):
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
-    def test_sanity(self):
-        assert_that(self.driver.current_url).described_as("Base URL").contains(
-            "involve.me"
-        )
+    def test_sanity(self, base_url):
+        assert_that(self.driver.current_url).described_as("URL").is_equal_to(base_url)
 
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
