@@ -107,7 +107,7 @@ def vrt_helper():
 
 def pytest_runtest_setup(item: Item) -> None:
     global browser, driver, chrome_options, wait
-    browser = item.config.getoption("browser")
+    browser = item.config.getoption("driver")
     base_url = item.config.getoption("base_url")
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
