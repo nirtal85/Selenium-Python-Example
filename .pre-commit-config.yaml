@@ -24,7 +24,7 @@ repos:
       - id: no-commit-to-branch
         args: [ '--branch', 'main' ]
   - repo: https://github.com/psf/black
-    rev: 24.1.1
+    rev: 24.2.0
     hooks:
       - id: black
         language_version: python3
@@ -36,7 +36,7 @@ repos:
         additional_dependencies: [ tomli ]
         args: [ --in-place ]
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.2.1
+    rev: v2.3.0
     hooks:
       - id: autoflake
         args:
@@ -53,7 +53,7 @@ repos:
       - id: isort
         args: [ '--settings-file', 'pyproject.toml' ]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.0
+    rev: v3.15.1
     hooks:
       - id: pyupgrade
   - repo: https://github.com/codespell-project/codespell
