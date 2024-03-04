@@ -145,6 +145,7 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("disable-popup-blocking")
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("disable-notifications")
+        chrome_options.add_argument("disable-infobars")
     match browser:
         case "firefox":
             driver = webdriver.Firefox()
