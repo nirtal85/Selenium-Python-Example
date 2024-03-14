@@ -104,7 +104,6 @@ class MailinatorHelper:
         return self.mailinator.request(
             GetMessageRequest(
                 domain=self.mailinator_domain,
-                inbox=user_email,
                 message_id=self.__get_message_id(user_email, email_subject),
             )
         )
