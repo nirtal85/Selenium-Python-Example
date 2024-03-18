@@ -13,6 +13,7 @@ from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from dotenv import load_dotenv
 from mailinator import Mailinator
+from requests_toolbelt.utils import dump
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -60,17 +61,31 @@ def data() -> Data:
     return Data.from_dict(json_data)
 
 
-def get_public_ip() -> str:
-    return requests.get(
-        "http://checkip.amazonaws.com",
-        timeout=40,
-        headers={"User-Agent": Constants.AUTOMATION_USER_AGENT},
-    ).text.rstrip()
+def get_public_ip(session: requests.Session) -> str:
+    return session.get("http://checkip.amazonaws.com", timeout=40).text.rstrip()
 
 
 @fixture(scope="session")
 def excel_reader() -> ExcelParser:
     return ExcelParser("data.xls")
+
+
+@pytest.fixture(scope="session", autouse=True)
+def session_request():
+    """Fixture to create a session object with logging hook for HTTP requests.
+
+    Returns:
+        requests.Session: A session object with logging hook.
+    """
+    session = requests.Session()
+    session.headers = {"User-Agent": Constants.AUTOMATION_USER_AGENT}
+    session.hooks["response"] = lambda response, *args, **kwargs: allure.attach(
+        dump.dump_all(response).decode("utf-8"),
+        name=f"HTTP logs of {response.url}",
+        attachment_type=allure.attachment_type.JSON,
+    )
+    yield session
+    session.close()
 
 
 @fixture(scope="session")
@@ -230,6 +245,7 @@ def pytest_exception_interact(node: Item) -> None:
     Returns:
         None
     """
+    session_request: requests.Session = node.funcargs["session_request"]
     if "driver" not in locals() and "driver" not in globals():
         return
     window_count = len(driver.window_handles)
@@ -266,7 +282,7 @@ def pytest_exception_interact(node: Item) -> None:
                     attachment_type=allure.attachment_type.URI_LIST,
                 )
     allure.attach(
-        body=get_public_ip(),
+        body=get_public_ip(session_request),
         name="public ip address",
         attachment_type=allure.attachment_type.TEXT,
     )
