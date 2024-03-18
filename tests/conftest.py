@@ -82,7 +82,7 @@ def session_request():
     session.hooks["response"] = lambda response, *args, **kwargs: allure.attach(
         dump.dump_all(response).decode("utf-8"),
         name=f"HTTP logs of {response.url}",
-        attachment_type=allure.attachment_type.JSON,
+        attachment_type=allure.attachment_type.TEXT,
     )
     yield session
     session.close()
