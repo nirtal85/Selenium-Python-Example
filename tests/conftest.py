@@ -72,10 +72,14 @@ def excel_reader() -> ExcelParser:
 
 @pytest.fixture(scope="session", autouse=True)
 def session_request():
-    """Fixture to create a session object with logging hook for HTTP requests.
+    """Fixture to create a session object with a logging hook for HTTP
+    requests.
+
+    This fixture is based on a helpful solution provided on StackOverflow:
+    https://stackoverflow.com/a/70351922
 
     Returns:
-        requests.Session: A session object with logging hook.
+        requests.Session: A session object with a logging hook.
     """
     session = requests.Session()
     session.headers = {"User-Agent": Constants.AUTOMATION_USER_AGENT}
