@@ -285,11 +285,8 @@ def pytest_exception_interact(node: Item) -> None:
                     name=f"URL of window in index {window}",
                     attachment_type=allure.attachment_type.URI_LIST,
                 )
-    allure.attach(
-        body=get_public_ip(session_request),
-        name="public ip address",
-        attachment_type=allure.attachment_type.TEXT,
-    )
+    with allure.step("public ip address"):
+        get_public_ip(session_request)
     allure.attach(
         body=json.dumps(driver.get_cookies(), indent=4),
         name="Cookies",
