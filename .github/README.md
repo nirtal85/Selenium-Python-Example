@@ -6,7 +6,21 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## Tech Stack
+## 📃 Articles written about this project
+
+* [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-build-cicd-pipeline-using-pytest-nir-tal/)
+* [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.linkedin.com/pulse/test-automation-how-attach-public-ip-adress-allure-report-nir-tal/)
+* [Test Automation - Selenium Example Python Project 2022 Updates](https://www.linkedin.com/pulse/test-automation-selenium-example-python-project-2022-nir-tal/)
+* [Test Automation - How To Add Git Version Control Data To Allure Report in Python](https://www.linkedin.com/pulse/test-automation-how-add-git-version-control-data-allure-nir-tal/)
+* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python](https://www.linkedin.com/pulse/test-automation-how-attach-session-storage-local-cookies-nir-tal/)
+* [Test Automation - How To Capture Full-Page Screenshots In Selenium Python Using Chrome DevTools Protocol](https://www.linkedin.com/pulse/test-automation-how-capture-full-page-screenshots-selenium-nir-tal/)
+* [Test Automation - How To Edit Cookies in Selenium Python](https://www.linkedin.com/pulse/test-automation-how-edit-cookies-selenium-python-nir-tal/)
+* [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.linkedin.com/pulse/test-automation-pre-merge-testing-github-actions-step-by-step-tal/)
+* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
+* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
+
+## 🛠️ Tech Stack
+
 | Tool                                                                               | Description                                                             |
 |------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [allure-pytest](https://pypi.org/project/allure-pytest/)                           | Allure reporting with your Pytest tests for better reporting            |
@@ -29,19 +43,7 @@
 | [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/)   | Performs visual regression testing                                      |
 | [xlrd](https://pypi.org/project/xlrd/)                                             | Library for reading data and formatting information from Excel files    |
 
-## Articles Written About This Project
-
-* [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-build-cicd-pipeline-using-pytest-nir-tal/)
-* [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.linkedin.com/pulse/test-automation-how-attach-public-ip-adress-allure-report-nir-tal/)
-* [Test Automation - Selenium Example Python Project 2022 Updates](https://www.linkedin.com/pulse/test-automation-selenium-example-python-project-2022-nir-tal/)
-* [Test Automation - How To Add Git Version Control Data To Allure Report in Python](https://www.linkedin.com/pulse/test-automation-how-add-git-version-control-data-allure-nir-tal/)
-* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python](https://www.linkedin.com/pulse/test-automation-how-attach-session-storage-local-cookies-nir-tal/)
-* [Test Automation - How To Capture Full-Page Screenshots In Selenium Python Using Chrome DevTools Protocol](https://www.linkedin.com/pulse/test-automation-how-capture-full-page-screenshots-selenium-nir-tal/)
-* [Test Automation - How To Edit Cookies in Selenium Python](https://www.linkedin.com/pulse/test-automation-how-edit-cookies-selenium-python-nir-tal/)
-* [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.linkedin.com/pulse/test-automation-pre-merge-testing-github-actions-step-by-step-tal/)
-* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
-* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
-## Setup Instructions
+## ⚙️ Setup Instructions
 
 ### Step 1: Clone the project
 
@@ -97,7 +99,7 @@ to the `.env` file:
 | MAILINATOR_API_KEY     | API Key for Mailinator service          | "your_mailinator_api_key"     |
 | MAILINATOR_DOMAIN_NAME | Domain name for Mailinator              | "your_mailinator_domain"      |
 
-## Running Tests
+## 🏃‍♂️ Running Tests
 
 ```bash
 pytest --driver <firefox/chrome_headless>
@@ -111,7 +113,7 @@ When no browser was selected then chrome will be used.
 pytest -m <tag_name> --browser <firefox/chrome_headless>
 ```
 
-## Viewing Test Results
+## ✅ Viewing Test Results
 
 ### Install Allure Commandline To View Test results
 
@@ -140,7 +142,7 @@ allure serve allure-results
 
 [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
-## View Help And Other CLI Options
+## ❓ View Help And Other CLI Options
 
 ```bash
 pytest --help
