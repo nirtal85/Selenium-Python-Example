@@ -113,7 +113,7 @@ When no browser was selected then chrome will be used.
 pytest -m <tag_name> --browser <firefox/chrome_headless>
 ```
 
-## ✅ Viewing Test Results
+## 📊 Viewing Test Results
 
 ### Install Allure Commandline To View Test results
 
@@ -142,7 +142,7 @@ allure serve allure-results
 
 [View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
-## ❓ View Help And Other CLI Options
+## ℹ️ View Help And Other CLI Options
 
 ```bash
 pytest --help
