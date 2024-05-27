@@ -58,6 +58,7 @@ jobs:
         working-directory: allure-results
         if: always()
         run: |
+          echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} >> environment.properties
           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}  >> environment.properties
           echo GIT_COMMIT_ID=${{ github.sha }} >> environment.properties
           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> environment.properties
