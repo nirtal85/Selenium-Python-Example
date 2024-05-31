@@ -59,17 +59,19 @@ jobs:
           fluxbox -display :99.0 2&1>/dev/null &
           exec $@
           pytest -m devRun --base-url ${{ vars.BASE_URL }}
-      - name: Add allure information
+      - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
         if: always()
         run: |
-          echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} >> environment.properties
-          echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}  >> environment.properties
-          echo GIT_COMMIT_ID=${{ github.sha }} >> environment.properties
-          echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD) >> environment.properties
-          echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD) >> environment.properties
-          echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD) >> environment.properties
-          echo CHROME_VERSION=$(google-chrome --product-version) >> environment.properties
+          {
+           echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
+           echo GIT_COMMIT_ID=${{ github.sha }}
+           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD)
+           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD)
+           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
+           echo CHROME_VERSION=$(google-chrome --product-version)
+          } >> environment.properties
       - name: Allure results
         uses: simple-elf/allure-report-action@master
         if: always()
