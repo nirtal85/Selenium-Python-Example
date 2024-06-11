@@ -4,8 +4,6 @@
 name: Pre merge test
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -59,6 +57,9 @@ jobs:
           fluxbox -display :99.0 2&1>/dev/null &
           exec $@
           pytest -m devRun --base-url ${{ vars.BASE_URL }}
+      - name: Auto-assign reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.0
+        if: success()
       - name: Link Git Information And Browser Version To Allure Report
         working-directory: allure-results
         if: always()
