@@ -154,6 +154,7 @@ pytest --help
 
 ```bash
 pre-commit install
+pre-commit install --hook-type commit-msg
 ```
 
 #### Bump Pre Commit Hooks Version
