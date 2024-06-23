@@ -160,8 +160,10 @@ def pytest_runtest_setup(item: Item) -> None:
         # example of adding specific chrome option based on test name
         if item.name == "test_invalid_login":
             chrome_options.add_argument(f"user-agent={Constants.AUTOMATION_USER_AGENT}")
-        chrome_options.add_argument("disable-features=VizDisplayCompositor")
-        chrome_options.add_argument("disable-features=IsolateOrigins,site-per-process")
+        chrome_options.add_argument(
+            "disable-features=IsolateOrigins,site-per-process,VizDisplayCompositor,"
+            "SidePanelPinning"
+        )
         chrome_options.add_argument("disable-popup-blocking")
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("disable-notifications")
