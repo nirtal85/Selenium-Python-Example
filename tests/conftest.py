@@ -149,6 +149,7 @@ def pytest_runtest_setup(item: Item) -> None:
                 ),
             },
         )
+        chrome_options.enable_bidi = True
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("allow-file-access-from-files")
