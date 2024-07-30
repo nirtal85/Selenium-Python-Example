@@ -5,12 +5,20 @@ name: Nightly regression tests
 
 on:
   schedule:
-  - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      pytest_command:
+        description: 'Custom pytest command'
+        required: true
+        default: '-m "not devRun"'
 
 jobs:
   nightly:
     runs-on: ubuntu-latest
+    env:
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -31,10 +39,13 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
         run: poetry install --no-interaction --no-root
-      - name: Test with pytest
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+      - name: Run custom pytest command
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          source .venv/bin/activate
+          xvfb-run pytest ${{ github.event.inputs.pytest_command }} --base-url ${{ vars.BASE_URL }}
+      - name: Run default pytest command
+        if: github.event_name != 'workflow_dispatch'
         run: |
           source .venv/bin/activate
           xvfb-run pytest -m "not devRun" --base-url ${{ vars.BASE_URL }}
