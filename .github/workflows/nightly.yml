@@ -62,7 +62,7 @@ jobs:
            echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
-      - name: Allure results
+      - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -71,7 +71,7 @@ jobs:
           allure_report: allure-report
           gh_pages: gh-pages
           allure_history: allure-history
-      - name: Deploy report to Github Pages
+      - name: Deploy Report To Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
