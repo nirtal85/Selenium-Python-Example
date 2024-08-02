@@ -158,6 +158,7 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("disable-popup-blocking")
         chrome_options.add_argument("disable-notifications")
         chrome_options.add_argument("disable-infobars")
+        chrome_options.add_argument("disable-search-engine-choice-screen")
         chrome_options.add_argument(
             "disable-features=IsolateOrigins,site-per-process,VizDisplayCompositor,"
             "SidePanelPinning"
