@@ -159,9 +159,11 @@ def pytest_runtest_setup(item: Item) -> None:
         chrome_options.add_argument("disable-notifications")
         chrome_options.add_argument("disable-infobars")
         chrome_options.add_argument("disable-search-engine-choice-screen")
+        # https://github.com/SeleniumHQ/selenium/issues/14342
         chrome_options.add_argument(
             "disable-features=IsolateOrigins,site-per-process,VizDisplayCompositor,"
-            "SidePanelPinning"
+            "SidePanelPinning,OptimizationGuideModelDownloading,OptimizationHintsFetching,"
+            "OptimizationTargetPrediction,OptimizationHints"
         )
         # example of adding specific chrome option based on test file name
         if item.fspath.purebasename == "workspaces_test":
