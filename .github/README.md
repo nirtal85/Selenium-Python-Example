@@ -21,27 +21,28 @@
 
 ## 🛠️ Tech Stack
 
-| Tool                                                                               | Description                                                             |
-|------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [allure-pytest](https://pypi.org/project/allure-pytest/)                           | Allure reporting with your Pytest tests for better reporting            |
-| [assertpy](https://pypi.org/project/assertpy/)                                     | An expressive assertion library for Python                              |
-| [dataclasses-json](https://pypi.org/project/dataclasses-json/)                     | A library for serialization of dataclasses to and from JSON             |
-| [deprecated](https://pypi.org/project/deprecated/)                                 | A library for emitting warnings about deprecated code                   |
-| [mailinator-python-client-2](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service       |
-| [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)         | Interface for connecting to MySQL databases and executing SQL queries   |
-| [pytest](https://pypi.org/project/pytest/)                                         | A popular testing framework for Python                                  |
-| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                       | Pytest plugin for setting a base URL for your tests                     |
-| [pytest-check](https://pypi.org/project/pytest-check/)                             | Provides additional checking functionality for your Pytest tests        |
-| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                   | Pytest plugin that allows declaring dependencies between tests          |
-| [pytest-ordering](https://pypi.org/project/pytest-ordering/)                       | Pytest plugin for ordering test functions                               |
-| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)             | Pytest plugin to rerun failed tests automatically                       |
-| [python-dotenv](https://pypi.org/project/python-dotenv/)                           | Loads environment variables from a .env file, simplifying configuration |
-| [requests](https://pypi.org/project/requests/)                                     | A versatile library for making HTTP requests in Python                  |
-| [requests-toolbelt](https://pypi.org/project/requests-toolbelt/)                   | Collection of utilities for python-requests                             |
-| [selenium](https://pypi.org/project/selenium/)                                     | A powerful tool for automating web browsers and conducting web tests    |
-| [tenacity](https://pypi.org/project/tenacity/)                                     | Retrying library                                                        |
-| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/)   | Performs visual regression testing                                      |
-| [xlrd](https://pypi.org/project/xlrd/)                                             | Library for reading data and formatting information from Excel files    |
+| Tool                                                                               | Description                                                                                         |
+|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| [allure-pytest](https://pypi.org/project/allure-pytest/)                           | Allure reporting with your Pytest tests for better reporting                                        |
+| [assertpy](https://pypi.org/project/assertpy/)                                     | An expressive assertion library for Python                                                          |
+| [dataclasses-json](https://pypi.org/project/dataclasses-json/)                     | A library for serialization of dataclasses to and from JSON                                         |
+| [deprecated](https://pypi.org/project/deprecated/)                                 | A library for emitting warnings about deprecated code                                               |
+| [mailinator-python-client-2](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service                                   |
+| [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)         | Interface for connecting to MySQL databases and executing SQL queries                               |
+| [pytest](https://pypi.org/project/pytest/)                                         | A popular testing framework for Python                                                              |
+| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                       | Pytest plugin for setting a base URL for your tests                                                 |
+| [pytest-check](https://pypi.org/project/pytest-check/)                             | Provides additional checking functionality for your Pytest tests                                    |
+| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                   | Pytest plugin that allows declaring dependencies between tests                                      |
+| [pytest-ordering](https://pypi.org/project/pytest-ordering/)                       | Pytest plugin for ordering test functions                                                           |
+| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)             | Pytest plugin to rerun failed tests automatically                                                   |
+| [pytest-split](https://pypi.org/project/pytest-split/)                             | Pytest plugin which splits the test suite to equally sized sub suites based on test execution time. |
+| [python-dotenv](https://pypi.org/project/python-dotenv/)                           | Loads environment variables from a .env file, simplifying configuration                             |
+| [requests](https://pypi.org/project/requests/)                                     | A versatile library for making HTTP requests in Python                                              |
+| [requests-toolbelt](https://pypi.org/project/requests-toolbelt/)                   | Collection of utilities for python-requests                                                         |
+| [selenium](https://pypi.org/project/selenium/)                                     | A powerful tool for automating web browsers and conducting web tests                                |
+| [tenacity](https://pypi.org/project/tenacity/)                                     | Retrying library                                                                                    |
+| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/)   | Performs visual regression testing                                                                  |
+| [xlrd](https://pypi.org/project/xlrd/)                                             | Library for reading data and formatting information from Excel files                                |
 
 ## ⚙️ Setup Instructions
 
