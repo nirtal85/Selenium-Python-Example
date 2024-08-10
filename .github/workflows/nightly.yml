@@ -71,7 +71,9 @@ jobs:
         uses: actions/upload-artifact@v4.3.3
         with:
           name: test-results-${{ matrix.group }}
-          path: allure-results
+          path: |
+            test-results/
+            allure-results
           retention-days: 7
 
   merge-reports:
