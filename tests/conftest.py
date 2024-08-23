@@ -182,7 +182,8 @@ def pytest_runtest_setup(item: Item) -> None:
         # https://stackoverflow.com/questions/76430192/getting-typeerror-webdriver-init-got-an-unexpected-keyword-argument-desi
         case "remote":
             chrome_options = webdriver.ChromeOptions()
-            chrome_options.browser_version = "117.0"
+            # https://aerokube.com/images/latest/#_chrome
+            chrome_options.browser_version = "127.0"
             chrome_options.set_capability(
                 "selenoid:options",
                 {
