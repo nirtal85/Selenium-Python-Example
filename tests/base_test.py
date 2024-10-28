@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Union
 
 from selenium.webdriver import Chrome, Edge, Firefox
@@ -14,7 +15,7 @@ from utilities.mailinator_helper import MailinatorHelper
 from utilities.vrt_helper import VrtHelper
 
 
-class BaseTest:
+class BaseTest(ABC):
     driver: Union[Chrome, Firefox, Edge]
     wait: WebDriverWait
     about_page: AboutPage
