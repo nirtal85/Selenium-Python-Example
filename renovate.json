@@ -3,10 +3,28 @@
   "extends": [
     "config:recommended"
   ],
+  "packageRules": [
+    {
+      "groupName": "all pre-commit updates",
+      "managers": [
+        "pre-commit"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance",
+        "rollback",
+        "bump"
+      ]
+    }
+  ],
   "pre-commit": {
     "enabled": true
   },
   "schedule": [
-    "before 4am on the first day of the month"
+    "monthly"
   ]
 }
