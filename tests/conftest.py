@@ -13,6 +13,7 @@ from _pytest.fixtures import fixture
 from _pytest.nodes import Item
 from dotenv import load_dotenv
 from mailinator import Mailinator
+from mysql.connector import MySQLConnection
 from requests_toolbelt.utils import dump
 from selenium import webdriver
 from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
@@ -98,6 +99,14 @@ def mailinator_helper() -> MailinatorHelper:
         Mailinator(os.environ.get("MAILINATOR_API_KEY")),
         os.environ.get("MAILINATOR_DOMAIN_NAME"),
     )
+
+
+@pytest.fixture(scope="session")
+def db_connection():
+    """Fixture to establish a database connection."""
+    connection = MySQLConnection(user="root", password="1234", database="world")
+    yield connection
+    connection.close()
 
 
 @pytest.fixture(scope="session")
