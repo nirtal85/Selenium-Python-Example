@@ -24,7 +24,7 @@ repos:
       - id: no-commit-to-branch
         args: [ '--branch', 'main' ]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.30.0
+    rev: 0.31.1
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -36,7 +36,7 @@ repos:
         stages: [commit-msg]
         args: []
   - repo: https://github.com/psf/black
-    rev: 24.10.0
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3
@@ -54,7 +54,7 @@ repos:
             '--ignore-init-module-imports',
           ]
   - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2
+    rev: 6.0.0
     hooks:
       - id: isort
         args: [ '--settings-file', 'pyproject.toml' ]
@@ -63,7 +63,7 @@ repos:
     hooks:
       - id: pyupgrade
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
+    rev: v2.4.1
     hooks:
       - id: codespell
         additional_dependencies:
