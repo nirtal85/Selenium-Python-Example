@@ -159,6 +159,8 @@ def pytest_runtest_setup(item: Item) -> None:
             },
         )
         chrome_options.enable_bidi = True
+        # https://forum.robotframework.org/t/maximize-window-chromedriver-133/8416/3
+        chrome_options.browser_version("132")
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("allow-file-access-from-files")
@@ -192,7 +194,7 @@ def pytest_runtest_setup(item: Item) -> None:
         case "remote":
             chrome_options = webdriver.ChromeOptions()
             # https://aerokube.com/images/latest/#_chrome
-            chrome_options.browser_version = "127.0"
+            chrome_options.browser_version = "128.0"
             chrome_options.set_capability(
                 "selenoid:options",
                 {
