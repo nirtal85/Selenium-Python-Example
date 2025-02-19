@@ -21,6 +21,7 @@
 * [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.linkedin.com/pulse/test-automation-pre-merge-testing-github-actions-step-by-step-tal/)
 * [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.linkedin.com/pulse/test-automation-how-use-custom-user-agent-selenium-python-nir-tal-lyqbf/)
 * [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.linkedin.com/pulse/test-automation-how-use-dynamic-base-urls-selenium-playwright-tal-klq5f/)
+* [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.linkedin.com/pulse/test-automation-best-practices-pinning-browser-version-nir-tal-b5b8f/)
 
 ## 🛠️ Tech Stack
 
