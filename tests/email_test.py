@@ -19,3 +19,9 @@ class TestEmail(BaseTest):
             "testautomation", "purchase is confirmed"
         )
         assert "Thank you for your purchase" in message.parts[0].body
+
+    @allure.title("Get OTP code from email")
+    def test_verify_otp_code(self, mailinator_helper):
+        otp_code = mailinator_helper.get_otp_code("testautomation")
+        assert otp_code.isdigit(), f"OTP code '{otp_code}' is not a digit string"
+        assert len(otp_code) == 6, f"OTP code '{otp_code}' is not 6 digits long"
