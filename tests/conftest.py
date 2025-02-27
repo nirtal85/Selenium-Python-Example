@@ -357,7 +357,7 @@ def pytest_exception_interact(node: Item) -> None:
             )
         if javascript_errors:
             allure.attach(
-                body=javascript_errors,
+                body="\n".join(str(error) for error in javascript_errors),
                 name="JavaScript Errors",
                 attachment_type=allure.attachment_type.TEXT,
             )
