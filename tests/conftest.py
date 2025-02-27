@@ -347,11 +347,8 @@ def pytest_exception_interact(node: Item) -> None:
     if browser != "remote":
         # https://github.com/lana-20/selenium-webdriver-bidi
         if console_messages:
-            console_messages_text = "\n".join(
-                str(message) for message in console_messages
-            )
             allure.attach(
-                body=console_messages_text,
+                body="\n".join(str(message) for message in console_messages),
                 name="Console Logs",
                 attachment_type=allure.attachment_type.TEXT,
             )
