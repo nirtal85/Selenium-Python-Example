@@ -134,7 +134,7 @@ def vrt_helper():
 
 
 def pytest_runtest_setup(item: Item) -> None:
-    global browser, driver, chrome_options, wait
+    global browser, driver, chrome_options, wait, console_messages, javascript_errors
     browser = item.config.getoption("driver")
     base_url = item.config.getoption("base_url")
     if browser in ("chrome", "chrome_headless"):
@@ -184,7 +184,9 @@ def pytest_runtest_setup(item: Item) -> None:
             chrome_options.add_argument(f"user-agent={Constants.AUTOMATION_USER_AGENT}")
     match browser:
         case "firefox":
-            driver = webdriver.Firefox()
+            firefox_options = webdriver.FirefoxOptions()
+            firefox_options.enable_bidi = True
+            driver = webdriver.Firefox(firefox_options)
         case "chrome_headless":
             chrome_options.add_argument("headless=new")
             chrome_options.add_argument("force-device-scale-factor=0.6")
@@ -217,6 +219,11 @@ def pytest_runtest_setup(item: Item) -> None:
     driver.maximize_window()
     driver.get(base_url)
     wait = WebDriverWait(driver, 10)
+    if browser != "remote":
+        console_messages = []
+        driver.script.add_console_message_handler(console_messages.append)
+        javascript_errors = []
+        driver.script.add_javascript_error_handler(javascript_errors.append)
     item.cls.wait = wait
     item.cls.about_page = AboutPage(driver, wait)
     item.cls.login_page = LoginPage(driver, wait)
@@ -336,12 +343,24 @@ def pytest_exception_interact(node: Item) -> None:
         name="Local Storage",
         attachment_type=allure.attachment_type.JSON,
     )
-    allure.attach(
-        body=json.dumps(driver.get_log("browser"), indent=4),
-        name="Console Logs",
-        attachment_type=allure.attachment_type.JSON,
-    )
+
     if browser != "remote":
+        # https://github.com/lana-20/selenium-webdriver-bidi
+        if console_messages:
+            console_messages_text = "\n".join(
+                str(message) for message in console_messages
+            )
+            allure.attach(
+                body=console_messages_text,
+                name="Console Logs",
+                attachment_type=allure.attachment_type.TEXT,
+            )
+        if javascript_errors:
+            allure.attach(
+                body=javascript_errors,
+                name="JavaScript Errors",
+                attachment_type=allure.attachment_type.TEXT,
+            )
         # looks like cdp not working with remote: https://github.com/SeleniumHQ/selenium/issues/8672
         if window_count == 1:
             allure.attach(
