@@ -221,9 +221,13 @@ def pytest_runtest_setup(item: Item) -> None:
     wait = WebDriverWait(driver, 10)
     if browser != "remote":
         console_messages = []
-        driver.script.add_console_message_handler(console_messages.append)
+        driver.script.add_console_message_handler(
+            lambda log_entry: console_messages.append(log_entry.__dict__)
+        )
         javascript_errors = []
-        driver.script.add_javascript_error_handler(javascript_errors.append)
+        driver.script.add_javascript_error_handler(
+            lambda log_entry: javascript_errors.append(log_entry.__dict__)
+        )
     item.cls.wait = wait
     item.cls.about_page = AboutPage(driver, wait)
     item.cls.login_page = LoginPage(driver, wait)
@@ -348,15 +352,15 @@ def pytest_exception_interact(node: Item) -> None:
         # https://github.com/lana-20/selenium-webdriver-bidi
         if console_messages:
             allure.attach(
-                body="\n".join(str(message) for message in console_messages),
+                body=json.dumps(console_messages, indent=4),
                 name="Console Logs",
-                attachment_type=allure.attachment_type.TEXT,
+                attachment_type=allure.attachment_type.JSON,
             )
         if javascript_errors:
             allure.attach(
-                body="\n".join(str(error) for error in javascript_errors),
+                body=json.dumps(javascript_errors, indent=4),
                 name="JavaScript Errors",
-                attachment_type=allure.attachment_type.TEXT,
+                attachment_type=allure.attachment_type.JSON,
             )
         # looks like cdp not working with remote: https://github.com/SeleniumHQ/selenium/issues/8672
         if window_count == 1:
