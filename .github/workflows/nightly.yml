@@ -1,4 +1,4 @@
-name: Nightly regression tests
+name: Nightly Regression Tests
 
 on:
   schedule:
@@ -48,32 +48,28 @@ jobs:
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
-          virtualenvs-path: .venv
           installer-parallel: true
-      - name: Load cached venv
-        id: cached-poetry-dependencies
+      - name: Cache Dependencies
         uses: actions/cache@v4
+        id: poetry-cache
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: Run Tests
         run: |
-          source .venv/bin/activate
-          xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
+          poetry run xvfb-run pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
             --base-url ${{ vars.BASE_URL }} \
             --splits ${{ github.event.inputs.parallelism || 2 }} \
             --group ${{ matrix.group }}
-      - name: Upload test results
+      - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.group }}
-          path: |
-            test-results/
-            allure-results
+          name: allure-results-${{ matrix.group }}
+          path: allure-results
           retention-days: 7
 
   merge-reports:
@@ -81,42 +77,8 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Download all test results
-        uses: actions/download-artifact@v4
+      - name: Merge and Publish Allure Report
+        uses: Valiantsin2021/allure-shard-results-publish@1.0.6
         with:
-          path: artifacts
-      - name: Merge Allure Results
-        run: |
-          mkdir -p allure-results
-          for dir in artifacts/test-results-*/allure-results; do
-            cp -r $dir/* allure-results/
-          done
-      - name: Link Git Information And Browser Version To Allure Report
-        working-directory: allure-results
-        if: always()
-        run: |
-          {
-           echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
-           echo GIT_COMMIT_ID=${{ github.sha }}
-           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD)
-           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD)
-           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
-           echo CHROME_VERSION=$(google-chrome --product-version)
-          } >> environment.properties
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-          gh_pages: gh-pages
-          allure_history: allure-history
-      - name: Deploy Report To Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          add-env: 'true'
