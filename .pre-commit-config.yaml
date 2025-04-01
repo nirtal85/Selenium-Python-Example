@@ -24,7 +24,7 @@ repos:
       - id: no-commit-to-branch
         args: [ '--branch', 'main' ]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.31.2
+    rev: 0.32.1
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -69,7 +69,7 @@ repos:
         additional_dependencies:
           - tomli
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.23
+    rev: v0.24.1
     hooks:
       - id: validate-pyproject
         # Optional extra validations from SchemaStore:
