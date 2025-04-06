@@ -1,48 +1,57 @@
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "selenium-python-example"
+version = "0.1.0"
+description = "Selenium Python example project with pytest and Allure report"
+authors = [{ name = "Nir Tal", email = "nirt236@gmail.com" }]
+requires-python = "~=3.11"
+readme = "README.md"
+dependencies = [
+    "allure-pytest==2.13.5",
+    "assertpy==1.1",
+    "dataclasses-json==0.6.7",
+    "deprecated==1.2.18",
+    "mailinator-python-client-2==0.0.8",
+    "mysql-connector-python==9.2.0",
+    "pytest==8.3.5",
+    "pytest-base-url==2.1.0",
+    "pytest-check==2.5.2",
+    "pytest-dependency==0.6.0",
+    "pytest-ordering==0.6",
+    "pytest-rerunfailures==15.0",
+    "pytest-split==0.10.0",
+    "python-dotenv==1.1.0",
+    "requests==2.32.3",
+    "requests-toolbelt==1.0.0",
+    "selenium==4.30.0",
+    "tenacity==9.0.0",
+    "visual-regression-tracker==4.9.0",
+    "xlrd==2.0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/nirtal85/Selenium-Python-Example"
+Repository = "https://github.com/nirtal85/Selenium-Python-Example"
+
+[dependency-groups]
+dev = [
+    "black==25.1.0",
+    "isort==6.0.1",
+    "pre-commit==4.2.0",
+]
 
 [tool.isort]
 profile = "black"
 skip = ["env", "venv"]
 
-[tool.poetry]
-authors = ["Nir Tal <nirt236@gmail.com>"]
-description = "Selenium Python example project with pytest and Allure report"
-homepage = "https://github.com/nirtal85/Selenium-Python-Example"
-name = "selenium-python-example"
-packages = [{include = "selenium_python_example"}]
-readme = "README.md"
-repository = "https://github.com/nirtal85/Selenium-Python-Example"
-version = "0.1.0"
+[tool.hatch.build.targets.sdist]
+include = ["selenium_python_example"]
 
-[tool.poetry.dependencies]
-allure-pytest = "2.13.5"
-assertpy = "1.1"
-dataclasses-json = "0.6.7"
-deprecated = "1.2.18"
-mailinator-python-client-2 = "0.0.8"
-mysql-connector-python = "9.2.0"
-pytest = "8.3.5"
-pytest-base-url = "2.1.0"
-pytest-check = "2.5.2"
-pytest-dependency = "0.6.0"
-pytest-ordering = "0.6"
-pytest-rerunfailures = "15.0"
-pytest-split = "0.10.0"
-python = "^3.11"
-python-dotenv = "1.1.0"
-requests = "2.32.3"
-requests-toolbelt = "1.0.0"
-selenium = "4.30.0"
-tenacity = "9.0.0"
-visual-regression-tracker = "4.9.0"
-xlrd = "2.0.1"
-
-[tool.poetry.group.dev.dependencies]
-black = "25.1.0"
-isort = "6.0.1"
-pre-commit = "4.2.0"
+[tool.hatch.build.targets.wheel]
+include = ["selenium_python_example"]
 
 [tool.pytest.ini_options]
 addopts = [

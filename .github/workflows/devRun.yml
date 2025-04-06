@@ -16,26 +16,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
         with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-      - name: Install Dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+          enable-cache: true
+      - name: Create venv & install dependencies
+        run: |
+          uv venv
+          uv pip sync uv.lock
       - name: Test with pytest
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: poetry run xvfb-run pytest -m devRun --base-url ${{ vars.BASE_URL }}
+        run: uv venv exec xvfb-run pytest -m devRun --base-url ${{ vars.BASE_URL }}
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.0
         if: success()
