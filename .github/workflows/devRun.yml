@@ -28,9 +28,7 @@ jobs:
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          source .venv/bin/activate
-          xvfb-run pytest -m devRun --base-url ${{ vars.BASE_URL }}
+        run: xvfb-run .venv/bin/python -m pytest -m devRun --base-url ${{ vars.BASE_URL }}
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.0
         if: success()
