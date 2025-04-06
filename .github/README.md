@@ -58,36 +58,21 @@ git clone https://github.com/nirtal85/Selenium-Python-Example.git
 cd selenium-python-example
 ```
 
-### Install uv
+### Create and activate a virtual environment then Install project dependencies 
 
 #### For Windows:
 ```bash
 pip install uv
+uv venv
+.\env\Scripts\activate
+uv pip sync uv.lock
 ```
 
 #### For Mac:
 ```bash
 python3 -m pip install uv
-```
-
-### Create and activate a virtual environment
-
-#### For Windows:
-```bash
-uv venv
-.\env\Scripts\activate
-```
-
-#### For Mac:
-```bash
 uv venv
 source .venv/bin/activate 
-```
-
-
-### Install Project Dependencies
-
-```bash
 uv pip sync uv.lock
 ```
 
