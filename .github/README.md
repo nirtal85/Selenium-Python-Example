@@ -58,32 +58,37 @@ git clone https://github.com/nirtal85/Selenium-Python-Example.git
 cd selenium-python-example
 ```
 
+### Install uv
+
+#### For Windows:
+```bash
+pip install uv
+```
+
+#### For Mac:
+```bash
+python3 -m pip install uv
+```
+
 ### Create and activate a virtual environment
 
 #### For Windows:
 ```bash
-py -m pip install --user virtualenv
-py -m venv env
+uv venv
 .\env\Scripts\activate
 ```
 
 #### For Mac:
 ```bash
-python3 -m pip install --user virtualenv
-python3 -m venv venv
-source venv/bin/activate
+uv venv
+source .venv/bin/activate 
 ```
 
-### Install Poetry
-
-```bash
-pip install poetry
-```
 
 ### Install Project Dependencies
 
 ```bash
-poetry install --no-root
+uv pip sync uv.lock
 ```
 
 ### Create .env File
