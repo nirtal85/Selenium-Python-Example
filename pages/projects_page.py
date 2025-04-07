@@ -190,7 +190,7 @@ class ProjectsPage(TopNavigateBar):
         projects_titles = self.wait.until(
             expected_conditions.visibility_of_all_elements_located(self._PROJECTS_TITLES)
         )
-        return all(project_name == project_title.text.lower() for project_title in projects_titles)
+        return any(project_name == project_title.text.lower() for project_title in projects_titles)
 
     # clicks on a specific project's drop down arrow
     def click_drop_down_menu(self, project) -> None:
