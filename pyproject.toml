@@ -38,14 +38,19 @@ Repository = "https://github.com/nirtal85/Selenium-Python-Example"
 
 [dependency-groups]
 dev = [
-    "black==25.1.0",
-    "isort==6.0.1",
+    "ruff==0.11.4",
     "pre-commit==4.2.0",
 ]
 
-[tool.isort]
-profile = "black"
-skip = ["env", "venv"]
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["ALL"]
+ignore = [
+    "D203",  # One blank line required before class docstring (conflicts with D211)
+    "D213",  # Multi-line docstring summary should start at the second line
+]
+exclude = [".venv", "env"]
 
 [tool.hatch.build.targets.sdist]
 include = ["selenium_python_example"]
