@@ -1,20 +1,16 @@
-from typing import Tuple, Union
-
 from deprecated import deprecated
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import ActionChains, Chrome, Edge, Firefox
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.expected_conditions import (
-    StaleElementReferenceException,
-)
+from selenium.webdriver.support.expected_conditions import StaleElementReferenceException
 from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
     """Wrapper for selenium operations."""
 
-    def __init__(self, driver: Union[Chrome, Firefox, Edge], wait: WebDriverWait):
+    def __init__(self, driver: Chrome | Firefox | Edge, wait: WebDriverWait):
         self.driver = driver
         self.wait = wait
 
@@ -39,42 +35,39 @@ class BasePage:
         """Sets the geolocation for the web browser using the Chrome DevTools
         Protocol (CDP).
 
-        Parameters:
+        Parameters
+        ----------
         - latitude (float): The latitude of the desired geolocation.
         - longitude (float): The longitude of the desired geolocation.
 
-        Returns:
+        Returns
+        -------
         None
 
         Note:
         This method uses the Chrome DevTools Protocol (CDP) to override the geolocation
         in the web browser, allowing simulation of a specific geographic location for testing purposes.
         The accuracy is set to 1 for simplicity in this method.
+
         """
         self.driver.execute_cdp_cmd(
             "Emulation.setGeolocationOverride",
             {"latitude": latitude, "longitude": longitude, "accuracy": 1},
         )
 
-    def click(self, locator: Tuple[str, str]) -> None:
-        el: WebElement = self.wait.until(
-            expected_conditions.element_to_be_clickable(locator)
-        )
+    def click(self, locator: tuple[str, str]) -> None:
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         self._highlight_element(el, "green")
         el.click()
 
-    def fill_text(self, locator: Tuple[str, str], txt: str) -> None:
-        el: WebElement = self.wait.until(
-            expected_conditions.element_to_be_clickable(locator)
-        )
+    def fill_text(self, locator: tuple[str, str], txt: str) -> None:
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
         self._highlight_element(el, "green")
         el.send_keys(txt)
 
-    def clear_text(self, locator: Tuple[str, str]) -> None:
-        el: WebElement = self.wait.until(
-            expected_conditions.element_to_be_clickable(locator)
-        )
+    def clear_text(self, locator: tuple[str, str]) -> None:
+        el: WebElement = self.wait.until(expected_conditions.element_to_be_clickable(locator))
         el.clear()
 
     def scroll_to_bottom(self) -> None:
@@ -84,10 +77,8 @@ class BasePage:
         self._highlight_element(webelement, "green")
         webelement.submit()
 
-    def get_text(self, locator: Tuple[str, str]) -> str:
-        el: WebElement = self.wait.until(
-            expected_conditions.visibility_of_element_located(locator)
-        )
+    def get_text(self, locator: tuple[str, str]) -> str:
+        el: WebElement = self.wait.until(expected_conditions.visibility_of_element_located(locator))
         self._highlight_element(el, "green")
         return el.text
 

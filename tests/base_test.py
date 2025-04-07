@@ -1,5 +1,4 @@
 from abc import ABC
-from typing import Union
 
 from selenium.webdriver import Chrome, Edge, Firefox
 from selenium.webdriver.support.wait import WebDriverWait
@@ -16,7 +15,7 @@ from utilities.vrt_helper import VrtHelper
 
 
 class BaseTest(ABC):
-    driver: Union[Chrome, Firefox, Edge]
+    driver: Chrome | Firefox | Edge
     wait: WebDriverWait
     about_page: AboutPage
     login_page: LoginPage

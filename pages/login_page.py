@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import allure
 from selenium.webdriver.common.by import By
 
@@ -9,12 +7,12 @@ from pages.top_bars.top_menu_bar import TopMenuBar
 class LoginPage(TopMenuBar):
     """Login Page."""
 
-    USERNAME_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=email]")
-    PASSWORD_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "input[type=password]")
-    LOGIN_BUTTON: Tuple[str, str] = (By.CSS_SELECTOR, "button[type=submit]")
-    LOGIN_ERROR_MESSAGE: Tuple[str, str] = (By.CSS_SELECTOR, "div.alert-danger")
-    PAGE_TITLE: Tuple[str, str] = (By.CSS_SELECTOR, ".e-form-heading")
-    FORGOT_PASSWORD_LINK: Tuple[str, str] = (
+    USERNAME_FIELD: tuple[str, str] = (By.CSS_SELECTOR, "input[type=email]")
+    PASSWORD_FIELD: tuple[str, str] = (By.CSS_SELECTOR, "input[type=password]")
+    LOGIN_BUTTON: tuple[str, str] = (By.CSS_SELECTOR, "button[type=submit]")
+    LOGIN_ERROR_MESSAGE: tuple[str, str] = (By.CSS_SELECTOR, "div.alert-danger")
+    PAGE_TITLE: tuple[str, str] = (By.CSS_SELECTOR, ".e-form-heading")
+    FORGOT_PASSWORD_LINK: tuple[str, str] = (
         By.CSS_SELECTOR,
         "[href='https://app.involve.me/password/reset']",
     )

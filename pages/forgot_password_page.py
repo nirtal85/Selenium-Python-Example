@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import allure
 from selenium.webdriver.common.by import By
 
@@ -7,14 +5,14 @@ from pages.base_page import BasePage
 
 
 class ForgotPasswordPage(BasePage):
-    EMAIL_FIELD: Tuple[str, str] = (By.CSS_SELECTOR, "[name=email]")
-    SEND_PASSWORD_RESET_LINK_BUTTON: Tuple[str, str] = (
+    EMAIL_FIELD: tuple[str, str] = (By.CSS_SELECTOR, "[name=email]")
+    SEND_PASSWORD_RESET_LINK_BUTTON: tuple[str, str] = (
         By.CSS_SELECTOR,
         "[type=submit]",
     )
-    ERROR_MSG: Tuple[str, str] = (By.CSS_SELECTOR, ".alert-danger")
-    SUCCESS_MSG: Tuple[str, str] = (By.CSS_SELECTOR, ".alert-success")
-    PAGE_TITLE: Tuple[str, str] = (By.CSS_SELECTOR, ".e-form-heading")
+    ERROR_MSG: tuple[str, str] = (By.CSS_SELECTOR, ".alert-danger")
+    SUCCESS_MSG: tuple[str, str] = (By.CSS_SELECTOR, ".alert-success")
+    PAGE_TITLE: tuple[str, str] = (By.CSS_SELECTOR, ".e-form-heading")
 
     def __init__(self, driver, wait):
         super().__init__(driver, wait)

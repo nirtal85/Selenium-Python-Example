@@ -1,7 +1,6 @@
 import re
 import time
 from contextlib import suppress
-from typing import Tuple, Union
 
 from pytest_check import check
 from selenium.webdriver import Chrome, Edge, Firefox
@@ -9,12 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from visual_regression_tracker import (
-    IgnoreArea,
-    TestRun,
-    TestRunStatus,
-    VisualRegressionTracker,
-)
+from visual_regression_tracker import IgnoreArea, TestRun, TestRunStatus, VisualRegressionTracker
 
 from utilities.constants import Constants
 
@@ -32,7 +26,7 @@ class VrtHelper:
 
     def __init__(
         self,
-        driver: Union[Chrome, Firefox, Edge],
+        driver: Chrome | Firefox | Edge,
         vrt_tracker: VisualRegressionTracker,
         wait: WebDriverWait,
     ):
@@ -40,7 +34,7 @@ class VrtHelper:
         self.vrt_tracker = vrt_tracker
         self.wait = wait
 
-    def shoot_page(self, baseline_name: str):
+    def shoot_page(self, baseline_name: str) -> None:
         """Capture a screenshot of the current page compare the captured
         screenshot with a baseline image stored in Visual Regression tracker.
 
@@ -63,9 +57,7 @@ class VrtHelper:
             TestRunStatus.OK.name,
         )
 
-    def shoot_page_ang_ignore_elements(
-        self, baseline_name: str, elements: list[WebElement]
-    ):
+    def shoot_page_ang_ignore_elements(self, baseline_name: str, elements: list[WebElement]) -> None:
         """Capture a screenshot of the current page, define areas to be ignored
         within the screenshot, compare the captured screenshot with a baseline
         image stored in Visual Regression tracker.
@@ -103,7 +95,7 @@ class VrtHelper:
                 ).testRunResponse.status.name,
             )
 
-    def shoot_element(self, baseline_name: str, locator: Tuple[str, str]):
+    def shoot_element(self, baseline_name: str, locator: tuple[str, str]) -> None:
         """Capture a screenshot of a specific element on the current page
         compare the captured screenshot with a baseline image stored in Visual
         Regression tracker.

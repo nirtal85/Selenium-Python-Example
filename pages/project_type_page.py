@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -10,8 +8,8 @@ from pages.top_bars.top_navigate_bar import TopNavigateBar
 class ProjectTypePage(TopNavigateBar):
     """Project Type page - where one can choose which kind of templates to work with"""
 
-    _START_FROM_SCRATCH_BUTTON: Tuple[str, str] = (By.CSS_SELECTOR, ".blank div.icon")
-    _PROJECTS_BLOCK: Tuple[str, str] = (
+    _START_FROM_SCRATCH_BUTTON: tuple[str, str] = (By.CSS_SELECTOR, ".blank div.icon")
+    _PROJECTS_BLOCK: tuple[str, str] = (
         By.CSS_SELECTOR,
         "#app-layout div:nth-child(3) .title",
     )

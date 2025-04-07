@@ -30,6 +30,7 @@ class MailinatorHelper:
     Example:
         # Initialize the EmailActions class with the Mailinator client and domain name.
         email_actions = EmailActions(mailinator_client, "example.com")
+
     """
 
     def __init__(self, mailinator: Mailinator, mailinator_domain: str):
@@ -60,6 +61,7 @@ class MailinatorHelper:
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
             fetching the inbox.
+
         """
         messages = self.mailinator.request(
             GetInboxRequest(
@@ -92,6 +94,7 @@ class MailinatorHelper:
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
             fetching the email message.
+
         """
         return self.mailinator.request(
             GetMessageRequest(
@@ -121,6 +124,7 @@ class MailinatorHelper:
 
         Raises:
             RuntimeError: If no OTP is found in the email message.
+
         """
         message: Message = self.get_message(user_email, "Verify your email address")
         if not message.parts:
@@ -151,6 +155,7 @@ class MailinatorHelper:
             from unittest import TestCase
             subject_counts = count_messages_by_subject(self, "user@example.com")
             TestCase().assertDictEqual({"some subject": 1}, subject_counts)
+
         """
         messages = self.mailinator.request(
             GetInboxRequest(

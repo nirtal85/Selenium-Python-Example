@@ -1,51 +1,46 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[dependency-groups]
+dev = [
+  "ruff==0.11.4",
+  "pre-commit==4.2.0"
+]
 
 [project]
-name = "selenium-python-example"
-version = "0.1.0"
-description = "Selenium Python example project with pytest and Allure report"
-authors = [{ name = "Nir Tal", email = "nirt236@gmail.com" }]
-requires-python = "~=3.11"
-readme = "README.md"
+authors = [{name = "Nir Tal", email = "nirt236@gmail.com"}]
 dependencies = [
-    "allure-pytest==2.13.5",
-    "assertpy==1.1",
-    "dataclasses-json==0.6.7",
-    "deprecated==1.2.18",
-    "mailinator-python-client-2==0.0.8",
-    "mysql-connector-python==9.2.0",
-    "pytest==8.3.5",
-    "pytest-base-url==2.1.0",
-    "pytest-check==2.5.2",
-    "pytest-dependency==0.6.0",
-    "pytest-ordering==0.6",
-    "pytest-rerunfailures==15.0",
-    "pytest-split==0.10.0",
-    "python-dotenv==1.1.0",
-    "requests==2.32.3",
-    "requests-toolbelt==1.0.0",
-    "selenium==4.30.0",
-    "tenacity==9.0.0",
-    "visual-regression-tracker==4.9.0",
-    "xlrd==2.0.1",
+  "allure-pytest==2.13.5",
+  "assertpy==1.1",
+  "dataclasses-json==0.6.7",
+  "deprecated==1.2.18",
+  "mailinator-python-client-2==0.0.8",
+  "mysql-connector-python==9.2.0",
+  "pytest==8.3.5",
+  "pytest-base-url==2.1.0",
+  "pytest-check==2.5.2",
+  "pytest-dependency==0.6.0",
+  "pytest-ordering==0.6",
+  "pytest-rerunfailures==15.0",
+  "pytest-split==0.10.0",
+  "python-dotenv==1.1.0",
+  "requests==2.32.3",
+  "requests-toolbelt==1.0.0",
+  "selenium==4.30.0",
+  "tenacity==9.0.0",
+  "visual-regression-tracker==4.9.0",
+  "xlrd==2.0.1"
 ]
+description = "Selenium Python example project with pytest and Allure report"
+name = "selenium-python-example"
+readme = "README.md"
+requires-python = "~=3.11"
+version = "0.1.0"
 
 [project.urls]
 Homepage = "https://github.com/nirtal85/Selenium-Python-Example"
 Repository = "https://github.com/nirtal85/Selenium-Python-Example"
-
-[dependency-groups]
-dev = [
-    "black==25.1.0",
-    "isort==6.0.1",
-    "pre-commit==4.2.0",
-]
-
-[tool.isort]
-profile = "black"
-skip = ["env", "venv"]
 
 [tool.hatch.build.targets.sdist]
 include = ["selenium_python_example"]
@@ -75,3 +70,18 @@ markers = [
 testpaths = [
   "tests"
 ]
+
+[tool.ruff]
+exclude = [".venv", "env"]
+ignore = [
+  "D203",  # One blank line required before class docstring (conflicts with D211)
+  "D213",  # Multi-line docstring summary should start at the second line
+  "COM812"
+]
+line-length = 100
+select = ["ALL"]
+target-version = "py311"
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
