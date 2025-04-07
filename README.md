@@ -65,7 +65,7 @@ cd selenium-python-example
 pip install uv
 uv venv
 .\env\Scripts\activate
-uv pip sync uv.lock
+uv sync --all-extras --dev
 ```
 
 #### For Mac:
@@ -73,7 +73,7 @@ uv pip sync uv.lock
 python3 -m pip install uv
 uv venv
 source .venv/bin/activate
-uv pip sync uv.lock
+uv sync --all-extras --dev
 ```
 
 ### Create .env File
