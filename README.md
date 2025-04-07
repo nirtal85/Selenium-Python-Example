@@ -58,7 +58,7 @@ git clone https://github.com/nirtal85/Selenium-Python-Example.git
 cd selenium-python-example
 ```
 
-### Create and activate a virtual environment then Install project dependencies 
+### Create and activate a virtual environment then Install project dependencies
 
 #### For Windows:
 ```bash
@@ -72,7 +72,7 @@ uv pip sync uv.lock
 ```bash
 python3 -m pip install uv
 uv venv
-source .venv/bin/activate 
+source .venv/bin/activate
 uv pip sync uv.lock
 ```
 

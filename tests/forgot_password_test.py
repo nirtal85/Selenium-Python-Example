@@ -46,9 +46,7 @@ class TestForgotPassword(BaseTest):
     @allure.title("Exception test")
     @allure.link("github.com/allure-examples/", name="Allure Examples")
     @allure.issue("github.com/allure-examples/allure-examples/issues/1", name="ISSUE-1")
-    @allure.testcase(
-        "github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2"
-    )
+    @allure.testcase("github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2")
     def test_expected_exception_on_page_title(self):
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()

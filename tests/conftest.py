@@ -81,6 +81,7 @@ def session_request():
 
     Returns:
         requests.Session: A session object with a logging hook.
+
     """
     session = requests.Session()
     session.headers = {"User-Agent": Constants.AUTOMATION_USER_AGENT}
@@ -139,9 +140,7 @@ def pytest_runtest_setup(item: Item) -> None:
     base_url = item.config.getoption("base_url")
     if browser in ("chrome", "chrome_headless"):
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.set_capability(
-            "goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"}
-        )
+        chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL", "browser": "ALL"})
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option(
             "prefs",
@@ -249,6 +248,7 @@ def pytest_runtest_teardown() -> None:
 
     Returns:
         None
+
     """
     if "driver" in locals() or "driver" in globals():
         driver.quit()
@@ -260,7 +260,7 @@ def pytest_sessionstart() -> None:
     and setting selenium logging
     """
     load_dotenv()
-    logging.basicConfig(level=logging.WARN)
+    logging.basicConfig(level=logging.WARNING)
     logger = logging.getLogger("selenium")
     logger.setLevel(logging.DEBUG)
 
@@ -277,6 +277,7 @@ def pytest_exception_interact(node: Item) -> None:
 
     Returns:
         None
+
     """
     session_request: requests.Session = node.funcargs["session_request"]
     if "driver" not in locals() and "driver" not in globals():
@@ -325,9 +326,7 @@ def pytest_exception_interact(node: Item) -> None:
         body=json.dumps(
             {
                 item[0]: item[1]
-                for item in driver.execute_script(
-                    "return Object.entries(sessionStorage);"
-                )
+                for item in driver.execute_script("return Object.entries(sessionStorage);")
             },
             indent=4,
         ),
@@ -338,9 +337,7 @@ def pytest_exception_interact(node: Item) -> None:
         body=json.dumps(
             {
                 item[0]: item[1]
-                for item in driver.execute_script(
-                    "return Object.entries(localStorage);"
-                )
+                for item in driver.execute_script("return Object.entries(localStorage);")
             },
             indent=4,
         ),
@@ -401,9 +398,7 @@ def get_response_body(request_id):
 
 def get_request_post_data(request_id):
     """Get the request post data for the specified request ID."""
-    return driver.execute_cdp_cmd(
-        "Network.getRequestPostData", {"requestId": request_id}
-    )
+    return driver.execute_cdp_cmd("Network.getRequestPostData", {"requestId": request_id})
 
 
 def capture_full_page_screenshot() -> bytes:
@@ -428,9 +423,7 @@ def capture_full_page_screenshot() -> bytes:
 
 def attach_network_logs():
     network_logs = defaultdict(dict)
-    for item in [
-        json.loads(log["message"])["message"] for log in driver.get_log("performance")
-    ]:
+    for item in [json.loads(log["message"])["message"] for log in driver.get_log("performance")]:
         params = item.get("params")
         if params.get("type") != "XHR":
             continue

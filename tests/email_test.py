@@ -15,9 +15,7 @@ class TestEmail(BaseTest):
 
     @allure.title("Verify email content")
     def test_verify_email_body(self, mailinator_helper):
-        message = mailinator_helper.get_message(
-            "testautomation", "purchase is confirmed"
-        )
+        message = mailinator_helper.get_message("testautomation", "purchase is confirmed")
         assert "Thank you for your purchase" in message.parts[0].body
 
     @allure.title("Get OTP code from email")

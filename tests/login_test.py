@@ -42,9 +42,9 @@ class TestLogin(BaseTest):
         self.about_page.set_geo_location(30.3079823, -97.893803)
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
-        assert_that(self.projects_page.get_title()).described_as(
-            "page title"
-        ).is_equal_to(data.workspace.page_title)
+        assert_that(self.projects_page.get_title()).described_as("page title").is_equal_to(
+            data.workspace.page_title
+        )
 
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
@@ -75,9 +75,7 @@ class TestLogin(BaseTest):
 
         :return: None
         """
-        allure.dynamic.parameter(
-            "password", "qwerty", mode=allure.parameter_mode.MASKED
-        )
+        allure.dynamic.parameter("password", "qwerty", mode=allure.parameter_mode.MASKED)
         allure.dynamic.parameter(
             "hostname", socket.gethostname(), mode=allure.parameter_mode.HIDDEN
         )
@@ -130,9 +128,9 @@ class TestLogin(BaseTest):
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
         self.projects_page.logout()
-        assert_that(self.login_page.get_page_title()).described_as(
-            "page title"
-        ).is_equal_to(data.login.page_title)
+        assert_that(self.login_page.get_page_title()).described_as("page title").is_equal_to(
+            data.login.page_title
+        )
 
     @allure.description("Skip Test example")
     @allure.title("Skipped test example")
