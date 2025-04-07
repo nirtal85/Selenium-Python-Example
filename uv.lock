@@ -4,28 +4,28 @@ requires-python = ">=3.11, <4"
 
 [[package]]
 name = "allure-pytest"
-version = "2.13.5"
+version = "2.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "allure-python-commons" },
     { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/2b/c3/829a300b72557e9327fa72692b62917dab3ad5bab678962ea84c066d4eef/allure-pytest-2.13.5.tar.gz", hash = "sha256:0ef8e1790c44a988db6b83c4d4f5e91451e2c4c8ea10601dfa88528d23afcf6e", size = 16976 }
+sdist = { url = "https://files.pythonhosted.org/packages/52/0c/3c267bd6dd27ed61aef3ae71c491866a8da02d8481dcab3fe876e243c320/allure_pytest-2.14.0.tar.gz", hash = "sha256:2b485dc307755f8f3207783a69558ca1cc72f1e2c97bedc65c93fdb77adf328f", size = 17117 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/69/7b/430830ed7bf1ef078f9e55eb4b19cc059ef5310a20b5bd73eeb99e2c5ff1/allure_pytest-2.13.5-py3-none-any.whl", hash = "sha256:94130bac32964b78058e62cf4b815ad97a5ac82a065e6dd2d43abac2be7640fc", size = 11606 },
+    { url = "https://files.pythonhosted.org/packages/d1/7e/e2d9e0f03e4d0bf56c793746cb531a18a3addfa7b34a7c6b4680d2d12f2b/allure_pytest-2.14.0-py3-none-any.whl", hash = "sha256:6ddb68ef42bd5a2dfbcc136a184bf3e78e631ede7b8c54750026ffd407bda9af", size = 11672 },
 ]
 
 [[package]]
 name = "allure-python-commons"
-version = "2.13.5"
+version = "2.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
     { name = "pluggy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/2d/96/9991a10dcd25b98c8c3e4c7916780f33f13a55a0efbe8c7ea96505271d91/allure-python-commons-2.13.5.tar.gz", hash = "sha256:a232e7955811f988e49a4c1dd6c16cce7e9b81d0ea0422b1e5654d3254e2caf3", size = 12934 }
+sdist = { url = "https://files.pythonhosted.org/packages/c8/7d/4109e0be649365811a009f1a3e991f9755adfd1221b2f73da5b4df9d3650/allure_python_commons-2.14.0.tar.gz", hash = "sha256:9b217e2f6c74cdbd0e253f89059d4165346e95fcb28228fae333ff4dccea0bd5", size = 15193 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/18/79a66d6adc301281803398f7288583dff8d1d3f2672c07ffab03ee12c7cd/allure_python_commons-2.13.5-py3-none-any.whl", hash = "sha256:8b0e837b6e32d810adec563f49e1d04127a5b6770e0232065b7cb09b9953980d", size = 15715 },
+    { url = "https://files.pythonhosted.org/packages/27/d9/940df1901343a27becc0d85b52e250fdc418f1ec9eb3824946a89bd49e62/allure_python_commons-2.14.0-py3-none-any.whl", hash = "sha256:9200f40abee697133e9ed9f68887cde996a24b9eb33fcf528da8fe50fae88e43", size = 16191 },
 ]
 
 [[package]]
@@ -391,14 +391,14 @@ wheels = [
 
 [[package]]
 name = "pytest-check"
-version = "2.5.2"
+version = "2.5.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/52/6f/fe5dce36f33510cd8d0ce3d07ddc65bba59f1897c96afa00ce192cffa5e9/pytest_check-2.5.2.tar.gz", hash = "sha256:131fa57ad2f0e21e39886e05255142bb584e61881a5e4584fd06b14aae63ee5d", size = 27363 }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/f8/58aa6cf0af7bc261c4606c28582258e76cec398a7d8bdc2e82de51039f84/pytest_check-2.5.3.tar.gz", hash = "sha256:2357d7df77c395d30c0c4957724fdfce1a75ea8bc9eb2308c0ffe56f62ac70ca", size = 27422 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ff/f5/71b0d85d80586cd3e65ee4ac4191b345bc32c5f97ce5367f2d5e73c050dd/pytest_check-2.5.2-py3-none-any.whl", hash = "sha256:e736cbfce5152ef904adf0e13584123a7813532725b7fc8ceca097fc8b232758", size = 16001 },
+    { url = "https://files.pythonhosted.org/packages/7a/29/d3fbd683c50aeb93d79377c904179c82f01f9f656299deb89328ab85b0a2/pytest_check-2.5.3-py3-none-any.whl", hash = "sha256:354685dfa63e714a20aa62b61c4d30d5acfa30891319df9046f59af653c3b9ba", size = 15998 },
 ]
 
 [[package]]
@@ -546,7 +546,7 @@ wheels = [
 
 [[package]]
 name = "selenium"
-version = "4.30.0"
+version = "4.31.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -556,9 +556,9 @@ dependencies = [
     { name = "urllib3", extra = ["socks"] },
     { name = "websocket-client" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/70/f8/12e5c86f5d4b26758151a2145cb0909d2b811a3ac846b645dd7c63023543/selenium-4.30.0.tar.gz", hash = "sha256:16ab890fc7cb21a01e1b1e9a0fbaa9445fe30837eabc66e90b3bacf12138126a", size = 859424 }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/bf/642cce8b5a9edad8e4880fdefbeb24f69bec2086b1121c63f883c412b797/selenium-4.31.0.tar.gz", hash = "sha256:441cffc436a2e6659fe3cfb012692435652efd38b0d368d16f661a5db47825f5", size = 855418 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/79/cb/6e9c6f9072eb09d0f0cdfc52e33ad6583a6bd5232a322fccdd378104c6e0/selenium-4.30.0-py3-none-any.whl", hash = "sha256:90bcd3be86a1762100a093b33e5e4530b328226da94208caadb15ce13243dffd", size = 9353816 },
+    { url = "https://files.pythonhosted.org/packages/32/53/212db779d2481b0a8428365960596f8d5a4d482ae12c441d0507fd54aaf2/selenium-4.31.0-py3-none-any.whl", hash = "sha256:7b8b8d5e424d7133cb7aa656263b19ac505ec26d65c0f921a696e7e2c5ccd95b", size = 9350584 },
 ]
 
 [[package]]
@@ -596,7 +596,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "allure-pytest", specifier = "==2.13.5" },
+    { name = "allure-pytest", specifier = "==2.14.0" },
     { name = "assertpy", specifier = "==1.1" },
     { name = "dataclasses-json", specifier = "==0.6.7" },
     { name = "deprecated", specifier = "==1.2.18" },
@@ -604,7 +604,7 @@ requires-dist = [
     { name = "mysql-connector-python", specifier = "==9.2.0" },
     { name = "pytest", specifier = "==8.3.5" },
     { name = "pytest-base-url", specifier = "==2.1.0" },
-    { name = "pytest-check", specifier = "==2.5.2" },
+    { name = "pytest-check", specifier = "==2.5.3" },
     { name = "pytest-dependency", specifier = "==0.6.0" },
     { name = "pytest-ordering", specifier = "==0.6" },
     { name = "pytest-rerunfailures", specifier = "==15.0" },
@@ -612,8 +612,8 @@ requires-dist = [
     { name = "python-dotenv", specifier = "==1.1.0" },
     { name = "requests", specifier = "==2.32.3" },
     { name = "requests-toolbelt", specifier = "==1.0.0" },
-    { name = "selenium", specifier = "==4.30.0" },
-    { name = "tenacity", specifier = "==9.0.0" },
+    { name = "selenium", specifier = "==4.31.0" },
+    { name = "tenacity", specifier = "==9.1.2" },
     { name = "visual-regression-tracker", specifier = "==4.9.0" },
     { name = "xlrd", specifier = "==2.0.1" },
 ]
@@ -653,11 +653,11 @@ wheels = [
 
 [[package]]
 name = "tenacity"
-version = "9.0.0"
+version = "9.1.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/cd/94/91fccdb4b8110642462e653d5dcb27e7b674742ad68efd146367da7bdb10/tenacity-9.0.0.tar.gz", hash = "sha256:807f37ca97d62aa361264d497b0e31e92b8027044942bfa756160d908320d73b", size = 47421 }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/d4/2b0cd0fe285e14b36db076e78c93766ff1d529d70408bd1d2a5a84f1d929/tenacity-9.1.2.tar.gz", hash = "sha256:1169d376c297e7de388d18b4481760d478b0e99a777cad3a9c86e556f4b697cb", size = 48036 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/cb/b86984bed139586d01532a587464b5805f12e397594f19f931c4c2fbfa61/tenacity-9.0.0-py3-none-any.whl", hash = "sha256:93de0c98785b27fcf659856aa9f54bfbd399e29969b0621bc7f762bd441b4539", size = 28169 },
+    { url = "https://files.pythonhosted.org/packages/e5/30/643397144bfbfec6f6ef821f36f33e57d35946c44a2352d3c9f0ae847619/tenacity-9.1.2-py3-none-any.whl", hash = "sha256:f77bf36710d8b73a50b2dd155c97b870017ad21afe6ab300326b0371b3b05138", size = 28248 },
 ]
 
 [[package]]
