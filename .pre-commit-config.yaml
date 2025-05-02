@@ -17,19 +17,19 @@ repos:
       - id: no-commit-to-branch
         args: ['--branch', 'main']
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.32.1
+    rev: 0.33.0
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
       - id: check-renovate
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v4.0.0
+    rev: v4.1.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
         args: []
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.4
+    rev: v0.11.8
     hooks:
       - id: ruff
         args: [ --fix ]
