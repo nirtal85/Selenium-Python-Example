@@ -9,6 +9,10 @@ on:
       - '**/*.lock'
       - '.github/workflows/devRun.yml'
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   merge_test:
     timeout-minutes: 15
@@ -20,7 +24,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Set up uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
       - name: Create venv & install dependencies
@@ -49,7 +53,7 @@ jobs:
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@master
+        uses: simple-elf/allure-report-action@v1.12
         if: always()
         id: allure-report
         with:
