@@ -16,6 +16,10 @@ on:
         default: 2
         type: number
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   setup-matrix:
     runs-on: ubuntu-latest
