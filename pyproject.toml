@@ -1,7 +1,3 @@
-[build-system]
-build-backend = "hatchling.build"
-requires = ["hatchling"]
-
 [dependency-groups]
 dev = [
   "ruff==0.11.8",
@@ -9,7 +5,6 @@ dev = [
 ]
 
 [project]
-authors = [{name = "Nir Tal", email = "nirt236@gmail.com"}]
 dependencies = [
   "allure-pytest==2.14.1",
   "assertpy==1.1",
@@ -32,15 +27,7 @@ dependencies = [
   "visual-regression-tracker==4.9.0",
   "xlrd==2.0.1"
 ]
-description = "Selenium Python example project with pytest and Allure report"
-name = "selenium-python-example"
-readme = "README.md"
 requires-python = "~=3.11"
-version = "0.1.0"
-
-[project.urls]
-Homepage = "https://github.com/nirtal85/Selenium-Python-Example"
-Repository = "https://github.com/nirtal85/Selenium-Python-Example"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
