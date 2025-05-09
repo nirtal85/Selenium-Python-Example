@@ -3,15 +3,15 @@ from abc import ABC
 from selenium.webdriver import Chrome, Edge, Firefox
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.about_page import AboutPage
-from pages.forgot_password_page import ForgotPasswordPage
-from pages.login_page import LoginPage
-from pages.project_edit_page import ProjectEditPage
-from pages.project_type_page import ProjectTypePage
-from pages.projects_page import ProjectsPage
-from pages.templates_page import TemplatesPage
-from utilities.mailinator_helper import MailinatorHelper
-from utilities.vrt_helper import VrtHelper
+from src.pages.about_page import AboutPage
+from src.pages.forgot_password_page import ForgotPasswordPage
+from src.pages.login_page import LoginPage
+from src.pages.project_edit_page import ProjectEditPage
+from src.pages.project_type_page import ProjectTypePage
+from src.pages.projects_page import ProjectsPage
+from src.pages.templates_page import TemplatesPage
+from src.utilities.mailinator_helper import MailinatorHelper
+from src.utilities.vrt_helper import VrtHelper
 
 
 class BaseTest(ABC):

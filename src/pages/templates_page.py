@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-from pages.top_bars.top_navigate_bar import TopNavigateBar
+from src.pages.top_bars.top_navigate_bar import TopNavigateBar
 
 
 class TemplatesPage(TopNavigateBar):

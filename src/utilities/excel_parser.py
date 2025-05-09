@@ -2,7 +2,7 @@ import itertools
 
 import xlrd
 
-from utilities.constants import Constants
+from src.utilities.constants import Constants
 
 
 class ExcelParser:

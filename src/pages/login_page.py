@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.common.by import By
 
-from pages.top_bars.top_menu_bar import TopMenuBar
+from src.pages.top_bars.top_menu_bar import TopMenuBar
 
 
 class LoginPage(TopMenuBar):

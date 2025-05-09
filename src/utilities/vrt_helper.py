@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from visual_regression_tracker import IgnoreArea, TestRun, TestRunStatus, VisualRegressionTracker
 
-from utilities.constants import Constants
+from src.utilities.constants import Constants
 
 
 class VrtHelper:

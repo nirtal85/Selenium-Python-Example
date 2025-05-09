@@ -2,8 +2,8 @@ import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-from enums.status import Status
-from pages.top_bars.top_navigate_bar import TopNavigateBar
+from src.enums.status import Status
+from src.pages.top_bars.top_navigate_bar import TopNavigateBar
 
 
 class ProjectsPage(TopNavigateBar):

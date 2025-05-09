@@ -42,13 +42,8 @@ version = "0.1.0"
 Homepage = "https://github.com/nirtal85/Selenium-Python-Example"
 Repository = "https://github.com/nirtal85/Selenium-Python-Example"
 
-[tool.hatch.build.targets.sdist]
-include = ["selenium_python_example"]
-
-[tool.hatch.build.targets.wheel]
-include = ["selenium_python_example"]
-
 [tool.pytest.ini_options]
+pythonpath = "src"
 addopts = [
   "--clean-alluredir",
   "--alluredir=allure-results",

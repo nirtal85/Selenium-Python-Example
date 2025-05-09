@@ -10,7 +10,7 @@ class TestDependencyExample(BaseTest):
     classes.
     """
 
-    def test_e(self):
+    def test_e(self) -> None:
         """Placeholder test function with the dependency name "e" and depends on "TestDependencyExample::b".
 
         This test case is designed for demonstration purposes only.

@@ -6,7 +6,7 @@ from assertpy import assert_that
 @pytest.mark.skip(reason="requires database connection")
 class TestDatabaseExample:
     @allure.title("Verify population amounts")
-    def test_verify_population_amount(self, db_connection):
+    def test_verify_population_amount(self, db_connection) -> None:
         with db_connection.cursor() as cursor:
             cursor.execute("SELECT Population FROM city WHERE CountryCode='DNK'")
             population_amount = [item[0] for item in cursor.fetchall()]

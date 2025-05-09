@@ -13,11 +13,11 @@ from tests.base_test import BaseTest
 @pytest.mark.skip(reason="requires a running VRT server")
 class TestVisual(BaseTest):
     @allure.title("Visual test of login page")
-    def test_shoot_page(self, vrt_helper):
+    def test_shoot_page(self, vrt_helper) -> None:
         vrt_helper.shoot_page("page baseline")
 
     @allure.title("Visual test of login page with ignored area")
-    def test_shoot_page_with_ignore_area(self, vrt_helper):
+    def test_shoot_page_with_ignore_area(self, vrt_helper) -> None:
         element_to_ignore: WebElement = self.wait.until(
             expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, "h1"))
         )
@@ -27,5 +27,5 @@ class TestVisual(BaseTest):
         )
 
     @allure.title("Visual test of login page element")
-    def test_shoot_element(self, vrt_helper):
+    def test_shoot_element(self, vrt_helper) -> None:
         vrt_helper.shoot_element("element baseline", (By.CSS_SELECTOR, "h1"))
