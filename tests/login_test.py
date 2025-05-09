@@ -7,8 +7,8 @@ import pytest
 from assertpy import assert_that
 
 from tests.base_test import BaseTest
-from utilities.constants import Constants
-from utilities.data import Data
+from src.utilities.constants import Constants
+from src.utilities.data import Data
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 
@@ -22,7 +22,7 @@ class TestLogin(BaseTest):
     @allure.title("Login with invalid credentials test")
     @pytest.mark.parametrize("email, password", users)
     @pytest.mark.run(order=3)
-    def test_invalid_login(self, email: str, password: str, data: Data):
+    def test_invalid_login(self, email: str, password: str, data: Data) -> None:
         self.about_page.click_login_link()
         self.login_page.login(email, password)
         assert_that(self.login_page.get_error_message()).described_as(
@@ -31,14 +31,14 @@ class TestLogin(BaseTest):
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
-    def test_sanity(self, base_url):
+    def test_sanity(self, base_url) -> None:
         assert_that(self.driver.current_url).described_as("URL").is_equal_to(base_url)
 
     @allure.description("valid login")
     @allure.title("Login with valid credentials test")
     @allure.tag("Tagged test")
     @pytest.mark.flaky(reruns=1)
-    def test_valid_login(self, data: Data):
+    def test_valid_login(self, data: Data) -> None:
         self.about_page.set_geo_location(30.3079823, -97.893803)
         self.about_page.click_login_link()
         self.login_page.login(os.getenv("EMAIL"), os.getenv("PASSWORD"))
@@ -49,7 +49,7 @@ class TestLogin(BaseTest):
     @allure.description("Log out from app")
     @allure.title("Logout of system test")
     @allure.story("As a user I want to be able to logout after a successful login.")
-    def test_logout(self, data: Data):
+    def test_logout(self, data: Data) -> None:
         """Test case to verify the logout functionality.
 
         :param data: An instance of the Data dataclass containing test data.
@@ -136,5 +136,5 @@ class TestLogin(BaseTest):
     @allure.title("Skipped test example")
     @allure.label("owner", "nir tal")
     @pytest.mark.skip(reason="skip test example")
-    def test_skip(self):
+    def test_skip(self) -> None:
         pass

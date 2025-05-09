@@ -18,17 +18,17 @@ class TestDependencyExample(BaseTest):
     """
 
     @pytest.mark.dependency(name="a")
-    def test_a(self):
+    def test_a(self) -> None:
         pass
 
     @pytest.mark.dependency(name="b")
-    def test_b(self):
+    def test_b(self) -> None:
         assert False
 
     @pytest.mark.dependency(name="c", depends=["b"])
-    def test_c(self):
+    def test_c(self) -> None:
         pass
 
     @pytest.mark.dependency(name="d", depends=["b", "c"])
-    def test_d(self):
+    def test_d(self) -> None:
         pass

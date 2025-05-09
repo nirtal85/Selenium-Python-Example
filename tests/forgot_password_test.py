@@ -4,8 +4,8 @@ import allure
 import pytest
 from assertpy import assert_that
 
+from src.utilities.data import Data
 from tests.base_test import BaseTest
-from utilities.data import Data
 
 
 @allure.epic("Security")
@@ -18,7 +18,7 @@ from utilities.data import Data
 class TestForgotPassword(BaseTest):
     @allure.description("Forgot password with a valid email address")
     @allure.title("Forgot Password with valid email test")
-    def test_valid_email(self, data: Data):
+    def test_valid_email(self, data: Data) -> None:
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
         self.forget_password_page.send_password_reset_link(os.getenv("EMAIL"))
@@ -32,7 +32,7 @@ class TestForgotPassword(BaseTest):
         "'involve' in config.getoption('base_url')",
         reason="Conditional skip based on base url",
     )
-    def test_invalid_email(self, excel_reader, data: Data):
+    def test_invalid_email(self, excel_reader, data: Data) -> None:
         """This test is an example of a conditional skip based on base url."""
         emails = excel_reader.read_from_excel("Emails")
         self.about_page.click_login_link()
@@ -47,7 +47,7 @@ class TestForgotPassword(BaseTest):
     @allure.link("github.com/allure-examples/", name="Allure Examples")
     @allure.issue("github.com/allure-examples/allure-examples/issues/1", name="ISSUE-1")
     @allure.testcase("github.com/allure-examples/allure-examples/issues/2", name="TESTCASE-2")
-    def test_expected_exception_on_page_title(self):
+    def test_expected_exception_on_page_title(self) -> None:
         self.about_page.click_login_link()
         self.login_page.click_forgot_password()
         with pytest.raises(AssertionError) as e:
