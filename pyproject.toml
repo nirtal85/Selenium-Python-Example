@@ -33,7 +33,7 @@ dependencies = [
 requires-python = "~=3.11"
 
 [tool.pytest.ini_options]
-pythonpath = "src"
+pythonpath = ["src"]
 addopts = [
   "--clean-alluredir",
   "--alluredir=allure-results",
