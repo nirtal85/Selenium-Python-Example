@@ -15,7 +15,7 @@
 * [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.test-shift.com/en/posts/test-automation-how-to-attach-public-ip-adress-to-allure-report-using-pytest-and-requests)
 * [Test Automation - Selenium Example Python Project 2022 Updates](https://www.test-shift.com/en/posts/test-automation-selenium-example-python-project-2022-updates)
 * [Test Automation - How To Add Git Version Control Data To Allure Report in Python](https://www.test-shift.com/en/posts/test-automation-how-to-add-git-version-control-data-to-allure-report-in-python)
-* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python]https://www.test-shift.com/en/posts/test-automation-how-to-attach-session-storage-local-storage-cookies-and-console-logs-to-allure-report-in-selenium-python)
+* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python](https://www.test-shift.com/en/posts/test-automation-how-to-attach-session-storage-local-storage-cookies-and-console-logs-to-allure-report-in-selenium-python)
 * [Test Automation - How To Capture Full-Page Screenshots In Selenium Python Using Chrome DevTools Protocol](https://www.test-shift.com/en/posts/test-automation-how-to-capture-full-page-screenshots-in-selenium-4-python-using-chrome-devtools-protocol)
 * [Test Automation - How To Edit Cookies in Selenium Python](https://www.test-shift.com/en/posts/test-automation-how-to-edit-cookies-in-selenium-python)
 * [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.test-shift.com/en/posts/test-automation-pre-merge-testing-with-github-actions-a-step-by-step-guide)
