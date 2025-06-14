@@ -21,7 +21,7 @@
 * [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.test-shift.com/en/posts/test-automation-pre-merge-testing-with-github-actions-a-step-by-step-guide)
 * [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.test-shift.com/en/posts/test-automation-how-to-use-custom-user-agent-in-selenium-python-or-playwright-python-to-avoid-security-bots)
 * [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-use-dynamic-base-urls-with-selenium-and-playwright-python-in-github-actions)
-* [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability]https://www.test-shift.com/en/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
+* [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.test-shift.com/en/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
 * [Test Automation - Capturing Console Logs and JavaScript Errors with Selenium WebDriver BiDi in Python](https://www.test-shift.com/en/posts/test-automation-capturing-console-logs-and-javascript-errors-with-selenium-webdriver-bidi-in-python)
 
 ## 🛠️ Tech Stack
