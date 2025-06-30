@@ -4,25 +4,25 @@
 ![YouTube Channel](https://img.shields.io/youtube/channel/subscribers/UCQjS-eoKl0a1nuP_dvpLsjQ?label=YouTube%20Channel)
 ![dev run](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
 ![nightly](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
-[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![uv](https://img.shields.iodpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.iodpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 <img height="100" width="100" src="https://cdn.simpleicons.org/selenium"/>
 
 ## 📃 Articles written about this project
 
-* [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-build-a-ci-cd-pipeline-using-pytest-and-github-actions)
-* [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.test-shift.com/en/posts/test-automation-how-to-attach-public-ip-adress-to-allure-report-using-pytest-and-requests)
-* [Test Automation - Selenium Example Python Project 2022 Updates](https://www.test-shift.com/en/posts/test-automation-selenium-example-python-project-2022-updates)
-* [Test Automation - How To Add Git Version Control Data To Allure Report in Python](https://www.test-shift.com/en/posts/test-automation-how-to-add-git-version-control-data-to-allure-report-in-python)
-* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python](https://www.test-shift.com/en/posts/test-automation-how-to-attach-session-storage-local-storage-cookies-and-console-logs-to-allure-report-in-selenium-python)
-* [Test Automation - How To Capture Full-Page Screenshots In Selenium Python Using Chrome DevTools Protocol](https://www.test-shift.com/en/posts/test-automation-how-to-capture-full-page-screenshots-in-selenium-4-python-using-chrome-devtools-protocol)
-* [Test Automation - How To Edit Cookies in Selenium Python](https://www.test-shift.com/en/posts/test-automation-how-to-edit-cookies-in-selenium-python)
-* [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.test-shift.com/en/posts/test-automation-pre-merge-testing-with-github-actions-a-step-by-step-guide)
-* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.test-shift.com/en/posts/test-automation-how-to-use-custom-user-agent-in-selenium-python-or-playwright-python-to-avoid-security-bots)
-* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.test-shift.com/en/posts/test-automation-how-to-use-dynamic-base-urls-with-selenium-and-playwright-python-in-github-actions)
-* [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.test-shift.com/en/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
-* [Test Automation - Capturing Console Logs and JavaScript Errors with Selenium WebDriver BiDi in Python](https://www.test-shift.com/en/posts/test-automation-capturing-console-logs-and-javascript-errors-with-selenium-webdriver-bidi-in-python)
+* [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-build-a-ci-cd-pipeline-using-pytest-and-github-actions)
+* [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.test-shift.com/posts/test-automation-how-to-attach-public-ip-adress-to-allure-report-using-pytest-and-requests)
+* [Test Automation - Selenium Example Python Project 2022 Updates](https://www.test-shift.com/posts/test-automation-selenium-example-python-project-2022-updates)
+* [Test Automation - How To Add Git Version Control Data To Allure Report in Python](https://www.test-shift.com/posts/test-automation-how-to-add-git-version-control-data-to-allure-report-in-python)
+* [Test Automation - How To Attach Session Storage, Local Storage, Cookies, and Console logs To Allure Report in Selenium Python](https://www.test-shift.com/posts/test-automation-how-to-attach-session-storage-local-storage-cookies-and-console-logs-to-allure-report-in-selenium-python)
+* [Test Automation - How To Capture Full-Page Screenshots In Selenium Python Using Chrome DevTools Protocol](https://www.test-shift.com/posts/test-automation-how-to-capture-full-page-screenshots-in-selenium-4-python-using-chrome-devtools-protocol)
+* [Test Automation - How To Edit Cookies in Selenium Python](https://www.test-shift.com/posts/test-automation-how-to-edit-cookies-in-selenium-python)
+* [Test Automation - Pre-Merge Testing with GitHub Actions: A Step-by-Step Guide](https://www.test-shift.com/posts/test-automation-pre-merge-testing-with-github-actions-a-step-by-step-guide)
+* [Test Automation - How To Use Custom User Agent in Selenium Python or Playwright Python to Avoid Security Bots](https://www.test-shift.com/posts/test-automation-how-to-use-custom-user-agent-in-selenium-python-or-playwright-python-to-avoid-security-bots)
+* [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-use-dynamic-base-urls-with-selenium-and-playwright-python-in-github-actions)
+* [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.test-shift.com/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
+* [Test Automation - Capturing Console Logs and JavaScript Errors with Selenium WebDriver BiDi in Python](https://www.test-shift.com/posts/test-automation-capturing-console-logs-and-javascript-errors-with-selenium-webdriver-bidi-in-python)
 
 ## 🛠️ Tech Stack
 
