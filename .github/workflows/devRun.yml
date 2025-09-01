@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -53,7 +53,7 @@ jobs:
            echo CHROME_VERSION=$(google-chrome --product-version)
           } >> environment.properties
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.12
+        uses: simple-elf/allure-report-action@v1.13
         if: always()
         id: allure-report
         with:
