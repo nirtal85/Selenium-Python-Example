@@ -17,7 +17,7 @@ repos:
       - id: no-commit-to-branch
         args: ['--branch', 'main']
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.3
+    rev: 0.34.0
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -29,7 +29,7 @@ repos:
         stages: [commit-msg]
         args: []
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.11
+    rev: v0.13.2
     hooks:
       - id: ruff
         args: [ --fix ]
