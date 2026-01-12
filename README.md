@@ -1,15 +1,42 @@
-# Selenium Python Example
+<div align="center">
 
-![twitter](https://img.shields.io/twitter/follow/NirTal2)
-![YouTube Channel](https://img.shields.io/youtube/channel/subscribers/UCQjS-eoKl0a1nuP_dvpLsjQ?label=YouTube%20Channel)
-![dev run](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
-![nightly](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
-[![uv](https://img.shields.iodpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
-[![Ruff](https://img.shields.iodpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+<img height="120" src="https://cdn.simpleicons.org/selenium/43B02A"/>
 
-<img height="100" width="100" src="https://cdn.simpleicons.org/selenium"/>
+# Enterprise-Grade Selenium Python Architecture
+
+### The Ultimate Boilerplate for Scalable, Robust, and Modern UI Automation
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/NirTal2?style=social)](https://twitter.com/NirTal2)
+[![YouTube](https://img.shields.io/youtube/channel/subscribers/UCQjS-eoKl0a1nuP_dvpLsjQ?style=social)](https://www.youtube.com/channel/UCQjS-eoKl0a1nuP_dvpLsjQ)
+![CI Status](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
+![Nightly Build](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+[View Live Report](https://nirtal85.github.io/Selenium-Python-Example/) • [Read The Docs](https://www.test-shift.com) • [Report Bug](https://github.com/nirtal85/Selenium-Python-Example/issues)
+
+</div>
+
+---
+
+## 🚀 About The Project
+
+This repository serves as a **Production-Ready Reference Architecture** for building high-scale automated testing frameworks using Python.
+
+It demonstrates advanced design patterns, seamless CI/CD integration, and rich reporting capabilities that define modern Quality Engineering.
+
+### ✨ Key Features
+
+* **Modern Python Tooling:** Built with `uv` for lightning-fast dependency management and `Ruff` for linting.
+* **Robust Reporting:** Full integration with **Allure Report**, including screenshots, logs, and video.
+* **Visual Regression:** Integrated with **Visual Regression Tracker** for pixel-perfect UI validation.
+* **CI/CD Ready:** Complete GitHub Actions workflows for Nightly runs, PR checks, and Report deployment.
+
+---
 
 ## 📃 Articles written about this project
+
+This project implements the concepts discussed in the following **TestShift** articles:
 
 * [Test Automation - How To Build a CI/CD Pipeline Using Pytest and GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-build-a-ci-cd-pipeline-using-pytest-and-github-actions)
 * [Test Automation - How To Attach Public IP Address to Allure report using Pytest and Requests](https://www.test-shift.com/posts/test-automation-how-to-attach-public-ip-adress-to-allure-report-using-pytest-and-requests)
@@ -24,43 +51,39 @@
 * [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.test-shift.com/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
 * [Test Automation - Capturing Console Logs and JavaScript Errors with Selenium WebDriver BiDi in Python](https://www.test-shift.com/posts/test-automation-capturing-console-logs-and-javascript-errors-with-selenium-webdriver-bidi-in-python)
 
+---
+
 ## 🛠️ Tech Stack
 
-| Tool                                                                               | Description                                                                                         |
-|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| [allure-pytest](https://pypi.org/project/allure-pytest/)                           | Allure reporting with your Pytest tests for better reporting                                        |
-| [assertpy](https://pypi.org/project/assertpy/)                                     | An expressive assertion library for Python                                                          |
-| [dataclasses-json](https://pypi.org/project/dataclasses-json/)                     | A library for serialization of dataclasses to and from JSON                                         |
-| [deprecated](https://pypi.org/project/deprecated/)                                 | A library for emitting warnings about deprecated code                                               |
-| [mailinator-python-client-2](https://pypi.org/project/mailinator-python-client-2/) | A Python client for interacting with the Mailinator email service                                   |
-| [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)         | Interface for connecting to MySQL databases and executing SQL queries                               |
-| [pytest](https://pypi.org/project/pytest/)                                         | A popular testing framework for Python                                                              |
-| [pytest-base-url](https://pypi.org/project/pytest-base-url/)                       | Pytest plugin for setting a base URL for your tests                                                 |
-| [pytest-check](https://pypi.org/project/pytest-check/)                             | Provides additional checking functionality for your Pytest tests                                    |
-| [pytest-dependency](https://pypi.org/project/pytest-dependency/)                   | Pytest plugin that allows declaring dependencies between tests                                      |
-| [pytest-ordering](https://pypi.org/project/pytest-ordering/)                       | Pytest plugin for ordering test functions                                                           |
-| [pytest-rerunfailures](https://pypi.org/project/pytest-rerunfailures/)             | Pytest plugin to rerun failed tests automatically                                                   |
-| [pytest-split](https://pypi.org/project/pytest-split/)                             | Pytest plugin which splits the test suite to equally sized sub suites based on test execution time. |
-| [python-dotenv](https://pypi.org/project/python-dotenv/)                           | Loads environment variables from a .env file, simplifying configuration                             |
-| [requests](https://pypi.org/project/requests/)                                     | A versatile library for making HTTP requests in Python                                              |
-| [requests-toolbelt](https://pypi.org/project/requests-toolbelt/)                   | Collection of utilities for python-requests                                                         |
-| [selenium](https://pypi.org/project/selenium/)                                     | A powerful tool for automating web browsers and conducting web tests                                |
-| [tenacity](https://pypi.org/project/tenacity/)                                     | Retrying library                                                                                    |
-| [visual-regression-tracker](https://pypi.org/project/visual-regression-tracker/)   | Performs visual regression testing                                                                  |
-| [xlrd](https://pypi.org/project/xlrd/)                                             | Library for reading data and formatting information from Excel files                                |
+| Tool                                                                             | Description & Why We Use It                                           |
+|----------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| [Selenium](https://pypi.org/project/selenium/)                                   | The industry standard for browser automation.                         |
+| [Pytest](https://pypi.org/project/pytest/)                                       | The most powerful and flexible testing framework for Python.          |
+| [Allure](https://pypi.org/project/allure-pytest/)                                | For beautiful, data-rich test reports including screenshots and logs. |
+| [Visual Regression Tracker](https://pypi.org/project/visual-regression-tracker/) | To catch UI bugs that functional tests miss (Pixel Perfect).          |
+| [Assertpy](https://pypi.org/project/assertpy/)                                   | An expressive assertion library for readable tests.                   |
+| [Dataclasses JSON](https://pypi.org/project/dataclasses-json/)                   | Easy serialization of objects for API/Data handling.                  |
+| [MySQL Connector](https://pypi.org/project/mysql-connector-python/)              | Direct database validation.                                           |
+| [Mailinator Client](https://pypi.org/project/mailinator-python-client-2/)        | For testing real email delivery workflows.                            |
+| [Tenacity](https://pypi.org/project/tenacity/)                                   | Robust retrying mechanism for flaky network operations.               |
 
-## ⚙️ Setup Instructions
+---
 
-### Clone the project
+## ⚙️ Getting Started
+
+### 1. Clone
 
 ```bash
 git clone https://github.com/nirtal85/Selenium-Python-Example.git
 cd selenium-python-example
 ```
 
-### Create and activate a virtual environment then Install project dependencies
+### 2. Install (The Modern Way)
 
-#### For Windows:
+We use uv for lightning-fast installations.
+
+Windows:
+
 ```bash
 pip install uv
 uv venv
@@ -68,107 +91,72 @@ uv venv
 uv sync --all-extras --dev
 ```
 
-#### For Mac:
+Mac/Linux:
+
 ```bash
-python3 -m pip install uv
+pip install uv
 uv venv
 source .venv/bin/activate
 uv sync --all-extras --dev
 ```
 
-### Create .env File
+### 3. Configure
 
-Create a `.env` file in the project root directory to securely store project secrets and configuration variables. This
-file will be used to define key-value pairs for various parameters required by the project. Add the following properties
-to the `.env` file:
+Create a .env file in the project root directory to securely store project secrets. This file is essential for authentication and environment configuration.
 
-| Parameter              | Description                             | Example Value                 |
-|------------------------|-----------------------------------------|-------------------------------|
-| EMAIL                  | Your email address for authentication   | "your@email.com"              |
-| PASSWORD               | Your secret password for authentication | "your_secret_password"        |
-| VRT_APIURL             | Visual Regression Tracker API URL       | "https://vrt.example.com/api" |
-| VRT_PROJECT            | Visual Regression Tracker Project ID    | "project_id"                  |
-| VRT_CIBUILDID          | Visual Regression Tracker Build Number  | "build_number"                |
-| VRT_BRANCHNAME         | Visual Regression Tracker Branch Name   | "main"                        |
-| VRT_APIKEY             | Visual Regression Tracker API Key       | "your_api_key"                |
-| VRT_ENABLESOFTASSERT   | Enable Soft Assertions                  | True (or False)               |
-| MAILINATOR_API_KEY     | API Key for Mailinator service          | "your_mailinator_api_key"     |
-| MAILINATOR_DOMAIN_NAME | Domain name for Mailinator              | "your_mailinator_domain"      |
-
-## 🏃‍♂️ Running Tests
-
-```bash
-pytest --driver <firefox/chrome_headless>
+```properties
+EMAIL="your@email.com"
+PASSWORD="your_secret_password"
+# ... add other variables as needed (see .env.example)
 ```
 
-When no browser was selected then chrome will be used.
-
-* Run according to tags:
+## 🏃‍♂️ Execution
+Run all tests (Headless Chrome by default):
 
 ```bash
-pytest -m <tag_name> --browser <firefox/chrome_headless>
+pytest
 ```
 
-## 📊 Viewing Test Results
+Run with specific browser:
 
-### Install Allure Commandline To View Test results
+```bash
+pytest --driver firefox
+```
 
-#### For Windows:
+Run specific suite (Tags):
 
-Follow the instructions [here](https://scoop.sh/) to install Scoop.<br>
-Run the following command to install Allure using Scoop:
+```bash
+pytest -m sanity
+```
+
+## 📊 Results & Reporting
+We use Allure for reporting. To view results locally:
+
+Windows (via Scoop):
 
 ```bash
 scoop install allure
-```
-
-#### For Mac:
-
-```bash
-brew install allure
-```
-
-### View Results Locally:
-
-```bash
 allure serve allure-results
 ```
 
-### View Results Online:
-
-[View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
-
-## ℹ️ View Help And Other CLI Options
+Mac (via Brew):
 
 ```bash
-pytest --help
+brew install allure
+allure serve allure-results
 ```
 
-### Pre Commit
+👉 [See a Live Example of the Report Here](https://nirtal85.github.io/Selenium-Python-Example/)
 
-#### Run Pre Commit Checks Automatically
+<div align="center">
 
-```bash
-pre-commit install
-pre-commit install --hook-type commit-msg
-```
+Found this project useful?
+If this architecture helped you solve a problem or save time, consider supporting the work!
 
-#### Bump Pre Commit Hooks Version
+<a href="https://www.buymeacoffee.com/nirtal"> <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="60" alt="Buy Me A Coffee" /> </a>
 
-```bash
-pre-commit autoupdate
-```
+<br />
 
-#### Run Pre Commit Checks Manually On The Entire Project
+Visit TestShift.com for more Architectural Insights
 
-```bash
-pre-commit run --all-files
-```
-
- ## ☕ Support
- 
- If you find this project helpful, you can support my work by buying me a coffee:
- 
- <p><a href="https://www.buymeacoffee.com/nirtal"> 
- <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="Buy Me A Coffee" />
- </a></p><br><br>
+</div>
