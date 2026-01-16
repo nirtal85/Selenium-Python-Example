@@ -17,7 +17,7 @@ repos:
       - id: no-commit-to-branch
         args: ['--branch', 'main']
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.34.1
+    rev: 0.36.0
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -29,7 +29,7 @@ repos:
         stages: [commit-msg]
         args: []
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.3
+    rev: v0.14.13
     hooks:
       - id: ruff
         args: [ --fix ]
@@ -48,7 +48,7 @@ repos:
       - id: validate-pyproject
         additional_dependencies: ["validate-pyproject-schema-store[all]"]
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.15.0
+    rev: v2.16.0
     hooks:
       - id: pretty-format-toml
         exclude: poetry.lock
