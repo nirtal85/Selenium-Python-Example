@@ -130,20 +130,10 @@ pytest -m sanity
 ```
 
 ## 📊 Results & Reporting
-We use Allure for reporting. To view results locally:
-
-Windows (via Scoop):
+We use Allure for reporting. To generate and open the report locally:
 
 ```bash
-scoop install allure
-allure serve allure-results
-```
-
-Mac (via Brew):
-
-```bash
-brew install allure
-allure serve allure-results
+npx -y allure generate allure-results --output allure-report --open
 ```
 
 👉 [See a Live Example of the Report Here](https://nirtal85.github.io/Selenium-Python-Example/)
