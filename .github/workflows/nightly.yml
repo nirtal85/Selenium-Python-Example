@@ -6,19 +6,20 @@ on:
   workflow_dispatch:
     inputs:
       pytest_command:
-        description: 'Custom pytest command'
+        description: "Custom pytest command"
         required: true
         default: '-m "not devRun"'
         type: string
       parallelism:
-        description: 'Number of machines to split tests'
+        description: "Number of machines to split tests"
         required: false
         default: 2
         type: number
 
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
 
 jobs:
   setup-matrix:
@@ -31,7 +32,6 @@ jobs:
           count=${{ github.event.inputs.parallelism || 2 }}
           matrix=$(seq -s ',' 1 $count)
           echo "matrix=$(jq -cn --argjson groups "[$matrix]" '{group: $groups}')" >> $GITHUB_OUTPUT
-
   nightly-test:
     needs: setup-matrix
     runs-on: ubuntu-latest
@@ -42,11 +42,12 @@ jobs:
       EMAIL: ${{ secrets.EMAIL }}
       PASSWORD: ${{ secrets.PASSWORD }}
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@v5
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.14'
+          python-version: "3.14"
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -56,12 +57,13 @@ jobs:
           uv venv
           uv sync --all-extras --dev
       - name: Run Tests
-        run: |
-          xvfb-run .venv/bin/python -m pytest ${{ github.event.inputs.pytest_command || '-m "not devRun"' }} \
-            --base-url ${{ vars.BASE_URL }} \
-            --splits ${{ github.event.inputs.parallelism || 2 }} \
-            --group ${{ matrix.group }}
-      - name: Upload Test Results
+        run: >
+          xvfb-run .venv/bin/python -m pytest
+          ${{ github.event.inputs.pytest_command || '-m "not devRun"' }}
+          --base-url ${{ vars.BASE_URL }}
+          --splits ${{ github.event.inputs.parallelism || 2 }}
+          --group ${{ matrix.group }}
+      - name: Upload shard allure-results
         if: always()
         uses: actions/upload-artifact@v5
         with:
@@ -69,13 +71,53 @@ jobs:
           path: allure-results
           retention-days: 7
 
-  merge-reports:
+  build-report:
     needs: nightly-test
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Merge and Publish Allure Report
-        uses: Valiantsin2021/allure-shard-results-publish@1.0.6
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Download all shard results into allure-results
+        if: always()
+        uses: actions/download-artifact@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          add-env: 'true'
+          pattern: allure-results-*
+          path: allure-results
+          merge-multiple: true
+      - name: Link Git Information And Browser Version To Allure Results
+        if: always()
+        working-directory: allure-results
+        run: |
+          {
+            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            echo GIT_BRANCH=${{ github.ref_name }}
+            echo GIT_COMMIT_ID=${{ github.sha }}
+            echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
+            echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
+            echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
+            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
+          } >> environment.properties
+      - name: Generate Allure HTML report
+        if: always()
+        run: npx -y allure generate allure-results --output allure-report
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: allure-report
+
+  deploy_pages:
+    needs: build-report
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
