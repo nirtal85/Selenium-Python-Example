@@ -4,14 +4,17 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - '**/*.py'
-      - '**/*.toml'
-      - '**/*.lock'
-      - '.github/workflows/devRun.yml'
+      - "**/*.py"
+      - "**/*.toml"
+      - "**/*.lock"
+      - ".github/workflows/devRun.yml"
 
 permissions:
-  contents: write
+  contents: read
+  pull-requests: write
+  checks: write
   pages: write
+  id-token: write
 
 jobs:
   merge_test:
@@ -22,7 +25,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.14'
+          python-version: "3.14"
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -39,31 +42,44 @@ jobs:
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.0
         if: success()
-      - name: Link Git Information And Browser Version To Allure Report
-        working-directory: allure-results
+      - name: Link Git Information And Browser Version To Allure Results
         if: always()
+        working-directory: allure-results
         run: |
           {
-           echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-           echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
-           echo GIT_COMMIT_ID=${{ github.sha }}
-           echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD)
-           echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD)
-           echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
-           echo CHROME_VERSION=$(google-chrome --product-version)
+            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
+            echo GIT_COMMIT_ID=${{ github.sha }}
+            echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
+            echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
+            echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
+            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
           } >> environment.properties
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.13
+      - name: Generate Allure HTML report (Allure 3 CLI via npx)
         if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-          gh_pages: gh-pages
-          allure_history: allure-history
-      - name: Deploy Report To Github Pages
+        run: npx -y allure generate allure-results --output allure-report
+      - name: Allure PR summary
         if: always()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: allure-framework/allure-action@v0.6.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          report-directory: "./allure-report"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: allure-report
+  deploy_pages:
+    needs: merge_test
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
