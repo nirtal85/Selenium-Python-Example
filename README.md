@@ -50,6 +50,7 @@ This project implements the concepts discussed in the following **TestShift** ar
 * [Test Automation - How to Use Dynamic Base URLs with Selenium And Playwright Python in GitHub Actions](https://www.test-shift.com/posts/test-automation-how-to-use-dynamic-base-urls-with-selenium-and-playwright-python-in-github-actions)
 * [Test Automation Best Practices: Pinning Browser Version in Selenium Python for Stability](https://www.test-shift.com/posts/test-automation-best-practices-pinning-browser-version-in-selenium-python-for-stability/)
 * [Test Automation - Capturing Console Logs and JavaScript Errors with Selenium WebDriver BiDi in Python](https://www.test-shift.com/posts/test-automation-capturing-console-logs-and-javascript-errors-with-selenium-webdriver-bidi-in-python)
+* [Allure 3 Isn’t Just an Upgrade. It’s the Final Piece of the Quality Gate Architecture](https://www.test-shift.com/posts/allure-3-leave-the-swamp-ride-the-dragon)
 
 ---
 
