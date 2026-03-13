@@ -43,7 +43,7 @@ jobs:
       PASSWORD: ${{ secrets.PASSWORD }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -65,7 +65,7 @@ jobs:
           --group ${{ matrix.group }}
       - name: Upload shard allure-results
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: allure-results-${{ matrix.group }}
           path: allure-results
@@ -77,10 +77,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Download all shard results into allure-results
         if: always()
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           pattern: allure-results-*
           path: allure-results
