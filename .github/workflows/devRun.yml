@@ -40,7 +40,7 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
         run: xvfb-run .venv/bin/python -m pytest -m devRun --base-url ${{ vars.BASE_URL }}
       - name: Auto-assign reviewers
-        uses: kentaro-m/auto-assign-action@v2.0.1
+        uses: kentaro-m/auto-assign-action@v2.0.2
         if: success()
       - name: Link Git Information And Browser Version To Allure Results
         if: always()
@@ -82,4 +82,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
