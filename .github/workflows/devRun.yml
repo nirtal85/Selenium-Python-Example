@@ -9,6 +9,9 @@ on:
       - "**/*.lock"
       - ".github/workflows/devRun.yml"
 
+env:
+  FLAKINESS_PROJECT: nirtal85/Selenium-Python-Example
+
 permissions:
   contents: read
   pull-requests: write
