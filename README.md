@@ -9,7 +9,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/NirTal2?style=social)](https://twitter.com/NirTal2)
 [![YouTube](https://img.shields.io/youtube/channel/subscribers/UCQjS-eoKl0a1nuP_dvpLsjQ?style=social)](https://www.youtube.com/channel/UCQjS-eoKl0a1nuP_dvpLsjQ)
 ![CI Status](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
-![Nightly Build](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/nightly.yml/badge.svg)
+![Monthly Build](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/monthly.yml/badge.svg)
 [![Tests](https://img.shields.io/endpoint?url=https%3A%2F%2Fflakiness.io%2Fapi%2Fbadge%3Finput%3D%257B%2522badgeToken%2522%253A%2522badge-AlsJROG5SIAxYaV68SL8K%2522%257D)](https://flakiness.io/nirtal85/Selenium-Python-Example)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -31,7 +31,7 @@ It demonstrates advanced design patterns, seamless CI/CD integration, and rich r
 * **Modern Python Tooling:** Built with `uv` for lightning-fast dependency management and `Ruff` for linting.
 * **Robust Reporting:** Full integration with **Allure Report**, including screenshots, logs, and video.
 * **Visual Regression:** Integrated with **Visual Regression Tracker** for pixel-perfect UI validation.
-* **CI/CD Ready:** Complete GitHub Actions workflows for Nightly runs, PR checks, and Report deployment.
+* **CI/CD Ready:** Complete GitHub Actions workflows for Monthly runs, PR checks, and Report deployment.
 
 ---
 
