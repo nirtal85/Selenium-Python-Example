@@ -24,13 +24,13 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.14"
       - name: Set up uv
-        uses: astral-sh/setup-uv@v8.1.0
+        uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: true
       - name: Create venv & install dependencies
@@ -63,7 +63,7 @@ jobs:
         run: npx -y allure generate allure-results --output allure-report
       - name: Allure PR summary
         if: always()
-        uses: allure-framework/allure-action@v0.7.0
+        uses: allure-framework/allure-action@v0.8.0
         with:
           report-directory: "./allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
