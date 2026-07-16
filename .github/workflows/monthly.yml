@@ -5,10 +5,10 @@ on:
     - cron: "0 0 1 * *"
   workflow_dispatch:
     inputs:
-      pytest_command:
-        description: "Custom pytest command"
+      pytest_marker:
+        description: "Pytest marker expression"
         required: true
-        default: '-m "not devRun"'
+        default: "not devRun"
         type: string
       parallelism:
         description: "Number of machines to split tests"
@@ -31,10 +31,17 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
+        env:
+          PARALLELISM: ${{ github.event.inputs.parallelism || 2 }}
         run: |
-          count=${{ github.event.inputs.parallelism || 2 }}
-          matrix=$(seq -s ',' 1 $count)
-          echo "matrix=$(jq -cn --argjson groups "[$matrix]" '{group: $groups}')" >> $GITHUB_OUTPUT
+          count="${PARALLELISM:-2}"
+          if ! [[ "$count" =~ ^[1-9][0-9]*$ ]]; then
+            echo "parallelism must be a positive integer" >&2
+            exit 1
+          fi
+          groups=$(seq 1 "$count" | jq -Rsc 'split("\n")[:-1] | map(tonumber)')
+          matrix_json=$(jq -cn --argjson groups "$groups" '{group: $groups}')
+          echo "matrix=$matrix_json" >> "$GITHUB_OUTPUT"
   monthly-test:
     needs: setup-matrix
     runs-on: ubuntu-latest
@@ -55,17 +62,20 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: true
-      - name: Create venv & install dependencies
-        run: |
-          uv venv
-          uv sync --all-extras --dev
+      - name: Install dependencies
+        run: uv sync --locked --all-extras --dev
       - name: Run Tests
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          GROUP: ${{ matrix.group }}
+          PARALLELISM: ${{ github.event.inputs.parallelism || 2 }}
+          PYTEST_MARKER: ${{ github.event.inputs.pytest_marker || 'not devRun' }}
         run: >
-          xvfb-run .venv/bin/python -m pytest
-          ${{ github.event.inputs.pytest_command || '-m "not devRun"' }}
-          --base-url ${{ vars.BASE_URL }}
-          --splits ${{ github.event.inputs.parallelism || 2 }}
-          --group ${{ matrix.group }}
+          xvfb-run uv run pytest
+          -m "$PYTEST_MARKER"
+          --base-url "$BASE_URL"
+          --splits "$PARALLELISM"
+          --group "$GROUP"
       - name: Upload shard allure-results
         if: always()
         uses: actions/upload-artifact@v7
@@ -91,15 +101,19 @@ jobs:
       - name: Link Git Information And Browser Version To Allure Results
         if: always()
         working-directory: allure-results
+        env:
+          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GIT_BRANCH: ${{ github.ref_name }}
+          GIT_COMMIT_ID: ${{ github.sha }}
         run: |
           {
-            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            echo GIT_BRANCH=${{ github.ref_name }}
-            echo GIT_COMMIT_ID=${{ github.sha }}
-            echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
-            echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
-            echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
-            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
+            printf 'BUILD_URL=%s\n' "$BUILD_URL"
+            printf 'GIT_BRANCH=%s\n' "$GIT_BRANCH"
+            printf 'GIT_COMMIT_ID=%s\n' "$GIT_COMMIT_ID"
+            printf 'GIT_COMMIT_MESSAGE=%s\n' "$(git show -s --format=%s HEAD)"
+            printf 'GIT_COMMIT_AUTHOR_NAME=%s\n' "$(git show -s --format='%ae' HEAD)"
+            printf 'GIT_COMMIT_TIME=%s\n' "$(git show -s --format=%ci HEAD)"
+            printf 'CHROME_VERSION=%s\n' "$(google-chrome --product-version 2>/dev/null || true)"
           } >> environment.properties
       - name: Generate Allure HTML report
         if: always()

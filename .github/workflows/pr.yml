@@ -1,4 +1,4 @@
-name: Pre merge test
+name: Pull Request Tests
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - "**/*.py"
       - "**/*.toml"
       - "**/*.lock"
-      - ".github/workflows/devRun.yml"
+      - ".github/workflows/pr.yml"
 
 env:
   FLAKINESS_PROJECT: nirtal85/Selenium-Python-Example
@@ -33,30 +33,37 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: true
-      - name: Create venv & install dependencies
-        run: |
-          uv venv
-          uv sync --all-extras --dev
+      - name: Install dependencies
+        run: uv sync --locked --all-extras --dev
+      - name: Ruff check
+        run: uv run ruff check .
+      - name: Ruff format check
+        run: uv run ruff format --check .
       - name: Test with pytest
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: xvfb-run .venv/bin/python -m pytest -m devRun --base-url ${{ vars.BASE_URL }}
+          BASE_URL: ${{ vars.BASE_URL }}
+        run: xvfb-run uv run pytest -m devRun --base-url "$BASE_URL"
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.2
         if: success()
       - name: Link Git Information And Browser Version To Allure Results
         if: always()
         working-directory: allure-results
+        env:
+          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GIT_BRANCH: ${{ github.head_ref || github.ref_name }}
+          GIT_COMMIT_ID: ${{ github.sha }}
         run: |
           {
-            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
-            echo GIT_COMMIT_ID=${{ github.sha }}
-            echo GIT_COMMIT_MESSAGE="$(git show -s --format=%s HEAD)"
-            echo GIT_COMMIT_AUTHOR_NAME="$(git show -s --format='%ae' HEAD)"
-            echo GIT_COMMIT_TIME="$(git show -s --format=%ci HEAD)"
-            echo CHROME_VERSION="$(google-chrome --product-version 2>/dev/null || true)"
+            printf 'BUILD_URL=%s\n' "$BUILD_URL"
+            printf 'GIT_BRANCH=%s\n' "$GIT_BRANCH"
+            printf 'GIT_COMMIT_ID=%s\n' "$GIT_COMMIT_ID"
+            printf 'GIT_COMMIT_MESSAGE=%s\n' "$(git show -s --format=%s HEAD)"
+            printf 'GIT_COMMIT_AUTHOR_NAME=%s\n' "$(git show -s --format='%ae' HEAD)"
+            printf 'GIT_COMMIT_TIME=%s\n' "$(git show -s --format=%ci HEAD)"
+            printf 'CHROME_VERSION=%s\n' "$(google-chrome --product-version 2>/dev/null || true)"
           } >> environment.properties
       - name: Generate Allure HTML report (Allure 3 CLI via npx)
         if: always()

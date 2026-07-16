@@ -52,7 +52,8 @@ class TestWorkspaces(BaseTest):
         assert_that(after).described_as("workspace number").is_less_than(before)
 
     @allure.description(
-        "Compare between the actual number of projects seen on page and the number shown in workspaces block"
+        "Compare between the actual number of projects seen on page and the number "
+        "shown in workspaces block"
     )
     @allure.title("Number of projects displayed in page test")
     @pytest.mark.run(order=4)
@@ -113,6 +114,4 @@ class TestWorkspaces(BaseTest):
             before = self.projects_page.get_projects_number_in_page()
             self.projects_page.delete_project(data.workspace.project_name)
             after = self.projects_page.get_projects_number_in_page()
-            assert_that(before).described_as("number of displayed projects").is_equal_to(
-                after + 1
-            )
+            assert_that(before).described_as("number of displayed projects").is_equal_to(after + 1)

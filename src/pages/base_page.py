@@ -46,7 +46,8 @@ class BasePage:
 
         Note:
         This method uses the Chrome DevTools Protocol (CDP) to override the geolocation
-        in the web browser, allowing simulation of a specific geographic location for testing purposes.
+        in the web browser, allowing simulation of a specific geographic location for
+        testing purposes.
         The accuracy is set to 1 for simplicity in this method.
 
         """
@@ -99,15 +100,21 @@ class BasePage:
     def _highlight_element(self, webelement: WebElement, color: str) -> None:
         original_style = webelement.get_attribute("style")
         new_style = f"background-color:yellow;border: 1px solid {color}{original_style}"
-        self.driver.execute_script(
-            "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
-            + new_style
-            + "');},0);",
-            webelement,
+        set_style_script = (
+            "var tmpArguments = arguments;"
+            "setTimeout(function () {"
+            "tmpArguments[0].setAttribute('style', tmpArguments[1]);"
+            "}, tmpArguments[2]);"
         )
         self.driver.execute_script(
-            "var tmpArguments = arguments;setTimeout(function () {tmpArguments[0].setAttribute('style', '"
-            + original_style
-            + "');},400);",
+            set_style_script,
             webelement,
+            new_style,
+            0,
+        )
+        self.driver.execute_script(
+            set_style_script,
+            webelement,
+            original_style,
+            400,
         )

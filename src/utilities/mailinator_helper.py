@@ -55,8 +55,8 @@ class MailinatorHelper:
             email_subject (str): The subject of the email to wait for.
 
         Returns:
-            str or None: The message ID of the email with the specified subject, or None if the email
-            is not found within the inbox.
+            str or None: The message ID of the email with the specified subject, or
+            None if the email is not found within the inbox.
 
         Raises:
             Any exceptions raised by the underlying `self.mailinator.request` method when
@@ -66,13 +66,13 @@ class MailinatorHelper:
         messages = self.mailinator.request(
             GetInboxRequest(
                 domain=self.mailinator_domain,
-                inbox=user_email.split("@")[0],
+                inbox=user_email.split("@", maxsplit=1)[0],
             )
         ).msgs
         filtered_messages: list[Message] = [
             message
             for message in messages
-            if message.to == user_email.split("@")[0]
+            if message.to == user_email.split("@", maxsplit=1)[0]
             and message.subject.casefold() == email_subject.casefold()
         ]
         return filtered_messages[0].id if filtered_messages else None
@@ -160,7 +160,7 @@ class MailinatorHelper:
         messages = self.mailinator.request(
             GetInboxRequest(
                 domain=self.mailinator_domain,
-                inbox=user_email.split("@")[0],
+                inbox=user_email.split("@", maxsplit=1)[0],
             )
         ).msgs
         # Use a list comprehension to extract the subjects from each message
