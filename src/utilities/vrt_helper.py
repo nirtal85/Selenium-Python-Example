@@ -57,7 +57,9 @@ class VrtHelper:
             TestRunStatus.OK.name,
         )
 
-    def shoot_page_ang_ignore_elements(self, baseline_name: str, elements: list[WebElement]) -> None:
+    def shoot_page_ang_ignore_elements(
+        self, baseline_name: str, elements: list[WebElement]
+    ) -> None:
         """Capture a screenshot of the current page, define areas to be ignored
         within the screenshot, compare the captured screenshot with a baseline
         image stored in Visual Regression tracker.

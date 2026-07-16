@@ -9,6 +9,9 @@ dev = [
 name = "selenium-python-example"
 description = "Selenium Python example project with pytest and Allure report"
 version = "0.1.0"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Nir Tal" }]
 dependencies = [
   "allure-pytest==2.16.0",
   "assertpy==1.1",
@@ -51,7 +54,10 @@ addopts = [
 base_url = 'https://www.involve.me/'
 markers = [
   "security: marks security tests",
-  "devRun: marks tests that run before merge to the main branch"
+  "devRun: marks tests that run before merge to the main branch",
+  "flaky: marks tests that may be rerun",
+  "run: marks ordered test execution",
+  "sanity: marks sanity tests"
 ]
 testpaths = [
   "tests"
@@ -59,14 +65,16 @@ testpaths = [
 
 [tool.ruff]
 exclude = [".venv", "env"]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
 ignore = [
   "D203",  # One blank line required before class docstring (conflicts with D211)
   "D213",  # Multi-line docstring summary should start at the second line
   "COM812"
 ]
-line-length = 100
-select = ["ALL"]
-target-version = "py311"
+select = ["E", "F", "B", "I", "UP", "SIM", "PT"]
 
 [tool.ruff.format]
 docstring-code-format = true

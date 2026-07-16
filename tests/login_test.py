@@ -6,9 +6,9 @@ import allure
 import pytest
 from assertpy import assert_that
 
-from tests.base_test import BaseTest
 from src.utilities.constants import Constants
 from src.utilities.data import Data
+from tests.base_test import BaseTest
 
 users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 
@@ -20,7 +20,7 @@ users = [("nirt236@gmail.com", "123456"), ("elias@gmail.com", "12345Tr")]
 class TestLogin(BaseTest):
     @allure.description("invalid login")
     @allure.title("Login with invalid credentials test")
-    @pytest.mark.parametrize("email, password", users)
+    @pytest.mark.parametrize(("email", "password"), users)
     @pytest.mark.run(order=3)
     def test_invalid_login(self, email: str, password: str, data: Data) -> None:
         self.about_page.click_login_link()
@@ -31,6 +31,7 @@ class TestLogin(BaseTest):
 
     @allure.description("Basic sanity")
     @pytest.mark.devRun
+    @pytest.mark.sanity
     def test_sanity(self, base_url) -> None:
         assert_that(self.driver.current_url).described_as("URL").is_equal_to(base_url)
 

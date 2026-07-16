@@ -23,7 +23,7 @@ class TestDependencyExample(BaseTest):
 
     @pytest.mark.dependency(name="b")
     def test_b(self) -> None:
-        assert False
+        pytest.fail("Dependency example failure")
 
     @pytest.mark.dependency(name="c", depends=["b"])
     def test_c(self) -> None:

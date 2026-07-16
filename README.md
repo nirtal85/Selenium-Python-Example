@@ -9,7 +9,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/NirTal2?style=social)](https://twitter.com/NirTal2)
 [![YouTube](https://img.shields.io/youtube/channel/subscribers/UCQjS-eoKl0a1nuP_dvpLsjQ?style=social)](https://www.youtube.com/channel/UCQjS-eoKl0a1nuP_dvpLsjQ)
 [![Architecture by TestShift](https://raw.githubusercontent.com/nirtal85/TestShift-AI/main/assets/testshift-architecture-badge.svg)](https://www.test-shift.com/)
-![CI Status](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/devRun.yml/badge.svg)
+![CI Status](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/pr.yml/badge.svg)
 ![Monthly Build](https://github.com/nirtal85/Selenium-Python-Example/actions/workflows/monthly.yml/badge.svg)
 [![Tests](https://img.shields.io/endpoint?url=https%3A%2F%2Fflakiness.io%2Fapi%2Fbadge%3Finput%3D%257B%2522badgeToken%2522%253A%2522badge-AlsJROG5SIAxYaV68SL8K%2522%257D)](https://flakiness.io/nirtal85/Selenium-Python-Example)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -90,7 +90,7 @@ Windows:
 ```bash
 pip install uv
 uv venv
-.\env\Scripts\activate
+.\.venv\Scripts\activate
 uv sync --all-extras --dev
 ```
 
@@ -117,19 +117,19 @@ PASSWORD="your_secret_password"
 Run all tests (Headless Chrome by default):
 
 ```bash
-pytest
+uv run pytest
 ```
 
 Run with specific browser:
 
 ```bash
-pytest --driver firefox
+uv run pytest --driver firefox
 ```
 
 Run specific suite (Tags):
 
 ```bash
-pytest -m sanity
+uv run pytest -m sanity
 ```
 
 ## 📊 Results & Reporting

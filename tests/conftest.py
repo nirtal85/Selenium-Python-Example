@@ -28,13 +28,16 @@ from src.pages.project_type_page import ProjectTypePage
 from src.pages.projects_page import ProjectsPage
 from src.pages.templates_page import TemplatesPage
 from src.utilities.constants import Constants
-from src.utilities.mailinator_helper import MailinatorHelper
-from src.utilities.web_driver_listener import DriverEventListener
-from src.utilities.excel_parser import ExcelParser
 from src.utilities.data import Data
+from src.utilities.excel_parser import ExcelParser
+from src.utilities.mailinator_helper import MailinatorHelper
 from src.utilities.vrt_helper import VrtHelper
+from src.utilities.web_driver_listener import DriverEventListener
 
-drivers = ("chrome", "firefox", "chrome_headless", "remote")
+drivers = ("chrome", "firefox", "chrome_headless")
+DEFAULT_WINDOW_WIDTH = 1920
+DEFAULT_WINDOW_HEIGHT = 1080
+CHROME_BROWSER_VERSION = "150.0.7871.114"
 
 
 def pytest_addoption(parser: Parser) -> None:
@@ -158,8 +161,7 @@ def pytest_runtest_setup(item: Item) -> None:
             },
         )
         chrome_options.enable_bidi = True
-        # https://forum.robotframework.org/t/maximize-window-chromedriver-133/8416/3
-        chrome_options.browser_version = "132"
+        chrome_options.browser_version = CHROME_BROWSER_VERSION
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("allow-file-access-from-files")
@@ -189,24 +191,10 @@ def pytest_runtest_setup(item: Item) -> None:
         case "chrome_headless":
             chrome_options.add_argument("headless=new")
             chrome_options.add_argument("force-device-scale-factor=0.6")
-            chrome_options.add_argument("window-size=1920,1080")
+            chrome_options.add_argument(
+                f"window-size={DEFAULT_WINDOW_WIDTH},{DEFAULT_WINDOW_HEIGHT}"
+            )
             driver = webdriver.Chrome(options=chrome_options)
-        # https://stackoverflow.com/questions/76430192/getting-typeerror-webdriver-init-got-an-unexpected-keyword-argument-desi
-        case "remote":
-            chrome_options = webdriver.ChromeOptions()
-            # https://aerokube.com/images/latest/#_chrome
-            chrome_options.browser_version = "128.0"
-            chrome_options.set_capability(
-                "selenoid:options",
-                {
-                    "enableVNC": True,
-                    "enableVideo": True,
-                    "videoName": f"{item.name}.mp4",
-                },
-            )
-            driver = webdriver.Remote(
-                command_executor="http://localhost:4444/wd/hub", options=chrome_options
-            )
         case _:
             if item.config.getoption("decorate_driver"):
                 driver = EventFiringWebDriver(
@@ -215,18 +203,17 @@ def pytest_runtest_setup(item: Item) -> None:
             else:
                 driver = webdriver.Chrome(options=chrome_options)
     item.cls.driver = driver
-    driver.maximize_window()
+    driver.set_window_size(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT)
     driver.get(base_url)
     wait = WebDriverWait(driver, 10)
-    if browser != "remote":
-        console_messages = []
-        driver.script.add_console_message_handler(
-            lambda log_entry: console_messages.append(log_entry.__dict__)
-        )
-        javascript_errors = []
-        driver.script.add_javascript_error_handler(
-            lambda log_entry: javascript_errors.append(log_entry.__dict__)
-        )
+    console_messages = []
+    driver.script.add_console_message_handler(
+        lambda log_entry: console_messages.append(log_entry.__dict__)
+    )
+    javascript_errors = []
+    driver.script.add_javascript_error_handler(
+        lambda log_entry: javascript_errors.append(log_entry.__dict__)
+    )
     item.cls.wait = wait
     item.cls.about_page = AboutPage(driver, wait)
     item.cls.login_page = LoginPage(driver, wait)
@@ -268,9 +255,9 @@ def pytest_sessionstart() -> None:
 def pytest_exception_interact(node: Item) -> None:
     """Pytest hook for interacting with exceptions during test execution.
 
-    If the 'driver' variable is present in the local or global namespace, this function performs various
-    actions for reporting using the 'allure' reporting framework. If 'driver' is not present, the function
-    returns without taking any action.
+    If the 'driver' variable is present, this function performs reporting actions
+    using the 'allure' reporting framework. If 'driver' is not present, the
+    function returns without taking any action.
 
     Args:
         node (Item): The pytest Item representing the test item.
@@ -283,38 +270,6 @@ def pytest_exception_interact(node: Item) -> None:
     if "driver" not in locals() and "driver" not in globals():
         return
     window_count = len(driver.window_handles)
-    if browser == "remote":
-        allure.attach(
-            body="<html><body><video width='100%%' height='100%%' controls autoplay><source "
-            f"src='http://localhost:4444/video/{node.name}.mp4' "
-            "type='video/mp4'></video></body></html>",
-            name="Video record",
-            attachment_type=allure.attachment_type.HTML,
-        )
-        if window_count == 1:
-            allure.attach(
-                body=driver.get_screenshot_as_png(),
-                name="Full Page Screenshot",
-                attachment_type=allure.attachment_type.PNG,
-            )
-            allure.attach(
-                body=driver.current_url,
-                name="URL",
-                attachment_type=allure.attachment_type.URI_LIST,
-            )
-        else:
-            for window in range(window_count):
-                driver.switch_to.window(driver.window_handles[window])
-                allure.attach(
-                    body=driver.get_screenshot_as_png(),
-                    name=f"Full Page Screen Shot of window in index {window}",
-                    attachment_type=allure.attachment_type.PNG,
-                )
-                allure.attach(
-                    body=driver.current_url,
-                    name=f"URL of window in index {window}",
-                    attachment_type=allure.attachment_type.URI_LIST,
-                )
     with allure.step("public ip address"):
         get_public_ip(session_request)
     allure.attach(
@@ -345,50 +300,48 @@ def pytest_exception_interact(node: Item) -> None:
         attachment_type=allure.attachment_type.JSON,
     )
 
-    if browser != "remote":
-        # https://github.com/lana-20/selenium-webdriver-bidi
-        if console_messages:
-            allure.attach(
-                body=json.dumps(console_messages, indent=4),
-                name="Console Logs",
-                attachment_type=allure.attachment_type.JSON,
-            )
-        if javascript_errors:
-            allure.attach(
-                body=json.dumps(javascript_errors, indent=4),
-                name="JavaScript Errors",
-                attachment_type=allure.attachment_type.JSON,
-            )
-        # looks like cdp not working with remote: https://github.com/SeleniumHQ/selenium/issues/8672
-        if window_count == 1:
+    # https://github.com/lana-20/selenium-webdriver-bidi
+    if console_messages:
+        allure.attach(
+            body=json.dumps(console_messages, indent=4),
+            name="Console Logs",
+            attachment_type=allure.attachment_type.JSON,
+        )
+    if javascript_errors:
+        allure.attach(
+            body=json.dumps(javascript_errors, indent=4),
+            name="JavaScript Errors",
+            attachment_type=allure.attachment_type.JSON,
+        )
+    if window_count == 1:
+        allure.attach(
+            body=capture_full_page_screenshot(),
+            name="Full Page Screenshot",
+            attachment_type=allure.attachment_type.PNG,
+        )
+        allure.attach(
+            body=driver.current_url,
+            name="URL",
+            attachment_type=allure.attachment_type.URI_LIST,
+        )
+    else:
+        for window in range(window_count):
+            driver.switch_to.window(driver.window_handles[window])
             allure.attach(
                 body=capture_full_page_screenshot(),
-                name="Full Page Screenshot",
+                name=f"Full Page Screen Shot of window in index {window}",
                 attachment_type=allure.attachment_type.PNG,
             )
             allure.attach(
                 body=driver.current_url,
-                name="URL",
+                name=f"URL of window in index {window}",
                 attachment_type=allure.attachment_type.URI_LIST,
             )
-        else:
-            for window in range(window_count):
-                driver.switch_to.window(driver.window_handles[window])
-                allure.attach(
-                    body=capture_full_page_screenshot(),
-                    name=f"Full Page Screen Shot of window in index {window}",
-                    attachment_type=allure.attachment_type.PNG,
-                )
-                allure.attach(
-                    body=driver.current_url,
-                    name=f"URL of window in index {window}",
-                    attachment_type=allure.attachment_type.URI_LIST,
-                )
-        allure.attach(
-            body=json.dumps(attach_network_logs(), indent=4),
-            name="Network Logs",
-            attachment_type=allure.attachment_type.JSON,
-        )
+    allure.attach(
+        body=json.dumps(attach_network_logs(), indent=4),
+        name="Network Logs",
+        attachment_type=allure.attachment_type.JSON,
+    )
 
 
 def get_response_body(request_id):
