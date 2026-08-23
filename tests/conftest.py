@@ -37,7 +37,6 @@ from src.utilities.web_driver_listener import DriverEventListener
 drivers = ("chrome", "firefox", "chrome_headless")
 DEFAULT_WINDOW_WIDTH = 1920
 DEFAULT_WINDOW_HEIGHT = 1080
-CHROME_BROWSER_VERSION = "150.0.7871.114"
 
 
 def pytest_addoption(parser: Parser) -> None:
@@ -139,6 +138,7 @@ def vrt_helper():
 
 def pytest_runtest_setup(item: Item) -> None:
     global browser, driver, chrome_options, wait, console_messages, javascript_errors
+    driver = None
     browser = item.config.getoption("driver")
     base_url = item.config.getoption("base_url")
     if browser in ("chrome", "chrome_headless"):
@@ -161,7 +161,6 @@ def pytest_runtest_setup(item: Item) -> None:
             },
         )
         chrome_options.enable_bidi = True
-        chrome_options.browser_version = CHROME_BROWSER_VERSION
         chrome_options.add_argument("disable-dev-shm-usage")
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("allow-file-access-from-files")
@@ -227,8 +226,7 @@ def pytest_runtest_setup(item: Item) -> None:
 def pytest_runtest_teardown() -> None:
     """Pytest hook for teardown after each test.
 
-    Checks if the 'driver' variable is present in the local or global namespace.
-    If found, it calls the 'quit()' method on the 'driver' object to close the browser.
+    Closes the active browser and clears its reference.
 
     Note: This function assumes that the 'driver' variable is used for browser automation,
     and its presence is necessary for cleanup.
@@ -237,8 +235,12 @@ def pytest_runtest_teardown() -> None:
         None
 
     """
-    if "driver" in locals() or "driver" in globals():
-        driver.quit()
+    global driver
+    if driver is not None:
+        try:
+            driver.quit()
+        finally:
+            driver = None
 
 
 def pytest_sessionstart() -> None:
@@ -266,8 +268,10 @@ def pytest_exception_interact(node: Item) -> None:
         None
 
     """
-    session_request: requests.Session = node.funcargs["session_request"]
-    if "driver" not in locals() and "driver" not in globals():
+    if globals().get("driver") is None:
+        return
+    session_request: requests.Session | None = node.funcargs.get("session_request")
+    if session_request is None:
         return
     window_count = len(driver.window_handles)
     with allure.step("public ip address"):
