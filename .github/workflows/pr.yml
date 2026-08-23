@@ -26,11 +26,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.14"
       - name: Set up uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@v10.0.1
         with:
           enable-cache: true
       - name: Install dependencies
@@ -70,7 +70,7 @@ jobs:
         run: npx -y allure generate allure-results --output allure-report
       - name: Allure PR summary
         if: always()
-        uses: allure-framework/allure-action@v0.8.0
+        uses: allure-framework/allure-action@v0.9.0
         with:
           report-directory: "./allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
