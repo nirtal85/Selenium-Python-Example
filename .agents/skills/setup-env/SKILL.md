@@ -16,7 +16,6 @@ The current CI uses Python 3.14; `~=3.11` allows newer Python 3.x.
 ```bash
 uv python install 3.14
 uv sync --python 3.14 --locked --all-extras --dev
-uv run --locked python --version
 ```
 
 `uv sync` creates `.venv`; activation is unnecessary with `uv run`.
@@ -39,43 +38,8 @@ Valid-login tests read `EMAIL` and `PASSWORD`; email tests also use
 Database and visual regression tests require their own services; they are not setup prerequisites.
 Pass the target explicitly with pytest's `--base-url`; setting `BASE_URL` alone does not configure pytest.
 
-## Verify
-
-Check collection without launching the suite:
-
-```bash
-uv run --locked pytest --collect-only -q -o addopts=
-```
-
-Check Chrome independently without contacting the application:
-
-```bash
-uv run --locked python - <<'PY'
-from selenium import webdriver
-
-options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")
-options.add_argument("--disable-dev-shm-usage")
-with webdriver.Chrome(options=options) as driver:
-    driver.get("data:text/html,<title>setup-env</title>")
-    assert driver.title == "setup-env"
-print("Chrome launch passed")
-PY
-```
-
-After confirming the intended application target, a minimal application check is:
-
-```bash
-uv run --locked pytest -m sanity --driver chrome_headless
-```
-
-The configured default is headed Chrome; use `chrome_headless` on machines without a display.
-The application check contacts the configured website. Run broader suites only when their services and credentials are available.
-
-Report interpreter, dependency installation, collection, browser launch, and application checks separately as passed, failed, or skipped, with reasons. Never report collection alone as successful browser execution.
-
 ## Common problems
 
 - Browser download or registry access fails: report the destination and error; retain TLS verification and proxy settings.
-- Chrome reports missing Linux libraries: install the distribution's Chrome dependencies, then repeat the independent launch.
-- Credentials or optional services are unavailable: finish dependency and collection checks and identify which suites remain unavailable.
+- Chrome reports missing Linux libraries: install the distribution's required Chrome dependencies.
+- Credentials or optional services are unavailable: complete installation and report which settings or services are missing.
