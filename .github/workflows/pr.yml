@@ -19,6 +19,8 @@ jobs:
   merge_test:
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    outputs:
+      artifact_url: ${{ steps.allure_artifact.outputs.artifact-url }}
     permissions:
       contents: read
       id-token: write
@@ -86,3 +88,26 @@ jobs:
       - uses: actions/checkout@v7
       - name: Auto-assign reviewers
         uses: kentaro-m/auto-assign-action@v2.0.2
+
+  report_link:
+    needs: merge_test
+    if: always() && needs.merge_test.outputs.artifact_url != '' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Publish report link on pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ARTIFACT_URL: ${{ needs.merge_test.outputs.artifact_url }}
+        run: |
+          marker='<!-- allure-report-artifact -->'
+          body=$(printf '%s\n[Download Allure report](%s)' "$marker" "$ARTIFACT_URL")
+          comments_url="repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments"
+          comment_id=$(gh api --paginate "$comments_url" --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- allure-report-artifact -->"))) | .id' | head -n 1)
+          if [ -n "$comment_id" ]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment_id" -f "body=$body" > /dev/null
+          else
+            gh api --method POST "$comments_url" -f "body=$body" > /dev/null
+          fi
