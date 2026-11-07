@@ -14,10 +14,6 @@ env:
 
 permissions:
   contents: read
-  pull-requests: write
-  checks: write
-  pages: write
-  id-token: write
 
 jobs:
   merge_test:
@@ -41,13 +37,8 @@ jobs:
         run: uv run ruff format --check .
       - name: Test with pytest
         env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ vars.BASE_URL }}
         run: xvfb-run uv run pytest -m devRun --base-url "$BASE_URL"
-      - name: Auto-assign reviewers
-        uses: kentaro-m/auto-assign-action@v2.0.2
-        if: success()
       - name: Link Git Information And Browser Version To Allure Results
         if: always()
         working-directory: allure-results
@@ -68,28 +59,9 @@ jobs:
       - name: Generate Allure HTML report (Allure 3 CLI via npx)
         if: always()
         run: npx -y allure generate allure-results --output allure-report
-      - name: Allure PR summary
+      - name: Upload report artifact
         if: always()
-        uses: allure-framework/allure-action@v0.12.0
+        uses: actions/upload-artifact@v7
         with:
-          report-directory: "./allure-report"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Pages artifact
-        if: always()
-        uses: actions/upload-pages-artifact@v5
-        with:
+          name: allure-report
           path: allure-report
-  deploy_pages:
-    needs: merge_test
-    if: always()
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
