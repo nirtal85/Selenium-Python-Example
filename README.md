@@ -139,6 +139,14 @@ We use Allure for reporting. To generate and open the report locally:
 npx -y allure generate allure-results --output allure-report --open
 ```
 
+For a pull request, download and extract the `allure-report` artifact from the
+workflow run. Serve the extracted directory over HTTP rather than opening its
+`index.html` directly:
+
+```bash
+npx -y allure open <extracted-report-directory>
+```
+
 👉 [See a Live Example of the Report Here](https://nirtal85.github.io/Selenium-Python-Example/)
 
 ---

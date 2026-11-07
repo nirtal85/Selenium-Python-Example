@@ -14,15 +14,16 @@ env:
 
 permissions:
   contents: read
-  pull-requests: write
-  checks: write
-  pages: write
-  id-token: write
 
 jobs:
   merge_test:
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    outputs:
+      artifact_url: ${{ steps.allure_artifact.outputs.artifact-url }}
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
@@ -41,13 +42,8 @@ jobs:
         run: uv run ruff format --check .
       - name: Test with pytest
         env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ vars.BASE_URL }}
         run: xvfb-run uv run pytest -m devRun --base-url "$BASE_URL"
-      - name: Auto-assign reviewers
-        uses: kentaro-m/auto-assign-action@v2.0.2
-        if: success()
       - name: Link Git Information And Browser Version To Allure Results
         if: always()
         working-directory: allure-results
@@ -68,28 +64,50 @@ jobs:
       - name: Generate Allure HTML report (Allure 3 CLI via npx)
         if: always()
         run: npx -y allure generate allure-results --output allure-report
-      - name: Allure PR summary
+      - name: Upload report artifact
         if: always()
-        uses: allure-framework/allure-action@v0.12.0
+        id: allure_artifact
+        uses: actions/upload-artifact@v7
         with:
-          report-directory: "./allure-report"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Pages artifact
-        if: always()
-        uses: actions/upload-pages-artifact@v5
-        with:
+          name: allure-report
           path: allure-report
-  deploy_pages:
+      - name: Link report in job summary
+        if: always() && steps.allure_artifact.outputs.artifact-url != ''
+        env:
+          ARTIFACT_URL: ${{ steps.allure_artifact.outputs.artifact-url }}
+        run: printf '[Download Allure report](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+
+  assign_reviewers:
     needs: merge_test
-    if: always()
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: read
+      pull-requests: write
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+      - uses: actions/checkout@v7
+      - name: Auto-assign reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.2
+
+  report_link:
+    needs: merge_test
+    if: always() && needs.merge_test.outputs.artifact_url != '' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Publish report link on pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ARTIFACT_URL: ${{ needs.merge_test.outputs.artifact_url }}
+        run: |
+          marker='<!-- allure-report-artifact -->'
+          body=$(printf '%s\n[Download Allure report](%s)' "$marker" "$ARTIFACT_URL")
+          comments_url="repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments"
+          comment_id=$(gh api --paginate "$comments_url" --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- allure-report-artifact -->"))) | .id' | head -n 1)
+          if [ -n "$comment_id" ]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment_id" -f "body=$body" > /dev/null
+          else
+            gh api --method POST "$comments_url" -f "body=$body" > /dev/null
+          fi
