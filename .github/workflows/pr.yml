@@ -19,6 +19,9 @@ jobs:
   merge_test:
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
@@ -71,3 +74,15 @@ jobs:
         env:
           ARTIFACT_URL: ${{ steps.allure_artifact.outputs.artifact-url }}
         run: printf '[Download Allure report](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+
+  assign_reviewers:
+    needs: merge_test
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Auto-assign reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.2
