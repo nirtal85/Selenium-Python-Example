@@ -61,7 +61,13 @@ jobs:
         run: npx -y allure generate allure-results --output allure-report
       - name: Upload report artifact
         if: always()
+        id: allure_artifact
         uses: actions/upload-artifact@v7
         with:
           name: allure-report
           path: allure-report
+      - name: Link report in job summary
+        if: always() && steps.allure_artifact.outputs.artifact-url != ''
+        env:
+          ARTIFACT_URL: ${{ steps.allure_artifact.outputs.artifact-url }}
+        run: printf '[Download Allure report](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
