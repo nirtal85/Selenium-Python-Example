@@ -72,6 +72,11 @@ This project implements the concepts discussed in the following **TestShift** ar
 
 ---
 
+
+## Agent environment setup
+
+For an AI coding agent, use the repository's [`setup-env` skill](.agents/skills/setup-env/SKILL.md) to install dependencies and prepare the browser. In Codex, invoke it with `$setup-env`.
+
 ## ⚙️ Getting Started
 
 ### 1. Clone
